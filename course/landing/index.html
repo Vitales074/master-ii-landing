@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>РњР°СЃС‚РµСЂ-РР вЂ” РќР°СѓС‡РёС‚РµСЃСЊ Р·Р°СЂР°Р±Р°С‚С‹РІР°С‚СЊ СЃ Claude</title>
+<title>Мастер-ИИ — Научитесь зарабатывать с Claude</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -73,7 +73,7 @@ section{position:relative;padding:100px 0}
 .accent-green{color:var(--green-l)}
 .divider-line{width:60px;height:3px;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:2px;margin:16px auto 0}
 
-/* Р”Р»СЏ РєРѕРіРѕ */
+/* Для кого */
 #for-who{background:var(--bg-1)}
 .avatar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .avatar-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:32px 28px;transition:border-color .3s,transform .3s}
@@ -86,9 +86,9 @@ section{position:relative;padding:100px 0}
 .avatar-card p{font-size:14px;color:var(--muted);line-height:1.7}
 .avatar-card ul{list-style:none;margin-top:16px}
 .avatar-card li{font-size:13px;color:var(--muted);padding:4px 0 4px 18px;position:relative}
-.avatar-card li::before{content:'в–ё';position:absolute;left:0;color:var(--blue-l);font-size:11px;top:6px}
+.avatar-card li::before{content:'▸';position:absolute;left:0;color:var(--blue-l);font-size:11px;top:6px}
 
-/* Р РµР·СѓР»СЊС‚Р°С‚С‹ */
+/* Результаты */
 .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .result-card{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm);padding:24px}
 .result-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
@@ -99,7 +99,7 @@ section{position:relative;padding:100px 0}
 .result-card h4{font-family:var(--font-d);font-size:13px;font-weight:700;margin-bottom:6px;line-height:1.4}
 .result-card p{font-size:13px;color:var(--muted);line-height:1.6}
 
-/* РџСЂРѕРіСЂР°РјРјР° */
+/* Программа */
 #program{background:var(--bg-1)}
 .accordion{display:flex;flex-direction:column;gap:8px;max-width:860px;margin:0 auto}
 .acc-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-sm);overflow:hidden;transition:border-color .3s}
@@ -115,14 +115,14 @@ section{position:relative;padding:100px 0}
 .acc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .acc-tag{padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;background:rgba(96,165,250,.12);color:var(--blue-l);border:1px solid rgba(96,165,250,.2)}
 
-/* Р¤РѕСЂРјР°С‚ */
+/* Формат */
 .format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .format-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:32px 28px;text-align:center}
 .format-card .icon{font-size:40px;margin-bottom:16px}
 .format-card h3{font-family:var(--font-d);font-size:14px;font-weight:700;margin-bottom:10px}
 .format-card p{font-size:14px;color:var(--muted);line-height:1.7}
 
-/* Р¦РµРЅР° */
+/* Цена */
 #price{background:var(--bg-2)}
 .price-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;max-width:960px;margin:0 auto;align-items:start}
 .price-card{background:linear-gradient(135deg,rgba(37,99,235,.15),rgba(124,58,237,.12));border:1px solid rgba(96,165,250,.35);border-radius:20px;padding:40px 36px;text-align:center;position:relative;overflow:hidden}
@@ -137,7 +137,7 @@ section{position:relative;padding:100px 0}
 .price-list{list-style:none}
 .price-list li{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:15px;color:var(--muted)}
 .price-list li:last-child{border-bottom:none}
-.price-list li::before{content:'вњ“';color:var(--green-l);font-weight:700;font-size:16px;flex-shrink:0;margin-top:1px}
+.price-list li::before{content:'✓';color:var(--green-l);font-weight:700;font-size:16px;flex-shrink:0;margin-top:1px}
 
 /* FAQ */
 .faq{display:flex;flex-direction:column;gap:8px;max-width:800px;margin:0 auto}
@@ -179,8 +179,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 <!-- Nav -->
 <nav>
   <div class="nav-inner">
-    <span class="nav-logo">РњРђРЎРўР•Р -РР</span>
-    <a href="https://boosty.to/master_ii/posts/2f05bae3-1086-41af-bb32-cd21ae8a2136" target="_blank" class="nav-cta">РљСѓРїРёС‚СЊ РєСѓСЂСЃ</a>
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <a href="https://boosty.to/master_ii/posts/2f05bae3-1086-41af-bb32-cd21ae8a2136" target="_blank" class="nav-cta">Купить курс</a>
   </div>
 </nav>
 
@@ -193,201 +193,201 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
   </div>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>РћРЅР»Р°Р№РЅ-РєСѓСЂСЃ В· 13 СѓСЂРѕРєРѕРІ</div>
-      <h1>Р—Р°СЂР°Р±Р°С‚С‹РІР°Р№С‚Рµ СЃ Claude вЂ”<br><span>Р±РµР· РєРѕРґР° Рё РѕРїС‹С‚Р° РІ РР</span></h1>
-      <p>РќР°СЃС‚СЂРѕР№С‚Рµ Claude Code, СЃРѕР·РґР°Р№С‚Рµ СЃР°Р№С‚С‹ Рё Р°РіРµРЅС‚РѕРІ СЃ РЅСѓР»СЏ, РІС‹СЃС‚СЂРѕР№С‚Рµ РїРѕС‚РѕРє РєР»РёРµРЅС‚РѕРІ вЂ” Р·Р° РѕРґРёРЅ РєСѓСЂСЃ СЃ РЅСѓР»СЏ РґРѕ РїРµСЂРІС‹С… Р·Р°РєР°Р·РѕРІ. Р Р°Р±РѕС‚Р°РµС‚ РёР· Р»СЋР±РѕР№ СЃС‚СЂР°РЅС‹.</p>
+      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Онлайн-курс · 13 уроков</div>
+      <h1>Зарабатывайте с Claude —<br><span>без кода и опыта в ИИ</span></h1>
+      <p>Настройте Claude Code, создайте сайты и агентов с нуля, выстройте поток клиентов — за один курс с нуля до первых заказов. Работает из любой страны.</p>
       <div class="hero-btns">
-        <a href="https://boosty.to/master_ii/posts/2f05bae3-1086-41af-bb32-cd21ae8a2136" target="_blank" class="btn-primary">РљСѓРїРёС‚СЊ РєСѓСЂСЃ в†’</a>
-        <a href="#program" class="btn-secondary">РџСЂРѕРіСЂР°РјРјР° РєСѓСЂСЃР°</a>
+        <a href="https://boosty.to/master_ii/posts/2f05bae3-1086-41af-bb32-cd21ae8a2136" target="_blank" class="btn-primary">Купить курс →</a>
+        <a href="#program" class="btn-secondary">Программа курса</a>
       </div>
       <div class="hero-stats">
         <div class="stat">
           <div class="stat-num">13</div>
-          <div class="stat-label">СѓСЂРѕРєРѕРІ</div>
+          <div class="stat-label">уроков</div>
         </div>
         <div class="stat">
           <div class="stat-num">8+</div>
-          <div class="stat-label">С‡Р°СЃРѕРІ РїСЂР°РєС‚РёРєРё</div>
+          <div class="stat-label">часов практики</div>
         </div>
         <div class="stat">
-          <div class="stat-num">в€ћ</div>
-          <div class="stat-label">РґРѕСЃС‚СѓРї РЅР°РІСЃРµРіРґР°</div>
+          <div class="stat-num">∞</div>
+          <div class="stat-label">доступ навсегда</div>
         </div>
         <div class="stat">
           <div class="stat-num">0</div>
-          <div class="stat-label">РѕРїС‹С‚Р° С‚СЂРµР±СѓРµС‚СЃСЏ</div>
+          <div class="stat-label">опыта требуется</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Р”Р»СЏ РєРѕРіРѕ -->
+<!-- Для кого -->
 <section id="for-who">
   <div class="container">
     <div class="text-center">
-      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Р”Р»СЏ РєРѕРіРѕ</div>
-      <h2 class="section-title">РљСѓСЂСЃ РїРѕРґРѕР№РґС‘С‚ РІР°Рј, РµСЃР»Рё...</h2>
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Для кого</div>
+      <h2 class="section-title">Курс подойдёт вам, если...</h2>
       <div class="divider-line"></div>
-      <p class="section-sub" style="margin-top:16px">РќРµ РІР°Р¶РЅРѕ, РµСЃС‚СЊ Р»Рё Сѓ РІР°СЃ С‚РµС…РЅРёС‡РµСЃРєРёР№ РѕРїС‹С‚. Р’Р°Р¶РЅРѕ Р¶РµР»Р°РЅРёРµ СЂР°Р·РѕР±СЂР°С‚СЊСЃСЏ.</p>
+      <p class="section-sub" style="margin-top:16px">Не важно, есть ли у вас технический опыт. Важно желание разобраться.</p>
     </div>
     <div class="avatar-grid">
       <div class="avatar-card">
-        <div class="avatar-icon blue">рџ’ј</div>
-        <h3>Р¤СЂРёР»Р°РЅСЃРµСЂ РёР»Рё СЃР°РјРѕР·Р°РЅСЏС‚С‹Р№</h3>
-        <p>РҐРѕС‚РёС‚Рµ СЂР°СЃС€РёСЂРёС‚СЊ СЃРїРёСЃРѕРє СѓСЃР»СѓРі Рё Р±СЂР°С‚СЊ РІ 2вЂ“3 СЂР°Р·Р° Р±РѕР»СЊС€Рµ РєР»РёРµРЅС‚РѕРІ Р·Р° С‚Рѕ Р¶Рµ РІСЂРµРјСЏ.</p>
+        <div class="avatar-icon blue">💼</div>
+        <h3>Фрилансер или самозанятый</h3>
+        <p>Хотите расширить список услуг и брать в 2–3 раза больше клиентов за то же время.</p>
         <ul>
-          <li>РЎР°Р№С‚С‹ Рё Р»РµРЅРґРёРЅРіРё РїРѕРґ РєР»СЋС‡</li>
-          <li>Telegram-Р±РѕС‚С‹ РґР»СЏ РєР»РёРµРЅС‚РѕРІ</li>
-          <li>РљРѕРЅС‚РµРЅС‚ Рё РјР°СЂРєРµС‚РёРЅРіРѕРІС‹Р№ Р°СѓРґРёС‚</li>
+          <li>Сайты и лендинги под ключ</li>
+          <li>Telegram-боты для клиентов</li>
+          <li>Контент и маркетинговый аудит</li>
         </ul>
       </div>
       <div class="avatar-card">
-        <div class="avatar-icon purple">рџљЂ</div>
-        <h3>РџСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»СЊ</h3>
-        <p>РќСѓР¶РЅРѕ Р°РІС‚РѕРјР°С‚РёР·РёСЂРѕРІР°С‚СЊ СЂСѓС‚РёРЅСѓ, СЃРѕР·РґР°С‚СЊ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ РґР»СЏ РєРѕРјР°РЅРґС‹ РёР»Рё СЃРѕРєСЂР°С‚РёС‚СЊ СЂР°СЃС…РѕРґС‹ РЅР° СЂР°Р·СЂР°Р±РѕС‚РєСѓ.</p>
+        <div class="avatar-icon purple">🚀</div>
+        <h3>Предприниматель</h3>
+        <p>Нужно автоматизировать рутину, создать инструменты для команды или сократить расходы на разработку.</p>
         <ul>
-          <li>Р’РЅСѓС‚СЂРµРЅРЅРёРµ Р°РіРµРЅС‚С‹ Рё Р±РѕС‚С‹</li>
-          <li>РђРІС‚РѕРјР°С‚РёР·Р°С†РёСЏ Р±РµР· РїСЂРѕРіСЂР°РјРјРёСЃС‚Р°</li>
-          <li>Р‘С‹СЃС‚СЂС‹Р№ MVP Р·Р° РѕРґРёРЅ РІРµС‡РµСЂ</li>
+          <li>Внутренние агенты и боты</li>
+          <li>Автоматизация без программиста</li>
+          <li>Быстрый MVP за один вечер</li>
         </ul>
       </div>
       <div class="avatar-card">
-        <div class="avatar-icon green">рџ“€</div>
-        <h3>РќР°С‘РјРЅС‹Р№ СЃРїРµС†РёР°Р»РёСЃС‚</h3>
-        <p>РҐРѕС‚РёС‚Рµ СЃС‚Р°С‚СЊ РЅРµР·Р°РјРµРЅРёРјС‹Рј РІ РєРѕРјР°РЅРґРµ, РґРµР»Р°С‚СЊ СЂР°Р±РѕС‚Сѓ Р±С‹СЃС‚СЂРµРµ Рё РІС‹Р№С‚Рё РЅР° РЅРѕРІС‹Р№ СѓСЂРѕРІРµРЅСЊ РґРѕС…РѕРґР°.</p>
+        <div class="avatar-icon green">📈</div>
+        <h3>Наёмный специалист</h3>
+        <p>Хотите стать незаменимым в команде, делать работу быстрее и выйти на новый уровень дохода.</p>
         <ul>
-          <li>РРЅСЃС‚СЂСѓРјРµРЅС‚С‹, РєРѕС‚РѕСЂС‹С… РЅРµС‚ Сѓ РєРѕР»Р»РµРі</li>
-          <li>Р›РёС‡РЅС‹Р№ РР-Р°СЃСЃРёСЃС‚РµРЅС‚ РЅР° РєР°Р¶РґС‹Р№ РґРµРЅСЊ</li>
-          <li>РџРѕСЂС‚С„РѕР»РёРѕ РґР»СЏ РїРѕРІС‹С€РµРЅРёСЏ СЃС‚Р°РІРєРё</li>
+          <li>Инструменты, которых нет у коллег</li>
+          <li>Личный ИИ-ассистент на каждый день</li>
+          <li>Портфолио для повышения ставки</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Р РµР·СѓР»СЊС‚Р°С‚С‹ -->
+<!-- Результаты -->
 <section id="results">
   <div class="container">
     <div class="text-center">
-      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Р§С‚Рѕ РІС‹ РїРѕР»СѓС‡РёС‚Рµ</div>
-      <h2 class="section-title">6 РЅР°РІС‹РєРѕРІ, РєРѕС‚РѕСЂС‹Рµ РјРµРЅСЏСЋС‚<br>С‚Рѕ, РєР°Рє РІС‹ СЂР°Р±РѕС‚Р°РµС‚Рµ</h2>
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Что вы получите</div>
+      <h2 class="section-title">6 навыков, которые меняют<br>то, как вы работаете</h2>
       <div class="divider-line"></div>
     </div>
     <div class="results-grid" style="margin-top:48px">
       <div class="result-card">
-        <div class="result-icon b">рџЊђ</div>
+        <div class="result-icon b">🌐</div>
         <div>
-          <h4>Claude Р±РµР· РѕРіСЂР°РЅРёС‡РµРЅРёР№ РёР· Р»СЋР±РѕР№ СЃС‚СЂР°РЅС‹</h4>
-          <p>РќР°СЃС‚СЂРѕРёС‚Рµ AmneziaVPN Рё VPS СЂР°Р· Рё РЅР°РІСЃРµРіРґР° вЂ” РµСЃР»Рё Claude РЅРµРґРѕСЃС‚СѓРїРµРЅ РІ РІР°С€РµР№ СЃС‚СЂР°РЅРµ. Р•СЃР»Рё РґРѕСЃС‚СѓРїРµРЅ вЂ” РїСЂРѕСЃС‚Рѕ РїСЂРѕРїСѓСЃС‚РёС‚Рµ РїРµСЂРІС‹Рµ РґРІР° СѓСЂРѕРєР°.</p>
+          <h4>Claude без ограничений из любой страны</h4>
+          <p>Настроите AmneziaVPN и VPS раз и навсегда — если Claude недоступен в вашей стране. Если доступен — просто пропустите первые два урока.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon p">рџЏ—пёЏ</div>
+        <div class="result-icon p">🏗️</div>
         <div>
-          <h4>РЎР°Р№С‚С‹ Рё РїСЂРёР»РѕР¶РµРЅРёСЏ Р±РµР· РєРѕРґР°</h4>
-          <p>РЎРѕР·РґР°РґРёС‚Рµ РјРЅРѕРіРѕСЃС‚СЂР°РЅРёС‡РЅС‹Р№ Р±РёР·РЅРµСЃ-СЃР°Р№С‚, Р»РµРЅРґРёРЅРі Рё РїРѕР»РЅРѕС†РµРЅРЅРѕРµ РІРµР±-РїСЂРёР»РѕР¶РµРЅРёРµ.</p>
+          <h4>Сайты и приложения без кода</h4>
+          <p>Создадите многостраничный бизнес-сайт, лендинг и полноценное веб-приложение.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon g">рџ¤–</div>
+        <div class="result-icon g">🤖</div>
         <div>
-          <h4>Р›РёС‡РЅС‹Р№ Р°РіРµРЅС‚ Рё Telegram-Р±РѕС‚</h4>
-          <p>РќР°СЃС‚СЂРѕРёС‚Рµ API, СЃРѕР·РґР°РґРёС‚Рµ Р°РіРµРЅС‚Р° РґР»СЏ РєР»РёРµРЅС‚РѕРІ Рё РїРѕРґРєР»СЋС‡РёС‚Рµ РµРіРѕ РІ Telegram Р·Р° РѕРґРёРЅ СЃРµР°РЅСЃ.</p>
+          <h4>Личный агент и Telegram-бот</h4>
+          <p>Настроите API, создадите агента для клиентов и подключите его в Telegram за один сеанс.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon o">рџЋЁ</div>
+        <div class="result-icon o">🎨</div>
         <div>
-          <h4>РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ РґРёР·Р°Р№РЅ</h4>
-          <p>Р‘СѓРґРµС‚Рµ СЃРѕР·РґР°РІР°С‚СЊ РІРёР·СѓР°Р»С‹, РёРЅС„РѕРіСЂР°С„РёРєСѓ Рё Р°РЅРёРјРёСЂРѕРІР°РЅРЅС‹Рµ РєР°СЂСѓСЃРµР»Рё Р±РµР· РґРёР·Р°Р№РЅРµСЂР°.</p>
+          <h4>Профессиональный дизайн</h4>
+          <p>Будете создавать визуалы, инфографику и анимированные карусели без дизайнера.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon b">рџ”’</div>
+        <div class="result-icon b">🔒</div>
         <div>
-          <h4>Р‘РµР·РѕРїР°СЃРЅС‹Р№ РєРѕРґ Рё Р·Р°С‰РёС‚Р° РґР°РЅРЅС‹С…</h4>
-          <p>РЈР·РЅР°РµС‚Рµ РїСЂРѕ OWASP Top 10, РјРµС‚РѕРґ РґРІРѕР№РЅРѕРіРѕ РїСЂРѕС…РѕРґР° Рё CLAUDE.md РґР»СЏ РєР°Р¶РґРѕРіРѕ РїСЂРѕРµРєС‚Р°.</p>
+          <h4>Безопасный код и защита данных</h4>
+          <p>Узнаете про OWASP Top 10, метод двойного прохода и CLAUDE.md для каждого проекта.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon g">рџ’°</div>
+        <div class="result-icon g">💰</div>
         <div>
-          <h4>РџРµСЂРІС‹Рµ РєР»РёРµРЅС‚С‹ Рё РїРѕСЂС‚С„РѕР»РёРѕ</h4>
-          <p>РћС„РѕСЂРјРёС‚Рµ РєРµР№СЃС‹, РїСЂРѕРІРµРґС‘С‚Рµ РјР°СЂРєРµС‚РёРЅРіРѕРІС‹Р№ Р°СѓРґРёС‚ Рё РІС‹Р±РµСЂРµС‚Рµ РјРѕРґРµР»СЊ СЂР°Р±РѕС‚С‹ СЃ Р·Р°РєР°Р·С‡РёРєР°РјРё.</p>
+          <h4>Первые клиенты и портфолио</h4>
+          <p>Оформите кейсы, проведёте маркетинговый аудит и выберете модель работы с заказчиками.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- РџСЂРѕРіСЂР°РјРјР° -->
+<!-- Программа -->
 <section id="program">
   <div class="container">
     <div class="text-center">
-      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>РџСЂРѕРіСЂР°РјРјР°</div>
-      <h2 class="section-title">13 СѓСЂРѕРєРѕРІ вЂ” РѕС‚ VPN<br>РґРѕ РїРµСЂРІС‹С… РєР»РёРµРЅС‚РѕРІ</h2>
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Программа</div>
+      <h2 class="section-title">13 уроков — от VPN<br>до первых клиентов</h2>
       <div class="divider-line"></div>
-      <p class="section-sub" style="margin-top:16px">РљР°Р¶РґС‹Р№ СѓСЂРѕРє вЂ” Р·Р°РєРѕРЅС‡РµРЅРЅР°СЏ РїСЂР°РєС‚РёС‡РµСЃРєР°СЏ С‚РµРјР° СЃ РєРѕРЅРєСЂРµС‚РЅС‹Рј СЂРµР·СѓР»СЊС‚Р°С‚РѕРј.</p>
+      <p class="section-sub" style="margin-top:16px">Каждый урок — законченная практическая тема с конкретным результатом.</p>
     </div>
     <div class="accordion">
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">01</span>
-          <span class="acc-title">РЈСЃС‚Р°РЅРѕРІРєР° AmneziaVPN</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Установка AmneziaVPN</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>РЎРєР°С‡РёРІР°РµРј Рё СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїСЂРѕРіСЂР°РјРјСѓ-РєР»РёРµРЅС‚ VPN РЅР° Windows Рё macOS. Р Р°Р·Р±РёСЂР°РµРј С‚РёРїРёС‡РЅС‹Рµ РѕС€РёР±РєРё СѓСЃС‚Р°РЅРѕРІРєРё Рё С‡С‚Рѕ РґРµР»Р°С‚СЊ, РµСЃР»Рё СЃР°Р№С‚ РЅРµ РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ.</p>
-          <div class="acc-tags"><span class="acc-tag">VPN</span><span class="acc-tag">amnezia.org</span><span class="acc-tag">10 РјРёРЅ</span></div>
+          <p>Скачиваем и устанавливаем программу-клиент VPN на Windows и macOS. Разбираем типичные ошибки установки и что делать, если сайт не открывается.</p>
+          <div class="acc-tags"><span class="acc-tag">VPN</span><span class="acc-tag">amnezia.org</span><span class="acc-tag">10 мин</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">02</span>
-          <span class="acc-title">РђСЂРµРЅРґР° VPS Рё РїРѕРґРєР»СЋС‡РµРЅРёРµ Рє VPN</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Аренда VPS и подключение к VPN</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>РђСЂРµРЅРґСѓРµРј СЃРµСЂРІРµСЂ РІ РќРёРґРµСЂР»Р°РЅРґР°С… Р·Р° $5.5/РјРµСЃ РЅР° Amnesia. РџРѕРґРєР»СЋС‡Р°РµРј РµРіРѕ Рє AmneziaVPN Рё РїРѕР»СѓС‡Р°РµРј СЃС‚Р°Р±РёР»СЊРЅС‹Р№ IP РІ РЅСѓР¶РЅРѕР№ СЃС‚СЂР°РЅРµ.</p>
-          <div class="acc-tags"><span class="acc-tag">VPS</span><span class="acc-tag">Amnesia</span><span class="acc-tag">IP-Р°РґСЂРµСЃ</span></div>
+          <p>Арендуем сервер в Нидерландах за $5.5/мес на Amnesia. Подключаем его к AmneziaVPN и получаем стабильный IP в нужной стране.</p>
+          <div class="acc-tags"><span class="acc-tag">VPS</span><span class="acc-tag">Amnesia</span><span class="acc-tag">IP-адрес</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">03</span>
-          <span class="acc-title">Р РµРіРёСЃС‚СЂР°С†РёСЏ Рё РѕРїР»Р°С‚Р° Claude</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Регистрация и оплата Claude</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>РЎРѕР·РґР°С‘Рј Р°РєРєР°СѓРЅС‚ РЅР° claude.ai С‡РµСЂРµР· ProtonMail. Р Р°Р·Р±РёСЂР°РµРј СЃРїРѕСЃРѕР±С‹ РѕРїР»Р°С‚С‹ РїРѕРґРїРёСЃРєРё вЂ” С‡РµСЃС‚РЅС‹Рµ СЂР°Р±РѕС‡РёРµ РІР°СЂРёР°РЅС‚С‹ Р±РµР· РѕР±С…РѕРґРѕРІ РІРµСЂРёС„РёРєР°С†РёРё.</p>
-          <div class="acc-tags"><span class="acc-tag">claude.ai</span><span class="acc-tag">ProtonMail</span><span class="acc-tag">РћРїР»Р°С‚Р°</span></div>
+          <p>Создаём аккаунт на claude.ai через ProtonMail. Разбираем способы оплаты подписки — честные рабочие варианты без обходов верификации.</p>
+          <div class="acc-tags"><span class="acc-tag">claude.ai</span><span class="acc-tag">ProtonMail</span><span class="acc-tag">Оплата</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">03.1</span>
-          <span class="acc-title">РћРїР»Р°С‚Р° С‡РµСЂРµР· РІРёСЂС‚СѓР°Р»СЊРЅСѓСЋ РєР°СЂС‚Сѓ</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Оплата через виртуальную карту</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>Р Р°Р·Р±РёСЂР°РµРј ChocoPay Рё РІРёСЂС‚СѓР°Р»СЊРЅС‹Рµ РєР°СЂС‚С‹ вЂ” РєР°Рє РѕРЅРё СѓСЃС‚СЂРѕРµРЅС‹, РґР»СЏ С‡РµРіРѕ РїРѕРґС…РѕРґСЏС‚ Рё С‡С‚Рѕ СЂРµР°Р»СЊРЅРѕ СЂР°Р±РѕС‚Р°РµС‚ РґР»СЏ РѕРїР»Р°С‚С‹ Anthropic API.</p>
-          <div class="acc-tags"><span class="acc-tag">ChocoPay</span><span class="acc-tag">API</span><span class="acc-tag">РћРїР»Р°С‚Р°</span></div>
+          <p>Разбираем ChocoPay и виртуальные карты — как они устроены, для чего подходят и что реально работает для оплаты Anthropic API.</p>
+          <div class="acc-tags"><span class="acc-tag">ChocoPay</span><span class="acc-tag">API</span><span class="acc-tag">Оплата</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">04</span>
-          <span class="acc-title">Р›РµРЅРґРёРЅРі СЃ РЅСѓР»СЏ С‡РµСЂРµР· Claude Code</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Лендинг с нуля через Claude Code</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј Git, СЃРѕР·РґР°С‘Рј СЂР°Р±РѕС‡СѓСЋ РїР°РїРєСѓ, РїРёС€РµРј РїРµСЂРІС‹Р№ РїСЂРѕРјРїС‚. Claude СЃС‚СЂРѕРёС‚ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ Р»РµРЅРґРёРЅРі СЃ Р°РЅРёРјР°С†РёСЏРјРё, Р°РґР°РїС‚РёРІРѕРј Рё С‚РµРєСЃС‚Р°РјРё.</p>
+          <p>Устанавливаем Git, создаём рабочую папку, пишем первый промпт. Claude строит полноценный лендинг с анимациями, адаптивом и текстами.</p>
           <div class="acc-tags"><span class="acc-tag">Claude Code</span><span class="acc-tag">Git</span><span class="acc-tag">Netlify</span></div>
         </div>
       </div>
@@ -395,71 +395,71 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">04.1</span>
-          <span class="acc-title">РџСѓР±Р»РёРєР°С†РёСЏ РЅР° Netlify</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Публикация на Netlify</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>Р РµРіРёСЃС‚СЂРёСЂСѓРµРјСЃСЏ Рё РїСѓР±Р»РёРєСѓРµРј СЃР°Р№С‚ РЅР° Netlify drag & drop Р·Р° 4 С€Р°РіР°. РџРѕР»СѓС‡Р°РµРј СЂР°Р±РѕС‡СѓСЋ СЃСЃС‹Р»РєСѓ Рё СЂР°Р·Р±РёСЂР°РµРј С†РёРєР» РѕР±РЅРѕРІР»РµРЅРёСЏ.</p>
-          <div class="acc-tags"><span class="acc-tag">Netlify</span><span class="acc-tag">Р”РµРїР»РѕР№</span><span class="acc-tag">5 РјРёРЅ</span></div>
+          <p>Регистрируемся и публикуем сайт на Netlify drag & drop за 4 шага. Получаем рабочую ссылку и разбираем цикл обновления.</p>
+          <div class="acc-tags"><span class="acc-tag">Netlify</span><span class="acc-tag">Деплой</span><span class="acc-tag">5 мин</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">05</span>
-          <span class="acc-title">РњРЅРѕРіРѕСЃС‚СЂР°РЅРёС‡РЅС‹Р№ СЃР°Р№С‚</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Многостраничный сайт</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>РЎРѕР·РґР°С‘Рј РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р±РёР·РЅРµСЃ-СЃР°Р№С‚ РёР· 8 СЃС‚СЂР°РЅРёС† СЃ 3D-Р°РЅРёРјР°С†РёРµР№, РґРѕРєСѓРјРµРЅС‚Р°С†РёРµР№ РїСЂРѕРµРєС‚Р°, СЃРєРёР»Р»Р°РјРё Рё РїСѓР±Р»РёРєР°С†РёРµР№ РЅР° Vercel.</p>
-          <div class="acc-tags"><span class="acc-tag">Reverse-РёРЅР¶РёРЅРёСЂРёРЅРі</span><span class="acc-tag">РЎРєРёР»Р»С‹</span><span class="acc-tag">Vercel</span></div>
+          <p>Создаём профессиональный бизнес-сайт из 8 страниц с 3D-анимацией, документацией проекта, скиллами и публикацией на Vercel.</p>
+          <div class="acc-tags"><span class="acc-tag">Reverse-инжиниринг</span><span class="acc-tag">Скиллы</span><span class="acc-tag">Vercel</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">06</span>
-          <span class="acc-title">РђРіРµРЅС‚С‹ Рё РєРѕРЅС‚РµРЅС‚-СЃРёСЃС‚РµРјР°</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Агенты и контент-система</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>РќР°СЃС‚СЂР°РёРІР°РµРј Р°РіРµРЅС‚РѕРІ РІ Claude Projects. РЎРёСЃС‚РµРјР° С‚СЂС‘С… СЂРѕР»РµР№: РЎС‚СЂР°С‚РµРі, РђРІС‚РѕСЂ, Р РµРґР°РєС‚РѕСЂ. РћРґРёРЅ РґРµРЅСЊ вЂ” РєРѕРЅС‚РµРЅС‚ РЅР° РјРµСЃСЏС† РґР»СЏ Р»СЋР±РѕР№ РїР»Р°С‚С„РѕСЂРјС‹.</p>
-          <div class="acc-tags"><span class="acc-tag">Claude Projects</span><span class="acc-tag">РђРіРµРЅС‚С‹</span><span class="acc-tag">РљРѕРЅС‚РµРЅС‚</span></div>
+          <p>Настраиваем агентов в Claude Projects. Система трёх ролей: Стратег, Автор, Редактор. Один день — контент на месяц для любой платформы.</p>
+          <div class="acc-tags"><span class="acc-tag">Claude Projects</span><span class="acc-tag">Агенты</span><span class="acc-tag">Контент</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">07</span>
-          <span class="acc-title">Р’РёР·СѓР°Р»СЊРЅС‹Р№ РєРѕРЅС‚РµРЅС‚ Рё РёРЅС„РѕРіСЂР°С„РёРєР°</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Визуальный контент и инфографика</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>Claude СЃРѕР·РґР°С‘С‚ SVG-Р»РѕРіРѕС‚РёРїС‹, РєР°СЂСѓСЃРµР»Рё РґР»СЏ СЃРѕС†СЃРµС‚РµР№, РёРЅС„РѕРіСЂР°С„РёРєСѓ. РЎРєРёР»Р»С‹ РґР»СЏ СЃС‚Р°Р±РёР»СЊРЅРѕРіРѕ СЃС‚РёР»СЏ. РљРѕРіРґР° РЅСѓР¶РЅС‹ РІРЅРµС€РЅРёРµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹.</p>
-          <div class="acc-tags"><span class="acc-tag">SVG</span><span class="acc-tag">РљР°СЂСѓСЃРµР»Рё</span><span class="acc-tag">РЎРєРёР»Р»С‹</span></div>
+          <p>Claude создаёт SVG-логотипы, карусели для соцсетей, инфографику. Скиллы для стабильного стиля. Когда нужны внешние инструменты.</p>
+          <div class="acc-tags"><span class="acc-tag">SVG</span><span class="acc-tag">Карусели</span><span class="acc-tag">Скиллы</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">08</span>
-          <span class="acc-title">РџРµСЂРІРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Первое приложение</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>Plan Mode vs Auto Mode. Claude СЃР°Рј С‚РµСЃС‚РёСЂСѓРµС‚ РїСЂРёР»РѕР¶РµРЅРёРµ, РЅР°С…РѕРґРёС‚ РѕС€РёР±РєРё Рё РёСЃРїСЂР°РІР»СЏРµС‚ РёС…. 5 С„РѕСЂРјР°С‚РѕРІ РІС‹РІРѕРґР° РіРѕС‚РѕРІРѕРіРѕ РїСЂРѕРґСѓРєС‚Р°.</p>
-          <div class="acc-tags"><span class="acc-tag">Plan Mode</span><span class="acc-tag">РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ</span><span class="acc-tag">Localhost</span></div>
+          <p>Plan Mode vs Auto Mode. Claude сам тестирует приложение, находит ошибки и исправляет их. 5 форматов вывода готового продукта.</p>
+          <div class="acc-tags"><span class="acc-tag">Plan Mode</span><span class="acc-tag">Тестирование</span><span class="acc-tag">Localhost</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">09</span>
-          <span class="acc-title">Р”РµРїР»РѕР№ РїСЂРёР»РѕР¶РµРЅРёСЏ РЅР° СЃРµСЂРІРµСЂ</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Деплой приложения на сервер</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>SSH-РєР»СЋС‡ Р·Р° 7 С€Р°РіРѕРІ. Claude СЃР°Рј РїРѕРґРєР»СЋС‡Р°РµС‚СЃСЏ Рє VPS, СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ Nginx Рё РІС‹РіСЂСѓР¶Р°РµС‚ С„Р°Р№Р»С‹. РџСЂРёР»РѕР¶РµРЅРёРµ РІ РёРЅС‚РµСЂРЅРµС‚Рµ 24/7 Р·Р° 15 РјРёРЅСѓС‚.</p>
+          <p>SSH-ключ за 7 шагов. Claude сам подключается к VPS, устанавливает Nginx и выгружает файлы. Приложение в интернете 24/7 за 15 минут.</p>
           <div class="acc-tags"><span class="acc-tag">VPS</span><span class="acc-tag">SSH</span><span class="acc-tag">Nginx</span></div>
         </div>
       </div>
@@ -467,23 +467,23 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">10</span>
-          <span class="acc-title">API Рё Р»РёС‡РЅС‹Р№ Р°РіРµРЅС‚</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">API и личный агент</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>Р Р°Р·РЅРёС†Р° РјРµР¶РґСѓ РїРѕРґРїРёСЃРєРѕР№ Pro Рё API. РџРѕР»СѓС‡Р°РµРј API-РєР»СЋС‡, СЃРѕР·РґР°С‘Рј Р°РіРµРЅС‚Р° СЃ РёРЅС‚РµСЂС„РµР№СЃРѕРј. Р­РєРѕРЅРѕРјРёРєР°: ~2 СЂСѓР±/Р·Р°РїСЂРѕСЃ. 5 РјРµСЃС‚ РґР»СЏ СЂР°Р·РјРµС‰РµРЅРёСЏ Р°РіРµРЅС‚Р°.</p>
-          <div class="acc-tags"><span class="acc-tag">API</span><span class="acc-tag">console.anthropic.com</span><span class="acc-tag">РњРѕРЅРµС‚РёР·Р°С†РёСЏ</span></div>
+          <p>Разница между подпиской Pro и API. Получаем API-ключ, создаём агента с интерфейсом. Экономика: ~2 руб/запрос. 5 мест для размещения агента.</p>
+          <div class="acc-tags"><span class="acc-tag">API</span><span class="acc-tag">console.anthropic.com</span><span class="acc-tag">Монетизация</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">11</span>
-          <span class="acc-title">Telegram-Р±РѕС‚</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Telegram-бот</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>BotFather, С‚РѕРєРµРЅ, С„Р°Р№Р» .env. memory.md РґР»СЏ РєРѕРЅС‚РµРєСЃС‚Р° РјРµР¶РґСѓ СЃРµСЃСЃРёСЏРјРё. РўРёРїРёС‡РЅС‹Рµ РѕС€РёР±РєРё, РєРѕС‚РѕСЂС‹Рµ Claude СЂРµС€Р°РµС‚ СЃР°Рј. 4 СЃС†РµРЅР°СЂРёСЏ РїСЂРёРјРµРЅРµРЅРёСЏ.</p>
+          <p>BotFather, токен, файл .env. memory.md для контекста между сессиями. Типичные ошибки, которые Claude решает сам. 4 сценария применения.</p>
           <div class="acc-tags"><span class="acc-tag">BotFather</span><span class="acc-tag">Telegram API</span><span class="acc-tag">.env</span></div>
         </div>
       </div>
@@ -491,24 +491,24 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">12</span>
-          <span class="acc-title">Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ РєРѕРґР°</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Безопасность кода</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>РџРѕС‡РµРјСѓ AI-РєРѕРґ СѓСЏР·РІРёРј. Slopsquatting, SQL-РёРЅСЉРµРєС†РёРё, СѓС‚РµС‡РєРё РєР»СЋС‡РµР№. РњРµС‚РѕРґ РґРІРѕР№РЅРѕРіРѕ РїСЂРѕС…РѕРґР° С‡РµСЂРµР· OWASP Top 10. CLAUDE.md РєР°Рє РїРѕСЃС‚РѕСЏРЅРЅР°СЏ Р·Р°С‰РёС‚Р°.</p>
-          <div class="acc-tags"><span class="acc-tag">OWASP</span><span class="acc-tag">CLAUDE.md</span><span class="acc-tag">Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ</span></div>
+          <p>Почему AI-код уязвим. Slopsquatting, SQL-инъекции, утечки ключей. Метод двойного прохода через OWASP Top 10. CLAUDE.md как постоянная защита.</p>
+          <div class="acc-tags"><span class="acc-tag">OWASP</span><span class="acc-tag">CLAUDE.md</span><span class="acc-tag">Безопасность</span></div>
         </div>
       </div>
 
       <div class="acc-item">
         <div class="acc-header">
           <span class="acc-num">13</span>
-          <span class="acc-title">РџРѕСЂС‚С„РѕР»РёРѕ Рё РїРµСЂРІС‹Рµ РєР»РёРµРЅС‚С‹</span>
-          <span class="acc-arrow">вЊ„</span>
+          <span class="acc-title">Портфолио и первые клиенты</span>
+          <span class="acc-arrow">⌄</span>
         </div>
         <div class="acc-body">
-          <p>РЎРєРёР»Р» Frontend Design. Р”РІСѓС…СЌС‚Р°РїРЅС‹Р№ РїРѕРґС…РѕРґ: РґРёР·Р°Р№РЅ в†’ РјР°СЂРєРµС‚РёРЅРіРѕРІС‹Р№ Р°СѓРґРёС‚. РўСЂРё РјРѕРґРµР»Рё СЂР°Р±РѕС‚С‹ СЃ РєР»РёРµРЅС‚Р°РјРё. РљР°Рє РЅР°Р±РёС‚СЊ РїРѕСЂС‚С„РѕР»РёРѕ СЃ РЅСѓР»СЏ.</p>
-          <div class="acc-tags"><span class="acc-tag">РџРѕСЂС‚С„РѕР»РёРѕ</span><span class="acc-tag">РњР°СЂРєРµС‚РёРЅРі</span><span class="acc-tag">РљР»РёРµРЅС‚С‹</span></div>
+          <p>Скилл Frontend Design. Двухэтапный подход: дизайн → маркетинговый аудит. Три модели работы с клиентами. Как набить портфолио с нуля.</p>
+          <div class="acc-tags"><span class="acc-tag">Портфолио</span><span class="acc-tag">Маркетинг</span><span class="acc-tag">Клиенты</span></div>
         </div>
       </div>
 
@@ -516,61 +516,61 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
   </div>
 </section>
 
-<!-- Р¤РѕСЂРјР°С‚ -->
+<!-- Формат -->
 <section id="format">
   <div class="container">
     <div class="text-center">
-      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Р¤РѕСЂРјР°С‚</div>
-      <h2 class="section-title">Р’СЃС‘, С‡С‚Рѕ РЅСѓР¶РЅРѕ<br>РґР»СЏ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕР№ СЂР°Р±РѕС‚С‹</h2>
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Формат</div>
+      <h2 class="section-title">Всё, что нужно<br>для самостоятельной работы</h2>
       <div class="divider-line"></div>
     </div>
     <div class="format-grid" style="margin-top:48px">
       <div class="format-card">
-        <div class="icon">рџ“љ</div>
-        <h3>РЈСЂРѕРєРё</h3>
-        <p>13 СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅС‹С… СѓСЂРѕРєРѕРІ СЃ РїРѕС€Р°РіРѕРІС‹РјРё РёРЅСЃС‚СЂСѓРєС†РёСЏРјРё Рё РїСЂР°РєС‚РёС‡РµСЃРєРёРјРё Р·Р°РґР°РЅРёСЏРјРё. Р§РёС‚Р°Р№С‚Рµ РІ СЃРІРѕС‘Рј С‚РµРјРїРµ, РІРѕР·РІСЂР°С‰Р°Р№С‚РµСЃСЊ Рє Р»СЋР±РѕРјСѓ РјРѕРјРµРЅС‚Сѓ.</p>
+        <div class="icon">📚</div>
+        <h3>Уроки</h3>
+        <p>13 структурированных уроков с пошаговыми инструкциями и практическими заданиями. Читайте в своём темпе, возвращайтесь к любому моменту.</p>
       </div>
       <div class="format-card">
-        <div class="icon">рџ“„</div>
-        <h3>РўРµРєСЃС‚РѕРІС‹Рµ РјР°С‚РµСЂРёР°Р»С‹</h3>
-        <p>РљР°Р¶РґС‹Р№ СѓСЂРѕРє вЂ” РїРѕРґСЂРѕР±РЅС‹Р№ С‚РµРєСЃС‚РѕРІС‹Р№ РєРѕРЅСЃРїРµРєС‚ РІ С„РѕСЂРјР°С‚Рµ .docx. РЈРґРѕР±РЅРѕ С‡РёС‚Р°С‚СЊ, РёСЃРєР°С‚СЊ Рё СЂР°СЃРїРµС‡Р°С‚С‹РІР°С‚СЊ.</p>
+        <div class="icon">📄</div>
+        <h3>Текстовые материалы</h3>
+        <p>Каждый урок — подробный текстовый конспект в формате .docx. Удобно читать, искать и распечатывать.</p>
       </div>
       <div class="format-card">
-        <div class="icon">рџ–ҐпёЏ</div>
-        <h3>РЎР»Р°Р№РґС‹ Рє РєР°Р¶РґРѕРјСѓ СѓСЂРѕРєСѓ</h3>
-        <p>РРЅС‚РµСЂР°РєС‚РёРІРЅС‹Рµ СЃР»Р°Р№РґС‹ reveal.js РѕС‚РєСЂС‹РІР°СЋС‚СЃСЏ РїСЂСЏРјРѕ РІ Р±СЂР°СѓР·РµСЂРµ. Р’СЃРµ РєР»СЋС‡РµРІС‹Рµ СЃС…РµРјС‹ Рё С‚Р°Р±Р»РёС†С‹ РїРѕРґ СЂСѓРєРѕР№.</p>
+        <div class="icon">🖥️</div>
+        <h3>Слайды к каждому уроку</h3>
+        <p>Интерактивные слайды reveal.js открываются прямо в браузере. Все ключевые схемы и таблицы под рукой.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Р¦РµРЅР° -->
+<!-- Цена -->
 <section id="price">
   <div class="container">
     <div class="text-center" style="margin-bottom:56px">
-      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>РЎС‚РѕРёРјРѕСЃС‚СЊ</div>
-      <h2 class="section-title">РћРґРёРЅ СЂР°Р· вЂ” РЅР°РІСЃРµРіРґР°</h2>
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Стоимость</div>
+      <h2 class="section-title">Один раз — навсегда</h2>
       <div class="divider-line"></div>
     </div>
     <div class="price-wrap">
       <div class="price-card">
-        <div class="price-badge">РџРћР›РќР«Р™ Р”РћРЎРўРЈРџ</div>
-        <div class="price-amount"><span>в‚Ѕ</span>4 900</div>
-        <p class="price-desc">РµРґРёРЅРѕСЂР°Р·РѕРІС‹Р№ РїР»Р°С‚С‘Р¶ В· РґРѕСЃС‚СѓРї РЅР°РІСЃРµРіРґР°</p>
-        <a href="https://boosty.to/master_ii/posts/2f05bae3-1086-41af-bb32-cd21ae8a2136" target="_blank" class="price-btn">РљСѓРїРёС‚СЊ РєСѓСЂСЃ в†’</a>
-        <p class="price-note">Р‘РµР·РѕРїР°СЃРЅР°СЏ РѕРїР»Р°С‚Р° В· Р”РѕСЃС‚СѓРї СЃСЂР°Р·Сѓ РїРѕСЃР»Рµ РѕРїР»Р°С‚С‹</p>
+        <div class="price-badge">ПОЛНЫЙ ДОСТУП</div>
+        <div class="price-amount"><span>₽</span>4 900</div>
+        <p class="price-desc">единоразовый платёж · доступ навсегда</p>
+        <a href="https://boosty.to/master_ii/posts/2f05bae3-1086-41af-bb32-cd21ae8a2136" target="_blank" class="price-btn">Купить курс →</a>
+        <p class="price-note">Безопасная оплата · Доступ сразу после оплаты</p>
       </div>
       <div>
         <ul class="price-list">
-          <li>13 СѓСЂРѕРєРѕРІ СЃ РїРѕС€Р°РіРѕРІС‹РјРё РёРЅСЃС‚СЂСѓРєС†РёСЏРјРё</li>
-          <li>РўРµРєСЃС‚РѕРІС‹Рµ РєРѕРЅСЃРїРµРєС‚С‹ РІСЃРµС… СѓСЂРѕРєРѕРІ (.docx)</li>
-          <li>РРЅС‚РµСЂР°РєС‚РёРІРЅС‹Рµ СЃР»Р°Р№РґС‹ Рє РєР°Р¶РґРѕРјСѓ СѓСЂРѕРєСѓ</li>
-          <li>VPN + VPS РґР»СЏ СЃС‚СЂР°РЅ РіРґРµ Claude Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ (СѓСЂРѕРєРё 1вЂ“2 РјРѕР¶РЅРѕ РїСЂРѕРїСѓСЃС‚РёС‚СЊ РµСЃР»Рё РґРѕСЃС‚СѓРї РµСЃС‚СЊ)</li>
-          <li>РЎРѕР·РґР°РЅРёРµ СЃР°Р№С‚РѕРІ, РїСЂРёР»РѕР¶РµРЅРёР№ Рё Telegram-Р±РѕС‚РѕРІ</li>
-          <li>РЎРёСЃС‚РµРјР° Р°РіРµРЅС‚РѕРІ РґР»СЏ РєРѕРЅС‚РµРЅС‚Р° Рё Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё</li>
-          <li>Р‘Р»РѕРє Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РєРѕРґР° Рё CLAUDE.md</li>
-          <li>РЈСЂРѕРє РїРѕ РїРѕСЂС‚С„РѕР»РёРѕ Рё РїСЂРёРІР»РµС‡РµРЅРёСЋ РєР»РёРµРЅС‚РѕРІ</li>
-          <li>Р’СЃРµ РѕР±РЅРѕРІР»РµРЅРёСЏ РјР°С‚РµСЂРёР°Р»РѕРІ Р±РµСЃРїР»Р°С‚РЅРѕ</li>
+          <li>13 уроков с пошаговыми инструкциями</li>
+          <li>Текстовые конспекты всех уроков (.docx)</li>
+          <li>Интерактивные слайды к каждому уроку</li>
+          <li>VPN + VPS для стран где Claude заблокирован (уроки 1–2 можно пропустить если доступ есть)</li>
+          <li>Создание сайтов, приложений и Telegram-ботов</li>
+          <li>Система агентов для контента и автоматизации</li>
+          <li>Блок безопасности кода и CLAUDE.md</li>
+          <li>Урок по портфолио и привлечению клиентов</li>
+          <li>Все обновления материалов бесплатно</li>
         </ul>
       </div>
     </div>
@@ -582,34 +582,34 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
   <div class="container">
     <div class="text-center">
       <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>FAQ</div>
-      <h2 class="section-title">Р§Р°СЃС‚С‹Рµ РІРѕРїСЂРѕСЃС‹</h2>
+      <h2 class="section-title">Частые вопросы</h2>
       <div class="divider-line"></div>
     </div>
     <div class="faq" style="margin-top:48px">
 
       <div class="faq-item">
-        <div class="faq-q">РќСѓР¶РµРЅ Р»Рё РѕРїС‹С‚ РІ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРё?<span class="faq-arrow">вЊ„</span></div>
-        <div class="faq-a">РќРµС‚. РљСѓСЂСЃ СЃРїСЂРѕРµРєС‚РёСЂРѕРІР°РЅ С‚Р°Рє, С‡С‚РѕР±С‹ С‡РµР»РѕРІРµРє Р±РµР· С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ РѕРїС‹С‚Р° РїСЂРѕС€С‘Р» РµРіРѕ РѕС‚ РЅР°С‡Р°Р»Р° РґРѕ РєРѕРЅС†Р°. Claude Code вЂ” СЌС‚Рѕ РёРЅСЃС‚СЂСѓРјРµРЅС‚, СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ СЂР°Р±РѕС‚Р°РµС‚Рµ РЅР° РµСЃС‚РµСЃС‚РІРµРЅРЅРѕРј СЏР·С‹РєРµ. РљРѕРґ РїРёС€РµС‚ РјРѕРґРµР»СЊ, РІС‹ СѓРїСЂР°РІР»СЏРµС‚Рµ СЂРµР·СѓР»СЊС‚Р°С‚РѕРј.</div>
+        <div class="faq-q">Нужен ли опыт в программировании?<span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Нет. Курс спроектирован так, чтобы человек без технического опыта прошёл его от начала до конца. Claude Code — это инструмент, с которым вы работаете на естественном языке. Код пишет модель, вы управляете результатом.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">РњРѕР¶РЅРѕ Р»Рё РїСЂРѕР№С‚Рё РєСѓСЂСЃ РЅР° Mac?<span class="faq-arrow">вЊ„</span></div>
-        <div class="faq-a">Р”Р°. Р’СЃРµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ РёР· РєСѓСЂСЃР° СЂР°Р±РѕС‚Р°СЋС‚ Рё РЅР° Windows, Рё РЅР° macOS. Р“РґРµ РµСЃС‚СЊ РѕС‚Р»РёС‡РёСЏ РІ СѓСЃС‚Р°РЅРѕРІРєРµ вЂ” РѕРЅРё РїРѕРґСЂРѕР±РЅРѕ СЂР°Р·РѕР±СЂР°РЅС‹ РїСЂСЏРјРѕ РІ СѓСЂРѕРєРµ.</div>
+        <div class="faq-q">Можно ли пройти курс на Mac?<span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Да. Все инструменты из курса работают и на Windows, и на macOS. Где есть отличия в установке — они подробно разобраны прямо в уроке.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">РЎРєРѕР»СЊРєРѕ СЃС‚РѕРёС‚ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ РёРЅС„СЂР°СЃС‚СЂСѓРєС‚СѓСЂСѓ?<span class="faq-arrow">вЊ„</span></div>
-        <div class="faq-a">VPS-СЃРµСЂРІРµСЂ РґР»СЏ VPN вЂ” РѕРєРѕР»Рѕ $5.5 РІ РјРµСЃСЏС†. РџРѕРґРїРёСЃРєР° Claude Pro вЂ” $20/РјРµСЃ, РЅРѕ РµСЃС‚СЊ Р±РµСЃРїР»Р°С‚РЅС‹Р№ РїР»Р°РЅ. API вЂ” РїР»Р°С‚РёС‚Рµ С‚РѕР»СЊРєРѕ Р·Р° С‚Рѕ, С‡С‚Рѕ РёСЃРїРѕР»СЊР·СѓРµС‚Рµ: ~2 СЂСѓР± Р·Р° Р·Р°РїСЂРѕСЃ Рє Sonnet. РС‚РѕРіРѕ РѕС‚ ~500 в‚Ѕ/РјРµСЃ РїСЂРё РјРёРЅРёРјР°Р»СЊРЅРѕРј РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё.</div>
+        <div class="faq-q">Сколько стоит поддерживать инфраструктуру?<span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">VPS-сервер для VPN — около $5.5 в месяц. Подписка Claude Pro — $20/мес, но есть бесплатный план. API — платите только за то, что используете: ~2 руб за запрос к Sonnet. Итого от ~500 ₽/мес при минимальном использовании.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">РљСѓСЂСЃ Р°РєС‚СѓР°Р»РµРЅ, РµСЃР»Рё Claude РѕР±РЅРѕРІРёС‚СЃСЏ?<span class="faq-arrow">вЊ„</span></div>
-        <div class="faq-a">РљСѓСЂСЃ СѓС‡РёС‚ РїСЂРёРЅС†РёРїР°Рј СЂР°Р±РѕС‚С‹, Р° РЅРµ РєР»РёРєР°С‚СЊ РїРѕ РєРѕРЅРєСЂРµС‚РЅС‹Рј РєРЅРѕРїРєР°Рј. РРЅС‚РµСЂС„РµР№СЃ Claude РјРѕР¶РµС‚ РјРµРЅСЏС‚СЊСЃСЏ, РЅРѕ РјРµС…Р°РЅРёРєР° РїСЂРѕРјРїС‚РёРЅРіР°, Р°РіРµРЅС‚РѕРІ, РґРµРїР»РѕСЏ Рё Р±РµР·РѕРїР°СЃРЅРѕРіРѕ РєРѕРґР° вЂ” РѕСЃС‚Р°С‘С‚СЃСЏ. РџСЂРё СЃСѓС‰РµСЃС‚РІРµРЅРЅС‹С… РёР·РјРµРЅРµРЅРёСЏС… РјР°С‚РµСЂРёР°Р»С‹ РѕР±РЅРѕРІР»СЏСЋС‚СЃСЏ.</div>
+        <div class="faq-q">Курс актуален, если Claude обновится?<span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Курс учит принципам работы, а не кликать по конкретным кнопкам. Интерфейс Claude может меняться, но механика промптинга, агентов, деплоя и безопасного кода — остаётся. При существенных изменениях материалы обновляются.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">РљР°Рє РїРѕР»СѓС‡РёС‚СЊ РґРѕСЃС‚СѓРї РїРѕСЃР»Рµ РѕРїР»Р°С‚С‹?<span class="faq-arrow">вЊ„</span></div>
-        <div class="faq-a">РЎСЂР°Р·Сѓ РїРѕСЃР»Рµ РѕРїР»Р°С‚С‹ РІ РїРѕСЃС‚Рµ Boosty РѕС‚РєСЂРѕРµС‚СЃСЏ СЃСЃС‹Р»РєР° РЅР° РІСЃРµ РјР°С‚РµСЂРёР°Р»С‹ РєСѓСЂСЃР°. Р”РѕСЃС‚СѓРї Р±РµСЃСЃСЂРѕС‡РЅС‹Р№ вЂ” РІРѕР·РІСЂР°С‰Р°Р№С‚РµСЃСЊ РІ Р»СЋР±РѕРµ РІСЂРµРјСЏ.</div>
+        <div class="faq-q">Как получить доступ после оплаты?<span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Сразу после оплаты в посте Boosty откроется ссылка на все материалы курса. Доступ бессрочный — возвращайтесь в любое время.</div>
       </div>
 
     </div>
@@ -620,10 +620,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <span class="footer-logo">РњРђРЎРўР•Р -РР</span>
-      <span class="footer-text">В© 2026 В· Р’СЃРµ РјР°С‚РµСЂРёР°Р»С‹ Р·Р°С‰РёС‰РµРЅС‹ Р°РІС‚РѕСЂСЃРєРёРј РїСЂР°РІРѕРј</span>
+      <span class="footer-logo">МАСТЕР-ИИ</span>
+      <span class="footer-text">© 2026 · Все материалы защищены авторским правом</span>
       <div class="footer-links">
-        <a href="mailto:chelyabinsk074@gmail.com">РќР°РїРёСЃР°С‚СЊ РЅР°Рј</a>
+        <a href="mailto:chelyabinsk074@gmail.com">Написать нам</a>
       </div>
     </div>
   </div>
