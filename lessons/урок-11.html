@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 11 — Telegram-бот · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lesson.css">
+<style>
+:root{--accent:var(--blue-l);--accent-bg:rgba(37,99,235,.12);--accent-border:rgba(37,99,235,.35)}
+.progress-fill{width:84.6%}
+.hero-orb-1{background:radial-gradient(circle,rgba(37,99,235,.22),transparent 65%)}
+.hero-orb-2{background:radial-gradient(circle,rgba(124,58,237,.18),transparent 65%)}
+</style>
+</head>
+<body><div id="reading-progress"></div>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <span class="nav-lesson">Урок 11 из 13</span>
+    <div class="nav-progress">
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <span class="progress-text">11/13</span>
+    </div>
+  </div>
+</nav>
+<div class="page">
+  <div class="lesson-hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="lesson-tag"><span class="lesson-tag-dot"></span>Блок 5 · Каналы доставки</div>
+    <h1>Telegram-бот:<br><span>агент в мессенджере</span></h1>
+    <p class="lesson-intro">Тот же API, что вы подключили в уроке 10 — но теперь он работает не в браузере, а в Telegram. Уведомления, кнопки, автоответы, база знаний клиента — всё это собирается за один сеанс в Code без написания кода вручную.</p>
+    <div class="lesson-meta">
+      <div class="meta-item"><span>⏱</span> ~45 минут</div>
+      <div class="meta-item"><span>📱</span> BotFather + .env</div>
+      <div class="meta-item"><span>🤖</span> API из урока 10</div>
+    </div>
+  </div>
+
+  <!-- Telegram vs веб -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">📱</div>Telegram vs веб-сайт: другой канал, тот же мозг</h2>
+    <p>API Anthropic — это «мозг». Он не привязан к интерфейсу. Веб-приложение и Telegram-бот — это просто разные «трубы», через которые пользователи разговаривают с одним и тем же интеллектом.</p>
+    <table class="lesson-table">
+      <thead>
+        <tr><th></th><th>Веб-приложение</th><th>Telegram-бот</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Установка</td><td>Открыть ссылку в браузере</td><td>Найти бота в Telegram</td></tr>
+        <tr><td>Уведомления</td><td>Email или push (сложно настроить)</td><td>Встроены в Telegram</td></tr>
+        <tr><td>Авторизация</td><td>Нужна отдельная система</td><td>Telegram ID = пользователь</td></tr>
+        <tr><td>Интерфейс</td><td>Полная свобода дизайна</td><td>Кнопки, команды, текст</td></tr>
+        <tr><td>Аудитория</td><td>Все с интернетом</td><td>Пользователи Telegram</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- memory.md -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">🧠</div>memory.md: не начинаем с нуля</h2>
+    <p>Крупный бот создаётся за несколько сессий. Чтобы не объяснять Claude всё заново каждый раз — в конце сессии просите его сохранить контекст.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>В конце сессии: «Запомни контекст, продолжу завтра»</strong>
+          <p>Claude создаст файл <code>memory.md</code> в папке проекта — архитектура, что сделано, что осталось.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>В начале следующей сессии: <code>@memory.md</code></strong>
+          <p>Claude прочитает файл и продолжит с того места, где остановился. Не нужно ничего объяснять заново.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tip-box"><strong>memory.md vs readme.md:</strong> readme — документация для людей. memory.md — быстрый снимок состояния для Claude. Оба нужны в крупных проектах, но для разных целей.</div>
+  </div>
+
+  <!-- BotFather -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">🤖</div>BotFather: регистрация бота</h2>
+    <p>BotFather — официальный бот Telegram для управления ботами. Он выдаёт токены.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>Найдите @BotFather в Telegram</strong>
+          <p>Убедитесь, что рядом с именем стоит синяя галочка — это официальный аккаунт.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>Отправьте команду /newbot</strong>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <strong>Придумайте имя бота (отображаемое)</strong>
+          <p>Например: «Помощник по подбору одежды»</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <strong>Придумайте username (техническое имя)</strong>
+          <p>Должно заканчиваться на <code>bot</code>: <code>fashion_helper_bot</code>. Только латиница, цифры и подчёркивания.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <strong>Скопируйте токен из ответа BotFather</strong>
+          <p>Выглядит как <code>7845123456:AAGxxx...</code>. Это Telegram-токен — не путать с API-ключом Anthropic.</p>
+        </div>
+      </div>
+    </div>
+    <div class="warn-box"><strong>Кириллица в командах не работает.</strong> /старт, /помощь — такого не существует. Команды только латиницей: /start, /help, /menu.</div>
+  </div>
+
+  <!-- .env -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">🔐</div>Файл .env: сейф для всех ключей</h2>
+    <p>В Telegram-боте два ключа: токен BotFather и API-ключ Anthropic. Оба хранятся только в файле .env — не в коде, не в чате.</p>
+    <div class="info-box">
+      <strong>Содержимое .env файла:</strong><br>
+      <code>TELEGRAM_TOKEN=7845123456:AAGxxx...</code><br>
+      <code>ANTHROPIC_API_KEY=sk-ant-api03-...</code>
+    </div>
+    <p><strong>4 правила .env:</strong></p>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin:12px 0 20px">
+      <li style="display:flex;gap:10px"><span style="color:var(--orange-l);flex-shrink:0">1.</span><span style="color:var(--muted);font-size:15px">Никогда не вставлять ключи в сообщение Claude</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--orange-l);flex-shrink:0">2.</span><span style="color:var(--muted);font-size:15px">Добавить .env в файл .gitignore до первого коммита</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--orange-l);flex-shrink:0">3.</span><span style="color:var(--muted);font-size:15px">Отзывать ключи после демонстраций (создать новый для показа)</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--orange-l);flex-shrink:0">4.</span><span style="color:var(--muted);font-size:15px">Перед выходом в продакшн — аудит: нет ли ключей в коде</span></li>
+    </ul>
+    <div class="tip-box"><strong>Отозвать токен BotFather</strong> можно командой /revoke в диалоге с @BotFather → выберите бота → подтвердите. Старый токен перестаёт работать мгновенно.</div>
+  </div>
+
+  <!-- Типичные ошибки -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">🔧</div>Типичные ошибки и решения</h2>
+    <table class="lesson-table">
+      <thead>
+        <tr><th>Проблема</th><th>Решение</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>История диалога стирается при перезапуске</td>
+          <td>Claude добавляет SQLite — небольшую базу данных для хранения истории пользователей</td>
+        </tr>
+        <tr>
+          <td>Бот долго отвечает, нет индикатора</td>
+          <td>Claude добавляет «typing...» индикатор — мессенджер показывает «печатает»</td>
+        </tr>
+        <tr>
+          <td>Flood Control — Telegram блокирует запросы</td>
+          <td>Убрать параллельные фоновые задачи, добавить задержку между ответами</td>
+        </tr>
+        <tr>
+          <td>Кириллица в командах не работает</td>
+          <td>Переименовать команды на латиницу: /start, /help, /menu</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="info-box"><strong>Принцип:</strong> Claude сам находит ошибку, предлагает fix и применяет — вы только одобряете. Большинство типичных проблем с Telegram-ботами он видел тысячи раз.</div>
+  </div>
+
+  <!-- Сценарии -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">💡</div>4 сценария применения</h2>
+    <table class="lesson-table">
+      <thead>
+        <tr><th>Сценарий</th><th>Что делает бот</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Поддержка клиентов</td><td>Отвечает на типовые вопросы по базе знаний, записывает заявки</td></tr>
+        <tr><td>Бот для команды</td><td>Внутренний помощник: отвечает на вопросы по регламентам, помогает с задачами</td></tr>
+        <tr><td>Личный ИИ-помощник</td><td>Напоминания, планирование, заметки — только для вас</td></tr>
+        <tr><td>Диспетчер заявок</td><td>Принимает заявки, распределяет по категориям, уведомляет ответственного</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box"><strong>Один ключ — разные боты:</strong> создайте несколько ботов через BotFather, у каждого будет свой токен → каждый живёт в своей папке → все тратят один API-баланс.</div>
+  </div>
+
+  <!-- Чеклист -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">✅</div>Итог урока</h2>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Бот создан через @BotFather, токен скопирован</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Оба ключа (Telegram + Anthropic) в файле .env</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Бот отвечает в Telegram — хотя бы на /start</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Знаете, как отозвать токен BotFather при необходимости</li>
+    </ul>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="урок-10.html" class="btn-nav btn-prev">
+      <span><span class="nav-lesson-title">Предыдущий урок</span>← API и личный агент</span>
+    </a>
+    <a href="урок-12.html" class="btn-nav btn-next">
+      <span><span class="nav-lesson-title">Следующий урок</span>Безопасность кода →</span>
+    </a>
+  </div>
+</div>
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  function update() {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  var li = el.closest('li');
+  if (li) li.classList.toggle('done');
+}
+</script>
+</body>
+</html>

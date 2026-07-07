@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 4 — Лендинг с нуля · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lesson.css">
+<style>
+:root{--accent:var(--purple-l);--accent-bg:rgba(124,58,237,.12);--accent-border:rgba(124,58,237,.35)}
+.progress-fill{width:30.8%}
+.hero-orb-1{background:radial-gradient(circle,rgba(124,58,237,.22),transparent 65%)}
+.hero-orb-2{background:radial-gradient(circle,rgba(37,99,235,.18),transparent 65%)}
+</style>
+</head>
+<body><div id="reading-progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <span class="nav-lesson">Урок 4 из 13</span>
+    <div class="nav-progress">
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <span class="progress-text">4/13</span>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="lesson-hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="lesson-tag"><span class="lesson-tag-dot"></span>Блок 2 · Первый проект</div>
+    <h1>Лендинг с нуля:<br><span>от пустой папки до сайта</span></h1>
+    <p class="lesson-intro">Технический блок позади — теперь к главному. Сегодня создаём первый сайт в разделе Code. Никакого знания HTML, CSS или JavaScript не нужно. Всё, что потребуется — правильно сформулировать задачу.</p>
+    <div class="lesson-meta">
+      <div class="meta-item"><span>⏱</span> ~45 минут</div>
+      <div class="meta-item"><span>💻</span> Claude Code</div>
+      <div class="meta-item"><span>🚀</span> Выкладываем на Netlify</div>
+    </div>
+  </div>
+
+  <!-- Code vs Chat -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">⚡</div>Раздел Code: не чат, а рабочий стол</h2>
+    <p>В Claude есть два режима работы. <strong>Chat</strong> — разговорный: задали вопрос, получили ответ. <strong>Code</strong> — инструментальный: Claude видит файлы на вашем компьютере, создаёт их, запускает, исправляет ошибки.</p>
+    <p>Для создания сайта нужен именно Code. Причина проста: сайт — это файлы. Чтобы Claude сделал что-то настоящее, он должен видеть папку с проектом, создавать внутри неё файлы и проверять результат.</p>
+    <div class="info-box"><strong>Где найти Code:</strong> на главной странице claude.ai нажмите кнопку с логотипом в виде окна терминала (обычно слева от поля ввода сообщений). Откроется отдельный интерфейс.</div>
+  </div>
+
+  <!-- Git -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">🔧</div>Установка Git — один раз и навсегда</h2>
+    <p>Git — программа-помощник, которая нужна Claude Code для работы с папками. Без неё Claude сможет смотреть на файлы, но не сможет создавать проекты. Устанавливается один раз.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">А</div>
+        <div class="step-body">
+          <strong>Способ 1 — Официальный сайт</strong>
+          <p>Зайдите на <code>git-scm.com</code> → Download → нажмите кнопку под вашу систему (Windows или Mac). Запустите установщик, везде нажимайте «Next» — настройки по умолчанию подходят.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">Б</div>
+        <div class="step-body">
+          <strong>Способ 2 — Через терминал (Mac)</strong>
+          <p>Откройте Terminal и введите <code>git --version</code>. Если git не установлен, Mac сам предложит установить Developer Tools — нажмите «Install».</p>
+        </div>
+      </div>
+    </div>
+    <div class="tip-box"><strong>Как проверить:</strong> откройте PowerShell (Windows) или Terminal (Mac), напечатайте <code>git --version</code> и нажмите Enter. Если в ответ появилась версия — всё готово. Если нет — установка не завершена, повторите.</div>
+    <div class="warn-box"><strong>После установки Git перезагрузите компьютер</strong> (или хотя бы закройте и откройте Claude Code). Без этого шага Code может не увидеть изменений.</div>
+  </div>
+
+  <!-- Рабочая папка -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">📁</div>Рабочая папка: правило «один проект — одна папка»</h2>
+    <p>Прежде чем начать — создайте папку специально для проекта. Не сохраняйте сайт в Загрузки, не кидайте на Рабочий стол среди других файлов. Выделенная папка — это порядок в проекте и быстрый поиск файлов в будущем.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>Создаём папку</strong>
+          <p>Придумайте говорящее название, например <code>my-landing</code> или <code>сайт-психолога</code>. Латиница без пробелов — надёжнее.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>Открываем папку в Claude Code</strong>
+          <p>В Code нажмите кнопку «Открыть папку» (или «Open folder») → выберите только что созданную папку. Или перетащите папку прямо в окно Code.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <strong>Trust this folder</strong>
+          <p>Code покажет диалог безопасности — нажмите «Trust», чтобы разрешить Claude работать с файлами внутри папки. Без этого разрешения он не сможет ничего создать.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Промпт -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">💬</div>Структура первого промпта</h2>
+    <p>Хороший промпт — это не одно предложение. Это короткое техзадание из шести частей. Не нужно писать роман — достаточно нескольких слов на каждый пункт.</p>
+    <div class="prompt-box">
+      <span class="prompt-label">Шаблон промпта (6 частей)</span>
+      <span class="prompt-part"><strong>1. Что делаешь:</strong> Создай одностраничный сайт-лендинг</span>
+      <span class="prompt-part"><strong>2. Для кого:</strong> для [психолога / кофейни / фитнес-тренера]</span>
+      <span class="prompt-part"><strong>3. Дизайн:</strong> тёмный фон, акцент — синий, минималистичный стиль</span>
+      <span class="prompt-part"><strong>4. Что должно быть:</strong> шапка, блок услуг, отзывы, форма обратной связи, футер</span>
+      <span class="prompt-part"><strong>5. Тексты:</strong> придумай сам — расставь заглушки, которые легко заменить</span>
+      <span class="prompt-part"><strong>6. Технически:</strong> один файл index.html, без сторонних библиотек, адаптивный</span>
+    </div>
+    <div class="tip-box"><strong>Почему лучше набирать руками, а не копировать:</strong> когда набираете промпт сами, вы неизбежно уточняете и дополняете по ходу. Скопированный шаблон редко отражает реальную задачу — Claude увидит это.</div>
+  </div>
+
+  <!-- Что делает Claude сам -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">✨</div>Что Claude строит без дополнительных инструкций</h2>
+    <table class="lesson-table">
+      <thead>
+        <tr><th>Что Claude создаёт</th><th>Почему это важно</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Структуру страниц</td>
+          <td>Шапка, секции, футер — всё в правильном порядке</td>
+        </tr>
+        <tr>
+          <td>Тексты-заглушки</td>
+          <td>Не пустые блоки, а заполненные примеры — сразу видно, как будет смотреться</td>
+        </tr>
+        <tr>
+          <td>Кнопки и якорные ссылки</td>
+          <td>Навигация по секциям работает сразу</td>
+        </tr>
+        <tr>
+          <td>CSS-анимации</td>
+          <td>Плавное появление блоков при прокрутке без JS-библиотек</td>
+        </tr>
+        <tr>
+          <td>Адаптив</td>
+          <td>Сайт корректно отображается на телефоне без отдельной задачи</td>
+        </tr>
+        <tr>
+          <td>Заглушки для фото</td>
+          <td>Цветные прямоугольники с подсказками, что сюда поставить</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Дизайн -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">🎨</div>Задать дизайн: три способа</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Словами</strong>
+          <p>«Тёмный фон, золотой акцент, немного пространства между блоками, без лишних украшений» — этого достаточно. Claude понимает описания стиля без технических деталей.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Картинкой-референсом</strong>
+          <p>Сделайте скриншот понравившегося сайта → вставьте картинку в чат вместе с промптом → добавьте «сделай в похожем стиле». Claude умеет «читать» визуальный стиль.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>«Придумай сам»</strong>
+          <p>Напишите «выбери дизайн сам — что-то современное, профессиональное». Удивительно, но это работает хорошо: Claude часто предлагает интересные решения, когда ему дают свободу.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Добавить фото -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">🖼</div>Как добавить реальные фотографии</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">А</div>
+        <div class="step-body">
+          <strong>Положить файлы в папку</strong>
+          <p>Скопируйте фото в папку проекта → в промпте напишите «замени заглушку фото на файл photo.jpg». Claude найдёт файл по имени.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">Б</div>
+        <div class="step-body">
+          <strong>Через ссылку на Unsplash</strong>
+          <p>Зайдите на unsplash.com → найдите подходящее фото → скопируйте адрес изображения (ПКМ → «Копировать адрес изображения») → передайте Claude.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">В</div>
+        <div class="step-body">
+          <strong>Попросить Claude подобрать</strong>
+          <p>«Подбери несколько релевантных фото с Unsplash для секции о команде» — Claude сам сформирует ссылки на подходящие изображения.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Netlify -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">🚀</div>Выкладываем сайт в интернет — Netlify</h2>
+    <p>Сайт в папке видите только вы. Чтобы отправить ссылку — нужен хостинг. Netlify — бесплатный сервис с простейшим drag & drop интерфейсом. Подробная пошаговая инструкция — в следующем уроке 4.1.</p>
+    <div class="info-box"><strong>Цикл правок:</strong> внесли изменения в Claude Code → сохранили файл → зашли на Netlify → перетащили папку снова. Новая версия заменяет старую за 30 секунд. Ссылка остаётся прежней.</div>
+  </div>
+
+  <!-- Модели и Effort -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">⚙️</div>Модели и Effort: как не тратить лимит зря</h2>
+    <table class="lesson-table">
+      <thead>
+        <tr><th>Настройка</th><th>Когда использовать</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sonnet + Medium</td>
+          <td>Первые черновики, правки текстов, простые задачи — 80% работы</td>
+        </tr>
+        <tr>
+          <td>Sonnet + High</td>
+          <td>Сложная верстка, нестандартные анимации, создание полноценного дизайна</td>
+        </tr>
+        <tr>
+          <td>Opus + High</td>
+          <td>Финальная полировка крупного проекта — используйте редко, это «тяжёлая артиллерия»</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tip-box"><strong>Лимиты обновляются каждые ~5 часов</strong> — это не суточный лимит. Если лимит кончился в середине работы, сделайте перерыв и продолжайте через несколько часов. Срочно переключаться на другую модель не нужно.</div>
+  </div>
+
+  <!-- Чеклист -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">✅</div>Итог урока</h2>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Git установлен, команда <code>git --version</code> возвращает версию</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Папка проекта создана и открыта в Claude Code</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Первый лендинг сгенерирован по промпту из 6 частей</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Сайт открывается в браузере локально</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Знаете, как передать дизайн словами или картинкой</li>
+    </ul>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="урок-03-1.html" class="btn-nav btn-prev">
+      <span>
+        <span class="nav-lesson-title">Предыдущий урок</span>
+        ← Оплата Claude
+      </span>
+    </a>
+    <a href="урок-04-1.html" class="btn-nav btn-next">
+      <span>
+        <span class="nav-lesson-title">Следующий урок</span>
+        Netlify — практикум →
+      </span>
+    </a>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  function update() {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  var li = el.closest('li');
+  if (li) li.classList.toggle('done');
+}
+</script>
+
+</body>
+</html>

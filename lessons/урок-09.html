@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 9 — Деплой на сервер · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lesson.css">
+<style>
+:root{--accent:var(--blue-l);--accent-bg:rgba(37,99,235,.12);--accent-border:rgba(37,99,235,.35)}
+.progress-fill{width:69.2%}
+.hero-orb-1{background:radial-gradient(circle,rgba(37,99,235,.22),transparent 65%)}
+.hero-orb-2{background:radial-gradient(circle,rgba(124,58,237,.18),transparent 65%)}
+</style>
+</head>
+<body><div id="reading-progress"></div>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <span class="nav-lesson">Урок 9 из 13</span>
+    <div class="nav-progress">
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <span class="progress-text">9/13</span>
+    </div>
+  </div>
+</nav>
+<div class="page">
+  <div class="lesson-hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="lesson-tag"><span class="lesson-tag-dot"></span>Блок 4 · Инфраструктура</div>
+    <h1>Деплой на сервер:<br><span>приложение работает 24/7</span></h1>
+    <p class="lesson-intro">Localhost — это ваш компьютер. Сервер — это компьютер в интернете, который не выключается. Сегодня переносим готовое приложение на VPS и получаем постоянную ссылку для клиентов. Claude делает всё технически — вам нужно только дать команду.</p>
+    <div class="lesson-meta">
+      <div class="meta-item"><span>⏱</span> ~30 минут</div>
+      <div class="meta-item"><span>🖥</span> VPS + SSH-ключ</div>
+      <div class="meta-item"><span>🔒</span> Пароль — только руками</div>
+    </div>
+  </div>
+
+  <!-- VPS -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">🖥</div>VPS: ваш компьютер в интернете</h2>
+    <table class="lesson-table">
+      <thead>
+        <tr><th></th><th>Localhost</th><th>VPS</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Доступность</td><td>Только пока ваш ПК включён</td><td>24/7, независимо от вас</td></tr>
+        <tr><td>Ссылка</td><td>http://localhost:3000 — только вы</td><td>http://46.x.x.x — все в интернете</td></tr>
+        <tr><td>Скорость</td><td>Зависит от вашего интернета</td><td>Стабильный дата-центр</td></tr>
+        <tr><td>Стоимость</td><td>Бесплатно</td><td>$5–10/мес</td></tr>
+        <tr><td>Подходит для</td><td>Разработки и тестирования</td><td>Клиентов и продакшена</td></tr>
+      </tbody>
+    </table>
+    <div class="info-box"><strong>У вас уже есть VPS</strong> — тот самый сервер из урока 2, на котором работает AmneziaVPN. При желании на нём же можно развернуть приложение — это нормальная практика для небольших проектов.</div>
+  </div>
+
+  <!-- SSH-ключ -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">🔑</div>SSH-ключ: безопасный доступ без пароля</h2>
+    <p>SSH-ключ — не пароль. Это цифровой пропуск: файл на вашем компьютере, который подтверждает вашу личность на сервере. Claude Code читает этот файл и выполняет команды на сервере от вашего имени — но ваш пароль при этом никуда не передаётся.</p>
+    <div class="warn-box"><strong>Пароль от сервера — только в PowerShell (Windows) или Terminal (Mac).</strong> Никогда не вводите пароль в поле чата Claude. Пароль нужен один раз: при первоначальной настройке SSH-ключа. После этого ключ работает самостоятельно.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>Создайте новую папку для проекта</strong>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>Откройте в Code, Trust</strong>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <strong>Напишите в Code: «Настрой SSH-ключ для подключения к моему серверу»</strong>
+          <p>Claude спросит IP-адрес и имя пользователя. Скажите «root» и введите IP из урока 2.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <strong>Claude сгенерирует команду для PowerShell/Terminal</strong>
+          <p>Скопируйте её → откройте PowerShell (НЕ поле чата) → вставьте команду → когда спросит пароль — введите пароль сервера из урока 2.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <strong>Скажите Claude «SSH-ключ установлен»</strong>
+          <p>Он подтвердит соединение и будет готов к деплою.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Что делает Claude -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">⚡</div>Что Claude делает после «деплой»</h2>
+    <p>После команды «разверни приложение на сервере» Claude выполняет весь процесс автоматически — примерно 15 минут работы:</p>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin:12px 0">
+      <li style="display:flex;gap:10px"><span style="color:var(--green-l);flex-shrink:0">✓</span><span style="color:var(--muted);font-size:15px">Подключается по SSH к вашему серверу</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--green-l);flex-shrink:0">✓</span><span style="color:var(--muted);font-size:15px">Определяет ОС и устанавливает нужные компоненты</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--green-l);flex-shrink:0">✓</span><span style="color:var(--muted);font-size:15px">Настраивает Nginx — веб-сервер для раздачи файлов</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--green-l);flex-shrink:0">✓</span><span style="color:var(--muted);font-size:15px">Создаёт папку, выгружает файлы приложения</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--green-l);flex-shrink:0">✓</span><span style="color:var(--muted);font-size:15px">Проверяет доступность снаружи</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--green-l);flex-shrink:0">✓</span><span style="color:var(--muted);font-size:15px">Возвращает вам ссылку: <code>http://[IP-адрес]</code></span></li>
+    </ul>
+    <div class="tip-box"><strong>Первый деплой занимает ~15 минут</strong> (установка зависимостей). Последующие обновления — 1–2 минуты: Claude просто копирует новые файлы поверх старых.</div>
+  </div>
+
+  <!-- Ассистент vs Агент -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">🤖</div>ИИ-ассистент vs ИИ-агент: в чём разница</h2>
+    <table class="lesson-table">
+      <thead>
+        <tr><th></th><th>Ассистент</th><th>Агент</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Когда работает</td><td>Только когда вы его спрашиваете</td><td>Постоянно, по расписанию</td></tr>
+        <tr><td>Где живёт</td><td>В браузере, по запросу</td><td>На сервере, 24/7</td></tr>
+        <tr><td>Инициатива</td><td>Отвечает на вопросы</td><td>Выполняет задачи самостоятельно</td></tr>
+        <tr><td>Уведомления</td><td>Нет</td><td>Может отправить в Telegram при событии</td></tr>
+        <tr><td>Пример</td><td>Claude.ai в браузере</td><td>Мониторинг цен на маркетплейсах</td></tr>
+      </tbody>
+    </table>
+    <div class="info-box"><strong>Пример агента на сервере:</strong> вы задаёте параметры один раз (товар, площадки, порог изменения цены) → агент проверяет цены 3 раза в день → при изменении на 10%+ отправляет уведомление в Telegram. Вы ничего не делаете — агент работает сам.</div>
+  </div>
+
+  <!-- Чеклист -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">✅</div>Итог урока</h2>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>SSH-ключ настроен, Claude подключается к серверу</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Приложение задеплоено, ссылка http://[IP] открывается</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Пароль был введён только в PowerShell/Terminal, НЕ в чат</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Понимаете разницу: ассистент по запросу vs агент 24/7</li>
+    </ul>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="урок-08.html" class="btn-nav btn-prev">
+      <span><span class="nav-lesson-title">Предыдущий урок</span>← Первое приложение</span>
+    </a>
+    <a href="урок-10.html" class="btn-nav btn-next">
+      <span><span class="nav-lesson-title">Следующий урок</span>API и личный агент →</span>
+    </a>
+  </div>
+</div>
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  function update() {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  var li = el.closest('li');
+  if (li) li.classList.toggle('done');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 12 — Безопасность вайб-кода · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lesson.css">
+<style>
+:root{--accent:var(--orange-l);--accent-bg:rgba(249,115,22,.1);--accent-border:rgba(249,115,22,.3)}
+.progress-fill{width:92.3%}
+.hero-orb-1{background:radial-gradient(circle,rgba(249,115,22,.22),transparent 65%)}
+.hero-orb-2{background:radial-gradient(circle,rgba(124,58,237,.18),transparent 65%)}
+</style>
+</head>
+<body><div id="reading-progress"></div>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <span class="nav-lesson">Урок 12 из 13</span>
+    <div class="nav-progress">
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <span class="progress-text">12/13</span>
+    </div>
+  </div>
+</nav>
+<div class="page">
+  <div class="lesson-hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="lesson-tag"><span class="lesson-tag-dot"></span>Блок 5 · Защита</div>
+    <h1>Безопасность вайб-кода:<br><span>не сломать то, что работает</span></h1>
+    <p class="lesson-intro">ИИ пишет рабочий код — но не безопасный. 45–62% кода, сгенерированного ИИ, содержит реальные уязвимости. Хорошая новость: Claude может сам найти и исправить свои же проблемы — нужно только попросить правильно.</p>
+    <div class="lesson-meta">
+      <div class="meta-item"><span>⏱</span> ~40 минут</div>
+      <div class="meta-item"><span>🛡</span> .env · CLAUDE.md</div>
+      <div class="meta-item"><span>🔍</span> Метод двойного прохода</div>
+    </div>
+  </div>
+
+  <!-- Почему проблема -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">⚠️</div>ИИ оптимизирован на задачу, а не на защиту</h2>
+    <p>Аналогия: архитектор, который проектирует красивый дом без замков на дверях. Технически дом построен — но жить в нём небезопасно. ИИ делает то, о чём его просят. Никто не спросил «а это безопасно?».</p>
+    <p><strong>Статистика:</strong> 45–62% AI-кода содержит реальные уязвимости. 20% попыток установить пакеты — галлюцинированные имена, которые могут быть захвачены злоумышленниками.</p>
+    <div class="info-box"><strong>Правильная установка:</strong> читайте AI-код как код незнакомого стажёра — с любопытством, но не слепым доверием. Доверяйте, но проверяйте — особенно то, что касается данных пользователей и ключей.</div>
+  </div>
+
+  <!-- 3 инцидента -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">📋</div>Три типовых сценария утечки</h2>
+    <div class="incident-cards">
+      <div class="incident">
+        <div class="incident-type">Тип А</div>
+        <h3>API-ключ в клиентском JavaScript</h3>
+        <p>Разработчик вставил ключ прямо в JS-код — он виден через DevTools в браузере. Боты сканируют GitHub и открытые страницы постоянно. Через 48 часов баланс был нулём, карта заблокирована за подозрительную активность.</p>
+      </div>
+      <div class="incident">
+        <div class="incident-type">Тип Б</div>
+        <h3>База данных без RLS (Row Level Security)</h3>
+        <p>Таблица пользователей создана без ограничений доступа. Любой авторизованный пользователь мог читать данные всех остальных через прямой запрос к API. Утекли данные — без взлома, просто запрос.</p>
+      </div>
+      <div class="incident">
+        <div class="incident-type">Тип В</div>
+        <h3>Публичное хранилище файлов</h3>
+        <p>Загрузка документов настроена без проверки типа файла и без ограничения доступа. Бакет стал публичным. Тысячи приватных документов пользователей стали общедоступными в Google-поиске.</p>
+      </div>
+    </div>
+    <div class="warn-box"><strong>Общий вывод из всех трёх случаев:</strong> ИИ сделал именно то, о чём его попросили. Никто не попросил сделать это безопасно.</div>
+  </div>
+
+  <!-- Секреты -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">🔑</div>Уязвимость 1: секреты в коде</h2>
+    <div class="code-compare">
+      <div class="code-block bad">
+        <h4>❌ Небезопасно</h4>
+        <pre>const API_KEY = "sk-ant-abc123"
+fetch('/api', {
+  headers: {'X-Key': API_KEY}
+})</pre>
+      </div>
+      <div class="code-block good">
+        <h4>✓ Безопасно</h4>
+        <pre># .env файл
+ANTHROPIC_KEY=sk-ant-abc123
+
+# В коде
+import os
+key = os.getenv('ANTHROPIC_KEY')</pre>
+      </div>
+    </div>
+    <div class="warn-box"><strong>Таймлайн после git push с ключом:</strong> 0 мин — коммит. 2 мин — GitHub-сканеры нашли ключ. 10 мин — кто-то уже использует. ~1 час — счёт на несколько тысяч рублей чужих запросов. Правило: в коде пишите <code>YOUR_KEY_HERE</code>, вставляете вручную в .env.</div>
+  </div>
+
+  <!-- SQL и XSS -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">💉</div>Уязвимость 2: SQL-инъекции и XSS</h2>
+    <div class="code-compare">
+      <div class="code-block bad">
+        <h4>❌ SQL-инъекция</h4>
+        <pre>query = f"SELECT * FROM users
+WHERE name='{user_input}'"
+# Если user_input = "'; DROP TABLE users --"
+# База данных выполнит удаление</pre>
+      </div>
+      <div class="code-block good">
+        <h4>✓ Параметризованный запрос</h4>
+        <pre>query = "SELECT * FROM users
+WHERE name=?"
+cursor.execute(query, (user_input,))
+# Данные и команда разделены</pre>
+      </div>
+    </div>
+    <div class="info-box"><strong>Аналогия для SQL-инъекции:</strong> пользователь пишет не имя, а кусок SQL-команды — и база её выполняет. Параметризованный запрос разделяет данные и инструкцию.<br><strong>Аналогия для XSS:</strong> <code>innerHTML = userText</code> — это разрешить незнакомцу написать что угодно на вашей доске. Используйте <code>textContent</code> вместо <code>innerHTML</code>.</div>
+  </div>
+
+  <!-- Slopsquatting -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">📦</div>Уязвимость 3: Slopsquatting — галлюцинация пакетов</h2>
+    <p>ИИ иногда предлагает установить несуществующий пакет с правдоподобным именем. Злоумышленник регистрирует пакет с этим именем — внутри вредоносный код. При установке он выполняется на вашем компьютере.</p>
+    <div class="tip-box"><strong>Как проверить перед npm install:</strong> откройте npmjs.com или pypi.org → найдите пакет → посмотрите: возраст (новый = подозрительно), число скачиваний (100 за всё время — красный флаг), история автора. После установки: <code>npm audit</code>.</div>
+    <div class="warn-box"><strong>Правило:</strong> перед <code>npm install что-то-незнакомое</code> — сначала поискать. 10 секунд на проверку vs потенциально вредоносный код на вашем компьютере.</div>
+  </div>
+
+  <!-- Метод двойного прохода -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">🔍</div>Метод двойного прохода</h2>
+    <p>Claude может проверить свой собственный код на уязвимости. Нужно только попросить другой ролью.</p>
+    <table class="lesson-table">
+      <thead>
+        <tr><th>Обычный промпт</th><th>Безопасный промпт</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>«Напиши форму входа»</td><td>«Напиши форму входа» → «Ты — эксперт по кибербезопасности. Проверь этот код по OWASP Top 10 и исправь уязвимости»</td></tr>
+        <tr><td>«Подключи базу данных»</td><td>После получения кода: «Найди SQL-инъекции и небезопасную обработку ввода»</td></tr>
+        <tr><td>«Сделай загрузку файлов»</td><td>После: «Найди проблемы с типами файлов, размером, правами доступа»</td></tr>
+        <tr><td>«Создай API-роут»</td><td>После: «Проверь авторизацию, rate limiting, валидацию входных данных»</td></tr>
+      </tbody>
+    </table>
+    <div class="info-box"><strong>Одно дополнительное сообщение меняет качество кода.</strong> Claude в роли аудитора безопасности смотрит на тот же код другими глазами и находит то, что пропустил при написании.</div>
+  </div>
+
+  <!-- CLAUDE.md -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">📄</div>CLAUDE.md: правила безопасности в каждой сессии</h2>
+    <p>CLAUDE.md — файл в корне проекта. Claude читает его автоматически при каждом открытии папки. Это не разовый промпт — постоянная инструкция для всего проекта.</p>
+    <p><strong>Что писать в CLAUDE.md (6 блоков):</strong></p>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin:12px 0 20px">
+      <li style="display:flex;gap:10px"><span style="color:var(--blue-l);flex-shrink:0">1.</span><span style="color:var(--muted);font-size:15px"><strong>Секреты:</strong> все ключи — только в .env, добавить в .gitignore</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--blue-l);flex-shrink:0">2.</span><span style="color:var(--muted);font-size:15px"><strong>База данных:</strong> только параметризованные запросы, никогда не f-строки</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--blue-l);flex-shrink:0">3.</span><span style="color:var(--muted);font-size:15px"><strong>Аутентификация:</strong> проверка прав — на сервере, пароли — bcrypt/argon2</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--blue-l);flex-shrink:0">4.</span><span style="color:var(--muted);font-size:15px"><strong>Зависимости:</strong> только популярные проверенные пакеты, проверять npmjs.com</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--blue-l);flex-shrink:0">5.</span><span style="color:var(--muted);font-size:15px"><strong>Frontend:</strong> textContent вместо innerHTML, никогда eval()</span></li>
+      <li style="display:flex;gap:10px"><span style="color:var(--blue-l);flex-shrink:0">6.</span><span style="color:var(--muted);font-size:15px"><strong>Аудит:</strong> двойной проход для каждой новой функции</span></li>
+    </ul>
+    <div class="tip-box"><strong>Как создать:</strong> напишите «Создай CLAUDE.md с правилами безопасности для нашего проекта» — Claude сгенерирует файл, вы уточняете под конкретный стек. Файл работает с первой же следующей сессии.</div>
+  </div>
+
+  <!-- Чеклист 10 правил -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">✅</div>10 привычек безопасного вайб-кодинга</h2>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Все API-ключи хранятся только в .env файлах</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>.env добавлен в .gitignore до первого коммита</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Ключи никогда не вставляются в чат с Claude</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Для каждой критичной функции делается двойной проход</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>CLAUDE.md создан и лежит в корне каждого проекта</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Перед npm install незнакомого пакета — проверка на npmjs.com</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>SQL-запросы через параметризацию, не f-строки</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>textContent вместо innerHTML для пользовательских данных</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Знаете, как отозвать скомпрометированный ключ (console.anthropic.com)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Временные демо-ключи создаются перед показом и удаляются после</li>
+    </ul>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="урок-11.html" class="btn-nav btn-prev">
+      <span><span class="nav-lesson-title">Предыдущий урок</span>← Telegram-бот</span>
+    </a>
+    <a href="урок-13.html" class="btn-nav btn-next">
+      <span><span class="nav-lesson-title">Следующий урок</span>Портфолио и клиенты →</span>
+    </a>
+  </div>
+</div>
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  function update() {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  var li = el.closest('li');
+  if (li) li.classList.toggle('done');
+}
+</script>
+</body>
+</html>
