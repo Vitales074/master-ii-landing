@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Мастер-ИИ — Мой курс</title>
+<title>Мастер-ИИ — Научитесь зарабатывать с Claude</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,520 +11,641 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#05050f;--bg-1:#0a0a18;--bg-2:#0f0f22;
-  --blue:#2563EB;--blue-l:#60a5fa;
+  --blue:#2563EB;--blue-l:#60a5fa;--blue-d:#1d4ed8;
   --purple:#7C3AED;--purple-l:#a78bfa;
   --green:#10B981;--green-l:#6ee7b7;
-  --orange:#f97316;--orange-l:#fb923c;
-  --text:#f0f0ff;--muted:#c4ccdf;--dim:#7880a8;
+  --orange:#f97316;
+  --text:#f0f0ff;--muted:#b8c0dc;--dim:#6870a0;
   --font-d:'Unbounded',sans-serif;
   --font-b:'Hanken Grotesk',sans-serif;
+  --radius:16px;--radius-sm:10px;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.7;overflow-x:hidden}
+
+/* Grid */
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* Orbs */
+.orbs{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:drift 22s ease-in-out infinite}
+.orb-1{width:600px;height:600px;top:-100px;left:-150px;background:radial-gradient(circle,rgba(37,99,235,.3),transparent 65%)}
+.orb-2{width:500px;height:500px;top:50px;right:-100px;background:radial-gradient(circle,rgba(124,58,237,.35),transparent 65%);animation-delay:-8s}
+.orb-3{width:550px;height:550px;bottom:-100px;left:40%;background:radial-gradient(circle,rgba(16,185,129,.22),transparent 65%);animation-delay:-15s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-4%,6%) scale(1.08)}66%{transform:translate(5%,-4%) scale(1.05)}}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:18px 0;background:rgba(5,5,15,.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0 24px}
+.nav-logo{font-family:var(--font-d);font-size:16px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nav-cta{padding:9px 22px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border-radius:8px;font-family:var(--font-d);font-size:12px;font-weight:700;letter-spacing:.06em;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* Hero */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 80px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.35);border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.1em;color:var(--blue-l);text-transform:uppercase;margin-bottom:28px}
+.hero-eyebrow-dot{width:6px;height:6px;background:var(--blue-l);border-radius:50%}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:820px;margin:0 auto}
+.hero-content h1{font-family:var(--font-d);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.08;letter-spacing:-.03em;margin-bottom:24px}
+.hero-content h1 span{background:linear-gradient(90deg,var(--blue-l),var(--purple-l),var(--green-l));background-size:200% 200%;animation:gpan 5s ease-in-out infinite;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+@keyframes gpan{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero-content p{font-size:1.15rem;color:var(--muted);max-width:600px;margin:0 auto 40px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:16px 40px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border-radius:12px;font-family:var(--font-d);font-size:14px;font-weight:700;letter-spacing:.06em;text-decoration:none;box-shadow:0 0 40px rgba(37,99,235,.4);transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(37,99,235,.55)}
+.btn-secondary{padding:16px 32px;background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.12);border-radius:12px;font-family:var(--font-d);font-size:13px;font-weight:700;letter-spacing:.05em;text-decoration:none;transition:background .2s}
+.btn-secondary:hover{background:rgba(255,255,255,.1)}
+.hero-stats{display:flex;gap:48px;justify-content:center;margin-top:64px;padding-top:48px;border-top:1px solid rgba(255,255,255,.08)}
+.stat{text-align:center}
+.stat-num{font-family:var(--font-d);font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.stat-label{font-size:13px;color:var(--dim);margin-top:4px}
+
+/* Sections */
+section{position:relative;padding:100px 0}
+.section-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.3);border-radius:100px;font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--blue-l);text-transform:uppercase;margin-bottom:20px}
+.section-eyebrow-dot{width:5px;height:5px;background:var(--blue-l);border-radius:50%}
+.section-title{font-family:var(--font-d);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.section-sub{color:var(--muted);font-size:1.05rem;max-width:580px;margin-bottom:56px}
+.text-center{text-align:center}
+.text-center .section-sub{margin-left:auto;margin-right:auto}
+.accent-blue{color:var(--blue-l)}
+.accent-purple{color:var(--purple-l)}
+.accent-green{color:var(--green-l)}
+.divider-line{width:60px;height:3px;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:2px;margin:16px auto 0}
+
+/* Для кого */
+#for-who{background:var(--bg-1)}
+.avatar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.avatar-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:32px 28px;transition:border-color .3s,transform .3s}
+.avatar-card:hover{border-color:rgba(96,165,250,.35);transform:translateY(-4px)}
+.avatar-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}
+.avatar-icon.blue{background:rgba(37,99,235,.2);border:1px solid rgba(96,165,250,.3)}
+.avatar-icon.purple{background:rgba(124,58,237,.2);border:1px solid rgba(167,139,250,.3)}
+.avatar-icon.green{background:rgba(16,185,129,.18);border:1px solid rgba(110,231,183,.3)}
+.avatar-card h3{font-family:var(--font-d);font-size:15px;font-weight:700;margin-bottom:12px;line-height:1.3}
+.avatar-card p{font-size:14px;color:var(--muted);line-height:1.7}
+.avatar-card ul{list-style:none;margin-top:16px}
+.avatar-card li{font-size:13px;color:var(--muted);padding:4px 0 4px 18px;position:relative}
+.avatar-card li::before{content:'▸';position:absolute;left:0;color:var(--blue-l);font-size:11px;top:6px}
+
+/* Результаты */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.result-card{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm);padding:24px}
+.result-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.result-icon.b{background:rgba(37,99,235,.18);border:1px solid rgba(96,165,250,.25)}
+.result-icon.p{background:rgba(124,58,237,.18);border:1px solid rgba(167,139,250,.25)}
+.result-icon.g{background:rgba(16,185,129,.15);border:1px solid rgba(110,231,183,.25)}
+.result-icon.o{background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.25)}
+.result-card h4{font-family:var(--font-d);font-size:13px;font-weight:700;margin-bottom:6px;line-height:1.4}
+.result-card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* Программа */
+#program{background:var(--bg-1)}
+.accordion{display:flex;flex-direction:column;gap:8px;max-width:860px;margin:0 auto}
+.acc-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-sm);overflow:hidden;transition:border-color .3s}
+.acc-item.open{border-color:rgba(96,165,250,.3)}
+.acc-header{display:flex;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;user-select:none}
+.acc-num{font-family:var(--font-d);font-size:12px;font-weight:700;color:var(--blue-l);min-width:28px}
+.acc-title{font-family:var(--font-d);font-size:14px;font-weight:700;flex:1;line-height:1.4}
+.acc-arrow{color:var(--dim);font-size:18px;transition:transform .3s;margin-left:auto}
+.acc-item.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{display:none;padding:0 24px 20px 68px}
+.acc-item.open .acc-body{display:block}
+.acc-body p{font-size:14px;color:var(--muted);line-height:1.7}
+.acc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.acc-tag{padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;background:rgba(96,165,250,.12);color:var(--blue-l);border:1px solid rgba(96,165,250,.2)}
+
+/* Формат */
+.format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.format-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:32px 28px;text-align:center}
+.format-card .icon{font-size:40px;margin-bottom:16px}
+.format-card h3{font-family:var(--font-d);font-size:14px;font-weight:700;margin-bottom:10px}
+.format-card p{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* Цена */
+#price{background:var(--bg-2)}
+.price-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;max-width:960px;margin:0 auto;align-items:start}
+.price-card{background:linear-gradient(135deg,rgba(37,99,235,.15),rgba(124,58,237,.12));border:1px solid rgba(96,165,250,.35);border-radius:20px;padding:40px 36px;text-align:center;position:relative;overflow:hidden}
+.price-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(37,99,235,.12),transparent 60%);pointer-events:none}
+.price-badge{display:inline-block;padding:4px 14px;background:rgba(16,185,129,.2);border:1px solid rgba(110,231,183,.35);border-radius:100px;font-size:12px;font-weight:700;color:var(--green-l);letter-spacing:.06em;margin-bottom:24px}
+.price-amount{font-family:var(--font-d);font-size:3.5rem;font-weight:900;line-height:1;letter-spacing:-.03em;color:var(--text);margin-bottom:8px}
+.price-amount span{font-size:1.4rem;vertical-align:top;padding-top:10px;display:inline-block;color:var(--muted)}
+.price-desc{font-size:14px;color:var(--muted);margin-bottom:32px}
+.price-btn{display:block;padding:18px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border-radius:12px;font-family:var(--font-d);font-size:14px;font-weight:700;letter-spacing:.06em;text-decoration:none;box-shadow:0 0 40px rgba(37,99,235,.35);transition:transform .2s}
+.price-btn:hover{transform:translateY(-2px)}
+.price-note{font-size:13px;color:var(--dim);margin-top:16px}
+.price-list{list-style:none}
+.price-list li{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:15px;color:var(--muted)}
+.price-list li:last-child{border-bottom:none}
+.price-list li::before{content:'✓';color:var(--green-l);font-weight:700;font-size:16px;flex-shrink:0;margin-top:1px}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:8px;max-width:800px;margin:0 auto}
+.faq-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-sm);overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;font-family:var(--font-d);font-size:14px;font-weight:700;line-height:1.4;user-select:none}
+.faq-arrow{color:var(--dim);font-size:18px;transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-item.open{border-color:rgba(96,165,250,.25)}
+.faq-a{display:none;padding:0 24px 20px;font-size:14px;color:var(--muted);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+
+/* Footer */
+footer{background:var(--bg-1);border-top:1px solid rgba(255,255,255,.07);padding:48px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-logo{font-family:var(--font-d);font-size:15px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.footer-text{font-size:13px;color:var(--dim)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:var(--dim);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--muted)}
+
+/* Grid bg */
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:64px 64px}
 
-/* ── Ambient orbs ── */
-.orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.orb{position:absolute;border-radius:50%;filter:blur(90px);animation:drift 25s ease-in-out infinite}
-.orb-1{width:700px;height:700px;top:-200px;left:-200px;background:radial-gradient(circle,rgba(37,99,235,.18),transparent 65%)}
-.orb-2{width:600px;height:600px;top:30%;right:-150px;background:radial-gradient(circle,rgba(124,58,237,.2),transparent 65%);animation-delay:-10s}
-.orb-3{width:500px;height:500px;bottom:-100px;left:35%;background:radial-gradient(circle,rgba(16,185,129,.14),transparent 65%);animation-delay:-18s}
-@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-3%,5%) scale(1.06)}66%{transform:translate(4%,-3%) scale(1.04)}}
-
-/* ── Nav ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;background:rgba(5,5,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}
-.nav-inner{max-width:1000px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.nav-logo{font-family:var(--font-d);font-size:14px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
-.nav-progress-wrap{display:flex;align-items:center;gap:12px;flex:1;max-width:300px}
-.nav-bar{flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
-.nav-bar-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:2px;transition:width .4s ease}
-.nav-label{font-family:var(--font-d);font-size:11px;color:var(--dim);white-space:nowrap}
-.nav-reset{font-size:12px;color:var(--dim);cursor:pointer;padding:6px 12px;border-radius:6px;border:1px solid rgba(255,255,255,.08);background:transparent;font-family:var(--font-b);transition:all .2s}
-.nav-reset:hover{background:rgba(255,255,255,.08);color:var(--muted)}
-
-/* ── Layout ── */
-.wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:96px 28px 80px}
-
-/* ── Welcome ── */
-.welcome{padding:44px 0 48px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:48px}
-.welcome-eyebrow{display:inline-flex;align-items:center;gap:7px;padding:4px 14px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.3);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--blue-l);text-transform:uppercase;margin-bottom:18px}
-.welcome h1{font-family:var(--font-d);font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:14px}
-.welcome h1 span{background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.welcome p{color:var(--muted);font-size:16px;max-width:580px;line-height:1.75}
-
-/* Progress overview cards */
-.overview{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
-.ov-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px 22px}
-.ov-num{font-family:var(--font-d);font-size:1.8rem;font-weight:900;line-height:1;margin-bottom:4px}
-.ov-num.blue{background:linear-gradient(135deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.ov-num.green{color:var(--green-l);-webkit-text-fill-color:var(--green-l)}
-.ov-num.orange{color:var(--orange-l);-webkit-text-fill-color:var(--orange-l)}
-.ov-label{font-size:13px;color:var(--dim)}
-
-/* ── Block groups ── */
-.block-group{margin-bottom:44px}
-.block-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.block-badge{display:inline-flex;align-items:center;padding:4px 14px;border-radius:100px;font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-.bb-blue  {background:rgba(37,99,235,.14); border:1px solid rgba(37,99,235,.3);  color:var(--blue-l)}
-.bb-purple{background:rgba(124,58,237,.14);border:1px solid rgba(124,58,237,.3); color:var(--purple-l)}
-.bb-green {background:rgba(16,185,129,.12); border:1px solid rgba(16,185,129,.28);color:var(--green-l)}
-.bb-orange{background:rgba(249,115,22,.12); border:1px solid rgba(249,115,22,.28);color:var(--orange-l)}
-.block-title{font-family:var(--font-d);font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.01em}
-.block-divider{flex:1;height:1px;background:rgba(255,255,255,.06)}
-
-/* ── Lesson cards ── */
-.lesson-list{display:flex;flex-direction:column;gap:10px}
-.lesson-card{
-  display:grid;grid-template-columns:44px 1fr auto;gap:0 16px;align-items:center;
-  background:rgba(255,255,255,.025);
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:14px;padding:18px 20px;
-  transition:border-color .2s,background .2s;
-  cursor:pointer;text-decoration:none;
+/* Responsive */
+@media(max-width:900px){
+  .avatar-grid,.results-grid,.format-grid{grid-template-columns:repeat(2,1fr)}
+  .price-wrap{grid-template-columns:1fr}
 }
-.lesson-card:hover{background:rgba(255,255,255,.045);border-color:rgba(96,165,250,.22)}
-.lesson-card.done{background:rgba(16,185,129,.05);border-color:rgba(110,231,183,.18)}
-.lesson-card.done:hover{background:rgba(16,185,129,.08);border-color:rgba(110,231,183,.28)}
-
-/* Number circle */
-.lc-num{
-  width:44px;height:44px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-d);font-size:13px;font-weight:900;
-  background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(124,58,237,.15));
-  border:1px solid rgba(96,165,250,.25);
-  color:var(--blue-l);flex-shrink:0;
-  transition:all .2s;
-}
-.lesson-card.done .lc-num{background:rgba(16,185,129,.18);border-color:rgba(110,231,183,.3);color:var(--green-l)}
-
-/* Content */
-.lc-body{min-width:0}
-.lc-tag{font-size:11px;color:var(--dim);letter-spacing:.05em;margin-bottom:4px;text-transform:uppercase;font-weight:600}
-.lc-title{font-family:var(--font-d);font-size:14px;font-weight:700;color:var(--text);line-height:1.3;letter-spacing:-.01em}
-.lesson-card.done .lc-title{color:var(--green-l)}
-.lc-meta{display:flex;align-items:center;gap:12px;margin-top:6px}
-.lc-time{font-size:12px;color:var(--dim);display:flex;align-items:center;gap:5px}
-
-/* Actions */
-.lc-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.lc-btn{
-  padding:8px 16px;border-radius:8px;font-family:var(--font-d);font-size:11px;font-weight:700;
-  letter-spacing:.04em;text-decoration:none;white-space:nowrap;
-  transition:all .2s;display:inline-flex;align-items:center;gap:6px;
-}
-.lc-btn-primary{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;box-shadow:0 0 16px rgba(37,99,235,.3)}
-.lc-btn-primary:hover{box-shadow:0 0 28px rgba(37,99,235,.5);transform:translateY(-1px)}
-.lc-btn-secondary{background:rgba(255,255,255,.06);color:var(--muted);border:1px solid rgba(255,255,255,.1)}
-.lc-btn-secondary:hover{background:rgba(255,255,255,.1);color:var(--text)}
-.lc-done-badge{
-  width:32px;height:32px;border-radius:50%;
-  background:rgba(16,185,129,.18);border:1px solid rgba(110,231,183,.35);
-  display:none;align-items:center;justify-content:center;
-  font-size:14px;font-weight:700;color:var(--green-l);
-}
-.lesson-card.done .lc-done-badge{display:flex}
-.lesson-card.done .lc-btn-primary{background:rgba(16,185,129,.15);border:1px solid rgba(110,231,183,.3);box-shadow:none;color:var(--green-l)}
-.lesson-card.done .lc-btn-primary:hover{background:rgba(16,185,129,.25)}
-
-/* ── Finish banner ── */
-.finish-banner{
-  display:none;
-  margin-top:12px;
-  background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(37,99,235,.1));
-  border:1px solid rgba(110,231,183,.25);
-  border-radius:16px;padding:28px 32px;
-  text-align:center;
-}
-.finish-banner.show{display:block}
-.finish-banner h2{font-family:var(--font-d);font-size:1.3rem;font-weight:900;margin-bottom:10px}
-.finish-banner p{color:var(--muted);font-size:15px}
-
-/* ── Responsive ── */
-@media(max-width:640px){
-  .overview{grid-template-columns:1fr 1fr;gap:10px}
-  .overview .ov-card:last-child{grid-column:1/-1}
-  .lesson-card{grid-template-columns:38px 1fr;grid-template-rows:auto auto}
-  .lc-actions{grid-column:1/-1;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);margin-top:8px;justify-content:flex-start}
-  .nav-reset{display:none}
+@media(max-width:600px){
+  .avatar-grid,.results-grid,.format-grid{grid-template-columns:1fr}
+  .hero-stats{gap:28px}
+  .stat-num{font-size:1.5rem}
+  .acc-body{padding-left:40px}
 }
 </style>
 </head>
 <body>
 
-<div class="orbs">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-</div>
-
+<!-- Nav -->
 <nav>
   <div class="nav-inner">
     <span class="nav-logo">МАСТЕР-ИИ</span>
-    <div class="nav-progress-wrap">
-      <div class="nav-bar"><div class="nav-bar-fill" id="navFill"></div></div>
-      <span class="nav-label" id="navLabel">0 / 15</span>
-    </div>
-    <button class="nav-reset" onclick="resetProgress()">Сбросить прогресс</button>
+    <a href="https://boosty.to/master_ii/posts/2f05bae3-1086-41af-bb32-cd21ae8a2136" target="_blank" class="nav-cta">Купить курс</a>
   </div>
 </nav>
 
-<div class="wrap">
-
-  <!-- Welcome -->
-  <div class="welcome">
-    <div class="welcome-eyebrow">Добро пожаловать</div>
-    <h1>Курс <span>Мастер-ИИ</span></h1>
-    <p>Полный доступ к курсу открыт. Проходите уроки в любом порядке — прогресс сохраняется автоматически в браузере.</p>
-    <div class="overview">
-      <div class="ov-card"><div class="ov-num blue" id="ovDone">0</div><div class="ov-label">уроков пройдено</div></div>
-      <div class="ov-card"><div class="ov-num orange">15</div><div class="ov-label">уроков всего</div></div>
-      <div class="ov-card"><div class="ov-num green" id="ovTime">0ч</div><div class="ov-label">просмотрено материалов</div></div>
+<!-- Hero -->
+<section id="hero">
+  <div class="orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Онлайн-курс · 13 уроков</div>
+      <h1>Зарабатывайте с Claude —<br><span>без кода и опыта в ИИ</span></h1>
+      <p>Настройте Claude Code, создайте сайты и агентов с нуля, выстройте поток клиентов — за один курс с нуля до первых заказов. Работает из любой страны.</p>
+      <div class="hero-btns">
+        <a href="https://boosty.to/master_ii/posts/2f05bae3-1086-41af-bb32-cd21ae8a2136" target="_blank" class="btn-primary">Купить курс →</a>
+        <a href="#program" class="btn-secondary">Программа курса</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">13</div>
+          <div class="stat-label">уроков</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">часов практики</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">доступ навсегда</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">0</div>
+          <div class="stat-label">опыта требуется</div>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- БЛОК 1: Технический блок -->
-  <div class="block-group">
-    <div class="block-header">
-      <span class="block-badge bb-blue">Блок 1</span>
-      <span class="block-title">Технический блок — доступ к Claude</span>
-      <div class="block-divider"></div>
+<!-- Для кого -->
+<section id="for-who">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Для кого</div>
+      <h2 class="section-title">Курс подойдёт вам, если...</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub" style="margin-top:16px">Не важно, есть ли у вас технический опыт. Важно желание разобраться.</p>
     </div>
-    <div class="lesson-list">
+    <div class="avatar-grid">
+      <div class="avatar-card">
+        <div class="avatar-icon blue">💼</div>
+        <h3>Фрилансер или самозанятый</h3>
+        <p>Хотите расширить список услуг и брать в 2–3 раза больше клиентов за то же время.</p>
+        <ul>
+          <li>Сайты и лендинги под ключ</li>
+          <li>Telegram-боты для клиентов</li>
+          <li>Контент и маркетинговый аудит</li>
+        </ul>
+      </div>
+      <div class="avatar-card">
+        <div class="avatar-icon purple">🚀</div>
+        <h3>Предприниматель</h3>
+        <p>Нужно автоматизировать рутину, создать инструменты для команды или сократить расходы на разработку.</p>
+        <ul>
+          <li>Внутренние агенты и боты</li>
+          <li>Автоматизация без программиста</li>
+          <li>Быстрый MVP за один вечер</li>
+        </ul>
+      </div>
+      <div class="avatar-card">
+        <div class="avatar-icon green">📈</div>
+        <h3>Наёмный специалист</h3>
+        <p>Хотите стать незаменимым в команде, делать работу быстрее и выйти на новый уровень дохода.</p>
+        <ul>
+          <li>Инструменты, которых нет у коллег</li>
+          <li>Личный ИИ-ассистент на каждый день</li>
+          <li>Портфолио для повышения ставки</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="lesson-card" id="l-01" onclick="openLesson('01','lessons/урок-01.html')">
-        <div class="lc-num">01</div>
-        <div class="lc-body">
-          <div class="lc-tag">Технический блок · Шаг 1 из 3</div>
-          <div class="lc-title">Установка AmneziaVPN</div>
-          <div class="lc-meta">
-            <span class="lc-time">⏱ 10 мин</span>
-            <span class="lc-time" style="color:#6ee7b7;margin-left:8px">✦ Только если Claude заблокирован в вашей стране</span>
-          </div>
+<!-- Результаты -->
+<section id="results">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Что вы получите</div>
+      <h2 class="section-title">6 навыков, которые меняют<br>то, как вы работаете</h2>
+      <div class="divider-line"></div>
+    </div>
+    <div class="results-grid" style="margin-top:48px">
+      <div class="result-card">
+        <div class="result-icon b">🌐</div>
+        <div>
+          <h4>Claude без ограничений из любой страны</h4>
+          <p>Настроите AmneziaVPN и VPS раз и навсегда — если Claude недоступен в вашей стране. Если доступен — просто пропустите первые два урока.</p>
         </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-01.html" class="lc-btn lc-btn-primary" onclick="markDone('01',event)">Читать урок</a>
-          <a href="slides/Урок_01_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+      </div>
+      <div class="result-card">
+        <div class="result-icon p">🏗️</div>
+        <div>
+          <h4>Сайты и приложения без кода</h4>
+          <p>Создадите многостраничный бизнес-сайт, лендинг и полноценное веб-приложение.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon g">🤖</div>
+        <div>
+          <h4>Личный агент и Telegram-бот</h4>
+          <p>Настроите API, создадите агента для клиентов и подключите его в Telegram за один сеанс.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon o">🎨</div>
+        <div>
+          <h4>Профессиональный дизайн</h4>
+          <p>Будете создавать визуалы, инфографику и анимированные карусели без дизайнера.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon b">🔒</div>
+        <div>
+          <h4>Безопасный код и защита данных</h4>
+          <p>Узнаете про OWASP Top 10, метод двойного прохода и CLAUDE.md для каждого проекта.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon g">💰</div>
+        <div>
+          <h4>Первые клиенты и портфолио</h4>
+          <p>Оформите кейсы, проведёте маркетинговый аудит и выберете модель работы с заказчиками.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Программа -->
+<section id="program">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Программа</div>
+      <h2 class="section-title">13 уроков — от VPN<br>до первых клиентов</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub" style="margin-top:16px">Каждый урок — законченная практическая тема с конкретным результатом.</p>
+    </div>
+    <div class="accordion">
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">01</span>
+          <span class="acc-title">Установка AmneziaVPN</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>Скачиваем и устанавливаем программу-клиент VPN на Windows и macOS. Разбираем типичные ошибки установки и что делать, если сайт не открывается.</p>
+          <div class="acc-tags"><span class="acc-tag">VPN</span><span class="acc-tag">amnezia.org</span><span class="acc-tag">10 мин</span></div>
         </div>
       </div>
 
-      <div class="lesson-card" id="l-02" onclick="openLesson('02','lessons/урок-02.html')">
-        <div class="lc-num">02</div>
-        <div class="lc-body">
-          <div class="lc-tag">Технический блок · Шаг 2 из 3</div>
-          <div class="lc-title">Свой сервер: аренда VPS и подключение VPN</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 25 мин</span><span class="lc-time" style="color:#6ee7b7;margin-left:8px">✦ Только если Claude заблокирован в вашей стране</span></div>
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">02</span>
+          <span class="acc-title">Аренда VPS и подключение к VPN</span>
+          <span class="acc-arrow">⌄</span>
         </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-02.html" class="lc-btn lc-btn-primary" onclick="markDone('02',event)">Читать урок</a>
-          <a href="slides/Урок_02_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        <div class="acc-body">
+          <p>Арендуем сервер в Нидерландах за $5.5/мес на Amnesia. Подключаем его к AmneziaVPN и получаем стабильный IP в нужной стране.</p>
+          <div class="acc-tags"><span class="acc-tag">VPS</span><span class="acc-tag">Amnesia</span><span class="acc-tag">IP-адрес</span></div>
         </div>
       </div>
 
-      <div class="lesson-card" id="l-03" onclick="openLesson('03','lessons/урок-03.html')">
-        <div class="lc-num">03</div>
-        <div class="lc-body">
-          <div class="lc-tag">Технический блок · Шаг 3 из 3</div>
-          <div class="lc-title">Почта ProtonMail и регистрация в Claude</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 10 мин</span></div>
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">03</span>
+          <span class="acc-title">Регистрация и оплата Claude</span>
+          <span class="acc-arrow">⌄</span>
         </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-03.html" class="lc-btn lc-btn-primary" onclick="markDone('03',event)">Читать урок</a>
-          <a href="slides/Урок_03_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        <div class="acc-body">
+          <p>Создаём аккаунт на claude.ai через ProtonMail. Разбираем способы оплаты подписки — честные рабочие варианты без обходов верификации.</p>
+          <div class="acc-tags"><span class="acc-tag">claude.ai</span><span class="acc-tag">ProtonMail</span><span class="acc-tag">Оплата</span></div>
         </div>
       </div>
 
-      <div class="lesson-card" id="l-03-1" onclick="openLesson('03-1','lessons/урок-03-1.html')">
-        <div class="lc-num" style="font-size:11px">3.1</div>
-        <div class="lc-body">
-          <div class="lc-tag">Дополнение к уроку 3</div>
-          <div class="lc-title">Как оплатить Claude</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 15 мин</span></div>
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">03.1</span>
+          <span class="acc-title">Оплата через виртуальную карту</span>
+          <span class="acc-arrow">⌄</span>
         </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-03-1.html" class="lc-btn lc-btn-primary" onclick="markDone('03-1',event)">Читать урок</a>
-          <a href="slides/Урок_03_1_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        <div class="acc-body">
+          <p>Разбираем ChocoPay и виртуальные карты — как они устроены, для чего подходят и что реально работает для оплаты Anthropic API.</p>
+          <div class="acc-tags"><span class="acc-tag">ChocoPay</span><span class="acc-tag">API</span><span class="acc-tag">Оплата</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">04</span>
+          <span class="acc-title">Лендинг с нуля через Claude Code</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>Устанавливаем Git, создаём рабочую папку, пишем первый промпт. Claude строит полноценный лендинг с анимациями, адаптивом и текстами.</p>
+          <div class="acc-tags"><span class="acc-tag">Claude Code</span><span class="acc-tag">Git</span><span class="acc-tag">Netlify</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">04.1</span>
+          <span class="acc-title">Публикация на Netlify</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>Регистрируемся и публикуем сайт на Netlify drag & drop за 4 шага. Получаем рабочую ссылку и разбираем цикл обновления.</p>
+          <div class="acc-tags"><span class="acc-tag">Netlify</span><span class="acc-tag">Деплой</span><span class="acc-tag">5 мин</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">05</span>
+          <span class="acc-title">Многостраничный сайт</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>Создаём профессиональный бизнес-сайт из 8 страниц с 3D-анимацией, документацией проекта, скиллами и публикацией на Vercel.</p>
+          <div class="acc-tags"><span class="acc-tag">Reverse-инжиниринг</span><span class="acc-tag">Скиллы</span><span class="acc-tag">Vercel</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">06</span>
+          <span class="acc-title">Агенты и контент-система</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>Настраиваем агентов в Claude Projects. Система трёх ролей: Стратег, Автор, Редактор. Один день — контент на месяц для любой платформы.</p>
+          <div class="acc-tags"><span class="acc-tag">Claude Projects</span><span class="acc-tag">Агенты</span><span class="acc-tag">Контент</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">07</span>
+          <span class="acc-title">Визуальный контент и инфографика</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>Claude создаёт SVG-логотипы, карусели для соцсетей, инфографику. Скиллы для стабильного стиля. Когда нужны внешние инструменты.</p>
+          <div class="acc-tags"><span class="acc-tag">SVG</span><span class="acc-tag">Карусели</span><span class="acc-tag">Скиллы</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">08</span>
+          <span class="acc-title">Первое приложение</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>Plan Mode vs Auto Mode. Claude сам тестирует приложение, находит ошибки и исправляет их. 5 форматов вывода готового продукта.</p>
+          <div class="acc-tags"><span class="acc-tag">Plan Mode</span><span class="acc-tag">Тестирование</span><span class="acc-tag">Localhost</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">09</span>
+          <span class="acc-title">Деплой приложения на сервер</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>SSH-ключ за 7 шагов. Claude сам подключается к VPS, устанавливает Nginx и выгружает файлы. Приложение в интернете 24/7 за 15 минут.</p>
+          <div class="acc-tags"><span class="acc-tag">VPS</span><span class="acc-tag">SSH</span><span class="acc-tag">Nginx</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">10</span>
+          <span class="acc-title">API и личный агент</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>Разница между подпиской Pro и API. Получаем API-ключ, создаём агента с интерфейсом. Экономика: ~2 руб/запрос. 5 мест для размещения агента.</p>
+          <div class="acc-tags"><span class="acc-tag">API</span><span class="acc-tag">console.anthropic.com</span><span class="acc-tag">Монетизация</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">11</span>
+          <span class="acc-title">Telegram-бот</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>BotFather, токен, файл .env. memory.md для контекста между сессиями. Типичные ошибки, которые Claude решает сам. 4 сценария применения.</p>
+          <div class="acc-tags"><span class="acc-tag">BotFather</span><span class="acc-tag">Telegram API</span><span class="acc-tag">.env</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">12</span>
+          <span class="acc-title">Безопасность кода</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>Почему AI-код уязвим. Slopsquatting, SQL-инъекции, утечки ключей. Метод двойного прохода через OWASP Top 10. CLAUDE.md как постоянная защита.</p>
+          <div class="acc-tags"><span class="acc-tag">OWASP</span><span class="acc-tag">CLAUDE.md</span><span class="acc-tag">Безопасность</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header">
+          <span class="acc-num">13</span>
+          <span class="acc-title">Портфолио и первые клиенты</span>
+          <span class="acc-arrow">⌄</span>
+        </div>
+        <div class="acc-body">
+          <p>Скилл Frontend Design. Двухэтапный подход: дизайн → маркетинговый аудит. Три модели работы с клиентами. Как набить портфолио с нуля.</p>
+          <div class="acc-tags"><span class="acc-tag">Портфолио</span><span class="acc-tag">Маркетинг</span><span class="acc-tag">Клиенты</span></div>
         </div>
       </div>
 
     </div>
   </div>
+</section>
 
-  <!-- БЛОК 2: Первые проекты -->
-  <div class="block-group">
-    <div class="block-header">
-      <span class="block-badge bb-purple">Блок 2</span>
-      <span class="block-title">Первые проекты — лендинги и сайты</span>
-      <div class="block-divider"></div>
+<!-- Формат -->
+<section id="format">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Формат</div>
+      <h2 class="section-title">Всё, что нужно<br>для самостоятельной работы</h2>
+      <div class="divider-line"></div>
     </div>
-    <div class="lesson-list">
+    <div class="format-grid" style="margin-top:48px">
+      <div class="format-card">
+        <div class="icon">📚</div>
+        <h3>Уроки</h3>
+        <p>13 структурированных уроков с пошаговыми инструкциями и практическими заданиями. Читайте в своём темпе, возвращайтесь к любому моменту.</p>
+      </div>
+      <div class="format-card">
+        <div class="icon">📄</div>
+        <h3>Текстовые материалы</h3>
+        <p>Каждый урок — подробный текстовый конспект в формате .docx. Удобно читать, искать и распечатывать.</p>
+      </div>
+      <div class="format-card">
+        <div class="icon">🖥️</div>
+        <h3>Слайды к каждому уроку</h3>
+        <p>Интерактивные слайды reveal.js открываются прямо в браузере. Все ключевые схемы и таблицы под рукой.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="lesson-card" id="l-04" onclick="openLesson('04','lessons/урок-04.html')">
-        <div class="lc-num">04</div>
-        <div class="lc-body">
-          <div class="lc-tag">Блок 2 · Первый проект</div>
-          <div class="lc-title">Лендинг с нуля — без знания кода</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 45 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-04.html" class="lc-btn lc-btn-primary" onclick="markDone('04',event)">Читать урок</a>
-          <a href="slides/Урок_04_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
+<!-- Цена -->
+<section id="price">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:56px">
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Стоимость</div>
+      <h2 class="section-title">Один раз — навсегда</h2>
+      <div class="divider-line"></div>
+    </div>
+    <div class="price-wrap">
+      <div class="price-card">
+        <div class="price-badge">ПОЛНЫЙ ДОСТУП</div>
+        <div class="price-amount"><span>₽</span>4 900</div>
+        <p class="price-desc">единоразовый платёж · доступ навсегда</p>
+        <a href="https://boosty.to/master_ii/posts/2f05bae3-1086-41af-bb32-cd21ae8a2136" target="_blank" class="price-btn">Купить курс →</a>
+        <p class="price-note">Безопасная оплата · Доступ сразу после оплаты</p>
+      </div>
+      <div>
+        <ul class="price-list">
+          <li>13 уроков с пошаговыми инструкциями</li>
+          <li>Текстовые конспекты всех уроков (.docx)</li>
+          <li>Интерактивные слайды к каждому уроку</li>
+          <li>VPN + VPS для стран где Claude заблокирован (уроки 1–2 можно пропустить если доступ есть)</li>
+          <li>Создание сайтов, приложений и Telegram-ботов</li>
+          <li>Система агентов для контента и автоматизации</li>
+          <li>Блок безопасности кода и CLAUDE.md</li>
+          <li>Урок по портфолио и привлечению клиентов</li>
+          <li>Все обновления материалов бесплатно</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>FAQ</div>
+      <h2 class="section-title">Частые вопросы</h2>
+      <div class="divider-line"></div>
+    </div>
+    <div class="faq" style="margin-top:48px">
+
+      <div class="faq-item">
+        <div class="faq-q">Нужен ли опыт в программировании?<span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Нет. Курс спроектирован так, чтобы человек без технического опыта прошёл его от начала до конца. Claude Code — это инструмент, с которым вы работаете на естественном языке. Код пишет модель, вы управляете результатом.</div>
       </div>
 
-      <div class="lesson-card" id="l-04-1" onclick="openLesson('04-1','lessons/урок-04-1.html')">
-        <div class="lc-num" style="font-size:11px">4.1</div>
-        <div class="lc-body">
-          <div class="lc-tag">Практикум · Урок 4</div>
-          <div class="lc-title">Netlify: публикуем сайт в интернет</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 3 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-04-1.html" class="lc-btn lc-btn-primary" onclick="markDone('04-1',event)">Читать урок</a>
-          <a href="slides/Урок_04_1_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
+      <div class="faq-item">
+        <div class="faq-q">Можно ли пройти курс на Mac?<span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Да. Все инструменты из курса работают и на Windows, и на macOS. Где есть отличия в установке — они подробно разобраны прямо в уроке.</div>
       </div>
 
-      <div class="lesson-card" id="l-05" onclick="openLesson('05','lessons/урок-05.html')">
-        <div class="lc-num">05</div>
-        <div class="lc-body">
-          <div class="lc-tag">Блок 2 · Продвинутые сайты</div>
-          <div class="lc-title">Многостраничный сайт и публикация на Vercel</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 60 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-05.html" class="lc-btn lc-btn-primary" onclick="markDone('05',event)">Читать урок</a>
-          <a href="slides/Урок_05_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
+      <div class="faq-item">
+        <div class="faq-q">Сколько стоит поддерживать инфраструктуру?<span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">VPS-сервер для VPN — около $5.5 в месяц. Подписка Claude Pro — $20/мес, но есть бесплатный план. API — платите только за то, что используете: ~2 руб за запрос к Sonnet. Итого от ~500 ₽/мес при минимальном использовании.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Курс актуален, если Claude обновится?<span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Курс учит принципам работы, а не кликать по конкретным кнопкам. Интерфейс Claude может меняться, но механика промптинга, агентов, деплоя и безопасного кода — остаётся. При существенных изменениях материалы обновляются.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Как получить доступ после оплаты?<span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Сразу после оплаты в посте Boosty откроется ссылка на все материалы курса. Доступ бессрочный — возвращайтесь в любое время.</div>
       </div>
 
     </div>
   </div>
+</section>
 
-  <!-- БЛОК 3: Контент и визуал -->
-  <div class="block-group">
-    <div class="block-header">
-      <span class="block-badge bb-blue">Блок 3</span>
-      <span class="block-title">Контент-система и визуальный контент</span>
-      <div class="block-divider"></div>
-    </div>
-    <div class="lesson-list">
-
-      <div class="lesson-card" id="l-06" onclick="openLesson('06','lessons/урок-06.html')">
-        <div class="lc-num">06</div>
-        <div class="lc-body">
-          <div class="lc-tag">Блок 3 · Контент-система</div>
-          <div class="lc-title">Агенты и контент-завод в Claude Projects</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 40 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-06.html" class="lc-btn lc-btn-primary" onclick="markDone('06',event)">Читать урок</a>
-          <a href="slides/Урок_06_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-logo">МАСТЕР-ИИ</span>
+      <span class="footer-text">© 2026 · Все материалы защищены авторским правом</span>
+      <div class="footer-links">
+        <a href="mailto:chelyabinsk074@gmail.com">Написать нам</a>
       </div>
-
-      <div class="lesson-card" id="l-07" onclick="openLesson('07','lessons/урок-07.html')">
-        <div class="lc-num">07</div>
-        <div class="lc-body">
-          <div class="lc-tag">Блок 3 · Визуал</div>
-          <div class="lc-title">Инфографика, карусели и SVG без дизайнера</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 45 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-07.html" class="lc-btn lc-btn-primary" onclick="markDone('07',event)">Читать урок</a>
-          <a href="slides/Урок_07_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
-      </div>
-
     </div>
   </div>
-
-  <!-- БЛОК 4: Приложения -->
-  <div class="block-group">
-    <div class="block-header">
-      <span class="block-badge bb-purple">Блок 4</span>
-      <span class="block-title">Приложения и инфраструктура</span>
-      <div class="block-divider"></div>
-    </div>
-    <div class="lesson-list">
-
-      <div class="lesson-card" id="l-08" onclick="openLesson('08','lessons/урок-08.html')">
-        <div class="lc-num">08</div>
-        <div class="lc-body">
-          <div class="lc-tag">Блок 4 · Приложения</div>
-          <div class="lc-title">Первое приложение — от идеи до готового инструмента</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 15 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-08.html" class="lc-btn lc-btn-primary" onclick="markDone('08',event)">Читать урок</a>
-          <a href="slides/Урок_08_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
-      </div>
-
-      <div class="lesson-card" id="l-09" onclick="openLesson('09','lessons/урок-09.html')">
-        <div class="lc-num">09</div>
-        <div class="lc-body">
-          <div class="lc-tag">Блок 4 · Инфраструктура</div>
-          <div class="lc-title">Деплой на VPS — приложение в интернете 24/7</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 30 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-09.html" class="lc-btn lc-btn-primary" onclick="markDone('09',event)">Читать урок</a>
-          <a href="slides/Урок_09_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- БЛОК 5: Монетизация -->
-  <div class="block-group">
-    <div class="block-header">
-      <span class="block-badge bb-orange">Блок 5</span>
-      <span class="block-title">Монетизация, боты и безопасность</span>
-      <div class="block-divider"></div>
-    </div>
-    <div class="lesson-list">
-
-      <div class="lesson-card" id="l-10" onclick="openLesson('10','lessons/урок-10.html')">
-        <div class="lc-num">10</div>
-        <div class="lc-body">
-          <div class="lc-tag">Блок 5 · Монетизация</div>
-          <div class="lc-title">API и личный агент вне Claude</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 45 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-10.html" class="lc-btn lc-btn-primary" onclick="markDone('10',event)">Читать урок</a>
-          <a href="slides/Урок_10_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
-      </div>
-
-      <div class="lesson-card" id="l-11" onclick="openLesson('11','lessons/урок-11.html')">
-        <div class="lc-num">11</div>
-        <div class="lc-body">
-          <div class="lc-tag">Блок 5 · Каналы доставки</div>
-          <div class="lc-title">Telegram-бот: агент в мессенджере</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 45 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-11.html" class="lc-btn lc-btn-primary" onclick="markDone('11',event)">Читать урок</a>
-          <a href="slides/Урок_11_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
-      </div>
-
-      <div class="lesson-card" id="l-12" onclick="openLesson('12','lessons/урок-12.html')">
-        <div class="lc-num">12</div>
-        <div class="lc-body">
-          <div class="lc-tag">Блок 5 · Защита</div>
-          <div class="lc-title">Безопасность вайб-кода: как не сломать рабочее</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 40 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-12.html" class="lc-btn lc-btn-primary" onclick="markDone('12',event)">Читать урок</a>
-          <a href="slides/Урок_12_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- БЛОК 6: Финал -->
-  <div class="block-group">
-    <div class="block-header">
-      <span class="block-badge bb-green">Финал</span>
-      <span class="block-title">Портфолио и первые клиенты</span>
-      <div class="block-divider"></div>
-    </div>
-    <div class="lesson-list">
-
-      <div class="lesson-card" id="l-13" onclick="openLesson('13','lessons/урок-13.html')">
-        <div class="lc-num">13</div>
-        <div class="lc-body">
-          <div class="lc-tag">Финальный урок · Блок 6</div>
-          <div class="lc-title">Портфолио, скиллы дизайна и первые клиенты</div>
-          <div class="lc-meta"><span class="lc-time">⏱ 50 мин</span></div>
-        </div>
-        <div class="lc-actions">
-          <span class="lc-done-badge">✓</span>
-          <a href="lessons/урок-13.html" class="lc-btn lc-btn-primary" onclick="markDone('13',event)">Читать урок</a>
-          <a href="slides/Урок_13_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Finish banner -->
-  <div class="finish-banner" id="finishBanner">
-    <div style="font-size:2.5rem;margin-bottom:12px">🎉</div>
-    <h2>Курс пройден!</h2>
-    <p>Все 15 уроков завершены. Вы освоили Claude Code — от VPN до первых клиентов.</p>
-  </div>
-
-</div>
+</footer>
 
 <script>
-var TOTAL = 15;
-var TIMES = {'01':10,'02':25,'03':10,'03-1':15,'04':45,'04-1':3,'05':60,'06':40,'07':45,'08':15,'09':30,'10':45,'11':45,'12':40,'13':50};
-
-function getProgress(){
-  try{ return JSON.parse(localStorage.getItem('masterii_done') || '[]') }
-  catch(e){ return [] }
-}
-function saveProgress(arr){
-  localStorage.setItem('masterii_done', JSON.stringify(arr));
-}
-
-function updateUI(){
-  var done = getProgress();
-  var count = done.length;
-  var mins = done.reduce(function(s,id){ return s + (TIMES[id]||0) }, 0);
-  var hrs = mins >= 60 ? Math.floor(mins/60) + 'ч ' + (mins%60) + 'м' : mins + 'м';
-
-  document.getElementById('ovDone').textContent = count;
-  document.getElementById('ovTime').textContent = hrs;
-  document.getElementById('navLabel').textContent = count + ' / ' + TOTAL;
-  document.getElementById('navFill').style.width = Math.round(count/TOTAL*100) + '%';
-
-  document.querySelectorAll('.lesson-card').forEach(function(card){
-    var id = card.id.replace('l-','');
-    if(done.indexOf(id) > -1){ card.classList.add('done') }
-    else { card.classList.remove('done') }
+document.querySelectorAll('.acc-header').forEach(h => {
+  h.addEventListener('click', () => {
+    const item = h.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   });
-
-  document.getElementById('finishBanner').classList.toggle('show', count >= TOTAL);
-}
-
-function markDone(id, e){
-  if(e){ e.stopPropagation(); }
-  var done = getProgress();
-  if(done.indexOf(id) === -1){ done.push(id); saveProgress(done); updateUI(); }
-}
-
-function openLesson(id, url){
-  markDone(id, null);
-  window.location.href = url;
-}
-
-function resetProgress(){
-  if(confirm('Сбросить весь прогресс?')){ localStorage.removeItem('masterii_done'); updateUI(); }
-}
-
-updateUI();
+});
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
 </script>
 
 </body>
