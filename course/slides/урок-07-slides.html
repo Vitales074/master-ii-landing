@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Урок 7 — Визуальный контент · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+:root{--blue:#2563EB;--blue-l:#60a5fa;--purple:#7C3AED;--purple-l:#a78bfa;--green:#10B981;--green-l:#6ee7b7;--orange:#f97316}
+.reveal{font-family:'Hanken Grotesk',sans-serif;font-size:32px}.reveal .slides{text-align:left}
+.reveal h1,.reveal h2,.reveal h3{font-family:'Unbounded',sans-serif;text-transform:none;letter-spacing:-.02em}
+.reveal h1{font-size:1.8em;font-weight:900;line-height:1.1}.reveal h2{font-size:1.2em;font-weight:700;color:var(--blue-l);margin-bottom:.5em}
+.reveal h3{font-size:.85em;font-weight:700;margin-bottom:.3em}.reveal p,.reveal li{color:#c8d0e8;line-height:1.6;font-size:.85em}
+.reveal ul{list-style:none;padding:0}.reveal ul li::before{content:"▸ ";color:var(--blue-l)}.reveal strong{color:#fff}
+.brand{position:fixed;top:24px;right:32px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;z-index:9999}
+.tag{display:inline-block;padding:4px 14px;background:rgba(37,99,235,.15);border:1px solid rgba(96,165,250,.35);border-radius:100px;font-size:.55em;font-family:'Unbounded',sans-serif;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1em}
+.accent{color:var(--blue-l)}.accent-p{color:var(--purple-l)}.accent-g{color:var(--green-l)}.accent-o{color:var(--orange)}
+.box-blue{background:rgba(37,99,235,.1);border-left:3px solid var(--blue-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-purple{background:rgba(124,58,237,.1);border-left:3px solid var(--purple-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-green{background:rgba(16,185,129,.08);border-left:3px solid var(--green-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-orange{background:rgba(249,115,22,.08);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,rgba(37,99,235,.25),rgba(124,58,237,.15));border:1px solid rgba(96,165,250,.35);border-radius:8px;font-family:'Unbounded',sans-serif;font-size:.6em;font-weight:900;color:var(--blue-l);flex-shrink:0;margin-right:.5em}
+.step-row{display:flex;align-items:flex-start;gap:.6em;margin:.4em 0;font-size:.85em;color:#c8d0e8}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2em}
+.format-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.7em .9em;margin:.35em 0}
+.format-card h3{font-size:.78em;margin-bottom:.2em}
+.format-card p{font-size:.72em;color:#9090b0;margin:0}
+.reveal .slides section{padding:0 60px}.reveal .progress span{background:linear-gradient(90deg,var(--blue),var(--purple))}
+.lesson-num{font-family:'Unbounded',sans-serif;font-size:.45em;color:var(--blue-l);letter-spacing:.1em;margin-bottom:.3em}
+.reveal section.title-slide{text-align:center}.reveal section.title-slide h1{font-size:2em}
+</style>
+</head>
+<body>
+<div class="brand">МАСТЕР-ИИ</div>
+<div class="reveal"><div class="slides">
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 30% 50%, rgba(37,99,235,.22) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(16,185,129,.18) 0%, transparent 60%)">
+  <div class="lesson-num">УРОК 7 ИЗ 13</div>
+  <div class="tag">Блок 3 · Визуал</div>
+  <h1>Визуальный контент:<br><span class="accent">инфографика и карусели</span></h1>
+  <p style="text-align:center;margin-top:1em;font-size:.75em;color:#8090b0">~35 минут · SVG · HTML+CSS · Скиллы · Карусели</p>
+</section>
+
+<section>
+  <h2>Что вы узнаете</h2>
+  <ul>
+    <li class="fragment">Главное заблуждение: Claude — не Midjourney, и это хорошо</li>
+    <li class="fragment">Что умеет и что не умеет делать Claude с визуалом</li>
+    <li class="fragment">Три формата: SVG, HTML+CSS, Canvas — когда что использовать</li>
+    <li class="fragment">Полный цикл создания карусели за 3 шага</li>
+    <li class="fragment">Формула промпта для визуала — 6 элементов</li>
+    <li class="fragment">Скиллы: как зафиксировать стиль раз и навсегда</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Главное заблуждение</h2>
+  <p>Многие ждут от Claude того, что умеет Midjourney. Это разные инструменты.</p>
+  <div class="two-col" style="margin-top:.5em">
+    <div class="fragment">
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.8em">
+        <h3 class="accent-o">Midjourney / DALL-E</h3>
+        <p style="font-size:.78em;color:#9090b0">Генерирует пиксели. Создаёт фотореалистичные изображения. Плохо масштабируется. Нельзя редактировать текст.</p>
+      </div>
+    </div>
+    <div class="fragment">
+      <div style="background:rgba(37,99,235,.07);border:1px solid rgba(96,165,250,.2);border-radius:12px;padding:.8em">
+        <h3 class="accent">Claude</h3>
+        <p style="font-size:.78em;color:#9090b0">Пишет код визуала. Векторный формат — масштабируется бесконечно. Открывается в Figma. Текст редактируется.</p>
+      </div>
+    </div>
+  </div>
+  <div class="box-blue fragment" style="margin-top:.7em">Ограничение превращается в преимущество: SVG-файл от Claude можно открыть в Figma и редактировать как профессиональный макет.</div>
+</section>
+
+<section>
+  <h2>Что Claude делает с визуалом</h2>
+  <div class="two-col">
+    <div>
+      <p class="fragment" style="font-size:.8em;margin-bottom:.3em"><span style="color:var(--green-l)">✓ Умеет:</span></p>
+      <ul class="fragment">
+        <li>Инфографика (схемы, диаграммы)</li>
+        <li>SVG иконки и логотипы</li>
+        <li>Карусели для соцсетей</li>
+        <li>Баннеры HTML+CSS</li>
+        <li>Графики по данным (Plotly)</li>
+      </ul>
+    </div>
+    <div>
+      <p class="fragment" style="font-size:.8em;margin-bottom:.3em"><span style="color:#ff8080">✗ Не умеет:</span></p>
+      <ul class="fragment">
+        <li>Фотореалистичные изображения</li>
+        <li>Аватары и лица</li>
+        <li>Видео и анимацию в GIF</li>
+        <li>Редактирование чужих фото</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box-blue fragment" style="margin-top:.6em">Для фото и аватаров — отдельные инструменты: Midjourney, Leonardo, Stable Diffusion. Claude формирует промпт, вы запускаете там.</div>
+</section>
+
+<section>
+  <h2>Три формата: когда что использовать</h2>
+  <div class="format-card fragment">
+    <h3 class="accent">SVG — логотипы и иконки</h3>
+    <p>Векторный формат. Масштабируется без потерь. Открывается в Figma и Illustrator. Лучший выбор для брендинга и UI-элементов.</p>
+  </div>
+  <div class="format-card fragment">
+    <h3 class="accent-p">HTML + CSS — карусели и баннеры</h3>
+    <p>Интерактивность, анимации, кнопки. Идеально для постов соцсетей и баннеров. Сохраняйте как скриншот через браузер.</p>
+  </div>
+  <div class="format-card fragment">
+    <h3 class="accent-g">Canvas / Plotly — графики по данным</h3>
+    <p>Динамические диаграммы, интерактивные графики. Нужен когда данные меняются или нужна анимация.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Карусель за 3 шага</h2>
+  <div class="step-row fragment"><span class="num">1</span><span>Напишите текст поста: тема, тезисы, структура (не нужно оформлять красиво)</span></div>
+  <div class="step-row fragment"><span class="num">2</span><span>Запрос: «Создай карусель из N слайдов на основе этого текста — HTML+CSS, размер 1080×1080»</span></div>
+  <div class="step-row fragment"><span class="num">3</span><span>Итеративная правка: изменить цвет → поправить шрифт → добавить элемент. По одному изменению за раз.</span></div>
+  <div class="box-blue fragment" style="margin-top:.6em"><strong>Принцип:</strong> не пытайтесь получить идеал с первого промпта. Первая версия — черновик. Итерации делают финальный результат.</div>
+</section>
+
+<section>
+  <h2>Формула промпта для визуала: 6 элементов</h2>
+  <div style="background:rgba(37,99,235,.07);border:1px solid rgba(96,165,250,.18);border-radius:12px;padding:.8em 1em;font-size:.75em;font-family:monospace;line-height:1.8" class="fragment">
+    <span style="color:var(--blue-l);font-weight:700">[Формат]</span> HTML+CSS карусель, 5 слайдов<br>
+    <span style="color:var(--blue-l);font-weight:700">[Размер]</span> 1080×1080 пикселей<br>
+    <span style="color:var(--blue-l);font-weight:700">[Палитра]</span> тёмный фон #0a0a1a, акцент синий #2563EB<br>
+    <span style="color:var(--blue-l);font-weight:700">[Шрифт]</span> Montserrat жирный для заголовков<br>
+    <span style="color:var(--blue-l);font-weight:700">[Содержание]</span> Слайд 1: заголовок. Слайды 2–4: по одному тезису. Слайд 5: CTA<br>
+    <span style="color:var(--blue-l);font-weight:700">[Декор]</span> Градиентная рамка, геометрические акценты
+  </div>
+  <div class="box-green fragment" style="margin-top:.6em">Детальный промпт = меньше итераций. Короткий промпт для экспериментов, детальный для финального результата.</div>
+</section>
+
+<section>
+  <h2>Скиллы: фиксируем стиль навсегда</h2>
+  <p>Скилл — встроенная инструкция для Claude Code, которая применяется в каждой сессии.</p>
+  <div class="step-row fragment"><span class="num">1</span><span>Договоритесь с Claude о дизайне: шрифты, цвета, стиль элементов</span></div>
+  <div class="step-row fragment"><span class="num">2</span><span>Попросите: «Сохрани этот стиль как скилл — сделай ZIP-архив»</span></div>
+  <div class="step-row fragment"><span class="num">3</span><span>Скачайте ZIP, сохраните в папку на компьютере</span></div>
+  <div class="step-row fragment"><span class="num">4</span><span>В следующем проекте: Customize → Add Skill → загрузите ZIP</span></div>
+  <div class="box-green fragment" style="margin-top:.6em">В Code скилл читается как файл — стиль не «уплывает» от сессии к сессии. До 2–3 скиллов одновременно, иначе могут конфликтовать.</div>
+</section>
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(37,99,235,.15) 0%, transparent 70%)">
+  <h2 style="color:var(--blue-l);text-align:center">Ключевые выводы</h2>
+  <ul style="text-align:left;display:inline-block;margin-top:.5em">
+    <li class="fragment">Claude — не Midjourney: он пишет код визуала, и это векторный формат</li>
+    <li class="fragment">SVG для логотипов, HTML+CSS для каруселей, Canvas для графиков</li>
+    <li class="fragment">Карусель = 3 шага: текст → запрос → итерации</li>
+    <li class="fragment">Скиллы фиксируют стиль: один раз настроили — работает всегда</li>
+  </ul>
+  <div style="margin-top:1.5em;font-family:'Unbounded',sans-serif;font-size:.6em;color:#8090b0">
+    Следующий урок: <span style="color:var(--purple-l)">Создаём первое приложение →</span>
+  </div>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({hash:true,width:1920,height:1080,margin:.04,controls:true,progress:true,center:false,transition:'fade',transitionSpeed:'fast'});</script>
+</body></html>

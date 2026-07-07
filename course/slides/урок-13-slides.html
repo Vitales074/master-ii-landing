@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Урок 13 — Портфолио · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+:root{--blue:#2563EB;--blue-l:#60a5fa;--purple:#7C3AED;--purple-l:#a78bfa;--green:#10B981;--green-l:#6ee7b7;--orange:#f97316}
+.reveal{font-family:'Hanken Grotesk',sans-serif;font-size:32px}.reveal .slides{text-align:left}
+.reveal h1,.reveal h2,.reveal h3{font-family:'Unbounded',sans-serif;text-transform:none;letter-spacing:-.02em}
+.reveal h1{font-size:1.8em;font-weight:900;line-height:1.1}.reveal h2{font-size:1.2em;font-weight:700;color:var(--green-l);margin-bottom:.5em}
+.reveal h3{font-size:.85em;font-weight:700;margin-bottom:.3em}.reveal p,.reveal li{color:#c8d0e8;line-height:1.6;font-size:.85em}
+.reveal ul{list-style:none;padding:0}.reveal ul li::before{content:"▸ ";color:var(--green-l)}.reveal strong{color:#fff}
+.brand{position:fixed;top:24px;right:32px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;z-index:9999}
+.tag{display:inline-block;padding:4px 14px;background:rgba(16,185,129,.15);border:1px solid rgba(110,231,183,.35);border-radius:100px;font-size:.55em;font-family:'Unbounded',sans-serif;color:var(--green-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1em}
+.accent{color:var(--green-l)}.accent-b{color:var(--blue-l)}.accent-p{color:var(--purple-l)}.accent-o{color:var(--orange)}
+.box-blue{background:rgba(37,99,235,.1);border-left:3px solid var(--blue-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-green{background:rgba(16,185,129,.08);border-left:3px solid var(--green-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-purple{background:rgba(124,58,237,.1);border-left:3px solid var(--purple-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,rgba(16,185,129,.25),rgba(37,99,235,.15));border:1px solid rgba(110,231,183,.35);border-radius:8px;font-family:'Unbounded',sans-serif;font-size:.6em;font-weight:900;color:var(--green-l);flex-shrink:0;margin-right:.5em}
+.step-row{display:flex;align-items:flex-start;gap:.6em;margin:.4em 0;font-size:.85em;color:#c8d0e8}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2em}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8em}
+.model-card{background:rgba(16,185,129,.06);border:1px solid rgba(110,231,183,.2);border-radius:12px;padding:.7em .9em;text-align:center}
+.model-card h3{font-size:.75em;color:var(--green-l);margin-bottom:.2em}
+.model-card p{font-size:.68em;color:#8090a0;margin:0}
+.checklist-item{display:flex;align-items:flex-start;gap:.5em;margin:.35em 0;font-size:.82em;color:#c8d0e8}
+.check{width:20px;height:20px;border:2px solid var(--green-l);border-radius:4px;flex-shrink:0;margin-top:.1em}
+.reveal .slides section{padding:0 60px}.reveal .progress span{background:linear-gradient(90deg,var(--green),var(--blue))}
+.lesson-num{font-family:'Unbounded',sans-serif;font-size:.45em;color:var(--green-l);letter-spacing:.1em;margin-bottom:.3em}
+.reveal section.title-slide{text-align:center}.reveal section.title-slide h1{font-size:2em}
+</style>
+</head>
+<body>
+<div class="brand">МАСТЕР-ИИ</div>
+<div class="reveal"><div class="slides">
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 30% 50%, rgba(16,185,129,.22) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(37,99,235,.18) 0%, transparent 60%)">
+  <div class="lesson-num">УРОК 13 ИЗ 13</div>
+  <div class="tag">Финал · Выход на рынок</div>
+  <h1>Портфолио:<br><span class="accent">выглядеть профессионально и закрывать сделки</span></h1>
+  <p style="text-align:center;margin-top:1em;font-size:.75em;color:#8090b0">~40 минут · Скиллы · Frontend Design · Аудит текстов · Модели работы</p>
+</section>
+
+<section>
+  <h2>Что вы узнаете</h2>
+  <ul>
+    <li class="fragment">Три аудитории: разные уровни доверия — разные доказательства</li>
+    <li class="fragment">Скиллы в Code: стабильный результат без повторных объяснений</li>
+    <li class="fragment">Frontend Design skill: профессиональный сайт из одного запроса</li>
+    <li class="fragment">Двухэтапный подход: дизайн отдельно, маркетинг отдельно</li>
+    <li class="fragment">Маркетинговый аудит: Claude как профессиональный копирайтер</li>
+    <li class="fragment">Три модели работы с клиентом</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Три аудитории — три уровня доверия</h2>
+  <div class="three-col" style="margin-top:.3em">
+    <div class="model-card fragment">
+      <h3>Близкие</h3>
+      <p>Доверяют без доказательств. Первые клиенты и кейсы.</p>
+    </div>
+    <div class="model-card fragment">
+      <h3>Знакомые</h3>
+      <p>Нужны примеры работ. Скриншоты, ссылки, описание.</p>
+    </div>
+    <div class="model-card fragment">
+      <h3>Незнакомые</h3>
+      <p>Нужны кейсы, отзывы и профессиональный сайт.</p>
+    </div>
+  </div>
+  <div class="box-green fragment" style="margin-top:.7em">Как набить портфолио с нуля: проекты для себя, семьи, друзей → реальные скриншоты и ссылки → попросить написать отзыв. 3–5 кейсов разного типа достаточно для старта.</div>
+</section>
+
+<section>
+  <h2>Скиллы в Claude Code: стабильный результат</h2>
+  <p>Скилл — встроенная инструкция которая применяется в каждой сессии. Фиксирует стиль навсегда.</p>
+  <div class="two-col" style="margin-top:.5em">
+    <div class="fragment">
+      <div style="background:rgba(255,100,100,.06);border:1px solid rgba(255,100,100,.2);border-radius:10px;padding:.7em;font-size:.8em">
+        <strong style="color:#ff8080">Без скилла</strong>
+        <p style="color:#9090b0;font-size:.9em;margin:.3em 0">Каждый раз объясняете стиль. Результат непредсказуем. Много итераций.</p>
+      </div>
+    </div>
+    <div class="fragment">
+      <div style="background:rgba(16,185,129,.06);border:1px solid rgba(110,231,183,.2);border-radius:10px;padding:.7em;font-size:.8em">
+        <strong style="color:var(--green-l)">Со скиллом</strong>
+        <p style="color:#9090b0;font-size:.9em;margin:.3em 0">Один запрос — ожидаемый результат. Стиль не уплывает.</p>
+      </div>
+    </div>
+  </div>
+  <div class="box-green fragment" style="margin-top:.6em"><strong>Как установить:</strong> Customize → Create New Skill → Upload ZIP. Не более 2–3 скиллов одновременно — могут конфликтовать. Можно объединить два скилла в один.</div>
+</section>
+
+<section>
+  <h2>Frontend Design skill</h2>
+  <p>Скилл для профессионального дизайна — 3D-анимации, типографика, интерактивные секции.</p>
+  <div class="step-row fragment"><span class="num">→</span><span>Подключение: «...для дизайна используй skill Frontend Design»</span></div>
+  <div class="step-row fragment"><span class="num">→</span><span>Модель: <strong>Sonnet</strong> — справляется с дизайном и кодом, бережёт лимиты</span></div>
+  <div class="step-row fragment"><span class="num">→</span><span>Промпт: «Создай сайт для [ваш бизнес] — название, слоган, логотип, полный лендинг»</span></div>
+  <div class="step-row fragment"><span class="num">→</span><span>~20 минут — сайт с анимацией, градиентами, профессиональной типографикой</span></div>
+  <div class="box-green fragment" style="margin-top:.6em">Opus — для финальной полировки, не для старта. Sonnet делает отличный дизайн и экономит лимиты для правок.</div>
+</section>
+
+<section>
+  <h2>Двухэтапный подход</h2>
+  <p>Нельзя смешивать дизайн и маркетинг в одном запросе — Claude будет компромиссить.</p>
+  <div class="step-row fragment"><span class="num">1</span><span><strong>Этап дизайна:</strong> «Создай красивый лендинг с Frontend Design skill. Тексты — заглушки.»</span></div>
+  <div class="step-row fragment"><span class="num">2</span><span><strong>Этап маркетинга:</strong> отдельный запрос → «Оцени тексты как профессиональный маркетолог. Что отталкивает клиентов?»</span></div>
+  <div class="step-row fragment"><span class="num">3</span><span><strong>Переработка:</strong> «Теперь перепиши все тексты по найденным проблемам»</span></div>
+  <div class="box-green fragment" style="margin-top:.6em">Двухэтапный подход даёт и красивый дизайн, и продающие тексты. Одноэтапный жертвует одним ради другого.</div>
+</section>
+
+<section>
+  <h2>Типичные проблемы текстов на сайтах</h2>
+  <ul>
+    <li class="fragment"><strong>Слоган описывает компанию</strong> — нужно описывать результат для клиента</li>
+    <li class="fragment"><strong>Услуги перечислены технически</strong> — клиент думает о своей боли, не о вашем процессе</li>
+    <li class="fragment"><strong>Статистика без контекста</strong> — «10 лет» ничего не значит без «благодаря чему»</li>
+    <li class="fragment"><strong>CTA «Контакты»</strong> — вместо «Обсудить задачу» или «Получить расчёт»</li>
+    <li class="fragment"><strong>Нет конкретики</strong> — «высококачественные услуги» vs «сайт за 3 дня с гарантией»</li>
+  </ul>
+  <div class="box-green fragment" style="margin-top:.5em">Claude находит эти проблемы и переписывает тексты в один дополнительный запрос.</div>
+</section>
+
+<section>
+  <h2>Три модели работы с клиентом</h2>
+  <div class="three-col" style="margin-top:.3em">
+    <div class="model-card fragment">
+      <h3>Разовая сдача</h3>
+      <p>Сделал — передал — получил оплату. Просто, но нет дохода после.</p>
+    </div>
+    <div class="model-card fragment">
+      <h3>Правки за доплату</h3>
+      <p>База + правки по часовой ставке. Предсказуемо для обеих сторон.</p>
+    </div>
+    <div class="model-card fragment">
+      <h3>Сопровождение</h3>
+      <p>Ежемесячная оплата. Вы поддерживаете и развиваете. Стабильный доход.</p>
+    </div>
+  </div>
+  <div class="box-blue fragment" style="margin-top:.7em">Три способа передачи проекта: папка с файлами / деплой на сервер клиента / полное сопровождение. Оформить договор и самозанятость — Claude помогает создать шаблон, проверьте самостоятельно.</div>
+</section>
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 40%, rgba(16,185,129,.2) 0%, transparent 50%), radial-gradient(ellipse at 50% 80%, rgba(37,99,235,.15) 0%, transparent 50%)">
+  <div style="margin-bottom:.3em">
+    <div style="font-family:'Unbounded',sans-serif;font-size:.5em;color:var(--green-l);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5em">Курс завершён</div>
+    <h1 style="font-size:1.6em">Вы прошли <span class="accent">Мастер-ИИ</span></h1>
+  </div>
+  <ul style="text-align:left;display:inline-block;margin:.5em 0 1em">
+    <li class="fragment" style="font-size:.8em">VPN, VPS, ProtonMail — инфраструктура настроена</li>
+    <li class="fragment" style="font-size:.8em">Лендинги, многостраничные сайты, приложения — создаёте</li>
+    <li class="fragment" style="font-size:.8em">Агенты, Telegram-боты, API — автоматизируете</li>
+    <li class="fragment" style="font-size:.8em">Безопасность, портфолио, клиенты — работаете профессионально</li>
+  </ul>
+  <div class="fragment" style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(37,99,235,.1));border:1px solid rgba(110,231,183,.3);border-radius:16px;padding:.8em 1.5em;display:inline-block;margin-top:.3em">
+    <p style="font-family:'Unbounded',sans-serif;font-size:.65em;color:var(--green-l);margin:0">Следующий шаг — первый реальный клиент</p>
+  </div>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({hash:true,width:1920,height:1080,margin:.04,controls:true,progress:true,center:false,transition:'fade',transitionSpeed:'fast'});</script>
+</body></html>

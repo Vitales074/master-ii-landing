@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастер-ИИ — Шаблон слайдов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<style>
+/* ============================================================
+   BOLD MAXIMALISM — те же токены что и лендинг
+   ============================================================ */
+:root {
+  --bg:       #05050f;
+  --bg-1:     #0a0a1a;
+  --blue:     #2563EB;
+  --blue-l:   #60a5fa;
+  --purple:   #7C3AED;
+  --purple-l: #a78bfa;
+  --green:    #10B981;
+  --green-l:  #6ee7b7;
+  --orange:   #f97316;
+  --text:     #f0f0ff;
+  --muted:    #b8c0dc;
+  --dim:      #6870a0;
+  --font-d:   'Unbounded', sans-serif;
+  --font-b:   'Hanken Grotesk', sans-serif;
+  --ease:     cubic-bezier(.2,.8,.2,1);
+}
+
+/* ============================================================
+   REVEAL OVERRIDES
+   ============================================================ */
+.reveal-viewport { background: var(--bg); }
+
+.reveal {
+  font-family: var(--font-b);
+  font-size: 38px;
+  color: var(--text);
+}
+
+/* Сетка фона (grid lines как на лендинге) */
+.reveal .slide-background-content::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Aurora orbs на каждом слайде */
+.slide-orbs {
+  position: absolute; inset: -20%; z-index: 0; pointer-events: none;
+}
+.orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(70px); will-change: transform;
+  animation: aurora-drift 22s ease-in-out infinite;
+}
+.orb-1 {
+  width: 55%; height: 55%; top: -5%; left: -5%;
+  background: radial-gradient(circle, rgba(37,99,235,.35), transparent 65%);
+}
+.orb-2 {
+  width: 45%; height: 45%; top: 10%; right: -5%;
+  background: radial-gradient(circle, rgba(124,58,237,.4), transparent 65%);
+  animation-delay: -7s;
+}
+.orb-3 {
+  width: 50%; height: 50%; bottom: -10%; left: 30%;
+  background: radial-gradient(circle, rgba(16,185,129,.28), transparent 65%);
+  animation-delay: -14s;
+}
+
+@keyframes aurora-drift {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(-3%,5%) scale(1.07); }
+  66%      { transform: translate(4%,-3%) scale(1.04); }
+}
+@keyframes gradient-pan {
+  0%,100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* ============================================================
+   СЛАЙДЫ — ОБЩЕЕ
+   ============================================================ */
+.reveal .slides section {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4% 8%;
+  overflow: hidden;
+}
+
+/* Логотип-бейдж на каждом слайде */
+.slide-brand {
+  position: absolute;
+  top: 28px; right: 36px;
+  z-index: 10;
+  font-family: var(--font-d);
+  font-size: .55em;
+  font-weight: 900;
+  letter-spacing: .12em;
+  background: linear-gradient(90deg, var(--blue-l), var(--purple-l));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: .8;
+}
+
+/* Номер урока (левый нижний угол) */
+.slide-lesson-num {
+  position: absolute;
+  bottom: 24px; left: 36px;
+  z-index: 10;
+  font-family: var(--font-d);
+  font-size: .42em;
+  font-weight: 700;
+  color: var(--dim);
+  letter-spacing: .06em;
+}
+
+/* Номер слайда (правый нижний угол) */
+.reveal .slide-number {
+  font-family: var(--font-d);
+  font-size: .38em;
+  color: var(--dim);
+  background: transparent;
+  bottom: 20px; right: 36px;
+}
+
+/* ============================================================
+   EYEBROW-ТЕГ (как на лендинге)
+   ============================================================ */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 14px;
+  background: rgba(37,99,235,.12);
+  border: 1px solid rgba(37,99,235,.35);
+  border-radius: 100px;
+  font-size: .42em;
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: var(--blue-l);
+  text-transform: uppercase;
+  margin-bottom: .6em;
+}
+.eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--blue-l);
+  border-radius: 50%;
+}
+
+/* ============================================================
+   ТИПОГРАФИКА
+   ============================================================ */
+.reveal h1 {
+  font-family: var(--font-d);
+  font-size: 1.7em;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--text);
+  margin-bottom: .35em;
+}
+
+.reveal h2 {
+  font-family: var(--font-d);
+  font-size: 1.2em;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  color: var(--text);
+  margin-bottom: .4em;
+}
+
+.reveal h3 {
+  font-family: var(--font-d);
+  font-size: .8em;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: .3em;
+}
+
+.reveal p, .reveal li {
+  font-family: var(--font-b);
+  font-size: .65em;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.reveal ul, .reveal ol {
+  text-align: left;
+  margin: 0 auto;
+}
+
+.reveal li { margin-bottom: .3em; list-style: none; padding-left: 1.2em; position: relative; }
+.reveal li::before { content: '▸'; position: absolute; left: 0; color: var(--blue-l); }
+
+/* Градиентный акцент-текст */
+.accent {
+  background: linear-gradient(90deg, var(--blue-l), var(--purple-l), var(--green-l));
+  background-size: 200% 200%;
+  animation: gradient-pan 4s ease-in-out infinite;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.accent-blue   { color: var(--blue-l);   -webkit-text-fill-color: var(--blue-l); }
+.accent-purple { color: var(--purple-l); -webkit-text-fill-color: var(--purple-l); }
+.accent-green  { color: var(--green-l);  -webkit-text-fill-color: var(--green-l); }
+.accent-orange { color: var(--orange);   -webkit-text-fill-color: var(--orange); }
+
+/* ============================================================
+   BENTO GRID (для слайдов с карточками)
+   ============================================================ */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .5em;
+  width: 100%;
+  max-width: 900px;
+}
+.bento-2 { grid-template-columns: repeat(2, 1fr); }
+.bento-4 { grid-template-columns: repeat(2, 1fr); }
+
+.bc {
+  border-radius: 14px;
+  padding: 1em 1.2em;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.bc h3 { margin-bottom: .2em; }
+.bc p  { font-size: .56em; opacity: .9; }
+.bc-blue   { background: linear-gradient(135deg, rgba(37,99,235,.25), rgba(37,99,235,.08)); border-color: rgba(96,165,250,.25); box-shadow: 0 0 20px rgba(37,99,235,.12); }
+.bc-purple { background: linear-gradient(135deg, rgba(124,58,237,.25), rgba(124,58,237,.08)); border-color: rgba(167,139,250,.25); box-shadow: 0 0 20px rgba(124,58,237,.12); }
+.bc-green  { background: linear-gradient(135deg, rgba(16,185,129,.22), rgba(16,185,129,.06)); border-color: rgba(110,231,183,.22); box-shadow: 0 0 20px rgba(16,185,129,.10); }
+.bc-orange { background: linear-gradient(135deg, rgba(249,115,22,.22), rgba(249,115,22,.06)); border-color: rgba(249,115,22,.22); box-shadow: 0 0 20px rgba(249,115,22,.10); }
+
+/* Большое число в карточке */
+.bc-num {
+  font-family: var(--font-d);
+  font-size: 1.6em;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: .15em;
+}
+
+/* ============================================================
+   КНОПКИ / ТЕГИ
+   ============================================================ */
+.btn {
+  display: inline-block;
+  padding: .55em 1.6em;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: #fff;
+  border-radius: 10px;
+  font-family: var(--font-d);
+  font-size: .5em;
+  font-weight: 700;
+  letter-spacing: .05em;
+  box-shadow: 0 0 24px rgba(37,99,235,.4);
+  margin-top: .8em;
+}
+
+.tag {
+  display: inline-block;
+  padding: .25em .8em;
+  border-radius: 6px;
+  font-size: .48em;
+  font-weight: 600;
+  font-family: var(--font-b);
+  letter-spacing: .04em;
+}
+.tag-blue   { background: rgba(37,99,235,.2);   color: var(--blue-l);   border: 1px solid rgba(96,165,250,.3); }
+.tag-purple { background: rgba(124,58,237,.2);  color: var(--purple-l); border: 1px solid rgba(167,139,250,.3); }
+.tag-green  { background: rgba(16,185,129,.18); color: var(--green-l);  border: 1px solid rgba(110,231,183,.3); }
+
+/* ============================================================
+   РАЗДЕЛИТЕЛЬ СПИСОК (нумерованные шаги)
+   ============================================================ */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  text-align: left;
+  width: 100%;
+  max-width: 760px;
+}
+.step {
+  display: flex;
+  gap: .8em;
+  align-items: flex-start;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  padding: .7em 1em;
+}
+.step-num {
+  font-family: var(--font-d);
+  font-size: .7em;
+  font-weight: 900;
+  min-width: 1.6em;
+  text-align: center;
+  background: linear-gradient(135deg, var(--blue-l), var(--purple-l));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.4;
+}
+.step-body { flex: 1; }
+.step-body strong { font-size: .62em; color: var(--text); display: block; margin-bottom: .1em; }
+.step-body span   { font-size: .55em; color: var(--muted); line-height: 1.6; }
+
+/* ============================================================
+   РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ
+   ============================================================ */
+.divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  border-radius: 2px;
+  margin: .5em auto;
+}
+
+/* ============================================================
+   СЛАЙД ТИПОВ: TITLE / SECTION / CONTENT
+   ============================================================ */
+
+/* Title slide — большой hero */
+.slide-title {
+  justify-content: center;
+}
+.slide-title h1 { font-size: 2em; }
+
+/* Section divider — переход между темами */
+.slide-section {
+  background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(124,58,237,.12));
+  border: 1px solid rgba(255,255,255,.08);
+}
+.slide-section .section-num {
+  font-family: var(--font-d);
+  font-size: 4em;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: .1em;
+  background: linear-gradient(135deg, var(--blue-l), var(--purple-l));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: .25;
+}
+.slide-section h2 { font-size: 1.3em; }
+
+/* Финальный слайд */
+.slide-final {
+  background: linear-gradient(135deg, rgba(37,99,235,.15), rgba(124,58,237,.15), rgba(16,185,129,.1));
+}
+
+/* ============================================================
+   ТАБЛИЦА СРАВНЕНИЯ
+   ============================================================ */
+.compare-table {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  font-size: .58em;
+}
+.compare-table th {
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: .9em;
+  padding: .6em 1em;
+  border-bottom: 2px solid rgba(255,255,255,.1);
+  color: var(--text);
+}
+.compare-table th:nth-child(2) { color: var(--blue-l); }
+.compare-table th:nth-child(3) { color: var(--green-l); }
+.compare-table td {
+  padding: .55em 1em;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  color: var(--muted);
+  line-height: 1.5;
+}
+.compare-table td:first-child { color: var(--dim); font-weight: 600; }
+.compare-table tr:last-child td { border-bottom: none; }
+
+/* ============================================================
+   REVEAL TRANSITIONS
+   ============================================================ */
+.reveal .slides section .fragment {
+  opacity: 0; transition: opacity .5s ease;
+}
+.reveal .slides section .fragment.visible { opacity: 1; }
+
+/* ============================================================
+   МЕДИА: убираем анимацию по желанию
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .orb, .accent { animation: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ======================================================
+         СЛАЙД 1 — ТИТУЛЬНЫЙ
+         ====================================================== -->
+    <section class="slide-title">
+      <div class="slide-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Урок N · Название блока</div>
+      <h1><span class="accent">Заголовок</span><br>урока здесь</h1>
+      <p style="max-width:600px; margin: 0 auto;">Подзаголовок или краткое описание того, что студент узнает в этом уроке. 1–2 предложения.</p>
+    </section>
+
+    <!-- ======================================================
+         СЛАЙД 2 — ЧТО УЗНАЕТЕ
+         ====================================================== -->
+    <section>
+      <div class="slide-orbs">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+      </div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок N</div>
+
+      <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
+      <h2>Что вы узнаете</h2>
+      <div class="divider"></div>
+
+      <div class="bento bento-2" style="margin-top:.8em;">
+        <div class="bc bc-blue fragment">
+          <h3 class="accent-blue">01</h3>
+          <p>Первый ключевой пункт урока — что студент поймёт или научится делать</p>
+        </div>
+        <div class="bc bc-purple fragment">
+          <h3 class="accent-purple">02</h3>
+          <p>Второй ключевой пункт — конкретный навык или знание</p>
+        </div>
+        <div class="bc bc-green fragment">
+          <h3 class="accent-green">03</h3>
+          <p>Третий пункт — практический результат</p>
+        </div>
+        <div class="bc bc-orange fragment">
+          <h3 class="accent-orange">04</h3>
+          <p>Четвёртый пункт — что можно сделать сразу после урока</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         СЛАЙД 3 — ПЕРЕХОД К РАЗДЕЛУ (section divider)
+         ====================================================== -->
+    <section class="slide-section">
+      <div class="slide-orbs">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+      </div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок N</div>
+
+      <div class="section-num">01</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел первый</div>
+      <h2>Название раздела</h2>
+      <p>Короткий подзаголовок — о чём этот раздел</p>
+    </section>
+
+    <!-- ======================================================
+         СЛАЙД 4 — КОНТЕНТ: ТЕЗИСЫ
+         ====================================================== -->
+    <section>
+      <div class="slide-orbs">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+      </div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок N</div>
+
+      <h2>Заголовок слайда</h2>
+      <div class="divider"></div>
+
+      <ul style="max-width:680px; margin-top:.6em;">
+        <li class="fragment">Первый тезис — конкретный факт или принцип</li>
+        <li class="fragment">Второй тезис — чуть развёрнутее, но не длиннее одной строки</li>
+        <li class="fragment">Третий тезис — практическое применение</li>
+        <li class="fragment">Четвёртый тезис — дополнительный нюанс</li>
+        <li class="fragment">Пятый тезис — итоговый вывод</li>
+      </ul>
+    </section>
+
+    <!-- ======================================================
+         СЛАЙД 5 — КОНТЕНТ: ШАГИ
+         ====================================================== -->
+    <section>
+      <div class="slide-orbs">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+      </div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок N</div>
+
+      <h2>Пошаговый алгоритм</h2>
+      <div class="divider"></div>
+
+      <div class="steps" style="margin-top:.7em;">
+        <div class="step fragment">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <strong>Первый шаг</strong>
+            <span>Описание того, что нужно сделать — кратко и конкретно</span>
+          </div>
+        </div>
+        <div class="step fragment">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <strong>Второй шаг</strong>
+            <span>Следующее действие в логической цепочке</span>
+          </div>
+        </div>
+        <div class="step fragment">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <strong>Третий шаг</strong>
+            <span>Практическое действие — что именно делать</span>
+          </div>
+        </div>
+        <div class="step fragment">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <strong>Четвёртый шаг</strong>
+            <span>Финальное действие и ожидаемый результат</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         СЛАЙД 6 — КОНТЕНТ: BENTO-ФАКТЫ
+         ====================================================== -->
+    <section>
+      <div class="slide-orbs">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+      </div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок N</div>
+
+      <h2>Ключевые факты</h2>
+      <div class="divider"></div>
+
+      <div class="bento" style="margin-top:.7em;">
+        <div class="bc bc-blue fragment">
+          <div class="bc-num accent-blue">20 мин</div>
+          <h3 style="font-size:.55em; color:var(--text);">Время до результата</h3>
+          <p>Описание что значит эта цифра</p>
+        </div>
+        <div class="bc bc-purple fragment">
+          <div class="bc-num accent-purple">13</div>
+          <h3 style="font-size:.55em; color:var(--text);">Уроков в курсе</h3>
+          <p>Каждый — практический, с конкретным результатом</p>
+        </div>
+        <div class="bc bc-green fragment">
+          <div class="bc-num accent-green">0</div>
+          <h3 style="font-size:.55em; color:var(--text);">Строк кода вручную</h3>
+          <p>Claude пишет код сам — вы только описываете задачу</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         СЛАЙД 7 — ТАБЛИЦА СРАВНЕНИЯ
+         ====================================================== -->
+    <section>
+      <div class="slide-orbs">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+      </div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок N</div>
+
+      <h2>Сравнение подходов</h2>
+      <div class="divider"></div>
+
+      <table class="compare-table" style="margin-top:.7em;">
+        <thead>
+          <tr>
+            <th>Параметр</th>
+            <th>Вариант А</th>
+            <th>Вариант Б</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fragment">
+            <td>Скорость</td>
+            <td>Медленно</td>
+            <td>20 минут</td>
+          </tr>
+          <tr class="fragment">
+            <td>Навык</td>
+            <td>Программирование</td>
+            <td>Описание задачи</td>
+          </tr>
+          <tr class="fragment">
+            <td>Результат</td>
+            <td>Зависит от опыта</td>
+            <td>Одинаковый для всех</td>
+          </tr>
+          <tr class="fragment">
+            <td>Стоимость</td>
+            <td>Высокая</td>
+            <td>Подписка Claude</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ======================================================
+         СЛАЙД 8 — КЛЮЧЕВЫЕ ВЫВОДЫ
+         ====================================================== -->
+    <section>
+      <div class="slide-orbs">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+      </div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок N</div>
+
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
+      <h2>Ключевые выводы</h2>
+      <div class="divider"></div>
+
+      <ul style="max-width:640px; margin-top:.6em;">
+        <li class="fragment">Вывод первый — самый важный тезис урока</li>
+        <li class="fragment">Вывод второй — что изменится в работе студента</li>
+        <li class="fragment">Вывод третий — практическое применение прямо сейчас</li>
+      </ul>
+    </section>
+
+    <!-- ======================================================
+         СЛАЙД 9 — СЛЕДУЮЩИЙ УРОК
+         ====================================================== -->
+    <section class="slide-final">
+      <div class="slide-orbs">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+      </div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Следующий урок</div>
+      <h1 style="font-size:1.4em;">Урок N+1:<br><span class="accent">Название следующего урока</span></h1>
+      <p style="max-width:560px; margin: .6em auto 0;">Краткий анонс — что будет в следующем уроке и зачем это важно.</p>
+      <div class="btn">Смотреть следующий урок →</div>
+    </section>
+
+  </div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: true,
+  transition: 'fade',
+  transitionSpeed: 'fast',
+  backgroundTransition: 'fade',
+  controls: true,
+  progress: true,
+  center: true,
+  width: 1280,
+  height: 720,
+  margin: 0.04,
+  plugins: [],
+});
+</script>
+</body>
+</html>

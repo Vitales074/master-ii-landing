@@ -1,0 +1,329 @@
+/* ═══════════════════════════════════════════════════
+   МАСТЕР-ИИ — Slide Design System v5
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --bg:     #05050f;
+  --bg-1:   #0a0a1a;
+  --blue:   #2563EB;
+  --blue-l: #60a5fa;
+  --purple: #7C3AED;
+  --purple-l:#a78bfa;
+  --green:  #10B981;
+  --green-l:#6ee7b7;
+  --orange: #f97316;
+  --text:   #f0f0ff;
+  --muted:  #b8c0dc;
+  --dim:    #6870a0;
+  --font-d: 'Unbounded', sans-serif;
+  --font-b: 'Hanken Grotesk', sans-serif;
+  --ease:   cubic-bezier(.2,.8,.2,1);
+}
+
+/* ── Base ── */
+.reveal-viewport { background: var(--bg) }
+.reveal { font-family: var(--font-b); font-size: 44px; color: var(--text) }
+
+/* Grid pattern overlay */
+.reveal .slide-background-content::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Aurora orbs ── */
+.slide-orbs { position: absolute; inset: -20%; z-index: 0; pointer-events: none }
+.orb { position: absolute; border-radius: 50%; filter: blur(80px); will-change: transform; animation: aurora-drift 22s ease-in-out infinite }
+.orb-1 { width: 55%; height: 55%; top: -5%; left: -5%; background: radial-gradient(circle, rgba(37,99,235,.38), transparent 65%) }
+.orb-2 { width: 45%; height: 45%; top: 10%; right: -5%; background: radial-gradient(circle, rgba(124,58,237,.42), transparent 65%); animation-delay: -7s }
+.orb-3 { width: 50%; height: 50%; bottom: -10%; left: 30%; background: radial-gradient(circle, rgba(16,185,129,.3), transparent 65%); animation-delay: -14s }
+@keyframes aurora-drift {
+  0%,100% { transform: translate(0,0) scale(1) }
+  33%      { transform: translate(-3%,5%) scale(1.07) }
+  66%      { transform: translate(4%,-3%) scale(1.04) }
+}
+@keyframes gradient-pan {
+  0%,100% { background-position: 0% 50% }
+  50%     { background-position: 100% 50% }
+}
+
+/* ── Slides layout ── */
+.reveal .slides section {
+  position: relative; height: 100%;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center !important;
+  padding: 5% 9%; box-sizing: border-box; overflow: hidden;
+}
+
+/* ── Brand logo ── */
+.slide-brand { display: none }
+body::before {
+  content: "МАСТЕР-ИИ";
+  position: fixed; top: 22px; right: 28px; z-index: 99999;
+  font-family: var(--font-d); font-size: 17px; font-weight: 900; letter-spacing: .12em; white-space: nowrap;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  opacity: .9; pointer-events: none;
+}
+
+/* ── Slide counter ── */
+.slide-lesson-num {
+  position: fixed; bottom: 20px; left: 28px; z-index: 9999;
+  font-family: var(--font-d); font-size: 13px; font-weight: 700;
+  color: var(--dim); letter-spacing: .06em; white-space: nowrap; pointer-events: none;
+}
+.reveal .slide-number {
+  font-family: var(--font-d); font-size: .32em; color: var(--dim);
+  background: transparent; bottom: 20px; right: 28px;
+}
+
+/* ── Progress bar ── */
+.reveal .progress {
+  height: 4px;
+  background: rgba(255,255,255,.06);
+}
+.reveal .progress span {
+  background: linear-gradient(90deg, var(--blue), var(--purple), var(--green));
+  background-size: 200% 100%;
+  animation: gradient-pan 3s ease infinite;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 12px rgba(37,99,235,.6);
+}
+
+/* ════════════════════════════════════════════════════
+   NAVIGATION ARROWS — красивые кнопки по центру боков
+   ════════════════════════════════════════════════════ */
+
+/* Растягиваем контейнер на весь экран */
+.reveal .controls {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100% !important; height: 100% !important;
+  pointer-events: none;
+  display: block !important;
+}
+
+/* Скрываем стрелки вверх/вниз */
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-down {
+  display: none !important;
+}
+
+/* Базовый стиль обеих стрелок */
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-right {
+  pointer-events: all;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 52px !important; height: 52px !important;
+  display: flex !important; align-items: center; justify-content: center;
+  background: rgba(15,15,35,.55) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1.5px solid rgba(255,255,255,.14) !important;
+  border-radius: 50% !important;
+  color: rgba(255,255,255,.8) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,.4), 0 0 0 0 rgba(37,99,235,.0) !important;
+  transition: background .25s var(--ease), border-color .25s, box-shadow .25s, transform .25s !important;
+  cursor: pointer;
+  opacity: 1 !important;
+  /* Override Reveal default visibility */
+  visibility: visible !important;
+}
+
+/* Левая стрелка — левый бок по центру */
+.reveal .controls .navigate-left {
+  left: 20px !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+/* Правая стрелка — правый бок по центру */
+.reveal .controls .navigate-right {
+  right: 20px !important;
+  left: auto !important;
+  bottom: auto !important;
+}
+
+/* Hover */
+.reveal .controls .navigate-left:hover,
+.reveal .controls .navigate-right:hover {
+  background: rgba(37,99,235,.35) !important;
+  border-color: rgba(96,165,250,.5) !important;
+  box-shadow: 0 4px 28px rgba(0,0,0,.5), 0 0 24px rgba(37,99,235,.5) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* SVG arrow icons — цвет и размер */
+.reveal .controls .navigate-left svg,
+.reveal .controls .navigate-right svg {
+  width: 22px !important; height: 22px !important;
+  fill: rgba(255,255,255,.85) !important;
+}
+.reveal .controls .navigate-left:hover svg,
+.reveal .controls .navigate-right:hover svg {
+  fill: #fff !important;
+}
+
+/* Disabled state */
+.reveal .controls .navigate-left.disabled,
+.reveal .controls .navigate-right.disabled {
+  opacity: .2 !important;
+  pointer-events: none !important;
+}
+
+/* ── Typography ── */
+.reveal h1,.reveal h2,.reveal h3 { text-align: center !important }
+.reveal p { text-align: center !important }
+.reveal .slides section p { text-align: center !important }
+
+.reveal h1 {
+  font-family: var(--font-d); font-size: 1.75em; font-weight: 900;
+  line-height: 1.1; letter-spacing: -.02em; color: var(--text); margin-bottom: .35em;
+}
+.reveal h2 {
+  font-family: var(--font-d); font-size: 1.25em; font-weight: 900;
+  line-height: 1.2; letter-spacing: -.01em; color: var(--text); margin-bottom: .4em;
+}
+.reveal h3 {
+  font-family: var(--font-d); font-size: .85em; font-weight: 700;
+  color: var(--text); margin-bottom: .3em;
+}
+.reveal p, .reveal li {
+  font-family: var(--font-b); font-size: .68em; color: var(--muted); line-height: 1.7;
+}
+.reveal ul, .reveal ol { text-align: center; margin: 0 auto; list-style: none; padding: 0 }
+.reveal li { margin-bottom: .35em; list-style: none; padding: 0; position: relative }
+.reveal li::before { content: none }
+
+/* ── Accent colours ── */
+.accent {
+  background: linear-gradient(90deg, var(--blue-l), var(--purple-l), var(--green-l));
+  background-size: 200% 200%; animation: gradient-pan 4s ease-in-out infinite;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.accent-blue   { color: var(--blue-l);   -webkit-text-fill-color: var(--blue-l) }
+.accent-purple { color: var(--purple-l); -webkit-text-fill-color: var(--purple-l) }
+.accent-green  { color: var(--green-l);  -webkit-text-fill-color: var(--green-l) }
+.accent-orange { color: var(--orange);   -webkit-text-fill-color: var(--orange) }
+
+/* ── Eyebrow label ── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 16px;
+  background: rgba(37,99,235,.12); border: 1px solid rgba(37,99,235,.35);
+  border-radius: 100px; font-size: .4em; font-weight: 700;
+  letter-spacing: .12em; color: var(--blue-l); text-transform: uppercase; margin-bottom: .6em;
+}
+.eyebrow-dot { width: 6px; height: 6px; background: var(--blue-l); border-radius: 50% }
+
+/* ── Divider ── */
+.divider {
+  width: 64px; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  border-radius: 2px; margin: .5em auto;
+}
+
+/* ── Bento cards ── */
+.bento   { display: grid; grid-template-columns: repeat(3,1fr); gap: .55em; width: 100%; max-width: 920px }
+.bento-2 { grid-template-columns: repeat(2,1fr) }
+.bento-4 { grid-template-columns: repeat(2,1fr) }
+.bc {
+  border-radius: 16px; padding: 1em 1.2em;
+  text-align: center; border: 1px solid rgba(255,255,255,.08);
+  transition: transform .2s var(--ease), box-shadow .2s;
+}
+.bc:hover { transform: translateY(-2px) }
+.bc h3 { margin-bottom: .25em }
+.bc p  { font-size: .56em; opacity: .9; text-align: center !important }
+.bc-blue   { background: linear-gradient(135deg,rgba(37,99,235,.28),rgba(37,99,235,.06)); border-color: rgba(96,165,250,.28);  box-shadow: 0 0 24px rgba(37,99,235,.14) }
+.bc-purple { background: linear-gradient(135deg,rgba(124,58,237,.28),rgba(124,58,237,.06)); border-color: rgba(167,139,250,.28); box-shadow: 0 0 24px rgba(124,58,237,.14) }
+.bc-green  { background: linear-gradient(135deg,rgba(16,185,129,.24),rgba(16,185,129,.05)); border-color: rgba(110,231,183,.24); box-shadow: 0 0 24px rgba(16,185,129,.12) }
+.bc-orange { background: linear-gradient(135deg,rgba(249,115,22,.24),rgba(249,115,22,.05)); border-color: rgba(249,115,22,.24);  box-shadow: 0 0 24px rgba(249,115,22,.12) }
+.bc-num { font-family: var(--font-d); font-size: 1.6em; font-weight: 900; line-height: 1; margin-bottom: .15em }
+
+/* ── Steps list ── */
+.steps { display: flex; flex-direction: column; gap: .5em; width: 100%; max-width: 780px }
+.step {
+  display: flex; gap: .85em; align-items: flex-start;
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 14px; padding: .75em 1.1em;
+  text-align: left;
+  transition: background .2s;
+}
+.step:hover { background: rgba(255,255,255,.05) }
+.step-num {
+  font-family: var(--font-d); font-size: .72em; font-weight: 900;
+  min-width: 1.6em; text-align: center;
+  background: linear-gradient(135deg, var(--blue-l), var(--purple-l));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1.4; flex-shrink: 0;
+}
+.step-body { flex: 1 }
+.step-body strong { font-size: .64em; color: var(--text); display: block; margin-bottom: .1em }
+.step-body span   { font-size: .57em; color: var(--muted); line-height: 1.6 }
+
+/* ── Button ── */
+.btn {
+  display: inline-block; padding: .6em 1.8em;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: #fff; border-radius: 12px;
+  font-family: var(--font-d); font-size: .5em; font-weight: 700; letter-spacing: .05em;
+  box-shadow: 0 0 28px rgba(37,99,235,.45); margin-top: .8em;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(37,99,235,.6) }
+
+/* ── Tags ── */
+.tag { display: inline-block; padding: .25em .85em; border-radius: 6px; font-size: .46em; font-weight: 600; font-family: var(--font-b); letter-spacing: .04em }
+.tag-blue   { background: rgba(37,99,235,.2);  color: var(--blue-l);   border: 1px solid rgba(96,165,250,.3) }
+.tag-purple { background: rgba(124,58,237,.2); color: var(--purple-l); border: 1px solid rgba(167,139,250,.3) }
+.tag-green  { background: rgba(16,185,129,.18); color: var(--green-l); border: 1px solid rgba(110,231,183,.3) }
+
+/* ── Table ── */
+.compare-table { width: 100%; max-width: 820px; border-collapse: collapse; font-size: .58em }
+.compare-table th {
+  font-family: var(--font-d); font-weight: 700; font-size: .9em;
+  padding: .65em 1em; border-bottom: 2px solid rgba(255,255,255,.1); color: var(--text);
+}
+.compare-table th:nth-child(2) { color: var(--blue-l) }
+.compare-table th:nth-child(3) { color: var(--green-l) }
+.compare-table td {
+  padding: .58em 1em; border-bottom: 1px solid rgba(255,255,255,.05);
+  color: var(--muted); line-height: 1.55;
+}
+.compare-table td:first-child { color: var(--dim); font-weight: 600 }
+.compare-table tr:last-child td { border-bottom: none }
+.compare-table tr:hover td { background: rgba(255,255,255,.03) }
+
+/* ── Special slide types ── */
+.slide-title { justify-content: center }
+.slide-title h1 { font-size: 2.1em }
+
+.slide-section {
+  background: linear-gradient(135deg, rgba(37,99,235,.14), rgba(124,58,237,.14)) !important;
+  border: 1px solid rgba(255,255,255,.09) !important;
+}
+.slide-section .section-num {
+  font-family: var(--font-d); font-size: 4.5em; font-weight: 900; line-height: 1; margin-bottom: .1em;
+  background: linear-gradient(135deg, var(--blue-l), var(--purple-l));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  opacity: .22;
+}
+.slide-section h2 { font-size: 1.35em }
+
+.slide-final { background: linear-gradient(135deg, rgba(37,99,235,.16), rgba(124,58,237,.16), rgba(16,185,129,.12)) !important }
+
+/* ── Fragments ── */
+.reveal .slides section .fragment { opacity: 0; transition: opacity .45s ease }
+.reveal .slides section .fragment.visible { opacity: 1 }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .orb, .accent, .btn, .reveal .progress span { animation: none !important }
+}

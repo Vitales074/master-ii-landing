@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Урок 10 — API и агент · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+:root{--blue:#2563EB;--blue-l:#60a5fa;--purple:#7C3AED;--purple-l:#a78bfa;--green:#10B981;--green-l:#6ee7b7;--orange:#f97316}
+.reveal{font-family:'Hanken Grotesk',sans-serif;font-size:32px}.reveal .slides{text-align:left}
+.reveal h1,.reveal h2,.reveal h3{font-family:'Unbounded',sans-serif;text-transform:none;letter-spacing:-.02em}
+.reveal h1{font-size:1.8em;font-weight:900;line-height:1.1}.reveal h2{font-size:1.2em;font-weight:700;color:var(--blue-l);margin-bottom:.5em}
+.reveal h3{font-size:.85em;font-weight:700;margin-bottom:.3em}.reveal p,.reveal li{color:#c8d0e8;line-height:1.6;font-size:.85em}
+.reveal ul{list-style:none;padding:0}.reveal ul li::before{content:"▸ ";color:var(--blue-l)}.reveal strong{color:#fff}
+.brand{position:fixed;top:24px;right:32px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;z-index:9999}
+.tag{display:inline-block;padding:4px 14px;background:rgba(37,99,235,.15);border:1px solid rgba(96,165,250,.35);border-radius:100px;font-size:.55em;font-family:'Unbounded',sans-serif;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1em}
+.accent{color:var(--blue-l)}.accent-p{color:var(--purple-l)}.accent-g{color:var(--green-l)}.accent-o{color:var(--orange)}
+.box-blue{background:rgba(37,99,235,.1);border-left:3px solid var(--blue-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-purple{background:rgba(124,58,237,.1);border-left:3px solid var(--purple-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-green{background:rgba(16,185,129,.08);border-left:3px solid var(--green-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-orange{background:rgba(249,115,22,.08);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,rgba(37,99,235,.25),rgba(124,58,237,.15));border:1px solid rgba(96,165,250,.35);border-radius:8px;font-family:'Unbounded',sans-serif;font-size:.6em;font-weight:900;color:var(--blue-l);flex-shrink:0;margin-right:.5em}
+.step-row{display:flex;align-items:flex-start;gap:.6em;margin:.4em 0;font-size:.85em;color:#c8d0e8}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2em}
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:.35em 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.82em}
+.price-row:last-child{border-bottom:none}
+.reveal .slides section{padding:0 60px}.reveal .progress span{background:linear-gradient(90deg,var(--blue),var(--purple))}
+.lesson-num{font-family:'Unbounded',sans-serif;font-size:.45em;color:var(--blue-l);letter-spacing:.1em;margin-bottom:.3em}
+.reveal section.title-slide{text-align:center}.reveal section.title-slide h1{font-size:2em}
+</style>
+</head>
+<body>
+<div class="brand">МАСТЕР-ИИ</div>
+<div class="reveal"><div class="slides">
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 30% 50%, rgba(37,99,235,.22) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(124,58,237,.18) 0%, transparent 60%)">
+  <div class="lesson-num">УРОК 10 ИЗ 13</div>
+  <div class="tag">Блок 5 · API</div>
+  <h1>API:<br><span class="accent">агент выходит за пределы Claude</span></h1>
+  <p style="text-align:center;margin-top:1em;font-size:.75em;color:#8090b0">~40 минут · API-ключ · SMM-агент · Безопасность · Монетизация</p>
+</section>
+
+<section>
+  <h2>Что вы узнаете</h2>
+  <ul>
+    <li class="fragment">API vs подписка Pro — два разных счётчика</li>
+    <li class="fragment">Три шага перед любым агентом через API</li>
+    <li class="fragment">Демо: агент-помощник для SMM-менеджера</li>
+    <li class="fragment">API-ключ: 5 шагов получения и правила передачи</li>
+    <li class="fragment">Безопасность ключа: аналогия с абонементом</li>
+    <li class="fragment">Куда разместить агента — 5 вариантов</li>
+  </ul>
+</section>
+
+<section>
+  <h2>API vs подписка Pro</h2>
+  <div class="two-col">
+    <div class="fragment">
+      <div style="background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.2);border-radius:12px;padding:.8em">
+        <h3 class="accent-p">Pro подписка ($20/мес)</h3>
+        <p style="font-size:.78em;color:#9090b0">Работа в claude.ai. Лимит сообщений каждые 5 часов. Ручное управление. Только вы.</p>
+      </div>
+    </div>
+    <div class="fragment">
+      <div style="background:rgba(37,99,235,.08);border:1px solid rgba(96,165,250,.2);border-radius:12px;padding:.8em">
+        <h3 class="accent">API (по факту)</h3>
+        <p style="font-size:.78em;color:#9090b0">Для агентов вне claude.ai. Платите за запросы. Без лимита на количество. Приложения, боты, автоматизация.</p>
+      </div>
+    </div>
+  </div>
+  <div class="box-blue fragment" style="margin-top:.7em">Это не замена, а параллельный инструмент. Минимальный старт — $5. Та же учётная запись что и claude.ai.</div>
+</section>
+
+<section>
+  <h2>Три шага перед любым агентом</h2>
+  <div class="step-row fragment"><span class="num">1</span><span>Папка проекта открыта в Code → <strong>Sonnet</strong> выбран</span></div>
+  <div class="step-row fragment"><span class="num">2</span><span>Effort: <strong>High</strong> — для создания агента нужна полная мощность</span></div>
+  <div class="step-row fragment"><span class="num">3</span><span><strong>Plan Mode</strong> — опишите задачу агента → одобрите план → старт</span></div>
+  <div class="box-blue fragment" style="margin-top:.8em">Без Plan Mode Claude может начать строить не то. Аналогия: как архитектор рисует план до начала стройки — не после.</div>
+</section>
+
+<section>
+  <h2>Демо: агент-помощник для SMM</h2>
+  <p style="font-size:.82em">Запрос: <em>«Хочу агента для работы с контентом соцсетей — генерация идей, тексты, рубрики, разбор аудитории. Красивый интерфейс с кнопками.»</em></p>
+  <div class="step-row fragment"><span class="num">?</span><span>Plan Mode: Claude уточняет — платформы, тональность, аудитория</span></div>
+  <div class="step-row fragment"><span class="num">📋</span><span>Составляет план: системный промт, кнопки-разделы, дизайн интерфейса</span></div>
+  <div class="step-row fragment"><span class="num">✓</span><span>Нажимаете «Accept and Auto Mode» — начинает строить</span></div>
+  <div class="step-row fragment"><span class="num">🎉</span><span>~20 минут — готовое приложение с кнопками и API-подключением</span></div>
+</section>
+
+<section>
+  <h2>API-ключ: 5 шагов</h2>
+  <div class="step-row fragment"><span class="num">1</span><span>Перейдите на <strong>console.anthropic.com</strong> — та же учётка, что и claude.ai</span></div>
+  <div class="step-row fragment"><span class="num">2</span><span>Пополните баланс от $5 (карта та же что для Pro)</span></div>
+  <div class="step-row fragment"><span class="num">3</span><span>Раздел <strong>API Keys</strong> → кнопка <strong>Create Key</strong></span></div>
+  <div class="step-row fragment"><span class="num">4</span><span>Скопируйте ключ <strong>сразу</strong> — второй раз не покажет</span></div>
+  <div class="step-row fragment"><span class="num">5</span><span>Передайте Claude через файл проекта, не в чате напрямую</span></div>
+  <div class="box-orange fragment" style="margin-top:.6em">Несколько ключей = несколько агентов, один баланс. Создайте тестовый ключ для демонстраций — удалите после показа.</div>
+</section>
+
+<section>
+  <h2>Безопасность ключа</h2>
+  <p>API-ключ — не паспорт, а абонемент. Потеряли — перевыпустили.</p>
+  <div class="two-col" style="margin-top:.5em">
+    <div class="fragment">
+      <p style="font-size:.8em;color:var(--green-l);margin-bottom:.3em">✓ Видит обладатель ключа:</p>
+      <ul style="font-size:.78em">
+        <li>Отправлять запросы к API</li>
+        <li>Тратить баланс на запросы</li>
+      </ul>
+    </div>
+    <div class="fragment">
+      <p style="font-size:.8em;color:#ff8080;margin-bottom:.3em">✗ Не видит:</p>
+      <ul style="font-size:.78em">
+        <li>Ваши переписки в claude.ai</li>
+        <li>Данные карты или профиля</li>
+        <li>Другие ключи аккаунта</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box-blue fragment" style="margin-top:.6em"><strong>Если ключ утёк:</strong> console.anthropic.com → API Keys → Delete → ключ мгновенно недействителен.</div>
+</section>
+
+<section>
+  <h2>Стоимость и монетизация</h2>
+  <div style="background:rgba(37,99,235,.06);border:1px solid rgba(96,165,250,.15);border-radius:12px;padding:.8em 1em;margin-bottom:.7em" class="fragment">
+    <div class="price-row"><span>Haiku (быстрый, дешёвый)</span><span style="color:var(--green-l)">~0.5 руб/запрос</span></div>
+    <div class="price-row"><span>Sonnet (стандарт)</span><span style="color:var(--blue-l)">~2 руб/запрос</span></div>
+    <div class="price-row"><span>Opus (мощный)</span><span style="color:var(--orange)">~8 руб/запрос</span></div>
+  </div>
+  <div class="box-green fragment"><strong>Два независимых счётчика:</strong> Pro-подписка ($20/мес, лимит 5 часов) + API-баланс (платите за факт). Монетизация: продайте доступ к агенту клиенту — разница между выручкой и расходами на API = прибыль.</div>
+</section>
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(37,99,235,.15) 0%, transparent 70%)">
+  <h2 style="color:var(--blue-l);text-align:center">Ключевые выводы</h2>
+  <ul style="text-align:left;display:inline-block;margin-top:.5em">
+    <li class="fragment">API и Pro — два разных счётчика, не взаимозаменяемые</li>
+    <li class="fragment">Ключ создаётся в console.anthropic.com, скопировать сразу</li>
+    <li class="fragment">Если утёк — удалить в консоли, новый создать</li>
+    <li class="fragment">Агент = продукт, который можно продавать клиентам</li>
+  </ul>
+  <div style="margin-top:1.5em;font-family:'Unbounded',sans-serif;font-size:.6em;color:#8090b0">
+    Следующий урок: <span style="color:var(--purple-l)">Telegram-бот: агент в мессенджере →</span>
+  </div>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({hash:true,width:1920,height:1080,margin:.04,controls:true,progress:true,center:false,transition:'fade',transitionSpeed:'fast'});</script>
+</body></html>

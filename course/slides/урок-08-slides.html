@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Урок 8 — Первое приложение · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+:root{--blue:#2563EB;--blue-l:#60a5fa;--purple:#7C3AED;--purple-l:#a78bfa;--green:#10B981;--green-l:#6ee7b7;--orange:#f97316}
+.reveal{font-family:'Hanken Grotesk',sans-serif;font-size:32px}.reveal .slides{text-align:left}
+.reveal h1,.reveal h2,.reveal h3{font-family:'Unbounded',sans-serif;text-transform:none;letter-spacing:-.02em}
+.reveal h1{font-size:1.8em;font-weight:900;line-height:1.1}.reveal h2{font-size:1.2em;font-weight:700;color:var(--purple-l);margin-bottom:.5em}
+.reveal h3{font-size:.85em;font-weight:700;margin-bottom:.3em}.reveal p,.reveal li{color:#c8d0e8;line-height:1.6;font-size:.85em}
+.reveal ul{list-style:none;padding:0}.reveal ul li::before{content:"▸ ";color:var(--purple-l)}.reveal strong{color:#fff}
+.brand{position:fixed;top:24px;right:32px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;z-index:9999}
+.tag{display:inline-block;padding:4px 14px;background:rgba(124,58,237,.18);border:1px solid rgba(167,139,250,.38);border-radius:100px;font-size:.55em;font-family:'Unbounded',sans-serif;color:var(--purple-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1em}
+.accent{color:var(--purple-l)}.accent-b{color:var(--blue-l)}.accent-g{color:var(--green-l)}.accent-o{color:var(--orange)}
+.box-blue{background:rgba(37,99,235,.1);border-left:3px solid var(--blue-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-purple{background:rgba(124,58,237,.1);border-left:3px solid var(--purple-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-green{background:rgba(16,185,129,.08);border-left:3px solid var(--green-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,rgba(124,58,237,.3),rgba(37,99,235,.2));border:1px solid rgba(167,139,250,.4);border-radius:8px;font-family:'Unbounded',sans-serif;font-size:.6em;font-weight:900;color:var(--purple-l);flex-shrink:0;margin-right:.5em}
+.step-row{display:flex;align-items:flex-start;gap:.6em;margin:.4em 0;font-size:.85em;color:#c8d0e8}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2em}
+.mode-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.8em 1.1em}
+.mode-card h3{font-size:.82em;margin-bottom:.2em}
+.mode-card p{font-size:.75em;color:#9090b0;margin:0}
+.output-row{display:flex;align-items:center;gap:.8em;margin:.3em 0;font-size:.82em;color:#c8d0e8}
+.output-badge{background:rgba(124,58,237,.2);border:1px solid rgba(167,139,250,.3);border-radius:6px;padding:2px 10px;font-size:.75em;font-family:'Unbounded',sans-serif;color:var(--purple-l);white-space:nowrap}
+.reveal .slides section{padding:0 60px}.reveal .progress span{background:linear-gradient(90deg,var(--purple),var(--blue))}
+.lesson-num{font-family:'Unbounded',sans-serif;font-size:.45em;color:var(--purple-l);letter-spacing:.1em;margin-bottom:.3em}
+.reveal section.title-slide{text-align:center}.reveal section.title-slide h1{font-size:2em}
+</style>
+</head>
+<body>
+<div class="brand">МАСТЕР-ИИ</div>
+<div class="reveal"><div class="slides">
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 30% 50%, rgba(124,58,237,.22) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(37,99,235,.18) 0%, transparent 60%)">
+  <div class="lesson-num">УРОК 8 ИЗ 13</div>
+  <div class="tag">Блок 4 · Приложения</div>
+  <h1>Первое приложение:<br><span class="accent">от идеи до готового инструмента</span></h1>
+  <p style="text-align:center;margin-top:1em;font-size:.75em;color:#8090b0">~40 минут · Plan Mode · Auto Mode · 5 форматов вывода</p>
+</section>
+
+<section>
+  <h2>Что вы узнаете</h2>
+  <ul>
+    <li class="fragment">Что делать если подписка не работает</li>
+    <li class="fragment">Стартовый чек-лист: 6 шагов перед любым проектом</li>
+    <li class="fragment">Auto Mode vs Plan Mode: когда включать голову заранее</li>
+    <li class="fragment">Как Claude тестирует приложение сам</li>
+    <li class="fragment">5 форматов вывода готового приложения</li>
+    <li class="fragment">Модели и Effort: осознанный расход токенов</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Подписка не работает — что делать</h2>
+  <p>Красная плашка «subscription is paused» или похожее сообщение — это не поломка.</p>
+  <div class="step-row fragment"><span class="num">1</span><span>Нажмите на плашку или перейдите в настройки аккаунта</span></div>
+  <div class="step-row fragment"><span class="num">2</span><span>Найдите кнопку <strong>Pay</strong> или <strong>Update payment</strong></span></div>
+  <div class="step-row fragment"><span class="num">3</span><span>Подтвердите оплату — карта уже привязана</span></div>
+  <div class="step-row fragment"><span class="num">4</span><span>Перезайдите в аккаунт — всё восстановилось</span></div>
+  <div class="box-purple fragment" style="margin-top:.6em">Совет: заведите отдельную карту под подписку Claude — так уведомление о незакрытом платеже придёт точно вам.</div>
+</section>
+
+<section>
+  <h2>Стартовый чек-лист: 6 шагов</h2>
+  <div class="step-row fragment"><span class="num">1</span><span><strong>Code</strong> открыт, не Chat</span></div>
+  <div class="step-row fragment"><span class="num">2</span><span>Папка проекта создана и открыта</span></div>
+  <div class="step-row fragment"><span class="num">3</span><span>Trust нажат — разрешение на работу с папкой</span></div>
+  <div class="step-row fragment"><span class="num">4</span><span>Модель выбрана (Sonnet — стандарт)</span></div>
+  <div class="step-row fragment"><span class="num">5</span><span>Режим настроен (Plan Mode для сложных задач)</span></div>
+  <div class="step-row fragment"><span class="num">6</span><span>Задача сформулирована — что именно создаём</span></div>
+  <div class="box-purple fragment" style="margin-top:.6em">Этот порядок не менять. Правильный старт сэкономит час правок в конце.</div>
+</section>
+
+<section>
+  <h2>Auto Mode vs Plan Mode</h2>
+  <div class="two-col">
+    <div class="mode-card fragment">
+      <h3 class="accent-b">⚡ Auto Mode</h3>
+      <p>Выполняет сразу. Хорошо для простых задач — добавить кнопку, изменить цвет, написать текст. Быстро, но без предсказуемости.</p>
+    </div>
+    <div class="mode-card fragment">
+      <h3 class="accent">📋 Plan Mode</h3>
+      <p>Сначала составляет план: задаёт вопросы → пишет список шагов → ждёт одобрения → выполняет. Для приложений с нуля обязательно.</p>
+    </div>
+  </div>
+  <div class="box-purple fragment" style="margin-top:.7em">Аналогия: Plan Mode — архитектор рисует чертёж перед строительством. Без плана можно построить, но переделывать дорого.</div>
+</section>
+
+<section>
+  <h2>Как Claude тестирует приложение</h2>
+  <p>После написания кода Claude не останавливается — он сам его проверяет:</p>
+  <div class="step-row fragment"><span class="num">→</span><span>Запускает приложение в браузере</span></div>
+  <div class="step-row fragment"><span class="num">→</span><span>Нажимает кнопки, заполняет формы</span></div>
+  <div class="step-row fragment"><span class="num">→</span><span>Смотрит консоль на ошибки</span></div>
+  <div class="step-row fragment"><span class="num">→</span><span>Находит проблему → сам исправляет → перепроверяет</span></div>
+  <div class="box-green fragment" style="margin-top:.6em">Это не магия — Claude использует инструменты браузера точно так же, как делал бы разработчик. Вы видите процесс в реальном времени.</div>
+</section>
+
+<section>
+  <h2>5 форматов вывода готового приложения</h2>
+  <div class="output-row fragment"><span class="output-badge">Localhost</span><span>Работает на вашем компьютере. <strong>НЕ ссылка для других</strong> — только для вас.</span></div>
+  <div class="output-row fragment"><span class="output-badge">HTML-файл</span><span>Статичное приложение — открывается в браузере. Нет сервера, подходит для простых инструментов.</span></div>
+  <div class="output-row fragment"><span class="output-badge">Онлайн-сервер</span><span>Netlify/Vercel — публичная ссылка. Для клиентов и портфолио.</span></div>
+  <div class="output-row fragment"><span class="output-badge">Telegram-бот</span><span>Работает в мессенджере. Урок 11 — подробнее.</span></div>
+  <div class="output-row fragment"><span class="output-badge">.exe файл</span><span>Упаковать как установщик для Windows/Mac через Electron или PyInstaller.</span></div>
+</section>
+
+<section>
+  <h2>Модели и Effort: расходуем токены осознанно</h2>
+  <div class="two-col">
+    <div class="fragment">
+      <div style="background:rgba(96,165,250,.07);border:1px solid rgba(96,165,250,.2);border-radius:12px;padding:.7em">
+        <h3 class="accent-b">Sonnet</h3>
+        <p style="font-size:.75em;color:#9090b0">Стандарт для большинства задач. Баланс скорость/качество. Экономит лимиты. Сайты, приложения, тексты.</p>
+      </div>
+    </div>
+    <div class="fragment">
+      <div style="background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.2);border-radius:12px;padding:.7em">
+        <h3 class="accent">Opus</h3>
+        <p style="font-size:.75em;color:#9090b0">Максимальная мощность. Тратит больше токенов. Для сложной архитектуры, финальной полировки, нестандартных задач.</p>
+      </div>
+    </div>
+  </div>
+  <div class="box-purple fragment" style="margin-top:.7em"><strong>Effort:</strong> Low–Medium = обычные задачи. High = крупный проект. Smarter = самая медленная, самая умная. Выбирайте под задачу, не «всегда максимум».</div>
+</section>
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(124,58,237,.15) 0%, transparent 70%)">
+  <h2 style="color:var(--purple-l);text-align:center">Ключевые выводы</h2>
+  <ul style="text-align:left;display:inline-block;margin-top:.5em">
+    <li class="fragment">Plan Mode для приложений с нуля — план до кода, не после</li>
+    <li class="fragment">Claude сам тестирует: запускает, нажимает, исправляет</li>
+    <li class="fragment">5 форматов вывода: localhost ≠ публичная ссылка</li>
+    <li class="fragment">Sonnet — стандарт, Opus — только для сложных задач</li>
+  </ul>
+  <div style="margin-top:1.5em;font-family:'Unbounded',sans-serif;font-size:.6em;color:#8090b0">
+    Следующий урок: <span style="color:var(--green-l)">Деплой приложения на сервер →</span>
+  </div>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({hash:true,width:1920,height:1080,margin:.04,controls:true,progress:true,center:false,transition:'fade',transitionSpeed:'fast'});</script>
+</body></html>

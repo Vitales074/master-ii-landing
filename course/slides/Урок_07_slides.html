@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастер-ИИ — Урок 7 — Визуальный контент</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=5">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section class="slide-title">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Урок 7 · Визуал без дизайнера</div>
+      <h1>Инфографика,<br>карусели и <span class="accent">скиллы</span></h1>
+      <p style="max-width:600px;margin:0 auto;">Claude не рисует — он пишет код. И это его сила, а не слабость</p>
+    <aside class="notes">Урок 7. Разбираемся с визуальным контентом: инфографика, карусели для соцсетей, иконки. Без фотошопа и дизайнера.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 7</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
+      <h2>Что вы узнаете</h2>
+      <div class="divider"></div>
+      <div class="bento" style="margin-top:.8em;">
+        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Что умеет Claude: инфографика, карусели, логотипы, схемы</p></div>
+        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>3 формата: SVG, HTML+CSS, Canvas — когда что использовать</p></div>
+        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>6 элементов детального промпта для визуала</p></div>
+      </div>
+    <aside class="notes">Шесть тем: главное заблуждение, что умеет и не умеет Claude, три формата, цикл карусели, формула промпта и скиллы.</aside></section>
+
+    <section class="slide-section">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 7</div>
+      <div class="section-num">01</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Главное заблуждение</div>
+      <h2>Claude — не Midjourney</h2>
+      <p>Он пишет код, а не рисует пиксели. Это другая природа инструмента</p>
+    <aside class="notes">Многие ждут от Claude то, что умеет Midjourney. Это разные инструменты. Midjourney генерирует пиксели — фотореалистичные картинки. Claude пишет код визуала — SVG, HTML. Это ограничение, которое превращается в преимущество: SVG масштабируется бесконечно, открывается в Figma, текст в нём редактируется. Пиксельная картинка этого не умеет.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 7</div>
+      <h2>Что умеет и что не умеет</h2>
+      <div class="divider"></div>
+      <table class="compare-table" style="margin-top:.7em;">
+        <thead><tr><th>Умеет</th><th>Не умеет</th></tr></thead>
+        <tbody>
+          <tr class="fragment"><td>Инфографика, схемы, диаграммы</td><td>Реалистичные фотографии</td></tr>
+          <tr class="fragment"><td>Карусели, сторис, баннеры</td><td>AI-аватары и портреты</td></tr>
+          <tr class="fragment"><td>Логотипы, иконки в SVG</td><td>Редактирование чужих фото</td></tr>
+          <tr class="fragment"><td>Графики по вашим данным</td><td>Видео и анимации (кроме CSS)</td></tr>
+        </tbody>
+      </table>
+      <p class="fragment" style="margin-top:.6em;font-size:.58em;color:var(--muted);">SVG — профессиональный векторный формат. Открывается в Figma, масштабируется без потери качества</p>
+    <aside class="notes">Умеет: инфографика, схемы, логотипы в SVG, карусели, баннеры, графики по данным. Не умеет: фотореалистичные изображения, аватары, лица, видео, редактирование чужих фото. Для последнего есть другие инструменты — Midjourney, Leonardo. Claude может сформировать промпт для них, вы запустите там.</aside></section>
+
+    <section class="slide-section">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 7</div>
+      <div class="section-num">02</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Форматы</div>
+      <h2>SVG · HTML+CSS · Canvas</h2>
+    <aside class="notes">SVG — для логотипов и иконок. Векторный, масштабируется без потерь, открывается в Figma. HTML+CSS — для каруселей и баннеров: интерактивность, анимации. Сохраняете как скриншот через браузер. Canvas и Plotly — для графиков по данным, когда нужны динамика и анимация.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 7</div>
+      <h2>Три формата визуала</h2>
+      <div class="divider"></div>
+      <div class="bento" style="margin-top:.7em;">
+        <div class="bc bc-blue fragment">
+          <h3 class="accent-blue">SVG</h3>
+          <p>Для иконок, логотипов, схем. Векторный формат — открывается в Figma, масштабируется без потерь</p>
+        </div>
+        <div class="bc bc-purple fragment">
+          <h3 class="accent-purple">HTML + CSS</h3>
+          <p>Для карусели и баннеров. Кириллические шрифты, точки навигации, стрелки — Claude рендерит прямо в чате</p>
+        </div>
+        <div class="bc bc-green fragment">
+          <h3 class="accent-green">Canvas / Plotly</h3>
+          <p>Для сложных сцен и графиков по данным. Требует Node.js — Claude установит сам</p>
+        </div>
+      </div>
+    <aside class="notes">Шаг первый: напишите текст поста — тема, тезисы. Красиво оформлять не нужно. Шаг второй: запрос «Создай карусель из 5 слайдов по этому тексту, HTML+CSS, 1080×1080». Шаг третий: итерации — изменить цвет, поправить шрифт, добавить элемент. По одному изменению за раз — это быстрее. Первая версия всегда черновик.</aside></section>
+
+    <section class="slide-section">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 7</div>
+      <div class="section-num">03</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Промпт для визуала</div>
+      <h2>6 элементов детального промпта</h2>
+    <aside class="notes">Шесть элементов: формат и количество слайдов, размер в пикселях, цветовая палитра с кодами, шрифт для заголовков, содержание каждого слайда, декоративные элементы. Короткий промпт — для эксперимента. Детальный — для финального результата. Детальный даёт предсказуемый результат с первого-второго раза.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 7</div>
+      <h2>Формула промпта для визуала</h2>
+      <div class="divider"></div>
+      <div class="bento bento-2" style="margin-top:.7em;">
+        <div class="bc bc-blue fragment"><h3 class="accent-blue" style="font-size:.6em;">Формат</h3><p>Карусель / инфографика / баннер</p></div>
+        <div class="bc bc-purple fragment"><h3 class="accent-purple" style="font-size:.6em;">Размер</h3><p>1080×1080px или пропорция 1:1</p></div>
+        <div class="bc bc-green fragment"><h3 class="accent-green" style="font-size:.6em;">Палитра</h3><p>HEX-коды или «тёмно-синий фон, золотые акценты»</p></div>
+        <div class="bc bc-orange fragment"><h3 class="accent-orange" style="font-size:.6em;">Шрифт</h3><p>Montserrat, Roboto или другой Google Font</p></div>
+        <div class="bc bc-blue fragment"><h3 class="accent-blue" style="font-size:.6em;">Содержание</h3><p>Тексты каждого слайда поимённо</p></div>
+        <div class="bc bc-purple fragment"><h3 class="accent-purple" style="font-size:.6em;">Декор</h3><p>Геометрия, точки, волны, фоновые элементы</p></div>
+      </div>
+    <aside class="notes">Скилл — встроенная инструкция для Code, работает в каждой сессии. Без скилла стиль «уплывает»: каждый раз Claude интерпретирует по-своему. Со скиллом — стабильно. Четыре шага: договорились о стиле, попросили сохранить как ZIP, скачали, загрузили через Customize. Не более двух-трёх скиллов — могут конфликтовать.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 7</div>
+      <h2>Скиллы-шаблоны:<br><span class="accent-green">стиль, который не меняется</span></h2>
+      <div class="divider"></div>
+      <ul style="max-width:680px;margin-top:.6em;">
+        <li class="fragment">Без шаблона Claude каждый раз выбирает другие цвета и шрифты</li>
+        <li class="fragment">Скилл — файл с инструкцией: создаёте один раз, используете всегда</li>
+        <li class="fragment">Создать: договорились о дизайне → «зафиксируй как шаблон» → ZIP-архив</li>
+        <li class="fragment">В Claude Code скилл читается как файл — стиль не «уплывает» от сессии к сессии</li>
+        <li class="fragment">Перед установкой чужого скилла: «Проверь этот скилл — безопасен ли он?»</li>
+      </ul>
+    <aside class="notes">Четыре вывода: Claude пишет код визуала — это векторный формат. SVG, HTML+CSS, Canvas — под разные задачи. Карусель в три шага. Скиллы фиксируют стиль навсегда. Следующий урок — создаём первое приложение. До встречи!</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 7</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
+      <h2>Ключевые выводы</h2>
+      <div class="divider"></div>
+      <ul style="max-width:640px;margin-top:.6em;">
+        <li class="fragment">Claude рисует кодом — SVG-результат открывается в Figma как вектор</li>
+        <li class="fragment">Детальный промпт из 6 элементов = финальный продукт с первого раза</li>
+        <li class="fragment">Скилл-шаблон — создаёте один час, экономите часы на всех последующих задачах</li>
+      </ul>
+    </section>
+
+    <section class="slide-final">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Следующий урок</div>
+      <h1 style="font-size:1.4em;">Урок 8:<br><span class="accent">Первое приложение</span></h1>
+      <p style="max-width:560px;margin:.6em auto 0;">От идеи до работающего инструмента за 15 минут — Plan Mode, Auto Mode и 5 форматов вывода</p>
+      <div class="btn">Следующий урок →</div>
+    </section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
+<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
+<style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
+</body>
+</html>

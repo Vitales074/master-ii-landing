@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастер-ИИ — Урок 5 — Многостраничный сайт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=5">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section class="slide-title">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Урок 5 · Профессиональный подход</div>
+      <h1><span class="accent">Многостраничный</span><br>сайт через Claude Code</h1>
+      <p style="max-width:600px;margin:0 auto;">От подготовки среды до публикации настоящего бизнес-сайта — с ТЗ, reverse-инжинирингом и скиллами</p>
+    <aside class="notes">Урок 5. Переходим от лендинга к полноценному многостраничному сайту. Разберём профессиональный подход: reverse-инжиниринг, файл документации и публикацию на Vercel.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
+      <h2>Что вы узнаете</h2>
+      <div class="divider"></div>
+      <div class="bento" style="margin-top:.8em;">
+        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Подготовить рабочую среду: VPN, папка, Trust, режим</p></div>
+        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>Reverse-инжиниринг — пусть Claude предлагает, вы одобряете</p></div>
+        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Создать файл ТЗ и запустить многостраничный сайт одним промптом</p></div>
+      </div>
+    <aside class="notes">Шесть тем: подготовка среды, reverse-подход, формула промпта, файл ТЗ, сравнение лендинг vs многостраничный, и режимы работы с Vercel.</aside></section>
+
+    <section class="slide-section">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <div class="section-num">01</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Часть первая</div>
+      <h2>Подготовка рабочей среды</h2>
+      <p>Чек-лист перед стартом любого серьёзного проекта</p>
+    <aside class="notes">Перед каждым проектом: VPN включён, папка создана, открыта в Code и нажат Trust, модель и режим настроены. Звучит просто, но один пропущенный шаг может привести к путанице или ошибке. Папка нужна только когда создаёте файлы — для обсуждения идей папка не обязательна.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <h2>Чек-лист перед стартом</h2>
+      <div class="divider"></div>
+      <div class="steps" style="margin-top:.7em;">
+        <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Включить AmneziaVPN</strong><span>Оранжевый кружок → проверить IP на 2ip.ru</span></div></div>
+        <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Создать папку проекта</strong><span>На рабочем столе, имя латинскими буквами без пробелов</span></div></div>
+        <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Открыть Claude Code → Open Folder → Trust</strong><span>Без Trust Claude не сможет создавать файлы</span></div></div>
+        <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Правило: 1 проект = 1 папка</strong><span>Не смешивать разные проекты — потеряется контекст</span></div></div>
+      </div>
+    <aside class="notes">Большинство начинающих пишут длинный список что нужно сделать. Это работает, но медленно. Reverse-подход другой: сначала спрашиваешь Claude что он предложит. Например: «Мне нужен сайт для фотографа — что предлагаешь включить?» Claude сам предложит структуру страниц, функции, навигацию. Вы оцениваете — оставляете что нужно, убираете лишнее. Это быстрее, чем диктовать каждый шаг.</aside></section>
+
+    <section class="slide-section">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <div class="section-num">02</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Часть вторая</div>
+      <h2>Reverse-инжиниринг</h2>
+      <p>Пусть Claude думает за вас — вы только одобряете решение</p>
+    <aside class="notes">Шесть компонентов. Роль: скажите Claude кем он должен быть. Контекст: для кого сайт. Задача: что конкретно создать. Формат: HTML, без фреймворков. Ограничения: мобильная вёрстка, скорость. Пример: референс стиля. И важное замечание: лучше набирать промпт с клавиатуры, не копировать. Когда печатаете — уточняете мысль, убираете лишнее.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <h2>Принцип: не объяснять —<br><span class="accent-purple">просить предложить</span></h2>
+      <div class="divider"></div>
+      <table class="compare-table" style="margin-top:.7em;">
+        <thead><tr><th>Ситуация</th><th>Что делать</th></tr></thead>
+        <tbody>
+          <tr class="fragment"><td>Не знаете, что писать в ТЗ</td><td>Попросите Claude проанализировать нишу</td></tr>
+          <tr class="fragment"><td>Не знаете, какие скиллы нужны</td><td>«Какие скиллы нужны для 3D-анимации?»</td></tr>
+          <tr class="fragment"><td>Не нравится дизайн</td><td>Опишите что не нравится — Claude предложит план</td></tr>
+          <tr class="fragment"><td>Есть вопрос по настройке</td><td>Спросите Claude — точнее, чем Google</td></tr>
+        </tbody>
+      </table>
+    <aside class="notes">Основная проблема Claude: он не помнит прошлые сессии. Решение — файл project.md. Попросите Claude помочь его составить: он задаст вопросы, вы ответите, он сформирует ТЗ. Сохраните как project.md в папку. В следующей сессии напишите «@project.md — читай как контекст» — и Claude сразу в теме. В документ входит: цель, аудитория, список страниц, дизайн-код, технические требования.</aside></section>
+
+    <section class="slide-section">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <div class="section-num">03</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Часть третья</div>
+      <h2>Структура промпта</h2>
+      <p>6 компонентов — чем подробнее, тем точнее результат</p>
+    <aside class="notes">Лендинг — один HTML-файл, одна цель, один поток. Многостраничный — папка с файлами: index, about, services, contacts. Навигация между страницами. Порядок работы: сначала предложите структуру, одобрите, потом Claude создаёт страницы последовательно. Проверяйте каждую перед переходом к следующей.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <h2>6 компонентов промпта</h2>
+      <div class="divider"></div>
+      <div class="bento" style="margin-top:.7em;">
+        <div class="bc bc-blue fragment"><h3 class="accent-blue" style="font-size:.6em;">Роль</h3><p>Кем выступает Claude: дизайнер, эксперт, аналитик</p></div>
+        <div class="bc bc-purple fragment"><h3 class="accent-purple" style="font-size:.6em;">Контекст</h3><p>Кто вы, что делаете, для кого проект</p></div>
+        <div class="bc bc-green fragment"><h3 class="accent-green" style="font-size:.6em;">Задача</h3><p>Чётко: что именно нужно создать</p></div>
+        <div class="bc bc-orange fragment"><h3 class="accent-orange" style="font-size:.6em;">Формат</h3><p>HTML, PDF, таблица — в каком виде результат</p></div>
+        <div class="bc bc-blue fragment"><h3 class="accent-blue" style="font-size:.6em;">Ограничения</h3><p>Чего нельзя делать, каких элементов избегать</p></div>
+        <div class="bc bc-purple fragment"><h3 class="accent-purple" style="font-size:.6em;">Пример</h3><p>Ссылка-референс или описание стиля</p></div>
+      </div>
+    <aside class="notes">Три режима. Ask Permission — по умолчанию, Claude спрашивает перед каждым действием, хорошо для обучения. Plan Mode — сначала составляет план, вы одобряете, потом выполняет — для крупных проектов. Включается через Ctrl+Shift+P. Bypass — без вопросов, быстро, но рискованно — только если доверяете задаче.</aside></section>
+
+    <section class="slide-section">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <div class="section-num">04</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Часть четвёртая</div>
+      <h2>Файл ТЗ и многостраничный сайт</h2>
+      <p>Один утверждённый документ → один промпт → готовый сайт</p>
+    <aside class="notes">Vercel — ещё один бесплатный хостинг, отлично подходит для многостраничных сайтов. Регистрируемся через Google. Add New Project, загружаем папку, нажимаем Deploy. Ссылка готова. Vercel и Netlify — оба работают, оба бесплатны. Vercel чуть лучше для многостраничных, Netlify удобнее для одностраничных. Выбирайте любой — разница минимальная.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <h2>5 шагов создания сайта</h2>
+      <div class="divider"></div>
+      <div class="steps" style="margin-top:.6em;">
+        <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Создать файл идеи проекта</strong><span>Claude анализирует нишу и предлагает структуру</span></div></div>
+        <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Утвердить ТЗ</strong><span>Внести правки, добавить требования к дизайну</span></div></div>
+        <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Запустить в Bypass-режиме</strong><span>«По нашему файлу @идея создай весь сайт»</span></div></div>
+        <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Проверить результат</strong><span>Отметить что нравится и что нужно доработать</span></div></div>
+        <div class="step fragment"><div class="step-num">05</div><div class="step-body"><strong>Доработать дизайн через скиллы</strong><span>3D, анимации, типографика — один запрос</span></div></div>
+      </div>
+    <aside class="notes">Четыре ключевых момента: reverse-инжиниринг экономит время, project.md сохраняет контекст, Plan Mode для крупных задач, Vercel и Netlify — оба рабочих варианта. Следующий урок — агенты и система контента. До встречи!</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <h2>Модели и режимы работы</h2>
+      <div class="divider"></div>
+      <table class="compare-table" style="margin-top:.7em;">
+        <thead><tr><th>Режим</th><th>Когда использовать</th></tr></thead>
+        <tbody>
+          <tr class="fragment"><td>Ask Permission</td><td>Новые задачи — Claude спрашивает перед каждым шагом</td></tr>
+          <tr class="fragment"><td>Plan Mode</td><td>ТЗ ещё не готово — Claude задаёт уточняющие вопросы</td></tr>
+          <tr class="fragment"><td>Bypass</td><td>ТЗ согласовано — Claude действует самостоятельно</td></tr>
+        </tbody>
+      </table>
+      <div class="bento bento-2" style="margin-top:.6em;">
+        <div class="bc bc-blue fragment"><div class="bc-num accent-blue">60%</div><p>токенов Pro на большой сайт за одну сессию</p></div>
+        <div class="bc bc-green fragment"><div class="bc-num accent-green">5 ч</div><p>обновление лимита токенов — планируйте работу</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 5</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
+      <h2>Ключевые выводы</h2>
+      <div class="divider"></div>
+      <ul style="max-width:640px;margin-top:.6em;">
+        <li class="fragment">Всегда создавайте файл ТЗ — он заменяет Memory и не тратит токены</li>
+        <li class="fragment">Reverse-инжиниринг: задайте направление, Claude предложит структуру</li>
+        <li class="fragment">Bypass-режим + готовое ТЗ = многостраничный сайт за 30 минут</li>
+      </ul>
+    </section>
+
+    <section class="slide-final">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Следующий урок</div>
+      <h1 style="font-size:1.4em;">Урок 6:<br><span class="accent">Агенты и контент</span></h1>
+      <p style="max-width:560px;margin:.6em auto 0;">Как перестать объяснять Claude кто вы каждый раз и выстроить систему персональных агентов</p>
+      <div class="btn">Следующий урок →</div>
+    </section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
+<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
+<style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Урок 9 — Деплой на сервер · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+:root{--blue:#2563EB;--blue-l:#60a5fa;--purple:#7C3AED;--purple-l:#a78bfa;--green:#10B981;--green-l:#6ee7b7;--orange:#f97316}
+.reveal{font-family:'Hanken Grotesk',sans-serif;font-size:32px}.reveal .slides{text-align:left}
+.reveal h1,.reveal h2,.reveal h3{font-family:'Unbounded',sans-serif;text-transform:none;letter-spacing:-.02em}
+.reveal h1{font-size:1.8em;font-weight:900;line-height:1.1}.reveal h2{font-size:1.2em;font-weight:700;color:var(--green-l);margin-bottom:.5em}
+.reveal h3{font-size:.85em;font-weight:700;margin-bottom:.3em}.reveal p,.reveal li{color:#c8d0e8;line-height:1.6;font-size:.85em}
+.reveal ul{list-style:none;padding:0}.reveal ul li::before{content:"▸ ";color:var(--green-l)}.reveal strong{color:#fff}
+.brand{position:fixed;top:24px;right:32px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;z-index:9999}
+.tag{display:inline-block;padding:4px 14px;background:rgba(16,185,129,.15);border:1px solid rgba(110,231,183,.35);border-radius:100px;font-size:.55em;font-family:'Unbounded',sans-serif;color:var(--green-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1em}
+.accent{color:var(--green-l)}.accent-b{color:var(--blue-l)}.accent-p{color:var(--purple-l)}.accent-o{color:var(--orange)}
+.box-blue{background:rgba(37,99,235,.1);border-left:3px solid var(--blue-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-green{background:rgba(16,185,129,.08);border-left:3px solid var(--green-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-orange{background:rgba(249,115,22,.08);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,rgba(16,185,129,.25),rgba(37,99,235,.15));border:1px solid rgba(110,231,183,.35);border-radius:8px;font-family:'Unbounded',sans-serif;font-size:.6em;font-weight:900;color:var(--green-l);flex-shrink:0;margin-right:.5em}
+.step-row{display:flex;align-items:flex-start;gap:.6em;margin:.4em 0;font-size:.85em;color:#c8d0e8}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2em}
+.diff-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.7em .9em}
+.diff-card h3{font-size:.8em;margin-bottom:.3em}
+.diff-card p{font-size:.74em;color:#9090b0;margin:0}
+.reveal .slides section{padding:0 60px}.reveal .progress span{background:linear-gradient(90deg,var(--green),var(--blue))}
+.lesson-num{font-family:'Unbounded',sans-serif;font-size:.45em;color:var(--green-l);letter-spacing:.1em;margin-bottom:.3em}
+.reveal section.title-slide{text-align:center}.reveal section.title-slide h1{font-size:2em}
+</style>
+</head>
+<body>
+<div class="brand">МАСТЕР-ИИ</div>
+<div class="reveal"><div class="slides">
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 30% 50%, rgba(16,185,129,.2) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(37,99,235,.18) 0%, transparent 60%)">
+  <div class="lesson-num">УРОК 9 ИЗ 13</div>
+  <div class="tag">Блок 4 · Деплой</div>
+  <h1>Деплой на сервер:<br><span class="accent">приложение работает 24/7</span></h1>
+  <p style="text-align:center;margin-top:1em;font-size:.75em;color:#8090b0">~40 минут · VPS · SSH-ключ · Nginx · Цикл обновления</p>
+</section>
+
+<section>
+  <h2>Что вы узнаете</h2>
+  <ul>
+    <li class="fragment">Что такое VPS и зачем он нужен (localhost vs интернет)</li>
+    <li class="fragment">SSH-ключ: безопасный доступ без пароля в чате</li>
+    <li class="fragment">Что Claude делает на сервере — весь процесс</li>
+    <li class="fragment">Цикл обновления: правки → деплой за 3 шага</li>
+    <li class="fragment">Безопасность: пароль Claude никогда не видит</li>
+    <li class="fragment">ИИ-ассистент vs ИИ-агент: в чём разница</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Localhost vs VPS</h2>
+  <div class="two-col">
+    <div class="diff-card fragment">
+      <h3 class="accent-b">💻 Localhost</h3>
+      <p>Работает только пока ваш компьютер включён. Ссылка недоступна другим. Хорошо для разработки.</p>
+    </div>
+    <div class="diff-card fragment">
+      <h3 class="accent">🌐 VPS</h3>
+      <p>Ваш компьютер в интернете, работает 24/7. Публичный IP-адрес. Клиенты открывают по ссылке.</p>
+    </div>
+  </div>
+  <div class="box-green fragment" style="margin-top:.7em">VPS от Amnesia Hosting — тот же сервер что использовали в уроке 2. Уже арендован? Используем его. Нужен новый — урок 2.</div>
+</section>
+
+<section>
+  <h2>SSH-ключ: как это работает</h2>
+  <p>SSH-ключ — цифровой пропуск на сервер. Безопаснее пароля и удобнее.</p>
+  <div class="box-orange fragment"><strong>Важно:</strong> пароль от сервера в чат с Claude не вводить. Никогда. Это правило безопасности.</div>
+  <div style="margin-top:.7em">
+    <div class="step-row fragment"><span class="num">1</span><span>Создайте папку и откройте Claude Code</span></div>
+    <div class="step-row fragment"><span class="num">2</span><span>Задача: «Настрой SSH-ключ для подключения к серверу»</span></div>
+    <div class="step-row fragment"><span class="num">3</span><span>Claude генерирует ключи → просит IP и username сервера</span></div>
+    <div class="step-row fragment"><span class="num">4</span><span>Открывает PowerShell → вы вводите туда пароль вручную</span></div>
+    <div class="step-row fragment"><span class="num">5</span><span>«Готово» — ключ установлен, пароль Claude не видел</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Что Claude делает на сервере</h2>
+  <p>После установки SSH-ключа и команды «задеплой приложение»:</p>
+  <div class="step-row fragment"><span class="num">→</span><span>Подключается по SSH к серверу</span></div>
+  <div class="step-row fragment"><span class="num">→</span><span>Определяет операционную систему, проверяет порты</span></div>
+  <div class="step-row fragment"><span class="num">→</span><span>Устанавливает Nginx (веб-сервер)</span></div>
+  <div class="step-row fragment"><span class="num">→</span><span>Создаёт нужную папку, выгружает файлы</span></div>
+  <div class="step-row fragment"><span class="num">→</span><span>Проверяет снаружи — открывает сайт по IP</span></div>
+  <div class="box-green fragment" style="margin-top:.6em">Результат: <strong>http://[IP-адрес]</strong> — ваш сайт доступен из любого браузера. Весь процесс занимает ~15 минут.</div>
+</section>
+
+<section>
+  <h2>Цикл обновления</h2>
+  <div class="step-row fragment"><span class="num">1</span><span>Описываете изменения Claude: «Добавь фильтрацию по дате»</span></div>
+  <div class="step-row fragment"><span class="num">2</span><span>Claude проверяет локально — тестирует в браузере</span></div>
+  <div class="step-row fragment"><span class="num">3</span><span>Говорите «обновляй» → он сам выгружает на сервер через SSH</span></div>
+  <div class="box-green fragment" style="margin-top:.7em">SSH-ключ работает без повторной настройки. Следующий шаг после деплоя — купить доменное имя: <em>mysite.ru</em> вместо голого IP-адреса.</div>
+</section>
+
+<section>
+  <h2>ИИ-ассистент vs ИИ-агент</h2>
+  <div class="two-col">
+    <div class="diff-card fragment">
+      <h3 class="accent-b">🗨️ ИИ-ассистент</h3>
+      <p>Работает по запросу. Вы пишете — он отвечает. Закрыли чат — остановился. Скилл в Projects.</p>
+    </div>
+    <div class="diff-card fragment">
+      <h3 class="accent">🤖 ИИ-агент</h3>
+      <p>Приложение на сервере. Работает 24/7 без вас. Следит за условием → реагирует → уведомляет.</p>
+    </div>
+  </div>
+  <div class="box-green fragment" style="margin-top:.7em"><strong>Пример агента:</strong> мониторинг цен на маркетплейсах. Параметры заданы один раз → проверяет три раза в день → при изменении цены присылает уведомление в Telegram.</div>
+</section>
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(16,185,129,.15) 0%, transparent 70%)">
+  <h2 style="color:var(--green-l);text-align:center">Ключевые выводы</h2>
+  <ul style="text-align:left;display:inline-block;margin-top:.5em">
+    <li class="fragment">VPS = сервер в интернете 24/7, localhost — только для вас</li>
+    <li class="fragment">SSH-ключ — безопасный доступ без пароля в чате</li>
+    <li class="fragment">Цикл: правки → тест → «обновляй» → сервер обновлён</li>
+    <li class="fragment">Агент = приложение на сервере, ассистент = ответ по запросу</li>
+  </ul>
+  <div style="margin-top:1.5em;font-family:'Unbounded',sans-serif;font-size:.6em;color:#8090b0">
+    Следующий урок: <span style="color:var(--blue-l)">API и личный агент →</span>
+  </div>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({hash:true,width:1920,height:1080,margin:.04,controls:true,progress:true,center:false,transition:'fade',transitionSpeed:'fast'});</script>
+</body></html>

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастер-ИИ — Урок 2 — Аренда и подключение VPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=5">
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+  <section class="slide-title">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Урок 2 · Технический блок — шаг 2 из 3</div>
+    <h1>Свой сервер: <span class="accent">арендуем VPS</span><br>и связываем с VPN</h1>
+    <p style="max-width:600px;margin:0 auto">~25 минут · Средняя сложность · $5.5/мес — арендуем сервер в Нидерландах и получаем собственный VPN со статичным IP.</p>
+  <aside class="notes">Урок 2. В прошлом уроке мы установили приложение AmneziaVPN. Сегодня даём ему «двигатель» — арендуем сервер в Нидерландах. После этого урока VPN заработает и вы сможете открыть claude.ai.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 2</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
+    <h2>Что вы узнаете</h2><div class="divider"></div>
+    <div class="bento bento-2" style="margin-top:.8em">
+      <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Как зарегистрироваться в Amnezia Hosting и арендовать VPS в Нидерландах</p></div>
+      <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>Как оплатить сервер через СБП — без иностранных карт, за минуту</p></div>
+      <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Как подключить сервер к AmneziaVPN через режим Self-hosted VPN</p></div>
+      <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>Как проверить нидерландский IP и почему нужно отключить другие VPN</p></div>
+    </div>
+  <aside class="notes">Четыре шага: разберёмся что такое VPS, зарегистрируемся на Amnesia Hosting, оплатим через СБП и настроим сервер в приложении.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 2</div>
+    <h2>Ключевые факты</h2><div class="divider"></div>
+    <div class="bento" style="margin-top:.7em">
+      <div class="bc bc-blue fragment"><div class="bc-num accent-blue">$5.5</div><h3 style="font-size:.55em;color:var(--text)">В месяц</h3><p>Стоимость Netherlands VPS — дешевле чашки кофе в кафе</p></div>
+      <div class="bc bc-purple fragment"><div class="bc-num accent-purple">25</div><h3 style="font-size:.55em;color:var(--text)">Минут</h3><p>От регистрации до работающего VPN с нидерландским IP</p></div>
+      <div class="bc bc-green fragment"><div class="bc-num accent-green">2</div><h3 style="font-size:.55em;color:var(--text)">Аккаунта</h3><p>amnezia.org (программа) и Amnezia Hosting (сервер) — разные личные кабинеты</p></div>
+    </div>
+  <aside class="notes">VPS — это виртуальный сервер в дата-центре. Физически это компьютер в Европе, который работает 24/7. AmneziaVPN использует его как «другой конец» туннеля. Без VPS приложение установлено, но некуда подключаться. С VPS — трафик идёт через Нидерланды и Claude видит европейский IP.</aside></section>
+
+  <section class="slide-section">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 2</div>
+    <div class="section-num">01</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Части 1–3</div>
+    <h2>Регистрация, аренда<br>и оплата</h2>
+    <p>Создаём аккаунт, выбираем тариф, платим через СБП</p>
+  <aside class="notes">Компания Amnezia сделала свой хостинг специально под AmneziaVPN. Открываем hosting.amnezia.org. Выбираем тариф «Нидерланды» — 5.5 долларов в месяц, это примерно 500 рублей. Оплачиваем через FreeKassa — там есть СБП, оплата с любого российского телефона без карты. После оплаты проверяем email — придут данные сервера.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 2</div>
+    <h2>Аренда VPS: пошагово</h2><div class="divider"></div>
+    <div class="steps" style="margin-top:.7em">
+      <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Открыть Amnezia Hosting</strong><span>amnezia.org → меню → продукты → Amnezia Hosting. Отдельный сервис от программы!</span></div></div>
+      <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Зарегистрироваться</strong><span>«Вход» → «Create Account» → имя, почта, телефон, пароль. Подтвердить email сразу же!</span></div></div>
+      <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Заказать Netherlands VPS</strong><span>Services → Order New Service → Netherlands VPS → срок 1 месяц ($5.5)</span></div></div>
+      <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Оплатить через СБП</strong><span>Checkout → FreeKassa → СБП → Pay Now → QR-код в банковском приложении</span></div></div>
+    </div>
+  <aside class="notes">Вы получите IP-адрес, имя пользователя (это root), пароль и тип операционной системы — Ubuntu 22.04. Обязательно сохраните всё это в заметках или в файле. Эти данные нужны не только сейчас, но и в уроке 9, когда будем деплоить приложения на сервер.</aside></section>
+
+  <section class="slide-section">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 2</div>
+    <div class="section-num">02</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Части 4–5</div>
+    <h2>Данные сервера<br>и подключение</h2>
+    <p>Забираем IP, логин, пароль — и вводим в AmneziaVPN</p>
+  <aside class="notes">Открываем AmneziaVPN. Нажимаем плюс → «Настроить собственный сервер». Вводим IP-адрес. Вводим username: root — и пароль из письма. Нажимаем «Установить». Приложение само всё настраивает, займёт 2-3 минуты. После этого нажимаем «Подключить».</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 2</div>
+    <h2>Три значения из My Services</h2><div class="divider"></div>
+    <ul style="max-width:680px;margin-top:.6em">
+      <li class="fragment"><strong style="color:var(--blue-l)">IP-адрес</strong> — набор цифр вида 46.102.237.198 — адрес вашего нового сервера</li>
+      <li class="fragment"><strong style="color:var(--purple-l)">Username</strong> — всегда <span style="color:var(--green-l);font-family:monospace">root</span> у всех без исключения</li>
+      <li class="fragment"><strong style="color:var(--orange)">Password</strong> — сгенерированный пароль. Никому не пересылать!</li>
+      <li class="fragment">Сохраните все три значения прямо сейчас — они нужны и при переустановке</li>
+    </ul>
+  <aside class="notes">Включили VPN, открываем 2ip.ru. Страна — Netherlands. Если да, всё отлично. Теперь открываем claude.ai — должна открыться нормально. Если IP всё ещё российский — нажмите «Переподключить» в приложении.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 2</div>
+    <h2>Подключаем в AmneziaVPN</h2><div class="divider"></div>
+    <div class="steps" style="margin-top:.7em">
+      <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>«Приступим» → Self-hosted VPN</strong><span>Именно Self-hosted — единственный вариант для вашего собственного сервера</span></div></div>
+      <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Ввести IP, root, пароль</strong><span>Три значения из My Services → «Продолжить»</span></div></div>
+      <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>«Автоматическая» установка</strong><span>Приложение само разворачивает VPN на сервере — до 5 минут, ничего не закрываем</span></div></div>
+      <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Нажать «Подключение» и проверить</strong><span>Индикатор оранжевый → «Подключено». На 2ip.ru должен быть Амстердам</span></div></div>
+    </div>
+  <aside class="notes">Итого: VPS арендован, AmneziaVPN работает, IP — Нидерланды. Инфраструктура готова. Следующий шаг — регистрация на claude.ai через ProtonMail. До встречи!</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 2</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
+    <h2>Ключевые выводы</h2><div class="divider"></div>
+    <ul style="max-width:640px;margin-top:.6em">
+      <li class="fragment">VPS — это «адрес» для AmneziaVPN: без сервера программа — просто пустой корпус</li>
+      <li class="fragment">Self-hosted VPN — единственный вариант, работающий с вашим собственным сервером</li>
+      <li class="fragment">Два активных VPN конфликтуют — отключите все остальные перед подключением</li>
+    </ul>
+  </section>
+
+  <section class="slide-final">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Следующий урок</div>
+    <h1 style="font-size:1.4em">Урок 3:<br><span class="accent">Почта ProtonMail</span></h1>
+    <p style="max-width:560px;margin:.6em auto 0">Регистрируем швейцарский почтовый ящик с хорошей репутацией — именно на него создаём аккаунт Claude, чтобы минимизировать риск блокировки.</p>
+    <div class="btn">Смотреть следующий урок →</div>
+  </section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:0.04,plugins:[RevealNotes]});</script>
+<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
+
+</body></html>

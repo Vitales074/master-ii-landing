@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастер-ИИ — Урок 4 — Лендинг с нуля</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=5">
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+  <section class="slide-title">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Урок 4 · Первый сайт</div>
+    <h1>Лендинг <span class="accent">с нуля</span><br>через Claude</h1>
+    <p style="max-width:600px;margin:0 auto">Без знания кода, без разработчиков — полноценный сайт за 30 минут. Результат не уступает работам за 50–100 тысяч рублей у фрилансеров.</p>
+  <aside class="notes">Урок 4. Переходим к самому интересному — создаём первый сайт. Сегодня разберём Claude Code, установим Git, напишем правильный промпт и опубликуем лендинг на Netlify.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 4</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
+    <h2>Что вы узнаете</h2><div class="divider"></div>
+    <div class="bento bento-2" style="margin-top:.8em">
+      <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Чем раздел Code отличается от обычного чата и зачем он нужен для сайтов</p></div>
+      <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>Как настроить рабочую папку и что такое Trust Workspace</p></div>
+      <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Структура рабочего промпта — как написать запрос, чтобы получить хороший результат</p></div>
+      <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>Как опубликовать сайт на Netlify за 10 секунд через drag & drop</p></div>
+    </div>
+  <aside class="notes">Пять блоков: разница Chat и Code, установка Git, рабочая папка, формула промпта и публикация.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 4</div>
+    <h2>Chat vs Code vs Projects</h2><div class="divider"></div>
+    <table class="compare-table" style="margin-top:.7em">
+      <thead><tr><th>Режим</th><th>Как работает</th><th>Для чего</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Chat</td><td>Ответы приходят прямо в чат</td><td>Вопросы, тексты, объяснения</td></tr>
+        <tr class="fragment"><td>Code</td><td>Создаёт и редактирует файлы в вашей папке</td><td>Сайты, приложения, проекты</td></tr>
+        <tr class="fragment"><td>Projects</td><td>Долгосрочная память, агенты</td><td>Автоматизация, сложные проекты</td></tr>
+      </tbody>
+    </table>
+    <p class="fragment" style="margin-top:.6em;font-size:.55em">В разделе Code Claude работает с <strong style="color:var(--blue-l)">реальными файлами</strong> на вашем компьютере — создаёт папки, пишет HTML, сохраняет картинки автоматически</p>
+  <aside class="notes">Многие начинают в Chat и удивляются — почему ничего не создаётся? Chat — это разговор. Code — это рабочий стол. В Chat Claude отвечает текстом. В Code — видит вашу папку, создаёт файлы, запускает и тестирует. Для сайта нужен Code, потому что сайт это файлы. Только в Code Claude может их физически создать.</aside></section>
+
+  <section class="slide-section">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 4</div>
+    <div class="section-num">01</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел первый</div>
+    <h2>Подготовка:<br>Git и рабочая папка</h2>
+    <p>Два шага перед созданием первого сайта</p>
+  <aside class="notes">Git — вспомогательная программа, которую использует Claude Code. Без неё создавать проекты не получится. Два способа установить. Официальный: git-scm.com, скачать, установить с настройками по умолчанию, перезагрузить компьютер. Через Claude: открыть Code, написать «установи Git», Claude сделает сам. Проверка: PowerShell → git --version → должна появиться версия.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 4</div>
+    <h2>Настройка рабочей среды</h2><div class="divider"></div>
+    <div class="steps" style="margin-top:.7em">
+      <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Установить Git</strong><span>Красная плашка в разделе Code — нужен Git. Проще через Claude: напишите «Есть ли у нас Git?» — он установит сам</span></div></div>
+      <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Создать папку проекта</strong><span>Правая кнопка на рабочем столе → «Создать папку». Имя латиницей: site, landing, vrach, honey</span></div></div>
+      <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Привязать к Claude (Open Folder)</strong><span>В разделе Code → выбрать папку → нажать Trust Workspace (без этого файлы не создаются)</span></div></div>
+      <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Правило: 1 проект — 1 папка</strong><span>Для нового проекта: новая папка + New Session. Смешивать нельзя</span></div></div>
+    </div>
+  <aside class="notes">Правило простое: один проект — одна папка. Создайте папку в Документах, например «лендинг-1». В Claude Code нажмите Open Folder, выберите её. Нажмите Trust — это разрешение для Claude работать с папкой. Не смешивайте несколько проектов в одну папку — Claude запутается в файлах.</aside></section>
+
+  <section class="slide-section">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 4</div>
+    <div class="section-num">02</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел второй</div>
+    <h2>Как написать<br>хороший промпт</h2>
+    <p>Главный навык урока: хороший запрос = хороший результат с первого раза</p>
+  <aside class="notes">Хороший промпт — это 6 частей. Задача: что создать. Дизайн: как выглядит. Структура: какие секции. Формат: HTML, один файл. Особенности: адаптив, кнопки, анимации. Тексты: заглушки или реальные. Чем детальнее — тем точнее результат. Хороший промпт сокращает количество итераций примерно на треть.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 4</div>
+    <h2>Структура рабочего промпта</h2><div class="divider"></div>
+    <ul style="max-width:680px;margin-top:.6em">
+      <li class="fragment"><strong style="color:var(--blue-l)">«Создай лендинг / сайт-визитку»</strong> — тип сайта</li>
+      <li class="fragment"><strong style="color:var(--purple-l)">«Дизайн: …»</strong> — стиль словами или прикреплённая картинка-референс</li>
+      <li class="fragment"><strong style="color:var(--green-l)">«Формат: HTML»</strong> — самый универсальный формат, легко публиковать</li>
+      <li class="fragment"><strong style="color:var(--orange)">«Тема: …»</strong> — имя, чем занимаетесь, что продаёте</li>
+      <li class="fragment"><strong style="color:var(--text)">«Если есть вопросы — задавай»</strong> — разрешение уточнять, а не угадывать</li>
+      <li class="fragment"><strong style="color:var(--text)">«Маркетинговые тексты допиши сам»</strong> — Claude придумает, вы отредактируете</li>
+    </ul>
+  <aside class="notes">Автоматически появляются: все секции, анимации появления, мобильная вёрстка, кнопки с эффектами, форма обратной связи, блок цен, секция отзывов. Вам не нужно писать ни строчки HTML или CSS. Вы — продюсер, Claude — разработчик.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 4</div>
+    <h2>Что Claude создаёт сам</h2><div class="divider"></div>
+    <div class="bento" style="margin-top:.7em">
+      <div class="bc bc-blue fragment"><h3 class="accent-blue">Структура</h3><p>О себе, услуги, почему выбирают, как заказать, отзывы, контакты — всё сам</p></div>
+      <div class="bc bc-purple fragment"><h3 class="accent-purple">Анимации</h3><p>Подсветка при наведении, появление блоков при прокрутке, раскрывающийся FAQ</p></div>
+      <div class="bc bc-green fragment"><h3 class="accent-green">Адаптив</h3><p>Сайт автоматически проверяет отображение на телефоне и компьютере</p></div>
+    </div>
+  <aside class="notes">Netlify — бесплатный хостинг с drag & drop публикацией. Регистрируемся — подробно в следующем уроке 4.1. Перетаскиваем папку проекта в зону загрузки. Если Netlify спрашивает про переименование файла в index.html — нажимаем «Rename and deploy». Копируем ссылку — сайт в интернете. Цикл обновления: изменили в Code → перетащили папку → сайт обновился.</aside></section>
+
+  <section class="slide-section">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 4</div>
+    <div class="section-num">03</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел третий</div>
+    <h2>Модели и лимиты</h2>
+    <p>Sonnet vs Opus, Effort, что делать когда лимит закончился</p>
+  <aside class="notes">Три главных урока: для сайтов только Code, не Chat. Детальный промпт из шести частей = меньше итераций. Netlify — drag & drop и готово. Следующий урок — пошаговая регистрация и первая публикация на Netlify. До встречи!</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 4</div>
+    <h2>Выбор модели</h2><div class="divider"></div>
+    <table class="compare-table" style="margin-top:.7em">
+      <thead><tr><th>Модель</th><th>Для чего</th><th>Расход лимитов</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Sonnet</td><td>Обычные лендинги и сайты-визитки</td><td>Минимальный</td></tr>
+        <tr class="fragment"><td>Opus</td><td>Сложный анализ, поиск в интернете</td><td>Высокий</td></tr>
+        <tr class="fragment"><td>Low / Medium Effort</td><td>Простые сайты по описанию</td><td>Меньше токенов</td></tr>
+        <tr class="fragment"><td>High / Max Effort</td><td>Сложные требования, референс</td><td>Больше токенов</td></tr>
+      </tbody>
+    </table>
+    <p class="fragment" style="margin-top:.5em;font-size:.55em">Оптимум: <strong style="color:var(--green-l)">Sonnet + Low/Medium</strong>. Лимит закончился? Файлы сохранены — подождите 4 часа и продолжайте</p>
+  </section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 4</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
+    <h2>Ключевые выводы</h2><div class="divider"></div>
+    <ul style="max-width:640px;margin-top:.6em">
+      <li class="fragment">Раздел Code работает с реальными файлами — это принципиально отличает его от чата</li>
+      <li class="fragment">Структурный промпт с дизайном, темой и разрешением задавать вопросы даёт результат с первого раза</li>
+      <li class="fragment">Netlify — три секунды: перетащили HTML-файл и получили рабочую ссылку</li>
+    </ul>
+  </section>
+
+  <section class="slide-final">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Следующий урок</div>
+    <h1 style="font-size:1.4em">Урок 4.1:<br><span class="accent">Публикуем сайт на Netlify</span></h1>
+    <p style="max-width:560px;margin:.6em auto 0">Практикум: регистрируемся на Netlify, загружаем HTML-файл через drag & drop и получаем постоянную публичную ссылку.</p>
+    <div class="btn">Смотреть следующий урок →</div>
+  </section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:0.04,plugins:[RevealNotes]});</script>
+<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
+
+</body></html>

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастер-ИИ — Урок 3 — Почта ProtonMail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=5">
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+  <section class="slide-title">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Урок 3 · Технический блок — шаг 3 из 3</div>
+    <h1>Почта, которой<br>доверяют: <span class="accent">ProtonMail</span></h1>
+    <p style="max-width:600px;margin:0 auto">~10 минут · Низкая сложность — регистрируем швейцарский зашифрованный почтовый ящик для аккаунта Claude.</p>
+  <aside class="notes">Урок 3, последний технический шаг из трёх. VPN работает, сервер арендован. Теперь нужна правильная почта для регистрации на claude.ai.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
+    <h2>Что вы узнаете</h2><div class="divider"></div>
+    <div class="bento bento-2" style="margin-top:.8em">
+      <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Зачем отдельный ящик и почему Gmail на .ru-домене плохо подходит для Claude</p></div>
+      <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>Как зарегистрироваться на ProtonMail через VPN на бесплатном тарифе</p></div>
+      <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Почему нужно сохранить пароль ДО продолжения регистрации</p></div>
+      <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>Как привязать резервный адрес для восстановления доступа</p></div>
+    </div>
+  <aside class="notes">Разберём: зачем отдельная почта, почему именно ProtonMail, как правильно зарегистрироваться и какая альтернатива есть на случай проблем.</aside></section>
+
+  <section class="slide-section">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3</div>
+    <div class="section-num">01</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел первый</div>
+    <h2>Зачем отдельная почта<br>для Claude</h2>
+    <p>Anthropic настороженно относится к свежим Gmail и почтам с .ru-доменом</p>
+  <aside class="notes">Anthropic смотрит не только на IP, но и на почтовый адрес при регистрации. Адреса с .ru и .рф доменами, почта привязанная к российскому номеру, или свежесозданный Gmail — всё это может вызвать проверку. ProtonMail — швейцарский сервис, нет связи с Россией, хорошая репутация.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3</div>
+    <h2>Почему ProtonMail</h2><div class="divider"></div>
+    <ul style="max-width:680px;margin-top:.6em">
+      <li class="fragment">Свежесозданный Gmail и почты на .ru-доменах чаще блокируют при регистрации</li>
+      <li class="fragment">ProtonMail — швейцарский, шифрованный, никак не связан с российским IP</li>
+      <li class="fragment">Бесплатный тариф — для регистрации в Claude более чем достаточно</li>
+      <li class="fragment">Альтернатива: Tuta (Tutanota) — немецкий шифрованный почтовик с тем же принципом</li>
+      <li class="fragment">Есть старый Gmail старше полугода без РФ-флагов? Этот урок можно пропустить</li>
+    </ul>
+  <aside class="notes">Три причины. Первая: швейцарский сервер, нет связи с Россией. Вторая: сквозное шифрование — даже ProtonMail не может прочитать ваши письма. Третья: бесплатно. Важный момент: VPN должен быть включён с самого начала регистрации. Proton сохраняет IP первого входа.</aside></section>
+
+  <section class="slide-section">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3</div>
+    <div class="section-num">02</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел второй</div>
+    <h2>Регистрация<br>на ProtonMail</h2>
+    <p>Включаем VPN, открываем proton.me и создаём ящик</p>
+  <aside class="notes">Шесть шагов. Один — включаем VPN, проверяем 2ip.ru, страна Netherlands. Два — открываем proton.me, нажимаем Create a free account. Три — выбираем бесплатный тариф. Четыре — придумываем имя ящика, без своего имени и фамилии. Пять — указываем резервный email, не .ru домен. Телефон вводить не нужно. Шесть — капча, готово.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3</div>
+    <h2>Регистрация: шаги</h2><div class="divider"></div>
+    <div class="steps" style="margin-top:.7em">
+      <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Включить AmneziaVPN</strong><span>Proton должен видеть европейский IP с первой секунды — это часть «чистой» репутации</span></div></div>
+      <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Открыть proton.me → Proton Free</strong><span>Сайт подсветит платный план — пролистайте до бесплатного тарифа</span></div></div>
+      <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Придумать username и пароль</strong><span>СОХРАНИТЕ пароль прямо сейчас! Proton не хранит его — без резервного адреса аккаунт потерян</span></div></div>
+      <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Пройти капчу и дождаться создания</strong><span>Генерируются ключи шифрования — процесс не мгновенный, подождите</span></div></div>
+    </div>
+  <aside class="notes">Три детали. Первая: телефон не вводить, Proton не требует его для бесплатного аккаунта. Если вдруг просит — пропустите этот шаг. Вторая: резервный email — любая почта без .ru. Нужна на случай восстановления. Третья: альтернатива — Tuta Mail на tuta.com, работает так же, тоже подходит.</aside></section>
+
+  <section class="slide-section">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3</div>
+    <div class="section-num">03</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел третий</div>
+    <h2>Резервный адрес —<br>обязательный шаг</h2>
+    <p>Без него потеря пароля = потеря аккаунта навсегда</p>
+  <aside class="notes">Почта готова. VPN включён, открываем claude.ai, нажимаем Sign up, вводим новый ProtonMail адрес. Подтверждаем через письмо — оно придёт на proton.me. Если у вас уже есть Gmail старше шести месяцев без привязки к российскому номеру — можете использовать его, этот урок пропустить.</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3</div>
+    <h2>Привязка резервной почты</h2><div class="divider"></div>
+    <ul style="max-width:680px;margin-top:.6em">
+      <li class="fragment">Иконка щита (Центр безопасности) → «Восстановление аккаунта»</li>
+      <li class="fragment"><strong style="color:var(--green-l)">Принимаются:</strong> Gmail, iCloud, Outlook, другой Proton-адрес</li>
+      <li class="fragment"><strong style="color:var(--orange)">Не принимаются:</strong> Mail.ru, Яндекс, любые .ru-домены</li>
+      <li class="fragment">Сохраните адрес → подтвердите → перейдите по ссылке из письма</li>
+      <li class="fragment">Зелёная галочка рядом с адресом = аккаунт полностью защищён</li>
+    </ul>
+  <aside class="notes">Три правила: VPN включить до открытия proton.me. Телефон не вводить, .ru почту как резервную не использовать. Есть альтернатива — Tuta Mail. Следующий урок — честные способы оплаты Claude из России. До встречи!</aside></section>
+
+  <section>
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
+    <h2>Ключевые выводы</h2><div class="divider"></div>
+    <ul style="max-width:640px;margin-top:.6em">
+      <li class="fragment">VPN должен быть включён с самой первой секунды открытия proton.me — это важно для репутации</li>
+      <li class="fragment">Пароль сохранить ДО продолжения: Proton шифрует его и не может восстановить сам</li>
+      <li class="fragment">Резервный адрес обязателен — иначе потеря пароля означает потерю аккаунта навсегда</li>
+    </ul>
+  </section>
+
+  <section class="slide-final">
+    <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <div class="slide-brand">МАСТЕР-ИИ</div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Следующий урок</div>
+    <h1 style="font-size:1.4em">Урок 3.1:<br><span class="accent">Как оплатить Claude из России</span></h1>
+    <p style="max-width:560px;margin:.6em auto 0">Разбираем все рабочие варианты оплаты: бесплатный план, Anthropic API через криптовалюту, OpenRouter и подписка через друга за рубежом.</p>
+    <div class="btn">Смотреть следующий урок →</div>
+  </section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:0.04,plugins:[RevealNotes]});</script>
+<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
+
+</body></html>

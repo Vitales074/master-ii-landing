@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Урок 12 — Безопасность · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+:root{--blue:#2563EB;--blue-l:#60a5fa;--purple:#7C3AED;--purple-l:#a78bfa;--green:#10B981;--green-l:#6ee7b7;--orange:#f97316;--red:#ef4444}
+.reveal{font-family:'Hanken Grotesk',sans-serif;font-size:32px}.reveal .slides{text-align:left}
+.reveal h1,.reveal h2,.reveal h3{font-family:'Unbounded',sans-serif;text-transform:none;letter-spacing:-.02em}
+.reveal h1{font-size:1.8em;font-weight:900;line-height:1.1}.reveal h2{font-size:1.2em;font-weight:700;color:var(--orange);margin-bottom:.5em}
+.reveal h3{font-size:.85em;font-weight:700;margin-bottom:.3em}.reveal p,.reveal li{color:#c8d0e8;line-height:1.6;font-size:.85em}
+.reveal ul{list-style:none;padding:0}.reveal ul li::before{content:"▸ ";color:var(--orange)}.reveal strong{color:#fff}
+.brand{position:fixed;top:24px;right:32px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;z-index:9999}
+.tag{display:inline-block;padding:4px 14px;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.38);border-radius:100px;font-size:.55em;font-family:'Unbounded',sans-serif;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1em}
+.accent{color:var(--orange)}.accent-b{color:var(--blue-l)}.accent-p{color:var(--purple-l)}.accent-g{color:var(--green-l)}
+.box-blue{background:rgba(37,99,235,.1);border-left:3px solid var(--blue-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-green{background:rgba(16,185,129,.08);border-left:3px solid var(--green-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-orange{background:rgba(249,115,22,.08);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-red{background:rgba(239,68,68,.07);border-left:3px solid var(--red);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,rgba(249,115,22,.25),rgba(239,68,68,.15));border:1px solid rgba(249,115,22,.4);border-radius:8px;font-family:'Unbounded',sans-serif;font-size:.6em;font-weight:900;color:var(--orange);flex-shrink:0;margin-right:.5em}
+.step-row{display:flex;align-items:flex-start;gap:.6em;margin:.4em 0;font-size:.85em;color:#c8d0e8}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2em}
+.code-bad{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:.5em .8em;font-family:monospace;font-size:.72em;color:#ff9090}
+.code-good{background:rgba(16,185,129,.08);border:1px solid rgba(110,231,183,.2);border-radius:8px;padding:.5em .8em;font-family:monospace;font-size:.72em;color:#6ee7b7}
+.reveal .slides section{padding:0 60px}.reveal .progress span{background:linear-gradient(90deg,var(--orange),var(--red))}
+.lesson-num{font-family:'Unbounded',sans-serif;font-size:.45em;color:var(--orange);letter-spacing:.1em;margin-bottom:.3em}
+.reveal section.title-slide{text-align:center}.reveal section.title-slide h1{font-size:2em}
+</style>
+</head>
+<body>
+<div class="brand">МАСТЕР-ИИ</div>
+<div class="reveal"><div class="slides">
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 30% 50%, rgba(249,115,22,.2) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(239,68,68,.15) 0%, transparent 60%)">
+  <div class="lesson-num">УРОК 12 ИЗ 13</div>
+  <div class="tag">Блок 6 · Защита</div>
+  <h1>Безопасность вайб-кода:<br><span class="accent">как не потерять деньги и данные</span></h1>
+  <p style="text-align:center;margin-top:1em;font-size:.75em;color:#8090b0">~35 минут · Уязвимости · Slopsquatting · CLAUDE.md · Двойной проход</p>
+</section>
+
+<section>
+  <h2>Что вы узнаете</h2>
+  <ul>
+    <li class="fragment">Почему AI-код уязвим по природе</li>
+    <li class="fragment">3 типовых сценария утечки данных</li>
+    <li class="fragment">Уязвимость: секреты в коде → счёт $3000 за час</li>
+    <li class="fragment">SQL-инъекции и XSS — что это и как избежать</li>
+    <li class="fragment">Slopsquatting: галлюцинации пакетов</li>
+    <li class="fragment">Метод двойного прохода и CLAUDE.md</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Почему AI-код уязвим</h2>
+  <p>Claude оптимизирован на решение задачи, а не на защиту от злоумышленников.</p>
+  <div class="box-orange fragment" style="margin-top:.5em">Аналогия: архитектор спроектировал красивый дом без замков на дверях. Дом работает, но небезопасен.</div>
+  <div class="two-col" style="margin-top:.6em">
+    <div class="fragment" style="font-size:.8em">
+      <p style="color:#ff8080">Статистика исследований:</p>
+      <ul>
+        <li>45–62% AI-кода содержит реальные уязвимости</li>
+        <li>20% кода пробует установить несуществующие пакеты</li>
+      </ul>
+    </div>
+    <div class="fragment">
+      <div class="box-green">«Читайте AI-код как код незнакомого стажёра — с любопытством, но не слепым доверием»</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>3 типовых сценария утечки</h2>
+  <div class="step-row fragment">
+    <span class="num" style="color:#ff8080">А</span>
+    <div>
+      <strong>API-ключи в клиентском JS</strong>
+      <p style="font-size:.78em;color:#9090b0;margin:.1em 0">Видны через DevTools любому пользователю → за 48 часов баланс сгорел, карта заблокирована</p>
+    </div>
+  </div>
+  <div class="step-row fragment">
+    <span class="num" style="color:#ff8080">Б</span>
+    <div>
+      <strong>База данных без Row Level Security</strong>
+      <p style="font-size:.78em;color:#9090b0;margin:.1em 0">Данные доступны без авторизации → утекло более миллиона токенов данных пользователей</p>
+    </div>
+  </div>
+  <div class="step-row fragment">
+    <span class="num" style="color:#ff8080">В</span>
+    <div>
+      <strong>Загрузка файлов без проверки</strong>
+      <p style="font-size:.78em;color:#9090b0;margin:.1em 0">Публичный бакет без ограничений → тысячи приватных документов стали общедоступными</p>
+    </div>
+  </div>
+  <div class="box-orange fragment" style="margin-top:.6em">Общий вывод: «AI сделал именно то, о чём его попросили. Никто не спросил — а безопасно ли это?»</div>
+</section>
+
+<section>
+  <h2>Секреты в коде: как правильно</h2>
+  <div class="two-col">
+    <div class="fragment">
+      <p style="font-size:.78em;color:#ff8080;margin-bottom:.3em">❌ Опасно:</p>
+      <div class="code-bad">API_KEY = "sk-ant-..."<br>client = Anthropic(api_key=API_KEY)</div>
+    </div>
+    <div class="fragment">
+      <p style="font-size:.78em;color:var(--green-l);margin-bottom:.3em">✓ Правильно:</p>
+      <div class="code-good">import os<br>client = Anthropic(<br>&nbsp;&nbsp;api_key=os.getenv("ANTHROPIC_KEY")<br>)</div>
+    </div>
+  </div>
+  <div class="box-red fragment" style="margin-top:.7em"><strong>Таймлайн после git push с ключом:</strong> 0 мин — залили. 2 мин — боты-сканеры нашли ключ. 10 мин — кто-то его использует. ~1 час — счёт на $3000 за чужие запросы.</div>
+  <div class="box-green fragment" style="margin-top:.4em">Правило: ключи в чат не вставлять. Писать YOUR_KEY_HERE, вставить вручную потом.</div>
+</section>
+
+<section>
+  <h2>SQL-инъекции и XSS</h2>
+  <div class="two-col">
+    <div class="fragment">
+      <p style="font-size:.78em;color:#ff8080;margin-bottom:.3em">❌ SQL-инъекция:</p>
+      <div class="code-bad">query = f"SELECT * FROM users<br>WHERE name = '{user_input}'"</div>
+      <p style="font-size:.72em;color:#9090b0;margin-top:.3em">Пользователь пишет не имя, а SQL-команду — база её выполняет</p>
+    </div>
+    <div class="fragment">
+      <p style="font-size:.78em;color:#ff8080;margin-bottom:.3em">❌ XSS:</p>
+      <div class="code-bad">element.innerHTML = userInput</div>
+      <p style="font-size:.72em;color:#9090b0;margin-top:.3em">= разрешить незнакомцу написать что угодно на вашей странице</p>
+    </div>
+  </div>
+  <div class="box-green fragment" style="margin-top:.6em"><strong>Решение:</strong> параметризованные SQL-запросы вместо f-string. <code>textContent</code> вместо <code>innerHTML</code>. Попросите Claude использовать безопасные методы явно.</div>
+</section>
+
+<section>
+  <h2>Slopsquatting: галлюцинации пакетов</h2>
+  <p>Claude иногда предлагает несуществующий пакет. Хакер его регистрирует — внутри вредоносный код.</p>
+  <div class="box-orange fragment">Примеры: <code>@types-node</code> вместо <code>@types/node</code> — тире вместо слеша. Визуально похоже, функционально — чужой код.</div>
+  <div style="margin-top:.6em">
+    <div class="step-row fragment"><span class="num">1</span><span>Перед <code>npm install</code> — проверьте на <strong>npmjs.com</strong> или <strong>pypi.org</strong></span></div>
+    <div class="step-row fragment"><span class="num">2</span><span>Смотрите: возраст пакета, количество скачиваний, история автора</span></div>
+    <div class="step-row fragment"><span class="num">3</span><span>После установки запустите <strong>npm audit</strong></span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Метод двойного прохода + CLAUDE.md</h2>
+  <div class="step-row fragment"><span class="num">1</span><span>«Напиши функцию регистрации» → получаем рабочий код</span></div>
+  <div class="step-row fragment"><span class="num">2</span><span>«Ты — эксперт по кибербезопасности. Проверь по OWASP Top 10 и исправь» → Claude находит и исправляет дыры</span></div>
+  <div class="box-green fragment" style="margin-top:.5em">Одно дополнительное сообщение кардинально меняет качество кода.</div>
+  <div class="box-blue fragment" style="margin-top:.6em"><strong>CLAUDE.md</strong> — файл в корне проекта. Claude читает его автоматически в каждой сессии. Напишите туда правила: секреты в .env, параметризованные запросы, bcrypt для паролей — и Claude будет следовать им всегда.</div>
+</section>
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(249,115,22,.15) 0%, transparent 70%)">
+  <h2 style="color:var(--orange);text-align:center">Ключевые выводы</h2>
+  <ul style="text-align:left;display:inline-block;margin-top:.5em">
+    <li class="fragment">AI-код рабочий, но не безопасный по умолчанию</li>
+    <li class="fragment">Секреты — только в .env, никогда в коде или чате</li>
+    <li class="fragment">Slopsquatting: проверяйте пакеты до npm install</li>
+    <li class="fragment">Двойной проход + CLAUDE.md = стабильная безопасность</li>
+  </ul>
+  <div style="margin-top:1.5em;font-family:'Unbounded',sans-serif;font-size:.6em;color:#8090b0">
+    Следующий урок: <span style="color:var(--green-l)">Портфолио и первые клиенты →</span>
+  </div>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({hash:true,width:1920,height:1080,margin:.04,controls:true,progress:true,center:false,transition:'fade',transitionSpeed:'fast'});</script>
+</body></html>

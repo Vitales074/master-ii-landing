@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастер-ИИ — Урок 4.1 — Публикация через Netlify</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=5">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section class="slide-title">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Урок 4.1 · Практикум</div>
+      <h1>Публикуем сайт<br>через <span class="accent">Netlify</span></h1>
+      <p style="max-width:600px;margin:0 auto;">От HTML-файла на компьютере до ссылки в интернете — за 4 шага и 5 минут</p>
+    <aside class="notes">Урок 4.1 — практикум. Сайт готов в Code, теперь публикуем его в интернет через Netlify. Займёт около 10 минут.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 4.1</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
+      <h2>Что вы сделаете</h2>
+      <div class="divider"></div>
+      <div class="bento bento-2" style="margin-top:.8em;">
+        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Зарегистрируетесь на Netlify — бесплатно, без настройки сервера</p></div>
+        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>Загрузите HTML-файл drag &amp; drop и получите публичную ссылку</p></div>
+        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Узнаете про rename index.html и почему это важно</p></div>
+        <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>Научитесь обновлять сайт — ссылка остаётся той же</p></div>
+      </div>
+    <aside class="notes">Netlify — бесплатный хостинг. Не нужен FTP, командная строка или сервер. Просто перетащить папку — и сайт в интернете. Бесплатный тариф включает всё нужное: неограниченное число сайтов, HTTPS, CDN. Для учебных и клиентских проектов хватает.</aside></section>
+
+    <section class="slide-section">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 4.1</div>
+      <div class="section-num">01</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Что такое Netlify</div>
+      <h2>Хостинг без сервера</h2>
+      <p>Просто перетащите файл — и сайт уже в интернете</p>
+    <aside class="notes">Шаг первый: идём на netlify.com, нажимаем Sign up, входим через Google. Новую почту создавать не нужно. Шаг второй: на главной странице Netlify есть зона drag and drop. Перетаскиваем папку проекта. Шаг третий: если появляется диалог про переименование — нажимаем «Rename and deploy». Шаг четвёртый: Netlify показывает ссылку. Копируем — это и есть сайт.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 4.1</div>
+      <h2>Что такое Netlify</h2>
+      <div class="divider"></div>
+      <ul style="max-width:680px;margin-top:.6em;">
+        <li class="fragment">Бесплатный сервис для публикации сайтов</li>
+        <li class="fragment">Работает без настройки сервера и покупки домена</li>
+        <li class="fragment">Вы просто перетаскиваете HTML-файл — и через секунды получаете ссылку</li>
+        <li class="fragment">Ссылка выглядит так: <span class="accent-blue">curious-faun-390d44.netlify.app</span></li>
+        <li class="fragment">Сайт доступен из любой точки мира сразу после загрузки</li>
+      </ul>
+    <aside class="notes">Важный момент. Netlify ищет файл index.html как главную страницу. Claude часто называет файлы по-другому: landing.html, site.html. Два решения: первое — Netlify сам предложит переименовать, просто нажмите кнопку. Второе — переименуйте файл через Проводник до загрузки.</aside></section>
+
+    <section class="slide-section">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 4.1</div>
+      <div class="section-num">02</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>4 шага</div>
+      <h2>Пошаговый практикум</h2>
+      <p>Регистрация, загрузка, ссылка — всё за 5 минут</p>
+    <aside class="notes">Когда внесли правки: открываем netlify.com, находим наш сайт, вкладка Deploys, перетаскиваем обновлённую папку. Ссылка остаётся той же. Клиент получает ссылку один раз — потом просто обновляет страницу в браузере.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 4.1</div>
+      <h2>4 шага до публикации</h2>
+      <div class="divider"></div>
+      <div class="steps" style="margin-top:.7em;">
+        <div class="step fragment">
+          <div class="step-num">01</div>
+          <div class="step-body"><strong>Перейдите на netlify.com → Sign up</strong><span>Правый верхний угол — кнопка Sign up</span></div>
+        </div>
+        <div class="step fragment">
+          <div class="step-num">02</div>
+          <div class="step-body"><strong>Выберите способ входа</strong><span>Google — самый быстрый вариант, не нужен новый пароль</span></div>
+        </div>
+        <div class="step fragment">
+          <div class="step-num">03</div>
+          <div class="step-body"><strong>Перетащите HTML-файл в поле Upload</strong><span>Drag &amp; drop или кнопка «browse files» — оба способа работают</span></div>
+        </div>
+        <div class="step fragment">
+          <div class="step-num">04</div>
+          <div class="step-body"><strong>Скопируйте ссылку из раздела Projects</strong><span>Адрес выделен зелёным — отправьте его кому угодно</span></div>
+        </div>
+      </div>
+    <aside class="notes">Netlify — проще некуда. Регистрация через Google, drag & drop, файл называть index.html. Ссылка не меняется при обновлениях. Следующий урок — многостраничный сайт. До встречи!</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 4.1</div>
+      <h2>Важный момент:<br><span class="accent-purple">Rename to index.html?</span></h2>
+      <div class="divider"></div>
+      <ul style="max-width:680px;margin-top:.6em;">
+        <li class="fragment">Netlify может предложить переименовать файл</li>
+        <li class="fragment">Без файла <span class="accent-blue">index.html</span> сайт показывает «Page Not Found»</li>
+        <li class="fragment">Нажмите <span class="accent-green">«Rename and deploy»</span> — Netlify сам переименует и опубликует</li>
+        <li class="fragment">Это нормальное поведение — не пугайтесь диалогового окна</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 4.1</div>
+      <h2>Как обновить сайт<br>после правок</h2>
+      <div class="divider"></div>
+      <div class="bento bento-2" style="margin-top:.7em;">
+        <div class="bc bc-blue fragment">
+          <div class="bc-num accent-blue">10 сек</div>
+          <h3 style="font-size:.55em;color:var(--text);">Время обновления</h3>
+          <p>Открываете проект → перетаскиваете новый файл → готово</p>
+        </div>
+        <div class="bc bc-green fragment">
+          <div class="bc-num accent-green">=</div>
+          <h3 style="font-size:.55em;color:var(--text);">Ссылка не меняется</h3>
+          <p>Клиенты видят актуальную версию по той же ссылке</p>
+        </div>
+      </div>
+      <p class="fragment" style="margin-top:.8em;">Раздел <span class="accent-blue">«Production deploys»</span> → перетащить обновлённый файл</p>
+    </section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 4.1</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
+      <h2>Ключевые выводы</h2>
+      <div class="divider"></div>
+      <ul style="max-width:640px;margin-top:.6em;">
+        <li class="fragment">Netlify — бесплатный хостинг, не нужен сервер и домен</li>
+        <li class="fragment">4 шага: Sign up → Google → Upload файл → скопировать ссылку</li>
+        <li class="fragment">Если спросят про index.html — нажмите «Rename and deploy»</li>
+      </ul>
+    </section>
+
+    <section class="slide-final">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Следующий урок</div>
+      <h1 style="font-size:1.4em;">Урок 5:<br><span class="accent">Многостраничный сайт</span></h1>
+      <p style="max-width:560px;margin:.6em auto 0;">Профессиональный цикл: ТЗ, reverse-инжиниринг, скиллы и публикация реального бизнес-сайта</p>
+      <div class="btn">Следующий урок →</div>
+    </section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
+<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
+<style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
+</body>
+</html>

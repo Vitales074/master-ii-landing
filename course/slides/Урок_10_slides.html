@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастер-ИИ — Урок 10 — API и личный агент</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=5">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section class="slide-title">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Урок 10 · API и агенты</div>
+      <h1>Агент вне<br><span class="accent">Claude</span></h1>
+      <p style="max-width:600px;margin:0 auto;">Что такое API, как получить ключ и создать агента который работает на вашем сайте, в Telegram или в виджете поддержки</p>
+    <aside class="notes">Урок 10. API — это следующий уровень. Не просто чат, а агенты которые работают в ваших приложениях, ботах и сервисах.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 10</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
+      <h2>Что вы узнаете</h2>
+      <div class="divider"></div>
+      <div class="bento bento-2" style="margin-top:.8em;">
+        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>API vs подписка Pro — два независимых счётчика</p></div>
+        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>5 шагов получения API-ключа на console.anthropic.com</p></div>
+        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Экономика: ~2 руб/запрос, два счётчика параллельно</p></div>
+        <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>5 мест куда можно поселить агента</p></div>
+      </div>
+    <aside class="notes">Шесть тем: API vs Pro, три шага перед агентом, демо SMM-агента, получение ключа, безопасность и монетизация.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 10</div>
+      <h2>API vs подписка Pro</h2>
+      <div class="divider"></div>
+      <table class="compare-table" style="margin-top:.7em;">
+        <thead><tr><th>Параметр</th><th>Claude Pro</th><th>API</th></tr></thead>
+        <tbody>
+          <tr class="fragment"><td>Где работает</td><td>В интерфейсе Claude Code/Chat</td><td>В вашем приложении, боте, виджете</td></tr>
+          <tr class="fragment"><td>Оплата</td><td>$20/мес фиксированно</td><td>Платишь за факт: каждый запрос</td></tr>
+          <tr class="fragment"><td>Лимит</td><td>Лимит токенов каждые 5 часов</td><td>Нет лимита — только баланс</td></tr>
+          <tr class="fragment"><td>Для чего</td><td>Личная работа в Claude</td><td>Агент для клиентов или команды</td></tr>
+        </tbody>
+      </table>
+      <p class="fragment" style="margin-top:.6em;font-size:.58em;color:var(--muted);">Это не замена, а параллельный инструмент. Минимальный старт — <span class="accent-green">$5</span></p>
+    <aside class="notes">Подписка Pro: работаете в claude.ai, лимит каждые 5 часов, только вы, ручное управление. API: для агентов вне claude.ai, платите за каждый запрос, без лимита на количество, автоматизация. Это не замена подписке — это параллельный инструмент. Минимальный старт — пять долларов. Та же учётная запись что и claude.ai.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 10</div>
+      <h2>Получаем API-ключ: 5 шагов</h2>
+      <div class="divider"></div>
+      <div class="steps" style="margin-top:.6em;">
+        <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Перейдите на console.anthropic.com</strong><span>Та же учётная запись что и claude.ai — ничего нового</span></div></div>
+        <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Пополните баланс</strong><span>Billing → $5 минимум, той же картой что подписка</span></div></div>
+        <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Перейдите в API Keys</strong><span>Раздел в левом меню консоли</span></div></div>
+        <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Create Key → название</strong><span>Назовите по агенту: «SMM-агент» или «бот поддержки»</span></div></div>
+        <div class="step fragment"><div class="step-num">05</div><div class="step-body"><strong>Скопируйте сразу</strong><span>Ключ показывается один раз — потом только удалить и создать новый</span></div></div>
+      </div>
+    <aside class="notes">Первое: папка открыта в Code, выбрана модель Sonnet. Второе: Effort High — для создания агента нужна полная мощность. Третье: Plan Mode — описываете задачу, одобряете план, только потом старт. Без плана Claude может начать строить не то. Как архитектор: сначала чертёж, потом стройка.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 10</div>
+      <h2>Безопасность ключа:<br><span class="accent-purple">аналогия с абонементом</span></h2>
+      <div class="divider"></div>
+      <table class="compare-table" style="margin-top:.7em;">
+        <thead><tr><th>Обладатель ключа видит</th><th>Не видит</th></tr></thead>
+        <tbody>
+          <tr class="fragment"><td>Может делать запросы к API</td><td>Вашу историю переписки</td></tr>
+          <tr class="fragment"><td>Тратит ваш баланс</td><td>Ваши другие ключи</td></tr>
+          <tr class="fragment"><td>Указывает свою модель</td><td>Данные вашего аккаунта</td></tr>
+        </tbody>
+      </table>
+      <p class="fragment" style="margin-top:.7em;">При утечке: <span class="accent-blue">console → API Keys → Delete</span> → ключ мгновенно недействителен</p>
+      <p class="fragment" style="margin-top:.3em;font-size:.58em;color:var(--muted);">Совет: тестовый ключ для демонстраций — создать перед показом, удалить после</p>
+    <aside class="notes">Запрос: «Хочу агента для работы с контентом соцсетей — идеи, тексты, рубрики, разбор аудитории. Красивый интерфейс с кнопками». В Plan Mode Claude уточняет: какие платформы, тональность, аудитория. Составляет план: системный промт, кнопки, дизайн. Нажимаете Accept and Auto Mode — начинает строить. Минут через двадцать — готовое приложение с кнопками и подключением к API.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 10</div>
+      <h2>Экономика:<br><span class="accent-green">что реально тратится</span></h2>
+      <div class="divider"></div>
+      <div class="bento" style="margin-top:.7em;">
+        <div class="bc bc-green fragment">
+          <div class="bc-num accent-green">~2 руб</div>
+          <h3 style="font-size:.52em;color:var(--text);">Sonnet / запрос</h3>
+          <p>Оптимальная модель для большинства агентов</p>
+        </div>
+        <div class="bc bc-purple fragment">
+          <div class="bc-num accent-purple">3–4×</div>
+          <h3 style="font-size:.52em;color:var(--text);">дороже — Opus</h3>
+          <p>Сложные аналитические задачи, финальная полировка</p>
+        </div>
+        <div class="bc bc-blue fragment">
+          <div class="bc-num accent-blue">3–4×</div>
+          <h3 style="font-size:.52em;color:var(--text);">дешевле — Haiku</h3>
+          <p>FAQ-боты, маршрутизация, простые тексты</p>
+        </div>
+      </div>
+      <p class="fragment" style="margin-top:.5em;font-size:.58em;color:var(--muted);">Монетизация: продаёте доступ к агенту → разница между выручкой и API-расходами — ваш доход</p>
+    <aside class="notes">Первый: console.anthropic.com — та же учётная запись. Второй: пополнить баланс от пяти долларов. Третий: раздел API Keys, кнопка Create Key. Четвёртый: скопировать ключ сразу — второй раз не покажет. Это важно. Пятый: передать Claude через файл проекта, не вставлять прямо в чат. Совет: создайте тестовый ключ перед демонстрацией клиенту, удалите после.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 10</div>
+      <h2>5 мест куда поселить агента</h2>
+      <div class="divider"></div>
+      <table class="compare-table" style="margin-top:.7em;">
+        <thead><tr><th>Формат</th><th>Подходит для</th></tr></thead>
+        <tbody>
+          <tr class="fragment"><td>Веб-сайт</td><td>Портфолио, лендинг, сервис для клиентов</td></tr>
+          <tr class="fragment"><td>Telegram-бот</td><td>Команды, поддержка клиентов, личный помощник</td></tr>
+          <tr class="fragment"><td>Виджет поддержки</td><td>Встроить на чужой сайт как чат-бокс</td></tr>
+          <tr class="fragment"><td>Голосовой агент</td><td>Звонки, консультации по телефону</td></tr>
+          <tr class="fragment"><td>Несколько агентов</td><td>Один ключ — несколько ролей, один баланс</td></tr>
+        </tbody>
+      </table>
+    <aside class="notes">Ключ — не паспорт, а абонемент. Потеряли — перевыпустили. Обладатель ключа может отправлять запросы и тратить баланс. Переписки в claude.ai, данные карты, другие ключи — он не видит. Если ключ утёк: консоль → API Keys → Delete → мгновенно недействителен. Создайте новый.</aside></section>
+
+    <section>
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="slide-lesson-num">Урок 10</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
+      <h2>Ключевые выводы</h2>
+      <div class="divider"></div>
+      <ul style="max-width:640px;margin-top:.6em;">
+        <li class="fragment">Два независимых счётчика: Pro подписка (лимит 5 ч) и API-баланс (платишь за факт)</li>
+        <li class="fragment">Ключ показывается один раз — скопировать сразу, передавать Claude только через .env</li>
+        <li class="fragment">Sonnet ~2 руб/запрос — оптимально для большинства агентов</li>
+      </ul>
+    <aside class="notes">Примерные цены в рублях: Haiku — полрубля за запрос, Sonnet — около двух рублей, Opus — около восьми. Два счётчика независимые: Pro-подписка с лимитом и API-баланс по факту. Монетизация: создаёте агента для клиента, они платят за доступ, разница между выручкой и расходами на API — ваша прибыль.</aside></section>
+
+    <section class="slide-final">
+      <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+      <div class="slide-brand">МАСТЕР-ИИ</div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Следующий урок</div>
+      <h1 style="font-size:1.4em;">Урок 11:<br><span class="accent">Telegram-бот</span></h1>
+      <p style="max-width:560px;margin:.6em auto 0;">BotFather, токен, .env и memory.md — агент прямо в мессенджере ваших клиентов</p>
+      <div class="btn">Следующий урок →</div>
+    <aside class="notes">Четыре вывода: API и Pro — разные счётчики. Ключ скопировать сразу. Если утёк — удалить в консоли. Агент = продукт который можно продавать. Следующий урок — Telegram-бот. До встречи!</aside></section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
+<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
+<style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
+</body>
+</html>

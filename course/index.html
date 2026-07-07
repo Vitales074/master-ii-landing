@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастер-ИИ — Мой курс</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#05050f;--bg-1:#0a0a18;--bg-2:#0f0f22;
+  --blue:#2563EB;--blue-l:#60a5fa;
+  --purple:#7C3AED;--purple-l:#a78bfa;
+  --green:#10B981;--green-l:#6ee7b7;
+  --orange:#f97316;--orange-l:#fb923c;
+  --text:#f0f0ff;--muted:#c4ccdf;--dim:#7880a8;
+  --font-d:'Unbounded',sans-serif;
+  --font-b:'Hanken Grotesk',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:64px 64px}
+
+/* ── Ambient orbs ── */
+.orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);animation:drift 25s ease-in-out infinite}
+.orb-1{width:700px;height:700px;top:-200px;left:-200px;background:radial-gradient(circle,rgba(37,99,235,.18),transparent 65%)}
+.orb-2{width:600px;height:600px;top:30%;right:-150px;background:radial-gradient(circle,rgba(124,58,237,.2),transparent 65%);animation-delay:-10s}
+.orb-3{width:500px;height:500px;bottom:-100px;left:35%;background:radial-gradient(circle,rgba(16,185,129,.14),transparent 65%);animation-delay:-18s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-3%,5%) scale(1.06)}66%{transform:translate(4%,-3%) scale(1.04)}}
+
+/* ── Nav ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;background:rgba(5,5,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-inner{max-width:1000px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo{font-family:var(--font-d);font-size:14px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.nav-progress-wrap{display:flex;align-items:center;gap:12px;flex:1;max-width:300px}
+.nav-bar{flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.nav-bar-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:2px;transition:width .4s ease}
+.nav-label{font-family:var(--font-d);font-size:11px;color:var(--dim);white-space:nowrap}
+.nav-reset{font-size:12px;color:var(--dim);cursor:pointer;padding:6px 12px;border-radius:6px;border:1px solid rgba(255,255,255,.08);background:transparent;font-family:var(--font-b);transition:all .2s}
+.nav-reset:hover{background:rgba(255,255,255,.08);color:var(--muted)}
+
+/* ── Layout ── */
+.wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:96px 28px 80px}
+
+/* ── Welcome ── */
+.welcome{padding:44px 0 48px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:48px}
+.welcome-eyebrow{display:inline-flex;align-items:center;gap:7px;padding:4px 14px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.3);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--blue-l);text-transform:uppercase;margin-bottom:18px}
+.welcome h1{font-family:var(--font-d);font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:14px}
+.welcome h1 span{background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.welcome p{color:var(--muted);font-size:16px;max-width:580px;line-height:1.75}
+
+/* Progress overview cards */
+.overview{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.ov-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px 22px}
+.ov-num{font-family:var(--font-d);font-size:1.8rem;font-weight:900;line-height:1;margin-bottom:4px}
+.ov-num.blue{background:linear-gradient(135deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ov-num.green{color:var(--green-l);-webkit-text-fill-color:var(--green-l)}
+.ov-num.orange{color:var(--orange-l);-webkit-text-fill-color:var(--orange-l)}
+.ov-label{font-size:13px;color:var(--dim)}
+
+/* ── Block groups ── */
+.block-group{margin-bottom:44px}
+.block-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.block-badge{display:inline-flex;align-items:center;padding:4px 14px;border-radius:100px;font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.bb-blue  {background:rgba(37,99,235,.14); border:1px solid rgba(37,99,235,.3);  color:var(--blue-l)}
+.bb-purple{background:rgba(124,58,237,.14);border:1px solid rgba(124,58,237,.3); color:var(--purple-l)}
+.bb-green {background:rgba(16,185,129,.12); border:1px solid rgba(16,185,129,.28);color:var(--green-l)}
+.bb-orange{background:rgba(249,115,22,.12); border:1px solid rgba(249,115,22,.28);color:var(--orange-l)}
+.block-title{font-family:var(--font-d);font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.01em}
+.block-divider{flex:1;height:1px;background:rgba(255,255,255,.06)}
+
+/* ── Lesson cards ── */
+.lesson-list{display:flex;flex-direction:column;gap:10px}
+.lesson-card{
+  display:grid;grid-template-columns:44px 1fr auto;gap:0 16px;align-items:center;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;padding:18px 20px;
+  transition:border-color .2s,background .2s;
+  cursor:pointer;text-decoration:none;
+}
+.lesson-card:hover{background:rgba(255,255,255,.045);border-color:rgba(96,165,250,.22)}
+.lesson-card.done{background:rgba(16,185,129,.05);border-color:rgba(110,231,183,.18)}
+.lesson-card.done:hover{background:rgba(16,185,129,.08);border-color:rgba(110,231,183,.28)}
+
+/* Number circle */
+.lc-num{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-d);font-size:13px;font-weight:900;
+  background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(124,58,237,.15));
+  border:1px solid rgba(96,165,250,.25);
+  color:var(--blue-l);flex-shrink:0;
+  transition:all .2s;
+}
+.lesson-card.done .lc-num{background:rgba(16,185,129,.18);border-color:rgba(110,231,183,.3);color:var(--green-l)}
+
+/* Content */
+.lc-body{min-width:0}
+.lc-tag{font-size:11px;color:var(--dim);letter-spacing:.05em;margin-bottom:4px;text-transform:uppercase;font-weight:600}
+.lc-title{font-family:var(--font-d);font-size:14px;font-weight:700;color:var(--text);line-height:1.3;letter-spacing:-.01em}
+.lesson-card.done .lc-title{color:var(--green-l)}
+.lc-meta{display:flex;align-items:center;gap:12px;margin-top:6px}
+.lc-time{font-size:12px;color:var(--dim);display:flex;align-items:center;gap:5px}
+
+/* Actions */
+.lc-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.lc-btn{
+  padding:8px 16px;border-radius:8px;font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:.04em;text-decoration:none;white-space:nowrap;
+  transition:all .2s;display:inline-flex;align-items:center;gap:6px;
+}
+.lc-btn-primary{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;box-shadow:0 0 16px rgba(37,99,235,.3)}
+.lc-btn-primary:hover{box-shadow:0 0 28px rgba(37,99,235,.5);transform:translateY(-1px)}
+.lc-btn-secondary{background:rgba(255,255,255,.06);color:var(--muted);border:1px solid rgba(255,255,255,.1)}
+.lc-btn-secondary:hover{background:rgba(255,255,255,.1);color:var(--text)}
+.lc-done-badge{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(16,185,129,.18);border:1px solid rgba(110,231,183,.35);
+  display:none;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;color:var(--green-l);
+}
+.lesson-card.done .lc-done-badge{display:flex}
+.lesson-card.done .lc-btn-primary{background:rgba(16,185,129,.15);border:1px solid rgba(110,231,183,.3);box-shadow:none;color:var(--green-l)}
+.lesson-card.done .lc-btn-primary:hover{background:rgba(16,185,129,.25)}
+
+/* ── Finish banner ── */
+.finish-banner{
+  display:none;
+  margin-top:12px;
+  background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(37,99,235,.1));
+  border:1px solid rgba(110,231,183,.25);
+  border-radius:16px;padding:28px 32px;
+  text-align:center;
+}
+.finish-banner.show{display:block}
+.finish-banner h2{font-family:var(--font-d);font-size:1.3rem;font-weight:900;margin-bottom:10px}
+.finish-banner p{color:var(--muted);font-size:15px}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .overview{grid-template-columns:1fr 1fr;gap:10px}
+  .overview .ov-card:last-child{grid-column:1/-1}
+  .lesson-card{grid-template-columns:38px 1fr;grid-template-rows:auto auto}
+  .lc-actions{grid-column:1/-1;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);margin-top:8px;justify-content:flex-start}
+  .nav-reset{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <div class="nav-progress-wrap">
+      <div class="nav-bar"><div class="nav-bar-fill" id="navFill"></div></div>
+      <span class="nav-label" id="navLabel">0 / 15</span>
+    </div>
+    <button class="nav-reset" onclick="resetProgress()">Сбросить прогресс</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- Welcome -->
+  <div class="welcome">
+    <div class="welcome-eyebrow">Добро пожаловать</div>
+    <h1>Курс <span>Мастер-ИИ</span></h1>
+    <p>Полный доступ к курсу открыт. Проходите уроки в любом порядке — прогресс сохраняется автоматически в браузере.</p>
+    <div class="overview">
+      <div class="ov-card"><div class="ov-num blue" id="ovDone">0</div><div class="ov-label">уроков пройдено</div></div>
+      <div class="ov-card"><div class="ov-num orange">15</div><div class="ov-label">уроков всего</div></div>
+      <div class="ov-card"><div class="ov-num green" id="ovTime">0ч</div><div class="ov-label">просмотрено материалов</div></div>
+    </div>
+  </div>
+
+  <!-- БЛОК 1: Технический блок -->
+  <div class="block-group">
+    <div class="block-header">
+      <span class="block-badge bb-blue">Блок 1</span>
+      <span class="block-title">Технический блок — доступ к Claude</span>
+      <div class="block-divider"></div>
+    </div>
+    <div class="lesson-list">
+
+      <div class="lesson-card" id="l-01" onclick="openLesson('01','lessons/урок-01.html')">
+        <div class="lc-num">01</div>
+        <div class="lc-body">
+          <div class="lc-tag">Технический блок · Шаг 1 из 3</div>
+          <div class="lc-title">Установка AmneziaVPN</div>
+          <div class="lc-meta">
+            <span class="lc-time">⏱ 10 мин</span>
+            <span class="lc-time" style="color:#6ee7b7;margin-left:8px">✦ Только если Claude заблокирован в вашей стране</span>
+          </div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-01.html" class="lc-btn lc-btn-primary" onclick="markDone('01',event)">Читать урок</a>
+          <a href="slides/Урок_01_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+      <div class="lesson-card" id="l-02" onclick="openLesson('02','lessons/урок-02.html')">
+        <div class="lc-num">02</div>
+        <div class="lc-body">
+          <div class="lc-tag">Технический блок · Шаг 2 из 3</div>
+          <div class="lc-title">Свой сервер: аренда VPS и подключение VPN</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 25 мин</span><span class="lc-time" style="color:#6ee7b7;margin-left:8px">✦ Только если Claude заблокирован в вашей стране</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-02.html" class="lc-btn lc-btn-primary" onclick="markDone('02',event)">Читать урок</a>
+          <a href="slides/Урок_02_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+      <div class="lesson-card" id="l-03" onclick="openLesson('03','lessons/урок-03.html')">
+        <div class="lc-num">03</div>
+        <div class="lc-body">
+          <div class="lc-tag">Технический блок · Шаг 3 из 3</div>
+          <div class="lc-title">Почта ProtonMail и регистрация в Claude</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 10 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-03.html" class="lc-btn lc-btn-primary" onclick="markDone('03',event)">Читать урок</a>
+          <a href="slides/Урок_03_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+      <div class="lesson-card" id="l-03-1" onclick="openLesson('03-1','lessons/урок-03-1.html')">
+        <div class="lc-num" style="font-size:11px">3.1</div>
+        <div class="lc-body">
+          <div class="lc-tag">Дополнение к уроку 3</div>
+          <div class="lc-title">Как оплатить Claude</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 15 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-03-1.html" class="lc-btn lc-btn-primary" onclick="markDone('03-1',event)">Читать урок</a>
+          <a href="slides/Урок_03_1_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- БЛОК 2: Первые проекты -->
+  <div class="block-group">
+    <div class="block-header">
+      <span class="block-badge bb-purple">Блок 2</span>
+      <span class="block-title">Первые проекты — лендинги и сайты</span>
+      <div class="block-divider"></div>
+    </div>
+    <div class="lesson-list">
+
+      <div class="lesson-card" id="l-04" onclick="openLesson('04','lessons/урок-04.html')">
+        <div class="lc-num">04</div>
+        <div class="lc-body">
+          <div class="lc-tag">Блок 2 · Первый проект</div>
+          <div class="lc-title">Лендинг с нуля — без знания кода</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 45 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-04.html" class="lc-btn lc-btn-primary" onclick="markDone('04',event)">Читать урок</a>
+          <a href="slides/Урок_04_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+      <div class="lesson-card" id="l-04-1" onclick="openLesson('04-1','lessons/урок-04-1.html')">
+        <div class="lc-num" style="font-size:11px">4.1</div>
+        <div class="lc-body">
+          <div class="lc-tag">Практикум · Урок 4</div>
+          <div class="lc-title">Netlify: публикуем сайт в интернет</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 3 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-04-1.html" class="lc-btn lc-btn-primary" onclick="markDone('04-1',event)">Читать урок</a>
+          <a href="slides/Урок_04_1_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+      <div class="lesson-card" id="l-05" onclick="openLesson('05','lessons/урок-05.html')">
+        <div class="lc-num">05</div>
+        <div class="lc-body">
+          <div class="lc-tag">Блок 2 · Продвинутые сайты</div>
+          <div class="lc-title">Многостраничный сайт и публикация на Vercel</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 60 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-05.html" class="lc-btn lc-btn-primary" onclick="markDone('05',event)">Читать урок</a>
+          <a href="slides/Урок_05_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- БЛОК 3: Контент и визуал -->
+  <div class="block-group">
+    <div class="block-header">
+      <span class="block-badge bb-blue">Блок 3</span>
+      <span class="block-title">Контент-система и визуальный контент</span>
+      <div class="block-divider"></div>
+    </div>
+    <div class="lesson-list">
+
+      <div class="lesson-card" id="l-06" onclick="openLesson('06','lessons/урок-06.html')">
+        <div class="lc-num">06</div>
+        <div class="lc-body">
+          <div class="lc-tag">Блок 3 · Контент-система</div>
+          <div class="lc-title">Агенты и контент-завод в Claude Projects</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 40 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-06.html" class="lc-btn lc-btn-primary" onclick="markDone('06',event)">Читать урок</a>
+          <a href="slides/Урок_06_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+      <div class="lesson-card" id="l-07" onclick="openLesson('07','lessons/урок-07.html')">
+        <div class="lc-num">07</div>
+        <div class="lc-body">
+          <div class="lc-tag">Блок 3 · Визуал</div>
+          <div class="lc-title">Инфографика, карусели и SVG без дизайнера</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 45 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-07.html" class="lc-btn lc-btn-primary" onclick="markDone('07',event)">Читать урок</a>
+          <a href="slides/Урок_07_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- БЛОК 4: Приложения -->
+  <div class="block-group">
+    <div class="block-header">
+      <span class="block-badge bb-purple">Блок 4</span>
+      <span class="block-title">Приложения и инфраструктура</span>
+      <div class="block-divider"></div>
+    </div>
+    <div class="lesson-list">
+
+      <div class="lesson-card" id="l-08" onclick="openLesson('08','lessons/урок-08.html')">
+        <div class="lc-num">08</div>
+        <div class="lc-body">
+          <div class="lc-tag">Блок 4 · Приложения</div>
+          <div class="lc-title">Первое приложение — от идеи до готового инструмента</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 15 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-08.html" class="lc-btn lc-btn-primary" onclick="markDone('08',event)">Читать урок</a>
+          <a href="slides/Урок_08_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+      <div class="lesson-card" id="l-09" onclick="openLesson('09','lessons/урок-09.html')">
+        <div class="lc-num">09</div>
+        <div class="lc-body">
+          <div class="lc-tag">Блок 4 · Инфраструктура</div>
+          <div class="lc-title">Деплой на VPS — приложение в интернете 24/7</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 30 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-09.html" class="lc-btn lc-btn-primary" onclick="markDone('09',event)">Читать урок</a>
+          <a href="slides/Урок_09_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- БЛОК 5: Монетизация -->
+  <div class="block-group">
+    <div class="block-header">
+      <span class="block-badge bb-orange">Блок 5</span>
+      <span class="block-title">Монетизация, боты и безопасность</span>
+      <div class="block-divider"></div>
+    </div>
+    <div class="lesson-list">
+
+      <div class="lesson-card" id="l-10" onclick="openLesson('10','lessons/урок-10.html')">
+        <div class="lc-num">10</div>
+        <div class="lc-body">
+          <div class="lc-tag">Блок 5 · Монетизация</div>
+          <div class="lc-title">API и личный агент вне Claude</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 45 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-10.html" class="lc-btn lc-btn-primary" onclick="markDone('10',event)">Читать урок</a>
+          <a href="slides/Урок_10_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+      <div class="lesson-card" id="l-11" onclick="openLesson('11','lessons/урок-11.html')">
+        <div class="lc-num">11</div>
+        <div class="lc-body">
+          <div class="lc-tag">Блок 5 · Каналы доставки</div>
+          <div class="lc-title">Telegram-бот: агент в мессенджере</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 45 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-11.html" class="lc-btn lc-btn-primary" onclick="markDone('11',event)">Читать урок</a>
+          <a href="slides/Урок_11_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+      <div class="lesson-card" id="l-12" onclick="openLesson('12','lessons/урок-12.html')">
+        <div class="lc-num">12</div>
+        <div class="lc-body">
+          <div class="lc-tag">Блок 5 · Защита</div>
+          <div class="lc-title">Безопасность вайб-кода: как не сломать рабочее</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 40 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-12.html" class="lc-btn lc-btn-primary" onclick="markDone('12',event)">Читать урок</a>
+          <a href="slides/Урок_12_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- БЛОК 6: Финал -->
+  <div class="block-group">
+    <div class="block-header">
+      <span class="block-badge bb-green">Финал</span>
+      <span class="block-title">Портфолио и первые клиенты</span>
+      <div class="block-divider"></div>
+    </div>
+    <div class="lesson-list">
+
+      <div class="lesson-card" id="l-13" onclick="openLesson('13','lessons/урок-13.html')">
+        <div class="lc-num">13</div>
+        <div class="lc-body">
+          <div class="lc-tag">Финальный урок · Блок 6</div>
+          <div class="lc-title">Портфолио, скиллы дизайна и первые клиенты</div>
+          <div class="lc-meta"><span class="lc-time">⏱ 50 мин</span></div>
+        </div>
+        <div class="lc-actions">
+          <span class="lc-done-badge">✓</span>
+          <a href="lessons/урок-13.html" class="lc-btn lc-btn-primary" onclick="markDone('13',event)">Читать урок</a>
+          <a href="slides/Урок_13_slides.html" class="lc-btn lc-btn-secondary" onclick="event.stopPropagation()">Слайды</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Finish banner -->
+  <div class="finish-banner" id="finishBanner">
+    <div style="font-size:2.5rem;margin-bottom:12px">🎉</div>
+    <h2>Курс пройден!</h2>
+    <p>Все 15 уроков завершены. Вы освоили Claude Code — от VPN до первых клиентов.</p>
+  </div>
+
+</div>
+
+<script>
+var TOTAL = 15;
+var TIMES = {'01':10,'02':25,'03':10,'03-1':15,'04':45,'04-1':3,'05':60,'06':40,'07':45,'08':15,'09':30,'10':45,'11':45,'12':40,'13':50};
+
+function getProgress(){
+  try{ return JSON.parse(localStorage.getItem('masterii_done') || '[]') }
+  catch(e){ return [] }
+}
+function saveProgress(arr){
+  localStorage.setItem('masterii_done', JSON.stringify(arr));
+}
+
+function updateUI(){
+  var done = getProgress();
+  var count = done.length;
+  var mins = done.reduce(function(s,id){ return s + (TIMES[id]||0) }, 0);
+  var hrs = mins >= 60 ? Math.floor(mins/60) + 'ч ' + (mins%60) + 'м' : mins + 'м';
+
+  document.getElementById('ovDone').textContent = count;
+  document.getElementById('ovTime').textContent = hrs;
+  document.getElementById('navLabel').textContent = count + ' / ' + TOTAL;
+  document.getElementById('navFill').style.width = Math.round(count/TOTAL*100) + '%';
+
+  document.querySelectorAll('.lesson-card').forEach(function(card){
+    var id = card.id.replace('l-','');
+    if(done.indexOf(id) > -1){ card.classList.add('done') }
+    else { card.classList.remove('done') }
+  });
+
+  document.getElementById('finishBanner').classList.toggle('show', count >= TOTAL);
+}
+
+function markDone(id, e){
+  if(e){ e.stopPropagation(); }
+  var done = getProgress();
+  if(done.indexOf(id) === -1){ done.push(id); saveProgress(done); updateUI(); }
+}
+
+function openLesson(id, url){
+  markDone(id, null);
+  window.location.href = url;
+}
+
+function resetProgress(){
+  if(confirm('Сбросить весь прогресс?')){ localStorage.removeItem('masterii_done'); updateUI(); }
+}
+
+updateUI();
+</script>
+
+</body>
+</html>

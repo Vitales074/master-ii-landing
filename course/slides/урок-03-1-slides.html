@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Урок 3.1 — Оплата Claude · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+:root{--blue:#2563EB;--blue-l:#60a5fa;--purple:#7C3AED;--purple-l:#a78bfa;--green:#10B981;--green-l:#6ee7b7;--orange:#f97316}
+.reveal{font-family:'Hanken Grotesk',sans-serif;font-size:32px}.reveal .slides{text-align:left}
+.reveal h1,.reveal h2,.reveal h3{font-family:'Unbounded',sans-serif;text-transform:none;letter-spacing:-.02em}
+.reveal h1{font-size:1.8em;font-weight:900;line-height:1.1}.reveal h2{font-size:1.2em;font-weight:700;color:var(--blue-l);margin-bottom:.5em}
+.reveal h3{font-size:.85em;font-weight:700;margin-bottom:.3em}.reveal p,.reveal li{color:#c8d0e8;line-height:1.6;font-size:.85em}
+.reveal ul{list-style:none;padding:0}.reveal ul li::before{content:"▸ ";color:var(--blue-l)}.reveal strong{color:#fff}
+.brand{position:fixed;top:24px;right:32px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;z-index:9999}
+.tag{display:inline-block;padding:4px 14px;background:rgba(37,99,235,.2);border:1px solid rgba(96,165,250,.4);border-radius:100px;font-size:.55em;font-family:'Unbounded',sans-serif;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1em}
+.accent{color:var(--blue-l)}.accent-g{color:var(--green-l)}.accent-o{color:var(--orange)}.accent-p{color:var(--purple-l)}
+.box-blue{background:rgba(37,99,235,.1);border-left:3px solid var(--blue-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-green{background:rgba(16,185,129,.08);border-left:3px solid var(--green-l);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.box-orange{background:rgba(249,115,22,.08);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:.5em .8em;font-size:.75em;color:#c8d0e8}
+.option{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.7em 1em;margin:.35em 0}
+.option h3{font-size:.8em;margin-bottom:.3em}.option p{font-size:.72em;color:#b0bcd0;margin:0}
+.badge{display:inline-block;padding:2px 10px;border-radius:6px;font-size:.6em;font-family:'Unbounded',sans-serif;font-weight:700;letter-spacing:.05em;margin-bottom:.3em}
+.badge-free{background:rgba(16,185,129,.2);color:var(--green-l);border:1px solid rgba(16,185,129,.3)}
+.badge-crypto{background:rgba(249,115,22,.15);color:var(--orange);border:1px solid rgba(249,115,22,.25)}
+.badge-agg{background:rgba(37,99,235,.2);color:var(--blue-l);border:1px solid rgba(37,99,235,.3)}
+.badge-friend{background:rgba(124,58,237,.2);color:var(--purple-l);border:1px solid rgba(124,58,237,.3)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1em}
+.reveal .slides section{padding:0 60px}.reveal .progress span{background:linear-gradient(90deg,var(--blue),var(--purple))}
+.lesson-num{font-family:'Unbounded',sans-serif;font-size:.45em;color:var(--purple-l);letter-spacing:.1em;margin-bottom:.3em}
+.reveal section.title-slide{text-align:center}.reveal section.title-slide h1{font-size:2em}
+</style>
+</head>
+<body>
+<div class="brand">МАСТЕР-ИИ</div>
+<div class="reveal"><div class="slides">
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 30% 50%, rgba(249,115,22,.2) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(124,58,237,.2) 0%, transparent 60%)">
+  <div class="lesson-num">УРОК 3.1 ИЗ 13</div>
+  <div class="tag" style="background:rgba(249,115,22,.15);border-color:rgba(249,115,22,.35);color:var(--orange)">Честный разбор</div>
+  <h1>Оплата Claude<br><span class="accent">из России: 4 реальных пути</span></h1>
+  <p style="text-align:center;margin-top:1em;font-size:.75em;color:#8090b0">Только рабочие варианты — без обходов и нарушений</p>
+</section>
+
+<section>
+  <h2>Почему это вообще проблема</h2>
+  <p>После 2022 года российские карты Visa и Mastercard не проходят зарубежный эквайринг. Это не ограничение Anthropic против России — это общее состояние международных платежей.</p>
+  <div class="box-orange fragment" style="margin-top:.8em">Попытки указать заведомо ложный адрес выставления счёта или чужую карту — это нарушение правил Anthropic. Аккаунт блокируется. Это не вариант.</div>
+  <div class="box-blue fragment" style="margin-top:.6em">Зато есть <strong>4 честных варианта</strong>. Разберём каждый.</div>
+</section>
+
+<section>
+  <h2>4 пути — выберите свой</h2>
+  <div class="two-col">
+    <div class="fragment">
+      <div class="option"><div class="badge badge-free">БЕСПЛАТНО</div><h3 class="accent-g">Вариант 1: Бесплатный план</h3><p>Claude Sonnet, лимит запросов каждые несколько часов. Достаточно для большинства задач курса.</p></div>
+    </div>
+    <div class="fragment">
+      <div class="option"><div class="badge badge-crypto">КРИПТО</div><h3 class="accent-o">Вариант 2: API + криптовалюта</h3><p>Пополнение баланса API через крипту. Без Claude Pro, зато без ограничений по проектам.</p></div>
+    </div>
+    <div class="fragment">
+      <div class="option"><div class="badge badge-agg">АГРЕГАТОР</div><h3 class="accent">Вариант 3: OpenRouter</h3><p>Агрегатор нескольких ИИ-провайдеров. Принимает крипту, есть Claude Sonnet.</p></div>
+    </div>
+    <div class="fragment">
+      <div class="option"><div class="badge badge-friend">ПОМОЩЬ</div><h3 class="accent-p">Вариант 4: Подписка через друга</h3><p>Попросить знакомого за рубежом оформить подписку. Легально, надёжно.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Вариант 1: Бесплатный план — максимальный КПД</h2>
+  <p>Claude.ai бесплатный тариф включает Claude Sonnet 4.5 — это серьёзная модель. Ограничение: ~40–50 запросов за цикл, потом ожидание.</p>
+  <div class="box-green fragment"><strong>Лайфхак:</strong> лимит обновляется не раз в сутки, а примерно каждые 4–6 часов. Можно делать по 2–3 сессии в день.</div>
+  <div class="box-blue fragment" style="margin-top:.6em">Для прохождения курса и первых проектов бесплатного плана обычно хватает. Платная подписка нужна, когда начинаете работать с клиентами интенсивно.</div>
+</section>
+
+<section>
+  <h2>Вариант 2: API + криптовалюта</h2>
+  <p>Баланс в console.anthropic.com можно пополнить через криптовалюту — без карты.</p>
+  <div class="box-orange fragment"><strong>Подходит для:</strong> разработчиков, которым нужен API для агентов (уроки 10–11). Не то же самое что Claude Pro — это отдельный платёжный инструмент.</div>
+  <div class="box-blue fragment" style="margin-top:.6em"><strong>Минимальный старт:</strong> $5. Криптовалюта: USDT/USDC через биржи (Bybit, OKX, Gate.io — доступны из России).</div>
+</section>
+
+<section>
+  <h2>Вариант 3: OpenRouter</h2>
+  <p>OpenRouter — агрегатор, который даёт единый API к десяткам моделей: Claude, GPT, Llama, Mistral. Принимает крипту.</p>
+  <div class="box-blue fragment"><strong>openrouter.ai</strong> → пополнить баланс криптой → использовать через API. Цены немного выше прямого API Anthropic, зато одно место для всего.</div>
+  <div class="box-green fragment" style="margin-top:.6em"><strong>Хорошо для:</strong> тех, кто хочет попробовать разные модели, не открывая аккаунты в каждом сервисе отдельно.</div>
+</section>
+
+<section>
+  <h2>Вариант 4: Через друга за рубежом</h2>
+  <p>Если есть знакомый за рубежом с зарубежной картой — попросить оформить подписку Claude Pro на ваш аккаунт.</p>
+  <div class="box-blue fragment"><strong>Как это работает:</strong> ваш друг платит картой, вы компенсируете деньги любым удобным способом (перевод, наличные). Аккаунт ваш, подписка работает.</div>
+  <div class="box-green fragment" style="margin-top:.6em"><strong>Честно, легально</strong> — никаких нарушений, просто оплата через другого человека. Аналогично тому, как покупать билеты через родственников.</div>
+</section>
+
+<section class="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(16,185,129,.15) 0%, transparent 70%)">
+  <h2 style="color:var(--green-l);text-align:center">Ключевые выводы</h2>
+  <ul style="text-align:left;display:inline-block;margin-top:.5em">
+    <li class="fragment">Бесплатный план — хороший старт для прохождения курса</li>
+    <li class="fragment">API через крипту — для продвинутых задач с агентами</li>
+    <li class="fragment">Никаких ложных данных — аккаунт просто заблокируют</li>
+  </ul>
+  <div style="margin-top:1.5em;font-family:'Unbounded',sans-serif;font-size:.6em;color:#8090b0">
+    Следующий урок: <span class="accent">Claude Code и первый лендинг →</span>
+  </div>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({hash:true,width:1920,height:1080,margin:.04,controls:true,progress:true,center:false,transition:'fade',transitionSpeed:'fast'});</script>
+</body></html>
