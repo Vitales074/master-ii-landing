@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 3.1 — Как оплатить Claude · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lesson.css">
+<style>
+:root{--accent:var(--blue-l);--accent-bg:rgba(37,99,235,.12);--accent-border:rgba(37,99,235,.35)}
+.progress-fill{width:23.1%}
+.hero-orb-1{background:radial-gradient(circle,rgba(37,99,235,.22),transparent 65%)}
+.hero-orb-2{background:radial-gradient(circle,rgba(124,58,237,.18),transparent 65%)}
+</style>
+</head>
+<body><div id="reading-progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <span class="nav-lesson">Урок 3.1 из 13</span>
+    <div class="nav-progress">
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <span class="progress-text">3/13</span>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="lesson-hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="lesson-tag"><span class="lesson-tag-dot"></span>Дополнение к уроку 3</div>
+    <h1>Как оплатить Claude<br><span>из России: честный ответ</span></h1>
+    <p class="lesson-intro">Прямая оплата Claude Pro из России сейчас официально недоступна из-за платёжных ограничений. Вместо обходных путей — разберём, какие легальные варианты реально работают и как получить максимум даже без платной подписки.</p>
+    <div class="lesson-meta">
+      <div class="meta-item"><span>⏱</span> ~15 минут</div>
+      <div class="meta-item"><span>💡</span> 4 рабочих способа</div>
+    </div>
+  </div>
+
+  <!-- Почему не работают обычные карты -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">🚫</div>Почему это вообще проблема</h2>
+    <p>Anthropic принимает карты через стандартные платёжные системы. После 2022 года большинство российских карт Visa и Mastercard перестали работать за рубежом — они просто не проходят зарубежный эквайринг. Это не ограничение со стороны Anthropic конкретно против России, а следствие общего состояния международных платежей.</p>
+    <div class="warn-box"><strong>Важно понимать:</strong> попытки указать заведомо ложный адрес выставления счёта или использовать чужую карту без ведома владельца — это не «обход», а нарушение правил Anthropic и платёжных систем. Аккаунт после такого блокируется, а у владельца карты могут возникнуть неприятности. Это не вариант.</div>
+    <p>Вместо этого — четыре честных пути, у каждого свои плюсы.</p>
+  </div>
+
+  <!-- Бесплатный план -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">🆓</div>Вариант 1 — Бесплатный Claude</h2>
+    <div class="option-card">
+      <div class="option-badge badge-green">БЕСПЛАТНО</div>
+      <h3>Claude на бесплатном тарифе</h3>
+      <p>Бесплатный план даёт доступ к Claude Sonnet — это мощная модель, которой хватает для большинства задач курса. Ограничение: суточный лимит на количество запросов, который обновляется каждые несколько часов.</p>
+      <p><strong>Что умеет бесплатный план:</strong> создавать сайты, писать тексты, строить несложные приложения, отвечать на вопросы, работать в Code — всё то, о чём мы говорим в этом курсе.</p>
+      <p><strong>Практический совет:</strong> планируйте задачи блоками. Написали лендинг за один сеанс — лимит обновится к следующей сессии. Большинство учеников курса начинают именно с бесплатного плана.</p>
+    </div>
+    <div class="tip-box"><strong>Лайфхак:</strong> лимит обновляется независимо для Claude.ai (браузер) и Claude Code (инструмент разработки). Можно использовать оба — они работают параллельно.</div>
+  </div>
+
+  <!-- API + крипта -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">💰</div>Вариант 2 — API через криптовалюту</h2>
+    <div class="option-card">
+      <div class="option-badge badge-blue">РАБОТАЕТ</div>
+      <h3>Anthropic API + пополнение криптой</h3>
+      <p>Для работы через API (урок 10 курса) нужен отдельный баланс на <strong>console.anthropic.com</strong>. API-консоль принимает пополнение через криптовалютные шлюзы — это работает из России.</p>
+      <p><strong>Как это устроено:</strong> заходите на console.anthropic.com → Add credits → выбираете криптовалютный способ оплаты (Coinbase Commerce или аналогичный) → пополняете крипто-кошелёк через Binance P2P или другие доступные в России обменники → переводите на шлюз → баланс зачисляется в долларах.</p>
+      <p><strong>Минимальная сумма:</strong> $5. Этого хватает примерно на 2 500 запросов к Sonnet — отличный старт для изучения API.</p>
+    </div>
+    <div class="info-box"><strong>Шаги для крипто-пополнения:</strong> нужно иметь крипто-кошелёк с USDT или другой стейблкоин. Схема работы с Binance P2P и другими P2P-обменниками — это отдельная тема, выходящая за рамки курса. Если у вас уже есть крипто-кошелёк — это самый прямой путь к API-доступу.</div>
+  </div>
+
+  <!-- OpenRouter -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">🔄</div>Вариант 3 — OpenRouter</h2>
+    <div class="option-card">
+      <div class="option-badge badge-blue">ХОРОШАЯ АЛЬТЕРНАТИВА</div>
+      <h3>OpenRouter — агрегатор моделей</h3>
+      <p>OpenRouter — посредник, который предоставляет доступ к Claude и другим моделям через единый API. Принимает крипту и некоторые способы оплаты, которые работают из России.</p>
+      <p><strong>Плюсы:</strong> один ключ — доступ к Claude, GPT-4, Gemini и другим моделям. Можно переключаться между моделями на лету, сравнивать результаты. Цены сопоставимы с прямым API.</p>
+      <p><strong>Минусы:</strong> ещё один посредник в цепочке, небольшая наценка к стоимости запросов Anthropic.</p>
+      <p><strong>Подходит:</strong> если вы хотите работать с разными моделями, или если прямое пополнение Anthropic API пока не получается настроить.</p>
+    </div>
+  </div>
+
+  <!-- Друг за рубежом -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">👥</div>Вариант 4 — Человек за рубежом</h2>
+    <div class="option-card">
+      <div class="option-badge badge-orange">ТРЕБУЕТ ДОВЕРИЯ</div>
+      <h3>Оформить подписку через знакомого за рубежом</h3>
+      <p>Если у вас есть родственник или друг за рубежом с картой местного банка — он может оформить подписку Claude Pro на его почту, а вы используете аккаунт или договариваетесь о совместном использовании.</p>
+      <p><strong>Важно:</strong> это должен быть человек, которому вы полностью доверяете. Аккаунт будет привязан к его платёжным данным. Решение нужно принимать совместно и осознанно.</p>
+    </div>
+  </div>
+
+  <!-- Сравнение -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">📊</div>Сравнение вариантов</h2>
+    <table class="lesson-table">
+      <thead>
+        <tr><th>Вариант</th><th>Стоимость</th><th>Сложность</th><th>Для чего</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Бесплатный Claude</td>
+          <td>$0</td>
+          <td>Минимальная</td>
+          <td>Все задачи курса, чат, Code</td>
+        </tr>
+        <tr>
+          <td>API + крипта</td>
+          <td>От $5</td>
+          <td>Средняя</td>
+          <td>Урок 10+: агенты, API-интеграции</td>
+        </tr>
+        <tr>
+          <td>OpenRouter</td>
+          <td>От $5</td>
+          <td>Средняя</td>
+          <td>Несколько моделей, эксперименты</td>
+        </tr>
+        <tr>
+          <td>Через знакомого</td>
+          <td>$20/мес</td>
+          <td>Зависит от договорённостей</td>
+          <td>Полный Claude Pro без ограничений</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tip-box"><strong>Рекомендация для старта:</strong> начните с бесплатного плана — его хватит для первых восьми уроков. Когда дойдёте до урока про API, вернитесь к этому материалу и выберите вариант под свои задачи.</div>
+  </div>
+
+  <!-- Чеклист -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">✅</div>Чеклист к следующему уроку</h2>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Зарегистрирован аккаунт на claude.ai (через ProtonMail из урока 3)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Выбран способ оплаты / решено начать с бесплатного плана</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Claude открывается и отвечает на вопросы</li>
+    </ul>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="урок-03.html" class="btn-nav btn-prev">
+      <span>
+        <span class="nav-lesson-title">Предыдущий урок</span>
+        ← Почта ProtonMail
+      </span>
+    </a>
+    <a href="урок-04.html" class="btn-nav btn-next">
+      <span>
+        <span class="nav-lesson-title">Следующий урок</span>
+        Лендинг с нуля →
+      </span>
+    </a>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  function update() {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  var li = el.closest('li');
+  if (li) li.classList.toggle('done');
+}
+</script>
+
+</body>
+</html>

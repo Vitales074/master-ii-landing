@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 5 — Многостраничный сайт · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lesson.css">
+<style>
+:root{--accent:var(--blue-l);--accent-bg:rgba(37,99,235,.12);--accent-border:rgba(37,99,235,.35)}
+.progress-fill{width:38.5%}
+.hero-orb-1{background:radial-gradient(circle,rgba(37,99,235,.22),transparent 65%)}
+.hero-orb-2{background:radial-gradient(circle,rgba(124,58,237,.18),transparent 65%)}
+</style>
+</head>
+<body><div id="reading-progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <span class="nav-lesson">Урок 5 из 13</span>
+    <div class="nav-progress">
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <span class="progress-text">5/13</span>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="lesson-hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="lesson-tag"><span class="lesson-tag-dot"></span>Блок 2 · Продвинутые сайты</div>
+    <h1>Многостраничный сайт:<br><span>профессиональный подход</span></h1>
+    <p class="lesson-intro">Лендинг освоен — переходим на следующий уровень. Сайт из нескольких страниц, документация проекта, работа с большими объёмами контента. Здесь же — технология reverse-инжиниринга: просим Claude самому предложить архитектуру.</p>
+    <div class="lesson-meta">
+      <div class="meta-item"><span>⏱</span> ~60 минут</div>
+      <div class="meta-item"><span>💻</span> Claude Code</div>
+      <div class="meta-item"><span>🏗</span> 5–10 страниц</div>
+    </div>
+  </div>
+
+  <!-- Подготовка -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">📋</div>Чек-лист перед стартом</h2>
+    <p>Прежде чем дать первую команду, убедитесь, что всё готово. Если сделать что-то не по порядку — придётся переделывать.</p>
+    <ul class="checklist" style="margin-top:8px">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>VPN включён (AmneziaVPN), IP — Нидерланды</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Создана новая папка под проект (не та же, что лендинг)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Папка открыта в Claude Code, нажато «Trust»</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Выбрана модель Sonnet, Effort High</li>
+    </ul>
+    <div class="info-box"><strong>Правило: новый проект — новая папка.</strong> Не смешивайте лендинг и многостраничный сайт в одной директории. Claude может запутаться в файлах, а вы потеряете время на разбор конфликтов.</div>
+  </div>
+
+  <!-- Reverse-инжиниринг -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">🔄</div>Метод reverse-инжиниринга</h2>
+    <p>Большинство людей объясняют Claude, что нужно делать. Более эффективный подход — попросить Claude самому предложить решение, а потом подкорректировать его план.</p>
+    <table class="lesson-table">
+      <thead>
+        <tr><th>Как обычно</th><th>Метод reverse-инжиниринга</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>«Сделай главную страницу, страницу услуг, страницу контактов и портфолио»</td>
+          <td>«Я хочу сайт для частного архитектора. Предложи оптимальную структуру страниц — объясни, зачем каждая»</td>
+        </tr>
+        <tr>
+          <td>«Добавь форму обратной связи»</td>
+          <td>«Как лучше всего организовать получение заявок на этом сайте? Предложи варианты»</td>
+        </tr>
+        <tr>
+          <td>«Сделай анимацию»</td>
+          <td>«Какие анимации улучшат восприятие этого сайта, не перегружая его?»</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tip-box"><strong>Почему это работает лучше:</strong> Claude предлагает структуру исходя из логики пользователя, а не шаблона. Его план часто включает детали, о которых вы не подумали — страницу FAQ, страницу проектов с фильтрацией, блог.</div>
+  </div>
+
+  <!-- Промпт из 6 компонентов -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">💬</div>Промпт из 6 компонентов</h2>
+    <p>Для многостраничного сайта промпт строится по той же логике, что для лендинга, но добавляется несколько важных деталей.</p>
+    <div class="prompt-box">
+      <span class="pl">6 компонентов грамотного промпта</span>
+      <strong style="color:var(--blue-l)">Роль:</strong> Ты опытный веб-разработчик и UX-дизайнер<br>
+      <strong style="color:var(--blue-l)">Контекст:</strong> [Кратко о проекте, для кого сайт, цель]<br>
+      <strong style="color:var(--blue-l)">Задача:</strong> Создай многостраничный сайт — главная, услуги, портфолио, контакты<br>
+      <strong style="color:var(--blue-l)">Формат:</strong> Отдельный HTML-файл на каждую страницу, единый style.css<br>
+      <strong style="color:var(--blue-l)">Ограничения:</strong> Без внешних зависимостей, адаптив, кроссбраузерность<br>
+      <strong style="color:var(--blue-l)">Пример:</strong> [Ссылка или описание референсного сайта — опционально]
+    </div>
+    <div class="info-box"><strong>Почему лучше набирать руками:</strong> процесс набора помогает уточнить детали. Часто по ходу написания добавляешь важные подробности, которые пропустил бы при копировании.</div>
+  </div>
+
+  <!-- Файл ТЗ -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">📄</div>Файл документации: замена памяти</h2>
+    <p>Чем больше проект — тем важнее иметь файл с описанием. Когда контекст Claude обнуляется (через несколько часов или при переоткрытии Code), этот файл позволяет восстановить всю картину за секунды.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>Создайте файл <code>readme.md</code> в папке проекта</strong>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>Попросите Claude заполнить его</strong>
+          <p>«Опиши наш проект в этом файле: структура страниц, цветовая палитра, шрифты, логика навигации, что ещё не сделано». Claude сам напишет подробный отчёт по тому, что уже создано.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <strong>В новой сессии — первый делом откройте этот файл</strong>
+          <p>В Claude Code напечатайте <code>@readme.md</code> — Claude прочитает файл и сразу войдёт в контекст проекта. Не нужно объяснять всё заново.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tip-box"><strong>Обновляйте файл в конце каждой сессии:</strong> «Обнови readme.md — добавь что мы сделали сегодня и что осталось». Это займёт 20 секунд и сэкономит час в следующий раз.</div>
+  </div>
+
+  <!-- Режимы работы -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">⚙️</div>Режимы работы: когда что включать</h2>
+    <table class="lesson-table">
+      <thead>
+        <tr><th>Режим</th><th>Когда использовать</th><th>Что происходит</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ask Permission (по умолчанию)</td>
+          <td>Небольшие правки, ранние этапы</td>
+          <td>Claude спрашивает перед каждым действием</td>
+        </tr>
+        <tr>
+          <td>Plan Mode</td>
+          <td>Перед большой задачей — новая страница, рефакторинг</td>
+          <td>Сначала составляет план, вы одобряете</td>
+        </tr>
+        <tr>
+          <td>Bypass / Auto Mode</td>
+          <td>Когда задача чёткая и срочная, доверяете Claude</td>
+          <td>Делает всё без остановок на подтверждения</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="warn-box"><strong>Про токены:</strong> многостраничный сайт потребляет много контекста — примерно 60% лимита за один крупный проект. Если лимит заканчивается в середине работы — не паникуйте. Сохраните прогресс через readme.md и продолжите в новой сессии.</div>
+  </div>
+
+  <!-- Публикация -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">🚀</div>Публикация: Vercel</h2>
+    <p>Для многостраничных сайтов удобнее Vercel — он лучше обрабатывает навигацию между страницами. Netlify тоже работает, но Vercel настраивается за 4 шага.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>Регистрация на vercel.com через GitHub или Google</strong>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>New Project → Import → выбираем папку</strong>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <strong>Framework preset: Other (не Next.js!)</strong>
+          <p>Выберите «Other» — иначе Vercel попробует собрать проект как React-приложение.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <strong>Deploy → получаем ссылку <code>*.vercel.app</code></strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">💬</div>Частые вопросы</h2>
+    <div class="faq-item">
+      <div class="faq-q">Claude отвечает на русском языке, а мне нужно всё на английском</div>
+      <div class="faq-a">Просто начните писать промпты на английском — Claude автоматически переключится на английский для кода и комментариев. Или добавьте в промпт: «All code comments and content in English».</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли передать в Claude файл с данными заказчика (прайс-лист в Excel)?</div>
+      <div class="faq-a">Да — Claude Code читает Excel, CSV, JSON, Word и другие текстовые форматы. Видео и исполняемые файлы не поддерживаются. Положите файл в папку проекта и напишите: «Используй данные из price.xlsx для таблицы услуг».</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Говорить ли клиенту, что сайт сделан с помощью ИИ?</div>
+      <div class="faq-a">Это ваше решение. Клиента интересует результат — работающий сайт за разумные деньги в срок. Большинство инструментов в нашем деле — это «помощники», которые мы не перечисляем. С другой стороны, прозрачность строит доверие. Если спросят — не скрывайте.</div>
+    </div>
+  </div>
+
+  <!-- Чеклист -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">✅</div>Итог урока</h2>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Знаете метод reverse-инжиниринга — сначала спросить Claude про структуру</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Файл readme.md создан и заполнен Claude</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Многостраничный сайт (3+ страниц) создан и работает локально</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Сайт опубликован на Vercel или Netlify</li>
+    </ul>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="урок-04-1.html" class="btn-nav btn-prev">
+      <span>
+        <span class="nav-lesson-title">Предыдущий урок</span>
+        ← Netlify практикум
+      </span>
+    </a>
+    <a href="урок-06.html" class="btn-nav btn-next">
+      <span>
+        <span class="nav-lesson-title">Следующий урок</span>
+        Агенты и контент →
+      </span>
+    </a>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  function update() {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  var li = el.closest('li');
+  if (li) li.classList.toggle('done');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 10 — API и личный агент · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lesson.css">
+<style>
+:root{--accent:var(--blue-l);--accent-bg:rgba(37,99,235,.12);--accent-border:rgba(37,99,235,.35)}
+.progress-fill{width:76.9%}
+.hero-orb-1{background:radial-gradient(circle,rgba(37,99,235,.22),transparent 65%)}
+.hero-orb-2{background:radial-gradient(circle,rgba(124,58,237,.18),transparent 65%)}
+</style>
+</head>
+<body><div id="reading-progress"></div>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <span class="nav-lesson">Урок 10 из 13</span>
+    <div class="nav-progress">
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <span class="progress-text">10/13</span>
+    </div>
+  </div>
+</nav>
+<div class="page">
+  <div class="lesson-hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="lesson-tag"><span class="lesson-tag-dot"></span>Блок 5 · Монетизация</div>
+    <h1>API и личный агент:<br><span>выходим за рамки Claude</span></h1>
+    <p class="lesson-intro">Claude.ai — это интерфейс над API. Напрямую через API вы получаете тот же интеллект, но встроенный в своё приложение, своего бота, свой сервис. И платите не фиксированную подписку, а ровно столько, сколько реально используете.</p>
+    <div class="lesson-meta">
+      <div class="meta-item"><span>⏱</span> ~45 минут</div>
+      <div class="meta-item"><span>💰</span> От $5</div>
+      <div class="meta-item"><span>🔑</span> API-ключ Anthropic</div>
+    </div>
+  </div>
+
+  <!-- API vs Pro -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">⚡</div>API vs подписка Pro: два разных счётчика</h2>
+    <p>Это не замена — это параллельный инструмент. Pro-подписка и API работают независимо друг от друга.</p>
+    <table class="lesson-table">
+      <thead>
+        <tr><th></th><th>Claude Pro (подписка)</th><th>API (по факту)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Оплата</td><td>Фиксированно/мес</td><td>За каждый запрос</td></tr>
+        <tr><td>Использование</td><td>Вы вручную в браузере</td><td>Ваш код, ваши приложения</td></tr>
+        <tr><td>Лимит</td><td>~5 часов работы</td><td>Нет лимита — только баланс</td></tr>
+        <tr><td>Для чего</td><td>Ежедневная работа</td><td>Агенты, боты, интеграции</td></tr>
+        <tr><td>Минимальный старт</td><td>По тарифу</td><td>$5</td></tr>
+      </tbody>
+    </table>
+    <div class="info-box"><strong>Стоимость запросов:</strong> Sonnet — около 2–3 руб. за запрос. Haiku — в 3–4 раза дешевле. Opus — в 3–4 раза дороже. При 10 запросах в день Sonnet = ~60–90 руб./день = ~2000 руб./мес. $5 хватит на знакомство с API и первый месяц редкого использования.</div>
+  </div>
+
+  <!-- Три шага перед агентом -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">🏗</div>Три шага перед любым агентом</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>Новая папка + Trust в Code</strong>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>Модель Sonnet + Effort High</strong>
+          <p>Агент — это сложная задача. High Effort = Claude думает дольше, делает меньше ошибок в архитектуре.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <strong>Plan Mode + описание задачи</strong>
+          <p>Прежде чем начать строить — получите архитектурный план. Архитектор рисует чертёж до того, как начинается стройка.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- API-ключ -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">🔑</div>API-ключ: 5 шагов</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>console.anthropic.com</strong>
+          <p>Это отдельный сайт — не claude.ai. Но аккаунт тот же. Зайдите через тот же email/Google.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>Пополните баланс ($5 minimum)</strong>
+          <p>Billing → Add credits. Та же карта, что привязана к аккаунту Claude.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <strong>API Keys → Create Key</strong>
+          <p>Придумайте говорящее название: «smm-agent», «tracker-app».</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <strong>Скопируйте ключ сразу — показывается один раз</strong>
+          <p>Ключ начинается с <code>sk-ant-</code>. После закрытия окна увидеть его снова нельзя — только создать новый.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <strong>Передайте Claude через файл проекта, не в чат</strong>
+          <p>Создайте файл <code>.env</code> в папке → напишите <code>ANTHROPIC_API_KEY=ваш_ключ</code> → закройте файл. Claude Code прочитает его сам.</p>
+        </div>
+      </div>
+    </div>
+    <div class="warn-box"><strong>Ключ в чат — никогда.</strong> Не вставляйте API-ключ прямо в диалог с Claude. Передайте через .env файл. Кто угодно, получив ключ, может тратить ваш баланс.</div>
+  </div>
+
+  <!-- Безопасность ключа -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">🛡</div>Безопасность ключа: аналогия с абонементом</h2>
+    <p>API-ключ — не паспорт. Это абонемент: документ, который даёт право пользоваться услугами за ваш счёт. Утерянный абонемент можно отозвать в любой момент.</p>
+    <table class="lesson-table">
+      <thead>
+        <tr><th>Что видит владелец ключа</th><th>Что НЕ видит</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Может делать запросы к Claude API</td><td>Ваши переписки в Claude.ai</td></tr>
+        <tr><td>Тратит ваш баланс</td><td>Данные вашей карты</td></tr>
+        <tr><td>Может создавать другие ключи (если admin)</td><td>Другие ключи в аккаунте</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box"><strong>При утечке ключа:</strong> console.anthropic.com → API Keys → Delete. Ключ перестаёт работать мгновенно. Создайте новый. Совет: перед демонстрацией кода создайте временный ключ, после показа — удалите.</div>
+  </div>
+
+  <!-- Где разместить -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">🌐</div>Где разместить агента</h2>
+    <table class="lesson-table">
+      <thead>
+        <tr><th>Формат</th><th>Аудитория</th><th>Сложность</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Веб-сайт с кнопками</td><td>Все по ссылке</td><td>Урок 8</td></tr>
+        <tr><td>Telegram-бот</td><td>Пользователи Telegram</td><td>Урок 11</td></tr>
+        <tr><td>Виджет поддержки</td><td>Посетители сайта клиента</td><td>Средняя</td></tr>
+        <tr><td>Несколько агентов</td><td>Разные роли, один баланс</td><td>Один ключ, разные папки</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Чеклист -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">✅</div>Итог урока</h2>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>API-ключ получен и сохранён в .env файл</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Баланс на console.anthropic.com пополнен</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Понимаете разницу API-ключа и Pro-подписки</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Первый агент создан через Plan Mode</li>
+    </ul>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="урок-09.html" class="btn-nav btn-prev">
+      <span><span class="nav-lesson-title">Предыдущий урок</span>← Деплой на сервер</span>
+    </a>
+    <a href="урок-11.html" class="btn-nav btn-next">
+      <span><span class="nav-lesson-title">Следующий урок</span>Telegram-бот →</span>
+    </a>
+  </div>
+</div>
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  function update() {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  var li = el.closest('li');
+  if (li) li.classList.toggle('done');
+}
+</script>
+</body>
+</html>

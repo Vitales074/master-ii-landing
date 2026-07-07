@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 4.1 — Netlify: публикуем сайт · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lesson.css">
+<style>
+:root{--accent:var(--green-l);--accent-bg:rgba(16,185,129,.1);--accent-border:rgba(16,185,129,.3)}
+.progress-fill{width:30.8%}
+.hero-orb-1{background:radial-gradient(circle,rgba(16,185,129,.22),transparent 65%)}
+.hero-orb-2{background:radial-gradient(circle,rgba(37,99,235,.18),transparent 65%)}
+</style>
+</head>
+<body><div id="reading-progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <span class="nav-lesson">Урок 4.1 из 13</span>
+    <div class="nav-progress">
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <span class="progress-text">4/13</span>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="lesson-hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="lesson-tag"><span class="lesson-tag-dot"></span>Практикум · Урок 4</div>
+    <h1>Netlify: сайт в интернете<br><span>за 3 минуты</span></h1>
+    <p class="lesson-intro">Короткий практикум-шпаргалка. Сайт готов в папке — теперь публикуем. Никаких технических знаний, только несколько кликов мышью.</p>
+    <div class="lesson-meta">
+      <div class="meta-item"><span>⏱</span> ~5 минут</div>
+      <div class="meta-item"><span>💰</span> Бесплатно</div>
+      <div class="meta-item"><span>🔗</span> Получите рабочую ссылку</div>
+    </div>
+  </div>
+
+  <!-- Что такое Netlify -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">🚀</div>Что такое Netlify и зачем он нужен</h2>
+    <p>Netlify — бесплатный хостинг, который принимает HTML-файлы прямо из папки на вашем компьютере. Вы перетаскиваете папку с сайтом — Netlify выдаёт постоянную ссылку в интернете. Никаких настроек серверов, никакого кода для деплоя. Просто drag & drop.</p>
+    <div class="info-box"><strong>Бесплатный тариф даёт:</strong> хостинг для неограниченного числа сайтов, автоматический HTTPS, быстрые CDN-серверы по всему миру. Для учебных и клиентских проектов этого достаточно.</div>
+  </div>
+
+  <!-- 4 шага -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">📋</div>4 шага до публикации</h2>
+
+    <div class="big-step">
+      <div class="big-step-num">1</div>
+      <div class="big-step-body">
+        <h3>Регистрация на Netlify</h3>
+        <p>Перейдите на <strong>netlify.com</strong> → нажмите <strong>Sign up</strong>. Самый простой способ — войти через Google-аккаунт. Новую почту создавать не нужно.</p>
+      </div>
+    </div>
+
+    <div class="big-step">
+      <div class="big-step-num">2</div>
+      <div class="big-step-body">
+        <h3>Загрузка сайта</h3>
+        <p>На главной странице личного кабинета найдите область с надписью вида <strong>«Drag and drop your site here»</strong>. Откройте папку с вашим проектом в Проводнике (Windows) или Finder (Mac) и перетащите всю папку в эту область.</p>
+        <p>Если перетащить не получается — нажмите на ссылку <strong>«browse to upload»</strong> или аналогичную и выберите папку через диалог.</p>
+      </div>
+    </div>
+
+    <div class="big-step">
+      <div class="big-step-num">3</div>
+      <div class="big-step-body">
+        <h3>Диалог переименования (важно!)</h3>
+        <p>Если главный файл называется не <code>index.html</code>, а как-то иначе (например, <code>landing.html</code>), Netlify покажет диалог с предложением переименовать его в <code>index.html</code>.</p>
+        <p>Нажмите <strong>«Rename and deploy»</strong> — это обязательно. Только файл с именем <code>index.html</code> открывается автоматически при переходе по ссылке. Без переименования пользователи увидят пустую страницу.</p>
+      </div>
+    </div>
+
+    <div class="big-step">
+      <div class="big-step-num">4</div>
+      <div class="big-step-body">
+        <h3>Копируем ссылку</h3>
+        <p>Через несколько секунд Netlify покажет случайно сгенерированную ссылку вида <code>happy-meadow-123456.netlify.app</code>. Скопируйте её и откройте в браузере — ваш сайт уже доступен всему интернету.</p>
+        <p>Ссылку можно переименовать в личном кабинете сайта → Site configuration → Site name — например, в <code>salon-masha.netlify.app</code>.</p>
+      </div>
+    </div>
+
+    <div class="tip-box"><strong>Процесс занимает не больше 30–60 секунд.</strong> Если страница долго крутится — обновите её вручную. Обычно это помогает.</div>
+  </div>
+
+  <!-- Обновление -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">🔄</div>Как обновить сайт после правок</h2>
+    <p>Внесли правки в Claude Code, сохранили — теперь нужно залить новую версию на Netlify.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>Открываем свой сайт в Netlify</strong>
+          <p>Личный кабинет → список сайтов → нужный сайт.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>Deploys → Drag and drop новую версию</strong>
+          <p>Во вкладке Deploys будет такая же зона для drag & drop. Перетаскиваем обновлённую папку сюда.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <strong>Дождаться статуса «Published»</strong>
+          <p>Займёт 20–40 секунд. Ссылка остаётся прежней — клиент по той же ссылке увидит новую версию.</p>
+        </div>
+      </div>
+    </div>
+    <div class="warn-box"><strong>Каждый раз перетаскивайте всю папку целиком</strong>, а не только изменённые файлы. Netlify заменяет весь сайт при каждом деплое — частичная загрузка не работает.</div>
+  </div>
+
+  <!-- Проблемы -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">🔧</div>Типичные вопросы</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">Q</div>
+        <div class="step-body">
+          <strong>Сайт открывается, но картинки не грузятся</strong>
+          <p>Убедитесь, что папку с проектом вы перетащили целиком, вместе с подпапкой images/ (если фото хранятся отдельно). Если фото было внутри папки на компьютере, оно должно быть и в загруженной версии.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">Q</div>
+        <div class="step-body">
+          <strong>Netlify предложил 404 вместо сайта</strong>
+          <p>Скорее всего, файл был назван не index.html и диалог переименования был закрыт случайно. Удалите деплой, загрузите снова и не пропустите диалог на шаге 3.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">Q</div>
+        <div class="step-body">
+          <strong>Хочу убрать «netlify.app» из ссылки</strong>
+          <p>Для своего домена нужно его купить (от 500 руб/год на любом регистраторе) и привязать в настройках Netlify. Это уже другая тема — рассматриваем позже.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Чеклист -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">✅</div>Готово, если…</h2>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Аккаунт Netlify создан через Google</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Папка с сайтом загружена, диалог переименования пройден</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Ссылка <code>*.netlify.app</code> открывается и показывает сайт</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Умеете обновлять сайт после правок через вкладку Deploys</li>
+    </ul>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="урок-04.html" class="btn-nav btn-prev">
+      <span>
+        <span class="nav-lesson-title">Предыдущий урок</span>
+        ← Лендинг с нуля
+      </span>
+    </a>
+    <a href="урок-05.html" class="btn-nav btn-next">
+      <span>
+        <span class="nav-lesson-title">Следующий урок</span>
+        Многостраничный сайт →
+      </span>
+    </a>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  function update() {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  var li = el.closest('li');
+  if (li) li.classList.toggle('done');
+}
+</script>
+
+</body>
+</html>
