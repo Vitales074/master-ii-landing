@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Покупка курса — Мастер-ИИ</title>
+<meta name="description" content="Оформление покупки курса «Мастер-ИИ» — 15 уроков о заработке с Claude. Доступ сразу после оплаты, навсегда.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#05050f;
+    --card:rgba(255,255,255,.035);
+    --line:rgba(255,255,255,.09);
+    --blue:#60a5fa;
+    --violet:#a78bfa;
+    --green:#34d399;
+    --text:#eef0ff;
+    --muted:rgba(238,240,255,.55);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--text);
+    min-height:100vh;line-height:1.6;overflow-x:hidden;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(600px 400px at 80% -10%, rgba(37,99,235,.16), transparent 60%),
+      radial-gradient(600px 500px at -10% 60%, rgba(124,58,237,.13), transparent 60%),
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:auto,auto,40px 40px,40px 40px;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+
+  header{padding:28px 0;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-family:'Unbounded',sans-serif;font-weight:900;font-size:18px;text-decoration:none;color:var(--text)}
+  .logo span{background:linear-gradient(120deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .back{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s}
+  .back:hover{color:var(--text)}
+
+  .hero{text-align:center;padding:36px 0 44px}
+  .hero .badge{
+    display:inline-block;padding:7px 18px;border:1px solid rgba(96,165,250,.35);border-radius:999px;
+    color:var(--blue);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+    background:rgba(37,99,235,.08);margin-bottom:22px;
+  }
+  h1{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(26px,5vw,44px);line-height:1.15;margin-bottom:14px}
+  h1 span{background:linear-gradient(120deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);max-width:520px;margin:0 auto;font-size:17px}
+
+  .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start;padding-bottom:70px}
+  @media(max-width:780px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:22px;padding:32px;
+    backdrop-filter:blur(18px);
+  }
+  .card h2{font-family:'Unbounded',sans-serif;font-weight:700;font-size:19px;margin-bottom:20px}
+
+  .includes{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .includes li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px}
+  .includes .ic{
+    flex:0 0 22px;height:22px;border-radius:7px;margin-top:2px;
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#04120b;
+    background:linear-gradient(135deg,#6ee7b7,var(--green));
+  }
+  .includes b{color:var(--text)}
+  .includes span{color:var(--muted)}
+
+  .steps{margin-top:28px;border-top:1px solid var(--line);padding-top:24px}
+  .steps h3{font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .step{display:flex;gap:14px;margin-bottom:14px;font-size:15px}
+  .step .n{
+    flex:0 0 26px;height:26px;border-radius:50%;font-weight:800;font-size:13px;
+    display:flex;align-items:center;justify-content:center;color:#0a0f2e;
+    background:linear-gradient(135deg,var(--blue),var(--violet));
+  }
+  .step span{color:var(--muted)}
+  .step b{color:var(--text)}
+
+  .pay{position:sticky;top:20px;text-align:center}
+  .price-old{color:var(--muted);text-decoration:line-through;font-size:17px}
+  .price{font-family:'Unbounded',sans-serif;font-weight:900;font-size:52px;margin:4px 0 2px}
+  .price small{font-size:22px;font-weight:700}
+  .price-note{color:var(--muted);font-size:13.5px;margin-bottom:24px}
+  .paybtn{
+    display:block;width:100%;padding:18px;border-radius:16px;text-decoration:none;
+    font-family:'Unbounded',sans-serif;font-weight:700;font-size:16px;color:#fff;
+    background:linear-gradient(120deg,#2563eb,#7c3aed);
+    box-shadow:0 10px 40px rgba(79,70,229,.35);
+    transition:transform .2s, box-shadow .25s;
+  }
+  .paybtn:hover{transform:translateY(-2px);box-shadow:0 14px 52px rgba(79,70,229,.5)}
+  .paynote{margin-top:14px;color:var(--muted);font-size:13px}
+  .paynote b{color:var(--text)}
+  .guarantee{
+    margin-top:22px;padding:16px;border:1px solid rgba(52,211,153,.25);border-radius:14px;
+    background:rgba(52,211,153,.06);font-size:13.5px;color:var(--muted);text-align:left;display:flex;gap:10px;
+  }
+  .guarantee .gi{flex:0 0 auto;font-size:18px}
+  .guarantee b{color:var(--green)}
+  .help{margin-top:18px;font-size:13.5px;color:var(--muted)}
+  .help a{color:var(--blue);text-decoration:none;font-weight:600}
+  .help a:hover{text-decoration:underline}
+
+  .secure{display:flex;justify-content:center;gap:18px;margin-top:20px;color:var(--muted);font-size:12px;flex-wrap:wrap}
+  .secure span{display:flex;align-items:center;gap:6px}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:13px}
+  footer a{color:var(--muted)}
+
+  .fade{opacity:0;transform:translateY(18px);animation:up .7s ease forwards}
+  .fade:nth-child(2){animation-delay:.12s}
+  @keyframes up{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="logo" href="/">МАСТЕР<span>-ИИ</span></a>
+    <a class="back" href="/">← Вернуться на сайт</a>
+  </header>
+
+  <section class="hero">
+    <div class="badge">Оформление покупки</div>
+    <h1>Один шаг до курса<br><span>«Мастер-ИИ»</span></h1>
+    <p>Доступ откроется сразу после оплаты — навсегда, включая все будущие обновления.</p>
+  </section>
+
+  <div class="grid">
+    <div class="card fade">
+      <h2>Что вы получаете</h2>
+      <ul class="includes">
+        <li><div class="ic">✓</div><div><b>15 уроков</b> <span>— пошаговые инструкции со скриншотами: куда нажать, что написать, что получится</span></div></li>
+        <li><div class="ic">✓</div><div><b>Слайды к каждому уроку</b> <span>— выжимка для быстрого повторения</span></div></li>
+        <li><div class="ic">✓</div><div><b>Доступ к Claude из России</b> <span>— VPN, регистрация, оплата: 3 урока только про это</span></div></li>
+        <li><div class="ic">✓</div><div><b>Практика</b> <span>— сайты, Telegram-бот, приложение, публикация в интернет</span></div></li>
+        <li><div class="ic">✓</div><div><b>Портфолио и первые клиенты</b> <span>— как превратить навык в доход</span></div></li>
+        <li><div class="ic">✓</div><div><b>Доступ навсегда</b> <span>— проходите в своём темпе, обновления бесплатно</span></div></li>
+      </ul>
+
+      <div class="steps">
+        <h3>Как проходит оплата</h3>
+        <div class="step"><div class="n">1</div><div><b>Нажмите «Перейти к оплате»</b> <span>— откроется Boosty, наша платёжная площадка</span></div></div>
+        <div class="step"><div class="n">2</div><div><b>Оплатите российской картой</b> <span>— Boosty принимает карты РФ, это безопасно</span></div></div>
+        <div class="step"><div class="n">3</div><div><b>Получите доступ</b> <span>— ссылка на все уроки откроется в оплаченном посте</span></div></div>
+      </div>
+    </div>
+
+    <div class="card pay fade">
+      <div class="price-old">9 800 ₽</div>
+      <div class="price">4 900 <small>₽</small></div>
+      <div class="price-note">цена запуска · разовый платёж, без подписки</div>
+      <a class="paybtn" href="https://boosty.to/master_ii/posts/2f05bae3-1086-41af-bb32-cd21ae8a2136" target="_blank" rel="noopener">Перейти к оплате →</a>
+      <div class="paynote">Оплата проходит через <b>Boosty</b> — российскую платформу для авторов. Карты РФ принимаются.</div>
+      <div class="help">Вопрос перед покупкой? <a href="https://t.me/chell074" target="_blank" rel="noopener">Напишите в Telegram</a> — отвечаем быстро.</div>
+    </div>
+  </div>
+
+  <div class="secure">
+    <span>🔒 Безопасная оплата</span>
+    <span>⚡ Доступ сразу после оплаты</span>
+    <span>♾ Навсегда, без подписок</span>
+  </div>
+
+  <footer>
+    <p>© 2026 Мастер-ИИ · <a href="/">master-ii.ru</a> · <a href="https://t.me/master_ii_kurs" target="_blank" rel="noopener">Telegram-канал</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
