@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -71,6 +71,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;background:rg
 .bb-orange{background:rgba(249,115,22,.12); border:1px solid rgba(249,115,22,.28);color:var(--orange-l)}
 .block-title{font-family:var(--font-d);font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.01em}
 .block-divider{flex:1;height:1px;background:rgba(255,255,255,.06)}
+.block-tagline{font-size:13px;color:var(--dim);margin:-4px 0 16px;font-style:italic}
 
 /* ── Lesson cards ── */
 .lesson-list{display:flex;flex-direction:column;gap:10px}
@@ -175,7 +176,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;background:rg
   <div class="welcome">
     <div class="welcome-eyebrow">Добро пожаловать</div>
     <h1>Курс <span>Мастер-ИИ</span></h1>
-    <p>Полный доступ к курсу открыт. Проходите уроки в любом порядке — прогресс сохраняется автоматически в браузере.</p>
+    <p>Полный доступ открыт, ноль воды в уроках. Проходите в любом порядке — прогресс сохраняется сам, можно закрыть вкладку и вернуться хоть через неделю.</p>
     <div class="overview">
       <div class="ov-card"><div class="ov-num blue" id="ovDone">0</div><div class="ov-label">уроков пройдено</div></div>
       <div class="ov-card"><div class="ov-num orange">15</div><div class="ov-label">уроков всего</div></div>
@@ -190,6 +191,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;background:rg
       <span class="block-title">Технический блок — доступ к Claude</span>
       <div class="block-divider"></div>
     </div>
+    <div class="block-tagline">Скучная, но обязательная часть — один раз настроил, и Claude открыт навсегда</div>
     <div class="lesson-list">
 
       <div class="lesson-card" id="l-01" onclick="openLesson('01','lessons/урок-01.html')">
@@ -261,6 +263,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;background:rg
       <span class="block-title">Первые проекты — лендинги и сайты</span>
       <div class="block-divider"></div>
     </div>
+    <div class="block-tagline">Первый результат, который можно показать друзьям в тот же вечер</div>
     <div class="lesson-list">
 
       <div class="lesson-card" id="l-04" onclick="openLesson('04','lessons/урок-04.html')">
@@ -315,6 +318,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;background:rg
       <span class="block-title">Контент-система и визуальный контент</span>
       <div class="block-divider"></div>
     </div>
+    <div class="block-tagline">Здесь заканчивается рутина и начинается контент-конвейер</div>
     <div class="lesson-list">
 
       <div class="lesson-card" id="l-06" onclick="openLesson('06','lessons/урок-06.html')">
@@ -355,6 +359,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;background:rg
       <span class="block-title">Приложения и инфраструктура</span>
       <div class="block-divider"></div>
     </div>
+    <div class="block-tagline">От сайта-визитки до продукта, который работает 24/7 без вас</div>
     <div class="lesson-list">
 
       <div class="lesson-card" id="l-08" onclick="openLesson('08','lessons/урок-08.html')">
@@ -395,6 +400,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;background:rg
       <span class="block-title">Монетизация, боты и безопасность</span>
       <div class="block-divider"></div>
     </div>
+    <div class="block-tagline">Как превратить навык в деньги — и не облажаться по безопасности</div>
     <div class="lesson-list">
 
       <div class="lesson-card" id="l-10" onclick="openLesson('10','lessons/урок-10.html')">
@@ -449,6 +455,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;background:rg
       <span class="block-title">Портфолио и первые клиенты</span>
       <div class="block-divider"></div>
     </div>
+    <div class="block-tagline">Последний шаг — и пункт «хочу зарабатывать на ИИ» можно вычёркивать из списка мечт</div>
     <div class="lesson-list">
 
       <div class="lesson-card" id="l-13" onclick="openLesson('13','lessons/урок-13.html')">
