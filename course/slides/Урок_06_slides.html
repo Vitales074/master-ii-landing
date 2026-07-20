@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="master-ii.css?v=5">
+<link rel="stylesheet" href="vendor/reveal.js/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=17">
 </head>
 <body>
 <div class="reveal">
@@ -29,11 +29,11 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
       <h2>Что вы узнаете</h2>
       <div class="divider"></div>
-      <div class="bento bento-2" style="margin-top:.8em;">
-        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Разница между Chat и Projects — разовый исполнитель vs постоянный сотрудник</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>Создать агента за 5 минут — 5 шагов, метод интервью</p></div>
-        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Система трёх ролей: Стратег, Автор, Редактор</p></div>
-        <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>Досье блога — один файл для всех агентов</p></div>
+      <div class="bento bento-4" style="margin-top:.8em;">
+        <div class="bc bc-blue"><h3 class="accent-blue">01</h3><p>Разница между Chat и Projects — разовый исполнитель vs постоянный сотрудник</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple">02</h3><p>Создать агента за 5 минут — 5 шагов, метод интервью</p></div>
+        <div class="bc bc-green"><h3 class="accent-green">03</h3><p>Система трёх ролей: Стратег, Автор, Редактор</p></div>
+        <div class="bc bc-orange"><h3 class="accent-orange">04</h3><p>Досье блога — один файл для всех агентов</p></div>
       </div>
     <aside class="notes">Шесть тем: почему рутина не исчезает, разница Chat и Projects, создание агента, система трёх ролей, ДНК блога и недельный ритм.</aside></section>
 
@@ -55,13 +55,13 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Параметр</th><th>Chat (обычный)</th><th>Projects (агент)</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Память</td><td>Каждый раз с нуля</td><td>Помнит всё из инструкции</td></tr>
-          <tr class="fragment"><td>Стиль</td><td>Claude угадывает</td><td>Прописан раз и навсегда</td></tr>
-          <tr class="fragment"><td>Контекст</td><td>Объясняете каждый раз</td><td>Загружен в файлы</td></tr>
-          <tr class="fragment"><td>Аналогия</td><td>Колл-центр: разный оператор</td><td>Личный менеджер вашего аккаунта</td></tr>
+          <tr><td>Память</td><td>Каждый раз с нуля</td><td>Помнит всё из инструкции</td></tr>
+          <tr><td>Стиль</td><td>Claude угадывает</td><td>Прописан раз и навсегда</td></tr>
+          <tr><td>Контекст</td><td>Объясняете каждый раз</td><td>Загружен в файлы</td></tr>
+          <tr><td>Аналогия</td><td>Колл-центр: разный оператор</td><td>Личный менеджер вашего аккаунта</td></tr>
         </tbody>
       </table>
-      <p class="fragment" style="margin-top:.6em;font-size:.6em;color:var(--muted);">Важно: <span class="accent-blue">Projects находится только в Chat</span> — не в Code</p>
+      <p style="margin-top:.6em;font-size:.6em;color:var(--muted);">Важно: <span class="accent-blue">Projects находится только в Chat</span> — не в Code</p>
     <aside class="notes">Обычный чат: разговор без памяти. Полезен для разовых задач. Projects: агент со встроенной инструкцией и загруженными файлами. Помнит всё между сессиями. Где найти: только в Chat, не в Code. Левая панель, иконка папки, New Project.</aside></section>
 
     <section class="slide-section">
@@ -79,12 +79,12 @@
       <div class="slide-lesson-num">Урок 6</div>
       <h2>Создаём агента: 5 шагов</h2>
       <div class="divider"></div>
-      <div class="steps" style="margin-top:.6em;">
-        <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Chat → значок папки → New Project</strong><span>Назовите по функции: «Контент Telegram» или «SMM-стратег»</span></div></div>
-        <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Написать инструкцию</strong><span>4 блока: Роль / Контекст / Стиль / Задача</span></div></div>
-        <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Добавить метод интервью</strong><span>«Перед работой задай уточняющие вопросы»</span></div></div>
-        <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Загрузить файлы в раздел Files</strong><span>Досье блога, примеры текстов, описание бизнеса</span></div></div>
-        <div class="step fragment"><div class="step-num">05</div><div class="step-body"><strong>Агент готов к работе</strong><span>Открывайте Project — контекст уже загружен</span></div></div>
+      <div class="steps grid2" style="margin-top:.6em;">
+        <div class="step"><div class="step-num">01</div><div class="step-body"><strong>Chat → значок папки → New Project</strong><span>Назовите по функции: «Контент Telegram» или «SMM-стратег»</span></div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-body"><strong>Написать инструкцию</strong><span>4 блока: Роль / Контекст / Стиль / Задача</span></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><strong>Добавить метод интервью</strong><span>«Перед работой задай уточняющие вопросы»</span></div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-body"><strong>Загрузить файлы в раздел Files</strong><span>Досье блога, примеры текстов, описание бизнеса</span></div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-body"><strong>Агент готов к работе</strong><span>Открывайте Project — контекст уже загружен</span></div></div>
       </div>
     <aside class="notes">Три агента, три роли. Стратег: строит план на месяц, пишет бриф на каждый пост — тема, угол, тезисы. Автор: берёт бриф и пишет готовый текст в нужном формате. Редактор: финальная проверка — тон, факты, призыв к действию. Можно расширить: Атомайзер переведёт один пост в пять форматов, Таргетолог адаптирует под конкретную аудиторию.</aside></section>
 
@@ -105,20 +105,20 @@
       <h2>Система трёх ролей</h2>
       <div class="divider"></div>
       <div class="bento" style="margin-top:.7em;">
-        <div class="bc bc-blue fragment">
+        <div class="bc bc-blue">
           <h3 class="accent-blue">Стратег</h3>
           <p>Получает цель периода. Строит контент-план и бриф под каждый пост. Не пишет тексты.</p>
         </div>
-        <div class="bc bc-purple fragment">
+        <div class="bc bc-purple">
           <h3 class="accent-purple">Автор</h3>
           <p>Получает бриф от Стратега. Пишет тексты в нужном стиле. Работает строго по брифу.</p>
         </div>
-        <div class="bc bc-green fragment">
+        <div class="bc bc-green">
           <h3 class="accent-green">Редактор</h3>
           <p>Получает текст от Автора. Проверяет стиль, убирает лишнее, усиливает CTA.</p>
         </div>
       </div>
-      <p class="fragment" style="margin-top:.6em;font-size:.58em;color:var(--muted);">Начните с двух — Стратег и Автор. Этого хватает для 80% задач.</p>
+      <p style="margin-top:.6em;font-size:.58em;color:var(--muted);">Начните с двух — Стратег и Автор. Этого хватает для 80% задач.</p>
     <aside class="notes">Один день — контент на месяц. Шаг первый: Стратег строит план на четыре недели и пишет брифы. Шаг второй: Автор по каждому брифу пишет текст. Шаг третий: Редактор проверяет. Шаг четвёртый: публикуете по расписанию через отложенные посты. Весь цикл занимает два-три часа. Агенты не заменяют творчество — они убирают рутину.</aside></section>
 
     <section>
@@ -127,14 +127,14 @@
       <div class="slide-lesson-num">Урок 6</div>
       <h2>Досье блога:<br><span class="accent-green">один файл для всех агентов</span></h2>
       <div class="divider"></div>
-      <ul style="max-width:680px;margin-top:.6em;">
-        <li class="fragment">Кто вы и что продаёте — ниша, продукт, преимущество</li>
-        <li class="fragment">Целевая аудитория — кто читает, что их волнует</li>
-        <li class="fragment">Голос и стиль — формально или по-дружески, с юмором или строго</li>
-        <li class="fragment">Запреты — темы и слова, которых вы избегаете</li>
-        <li class="fragment">Примеры ваших лучших текстов — 3–5 постов, которые сработали</li>
+      <ul class="tight" style="max-width:680px;margin-top:.6em;">
+        <li>Кто вы и что продаёте — ниша, продукт, преимущество</li>
+        <li>Целевая аудитория — кто читает, что их волнует</li>
+        <li>Голос и стиль — формально или по-дружески, с юмором или строго</li>
+        <li>Запреты — темы и слова, которых вы избегаете</li>
+        <li>Примеры ваших лучших текстов — 3–5 постов, которые сработали</li>
       </ul>
-      <p class="fragment" style="margin-top:.7em;font-size:.58em;color:var(--muted);">Создать за один разговор: «Задай мне вопросы о проекте → оформи в Markdown → скачать → загрузить всем агентам»</p>
+      <p style="margin-top:.7em;font-size:.58em;color:var(--muted);">Создать за один разговор: «Задай мне вопросы о проекте → оформи в Markdown → скачать → загрузить всем агентам»</p>
     <aside class="notes">Четыре вывода: Projects в Chat — постоянная память. Три агента — система, не разовые запросы. ДНК блога фиксирует голос навсегда. Один день работы = месяц контента. Следующий урок — визуальный контент и инфографика. До встречи!</aside></section>
 
     <section>
@@ -145,9 +145,9 @@
       <h2>Ключевые выводы</h2>
       <div class="divider"></div>
       <ul style="max-width:640px;margin-top:.6em;">
-        <li class="fragment">Projects — это постоянный сотрудник с памятью, а не разовый исполнитель</li>
-        <li class="fragment">Один агент = одна задача. Три специализированных лучше одного универсального</li>
-        <li class="fragment">Досье блога — создаёте один раз, загружаете всем агентам одним кликом</li>
+        <li>Projects — это постоянный сотрудник с памятью, а не разовый исполнитель</li>
+        <li>Один агент = одна задача. Три специализированных лучше одного универсального</li>
+        <li>Досье блога — создаёте один раз, загружаете всем агентам одним кликом</li>
       </ul>
     </section>
 
@@ -162,10 +162,9 @@
 
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="vendor/reveal.js/reveal.js"></script>
+<script src="vendor/reveal.js/notes.js"></script>
 <script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
-<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
 <style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
 </body>
 </html>

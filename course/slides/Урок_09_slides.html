@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="master-ii.css?v=5">
+<link rel="stylesheet" href="vendor/reveal.js/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=17">
 </head>
 <body>
 <div class="reveal">
@@ -29,11 +29,11 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
       <h2>Что вы узнаете</h2>
       <div class="divider"></div>
-      <div class="bento bento-2" style="margin-top:.8em;">
-        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>VPS vs localhost — разница и когда нужен сервер</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>SSH-ключ: 7 шагов безопасного подключения без пароля</p></div>
-        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Что Claude делает после «готово» — весь цикл деплоя</p></div>
-        <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>ИИ-ассистент vs ИИ-агент — разница на практике</p></div>
+      <div class="bento bento-4" style="margin-top:.8em;">
+        <div class="bc bc-blue"><h3 class="accent-blue">01</h3><p>VPS vs localhost — разница и когда нужен сервер</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple">02</h3><p>SSH-ключ: 7 шагов безопасного подключения без пароля</p></div>
+        <div class="bc bc-green"><h3 class="accent-green">03</h3><p>Что Claude делает после «готово» — весь цикл деплоя</p></div>
+        <div class="bc bc-orange"><h3 class="accent-orange">04</h3><p>ИИ-ассистент vs ИИ-агент — разница на практике</p></div>
       </div>
     <aside class="notes">Шесть тем: localhost vs VPS, SSH-ключ, что Claude делает на сервере, цикл обновления, безопасность и разница агент/ассистент.</aside></section>
 
@@ -46,13 +46,13 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Параметр</th><th>Localhost</th><th>VPS</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Доступность</td><td>Только пока компьютер включён</td><td>24/7 без выключений</td></tr>
-          <tr class="fragment"><td>Ссылка для других</td><td>Нет — это не адрес в интернете</td><td>Да — http://[ваш IP]</td></tr>
-          <tr class="fragment"><td>Нагрузка на ПК</td><td>Тормозит при работе вместе</td><td>Работает независимо</td></tr>
-          <tr class="fragment"><td>Для кого</td><td>Разработка и тестирование</td><td>Реальные пользователи</td></tr>
+          <tr><td>Доступность</td><td>Только пока компьютер включён</td><td>24/7 без выключений</td></tr>
+          <tr><td>Ссылка для других</td><td>Нет — это не адрес в интернете</td><td>Да — http://[ваш IP]</td></tr>
+          <tr><td>Нагрузка на ПК</td><td>Тормозит при работе вместе</td><td>Работает независимо</td></tr>
+          <tr><td>Для кого</td><td>Разработка и тестирование</td><td>Реальные пользователи</td></tr>
         </tbody>
       </table>
-      <p class="fragment" style="margin-top:.6em;font-size:.58em;color:var(--muted);">Amnesia VPN + хостинг на одном сервере — VPS = ваш компьютер в интернете</p>
+      <p style="margin-top:.6em;font-size:.58em;color:var(--muted);">Amnesia VPN + хостинг на одном сервере — VPS = ваш компьютер в интернете</p>
     <aside class="notes">Localhost — приложение работает только пока включён ваш компьютер. Ссылка localhost:3000 — это только у вас. Клиент открыть не может. VPS — это ваш компьютер в интернете, работает 24/7. У него публичный IP-адрес. Клиент открывает по ссылке из любого города. Amnesia Hosting из урока 2 — подходит. Если ещё не арендовали — урок 2.</aside></section>
 
     <section class="slide-section">
@@ -70,14 +70,14 @@
       <div class="slide-lesson-num">Урок 9</div>
       <h2>SSH-ключ: 7 шагов</h2>
       <div class="divider"></div>
-      <div class="steps" style="margin-top:.5em;font-size:.88em;">
-        <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Создайте папку проекта</strong><span>В Claude Code → Open Folder → Trust</span></div></div>
-        <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Передайте задачу</strong><span>«Хочу задеплоить этот проект на VPS»</span></div></div>
-        <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Claude генерирует SSH-ключ</strong><span>Файлы: id_rsa (приватный) + id_rsa.pub (публичный)</span></div></div>
-        <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Передайте IP и username</strong><span>Из данных сервера: IP / root или другой пользователь</span></div></div>
-        <div class="step fragment"><div class="step-num">05</div><div class="step-body"><strong>Откройте PowerShell</strong><span>Claude покажет команду: ssh-copy-id user@IP</span></div></div>
-        <div class="step fragment"><div class="step-num">06</div><div class="step-body"><strong>Введите пароль сервера</strong><span>Только в PowerShell — не в чат с Claude</span></div></div>
-        <div class="step fragment"><div class="step-num">07</div><div class="step-body"><strong>«Готово» → Claude деплоит</strong><span>Подключается по ключу без пароля автоматически</span></div></div>
+      <div class="steps grid2" style="margin-top:.5em;">
+        <div class="step"><div class="step-num">01</div><div class="step-body"><strong>Создайте папку проекта</strong><span>В Claude Code → Open Folder → Trust</span></div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-body"><strong>Передайте задачу</strong><span>«Хочу задеплоить этот проект на VPS»</span></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><strong>Claude генерирует SSH-ключ</strong><span>Файлы: id_rsa (приватный) + id_rsa.pub (публичный)</span></div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-body"><strong>Передайте IP и username</strong><span>Из данных сервера: IP / root или другой пользователь</span></div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-body"><strong>Откройте PowerShell</strong><span>Claude покажет команду: ssh-copy-id user@IP</span></div></div>
+        <div class="step"><div class="step-num">06</div><div class="step-body"><strong>Введите пароль сервера</strong><span>Только в PowerShell — не в чат с Claude</span></div></div>
+        <div class="step"><div class="step-num">07</div><div class="step-body"><strong>«Готово» → Claude деплоит</strong><span>Подключается по ключу без пароля автоматически</span></div></div>
       </div>
     <aside class="notes">После SSH-ключа говорим «задеплой приложение». Claude подключается по SSH, определяет ОС, проверяет порты, устанавливает Nginx — это веб-сервер, создаёт нужные папки, выгружает файлы, проверяет снаружи. Результат: открываете браузер, вводите IP-адрес — ваш сайт. Всё занимает примерно 15 минут.</aside></section>
 
@@ -88,22 +88,22 @@
       <h2>Что Claude делает<br><span class="accent-green">после «готово»</span></h2>
       <div class="divider"></div>
       <div class="bento" style="margin-top:.7em;">
-        <div class="bc bc-blue fragment">
+        <div class="bc bc-blue">
           <h3 class="accent-blue" style="font-size:.55em;">Подключился по SSH</h3>
           <p>Определил ОС, проверил открытые порты</p>
         </div>
-        <div class="bc bc-purple fragment">
+        <div class="bc bc-purple">
           <h3 class="accent-purple" style="font-size:.55em;">Установил Nginx</h3>
           <p>Веб-сервер, который обрабатывает входящие запросы</p>
         </div>
-        <div class="bc bc-green fragment">
+        <div class="bc bc-green">
           <h3 class="accent-green" style="font-size:.55em;">Выгрузил файлы</h3>
           <p>Создал папку, скопировал проект, настроил конфиг</p>
         </div>
       </div>
       <div class="bento bento-2" style="margin-top:.5em;">
-        <div class="bc bc-orange fragment"><div class="bc-num accent-orange">15 мин</div><p>время полного деплоя</p></div>
-        <div class="bc bc-blue fragment"><div class="bc-num accent-blue">18%</div><p>токенов потрачено</p></div>
+        <div class="bc bc-orange"><div class="bc-num accent-orange">15 мин</div><p>время полного деплоя</p></div>
+        <div class="bc bc-blue"><div class="bc-num accent-blue">18%</div><p>токенов потрачено</p></div>
       </div>
     <aside class="notes">Три шага. Описываете изменения Claude. Он проверяет локально. Говорите «обновляй» — он сам выгружает через SSH. Ключ работает без повторной настройки. Следующий шаг: купить доменное имя и привязать к IP-адресу — адрес вида mysite.ru вместо набора цифр.</aside></section>
 
@@ -116,13 +116,13 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Параметр</th><th>Ассистент</th><th>Агент на сервере</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Работает</td><td>По запросу, когда вы спрашиваете</td><td>24/7 без вашего участия</td></tr>
-          <tr class="fragment"><td>Где живёт</td><td>В Claude Code на вашем ПК</td><td>На VPS в интернете</td></tr>
-          <tr class="fragment"><td>Инициатива</td><td>Отвечает на ваш вопрос</td><td>Действует по расписанию</td></tr>
-          <tr class="fragment"><td>Пример</td><td>Скилл для написания постов</td><td>Мониторинг цен каждые 3 часа</td></tr>
+          <tr><td>Работает</td><td>По запросу, когда вы спрашиваете</td><td>24/7 без вашего участия</td></tr>
+          <tr><td>Где живёт</td><td>В Claude Code на вашем ПК</td><td>На VPS в интернете</td></tr>
+          <tr><td>Инициатива</td><td>Отвечает на ваш вопрос</td><td>Действует по расписанию</td></tr>
+          <tr><td>Пример</td><td>Скилл для написания постов</td><td>Мониторинг цен каждые 3 часа</td></tr>
         </tbody>
       </table>
-      <p class="fragment" style="margin-top:.6em;font-size:.6em;color:var(--muted);">Формула: <span class="accent-green">агент = приложение на сервере</span> / ассистент = скилл в чате</p>
+      <p style="margin-top:.6em;font-size:.6em;color:var(--muted);">Формула: <span class="accent-green">агент = приложение на сервере</span> / ассистент = скилл в чате</p>
     <aside class="notes">Ассистент работает по запросу: написали — ответил, закрыли чат — остановился. Агент — это приложение на сервере. Работает без вас 24/7. Вы задали параметры один раз — он выполняет постоянно. Пример: мониторинг цен на маркетплейсах. Параметры заданы, проверяет три раза в день, при изменении цены уведомляет в Telegram. Это и есть агент — не помощник в чате, а самостоятельный инструмент.</aside></section>
 
     <section>
@@ -133,9 +133,9 @@
       <h2>Ключевые выводы</h2>
       <div class="divider"></div>
       <ul style="max-width:640px;margin-top:.6em;">
-        <li class="fragment">SSH-ключ создаётся за 7 шагов — пароль вводите только в терминал, не в чат</li>
-        <li class="fragment">Claude сам подключается, устанавливает Nginx и выгружает файлы — вы только одобряете</li>
-        <li class="fragment">Агент на сервере = работает без вас. Ассистент = отвечает только по запросу</li>
+        <li>SSH-ключ создаётся за 7 шагов — пароль вводите только в терминал, не в чат</li>
+        <li>Claude сам подключается, устанавливает Nginx и выгружает файлы — вы только одобряете</li>
+        <li>Агент на сервере = работает без вас. Ассистент = отвечает только по запросу</li>
       </ul>
     <aside class="notes">Четыре вывода: VPS — сервер в интернете 24/7. SSH-ключ — безопасный доступ без пароля в чате. Три шага обновления. Агент работает сам, ассистент отвечает по запросу. Следующий урок — API и создание агента. До встречи!</aside></section>
 
@@ -150,10 +150,9 @@
 
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="vendor/reveal.js/reveal.js"></script>
+<script src="vendor/reveal.js/notes.js"></script>
 <script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
-<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
 <style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
 </body>
 </html>

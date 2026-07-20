@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="master-ii.css?v=5">
+<link rel="stylesheet" href="vendor/reveal.js/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=17">
 </head>
 <body>
 <div class="reveal">
@@ -29,11 +29,11 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
       <h2>Что вы узнаете</h2>
       <div class="divider"></div>
-      <div class="bento bento-2" style="margin-top:.8em;">
-        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Три аудитории — три уровня доверия. Портфолио с нуля</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>Скилл Frontend Design — профессиональный дизайн за один запрос</p></div>
-        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Маркетинговый аудит — Claude как профессиональный копирайтер</p></div>
-        <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>Три модели работы с клиентом</p></div>
+      <div class="bento bento-4" style="margin-top:.8em;">
+        <div class="bc bc-blue"><h3 class="accent-blue">01</h3><p>Три аудитории — три уровня доверия. Портфолио с нуля</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple">02</h3><p>Скилл Frontend Design — профессиональный дизайн за один запрос</p></div>
+        <div class="bc bc-green"><h3 class="accent-green">03</h3><p>Маркетинговый аудит — Claude как профессиональный копирайтер</p></div>
+        <div class="bc bc-orange"><h3 class="accent-orange">04</h3><p>Три модели работы с клиентом</p></div>
       </div>
     <aside class="notes">Шесть тем: три аудитории, скиллы в Code, Frontend Design, двухэтапный подход, маркетинговый аудит и модели работы с клиентом.</aside></section>
 
@@ -44,20 +44,20 @@
       <h2>Три аудитории —<br><span class="accent-blue">три уровня доверия</span></h2>
       <div class="divider"></div>
       <div class="bento" style="margin-top:.7em;">
-        <div class="bc bc-blue fragment">
+        <div class="bc bc-blue">
           <h3 class="accent-blue">Близкие</h3>
           <p>Доверяют без доказательств. Портфолио не нужно — но и платят по-дружески</p>
         </div>
-        <div class="bc bc-purple fragment">
+        <div class="bc bc-purple">
           <h3 class="accent-purple">Знакомые</h3>
           <p>Нужны примеры. 1–2 скриншота и описание — достаточно для решения</p>
         </div>
-        <div class="bc bc-green fragment">
+        <div class="bc bc-green">
           <h3 class="accent-green">Незнакомые</h3>
           <p>Нужны кейсы + отзывы + сайт. Без этого решение всегда откладывается</p>
         </div>
       </div>
-      <p class="fragment" style="margin-top:.6em;font-size:.6em;color:var(--muted);">Первые кейсы: проекты для себя + для близких. Попросите написать отзыв — живой убеждает лучше формального</p>
+      <p style="margin-top:.6em;font-size:.6em;color:var(--muted);">Первые кейсы: проекты для себя + для близких. Попросите написать отзыв — живой убеждает лучше формального</p>
     <aside class="notes">Разным людям нужны разные доказательства. Близкие — доверяют без них. Знакомые — нужны примеры работ. Незнакомые — нужны кейсы, отзывы и профессиональный сайт. Как набить портфолио с нуля: делайте проекты для себя, семьи, друзей. Реальные скриншоты и ссылки. Просите написать отзыв. Три-пять кейсов разного типа — достаточно для первых платных клиентов.</aside></section>
 
     <section class="slide-section">
@@ -78,15 +78,15 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Без скилла</th><th>Со скиллом</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Claude выбирает стиль сам</td><td>Следует проверенным инструкциям</td></tr>
-          <tr class="fragment"><td>Каждый раз разный результат</td><td>Стабильный и предсказуемый</td></tr>
-          <tr class="fragment"><td>Описываете требования каждый раз</td><td>Скилл применяется автоматически</td></tr>
+          <tr><td>Claude выбирает стиль сам</td><td>Следует проверенным инструкциям</td></tr>
+          <tr><td>Каждый раз разный результат</td><td>Стабильный и предсказуемый</td></tr>
+          <tr><td>Описываете требования каждый раз</td><td>Скилл применяется автоматически</td></tr>
         </tbody>
       </table>
       <ul style="max-width:680px;margin-top:.6em;">
-        <li class="fragment">Добавляет: 3D-анимации, интерактивность, анимированный фон, адаптивность</li>
-        <li class="fragment">Как подключить: «…<span class="accent-blue">для дизайна используй skill Frontend Design</span>»</li>
-        <li class="fragment">Не более 2–3 скиллов одновременно — могут конфликтовать</li>
+        <li>Добавляет: 3D-анимации, интерактивность, анимированный фон, адаптивность</li>
+        <li>Как подключить: «…<span class="accent-blue">для дизайна используй skill Frontend Design</span>»</li>
+        <li>Не более 2–3 скиллов одновременно — могут конфликтовать</li>
       </ul>
     <aside class="notes">Скилл для профессионального дизайна: 3D-анимации, продуманная типографика, интерактивные секции. Подключение: в запросе пишете «для дизайна используй skill Frontend Design». Модель Sonnet — она справляется с дизайном и кодом и бережёт лимиты. Opus для финальной полировки, не для старта. Один промпт с названием и нишей — за двадцать минут полноценный брендированный сайт.</aside></section>
 
@@ -108,13 +108,13 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Секция</th><th>Типичная проблема</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Слоган</td><td>Описывает компанию — не результат для клиента</td></tr>
-          <tr class="fragment"><td>Услуги</td><td>Технические характеристики, а не выгода клиента</td></tr>
-          <tr class="fragment"><td>Статистика</td><td>«50 проектов, 3 года» — нет контекста, не убеждает</td></tr>
-          <tr class="fragment"><td>CTA</td><td>«Контакты» вместо «Обсудить проект»</td></tr>
+          <tr><td>Слоган</td><td>Описывает компанию — не результат для клиента</td></tr>
+          <tr><td>Услуги</td><td>Технические характеристики, а не выгода клиента</td></tr>
+          <tr><td>Статистика</td><td>«50 проектов, 3 года» — нет контекста, не убеждает</td></tr>
+          <tr><td>CTA</td><td>«Контакты» вместо «Обсудить проект»</td></tr>
         </tbody>
       </table>
-      <p class="fragment" style="margin-top:.6em;font-size:.6em;color:var(--muted);">Запрос: «Оцени тексты как маркетолог» → «Теперь переработай по найденным проблемам» — два шага</p>
+      <p style="margin-top:.6em;font-size:.6em;color:var(--muted);">Запрос: «Оцени тексты как маркетолог» → «Теперь переработай по найденным проблемам» — два шага</p>
     <aside class="notes">Пять типичных ошибок которые Claude находит. Слоган описывает компанию вместо результата для клиента. Услуги перечислены технически — клиенту не важен процесс, важна его боль. Статистика без контекста — десять лет без объяснения что это значит. CTA «Контакты» вместо «Обсудить задачу». Нет конкретики — «высококачественный» против «за три дня с гарантией».</aside></section>
 
     <section>
@@ -126,12 +126,12 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Модель</th><th>Доход</th><th>Подходит для</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Разовая сдача</td><td>Единовременный</td><td>Первых проектов, портфолио</td></tr>
-          <tr class="fragment"><td>Доплата за правки</td><td>Нестабильный</td><td>Небольших команд</td></tr>
-          <tr class="fragment"><td>Ежемесячное сопровождение</td><td>Регулярный</td><td>Основного бизнеса</td></tr>
+          <tr><td>Разовая сдача</td><td>Единовременный</td><td>Первых проектов, портфолио</td></tr>
+          <tr><td>Доплата за правки</td><td>Нестабильный</td><td>Небольших команд</td></tr>
+          <tr><td>Ежемесячное сопровождение</td><td>Регулярный</td><td>Основного бизнеса</td></tr>
         </tbody>
       </table>
-      <p class="fragment" style="margin-top:.6em;font-size:.58em;color:var(--muted);">Оптимальный старт: разовые проекты для кейсов → постепенный переход к ежемесячным клиентам</p>
+      <p style="margin-top:.6em;font-size:.58em;color:var(--muted);">Оптимальный старт: разовые проекты для кейсов → постепенный переход к ежемесячным клиентам</p>
     <aside class="notes">Три варианта. Разовая сдача: сделал, передал, оплата. Просто, нет дохода после. Правки за доплату: фиксированная база плюс правки по ставке. Предсказуемо для обеих сторон. Сопровождение: ежемесячная оплата, поддерживаете и развиваете. Стабильный доход. Три варианта передачи проекта: папка с файлами, деплой на сервер клиента, полное сопровождение. Договор и самозанятость — Claude помогает создать шаблон, проверьте самостоятельно.</aside></section>
 
     <section>
@@ -142,9 +142,9 @@
       <h2>Ключевые выводы</h2>
       <div class="divider"></div>
       <ul style="max-width:640px;margin-top:.6em;">
-        <li class="fragment">Портфолио — это ответ на «А что вы делали?». Первые кейсы — проекты для себя и близких</li>
-        <li class="fragment">Двухэтапный подход: дизайн отдельно → маркетинговый аудит отдельно — лучший результат</li>
-        <li class="fragment">Начинайте с разовых проектов. Когда кейсы собраны — повышайте ставки</li>
+        <li>Портфолио — это ответ на «А что вы делали?». Первые кейсы — проекты для себя и близких</li>
+        <li>Двухэтапный подход: дизайн отдельно → маркетинговый аудит отдельно — лучший результат</li>
+        <li>Начинайте с разовых проектов. Когда кейсы собраны — повышайте ставки</li>
       </ul>
     <aside class="notes">Тринадцать уроков позади. VPN, VPS, ProtonMail — инфраструктура есть. Лендинги, многостраничные сайты, приложения — умеете создавать. Агенты, боты, API — умеете автоматизировать. Безопасность, портфолио, клиенты — знаете как работать профессионально. Следующий шаг — первый реальный клиент. Спасибо что прошли курс. До встречи в следующих проектах!</aside></section>
 
@@ -159,10 +159,9 @@
 
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="vendor/reveal.js/reveal.js"></script>
+<script src="vendor/reveal.js/notes.js"></script>
 <script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
-<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
 <style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
 </body>
 </html>

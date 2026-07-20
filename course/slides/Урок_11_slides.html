@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="master-ii.css?v=5">
+<link rel="stylesheet" href="vendor/reveal.js/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=17">
 </head>
 <body>
 <div class="reveal">
@@ -29,11 +29,11 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
       <h2>Что вы узнаете</h2>
       <div class="divider"></div>
-      <div class="bento bento-2" style="margin-top:.8em;">
-        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Telegram vs веб — другой канал, тот же API-ключ</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>memory.md — не начинать с нуля при каждом сеансе</p></div>
-        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>BotFather: 5 шагов и токен готов</p></div>
-        <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>Типичные ошибки — Claude решает их сам</p></div>
+      <div class="bento bento-4" style="margin-top:.8em;">
+        <div class="bc bc-blue"><h3 class="accent-blue">01</h3><p>Telegram vs веб — другой канал, тот же API-ключ</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple">02</h3><p>memory.md — не начинать с нуля при каждом сеансе</p></div>
+        <div class="bc bc-green"><h3 class="accent-green">03</h3><p>BotFather: 5 шагов и токен готов</p></div>
+        <div class="bc bc-orange"><h3 class="accent-orange">04</h3><p>Типичные ошибки — Claude решает их сам</p></div>
       </div>
     <aside class="notes">Шесть тем: зачем бот если есть веб, memory.md, BotFather, что Claude строит, типичные ошибки и файл .env.</aside></section>
 
@@ -46,13 +46,13 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Параметр</th><th>Веб-приложение</th><th>Telegram-бот</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Как открыть</td><td>Запомнить ссылку, открыть браузер</td><td>Бот уже в списке чатов</td></tr>
-          <tr class="fragment"><td>Уведомления</td><td>Только если зайти самому</td><td>Пуш-уведомление на телефон</td></tr>
-          <tr class="fragment"><td>Авторизация</td><td>Нужен аккаунт</td><td>Автоматически через Telegram</td></tr>
-          <tr class="fragment"><td>Для кого</td><td>Те, кто ищет инструмент</td><td>Те, кто уже в Telegram</td></tr>
+          <tr><td>Как открыть</td><td>Запомнить ссылку, открыть браузер</td><td>Бот уже в списке чатов</td></tr>
+          <tr><td>Уведомления</td><td>Только если зайти самому</td><td>Пуш-уведомление на телефон</td></tr>
+          <tr><td>Авторизация</td><td>Нужен аккаунт</td><td>Автоматически через Telegram</td></tr>
+          <tr><td>Для кого</td><td>Те, кто ищет инструмент</td><td>Те, кто уже в Telegram</td></tr>
         </tbody>
       </table>
-      <p class="fragment" style="margin-top:.6em;font-size:.58em;color:var(--muted);">Один API-ключ → веб + бот + виджет — всё работает <span class="accent-green">параллельно на одном балансе</span></p>
+      <p style="margin-top:.6em;font-size:.58em;color:var(--muted);">Один API-ключ → веб + бот + виджет — всё работает <span class="accent-green">параллельно на одном балансе</span></p>
     <aside class="notes">Зачем бот если уже есть веб-версия? Потому что аудитории разные. Веб нужно открыть в браузере. Telegram уже установлен у большинства, там работают push-уведомления, не нужна регистрация пользователю. Главное: один API-ключ работает и для веб-агента, и для Telegram-бота — это просто разные трубы к одной модели.</aside></section>
 
     <section>
@@ -61,11 +61,11 @@
       <div class="slide-lesson-num">Урок 11</div>
       <h2>memory.md:<br><span class="accent-blue">контекст между сессиями</span></h2>
       <div class="divider"></div>
-      <ul style="max-width:700px;margin-top:.6em;">
-        <li class="fragment">Claude хранит в memory.md: что сделано, архитектуру, что осталось</li>
-        <li class="fragment">Закончили работу → «Запомни контекст. Продолжу завтра»</li>
-        <li class="fragment">Открыли проект → «Подними контекст, на чём остановились»</li>
-        <li class="fragment">Claude вспоминает файлы, .env, модель, настройки — всё с того места</li>
+      <ul class="tight" style="max-width:700px;margin-top:.6em;">
+        <li>Claude хранит в memory.md: что сделано, архитектуру, что осталось</li>
+        <li>Закончили работу → «Запомни контекст. Продолжу завтра»</li>
+        <li>Открыли проект → «Подними контекст, на чём остановились»</li>
+        <li>Claude вспоминает файлы, .env, модель, настройки — всё с того места</li>
       </ul>
     <aside class="notes">Проблема: Claude Code не помнит прошлые сессии. Решение — файл memory.md. В конце рабочего дня напишите: «Запомни контекст, продолжу завтра». Claude создаёт файл: что сделано, архитектура, что осталось. На следующий день: «@memory.md, прочитай контекст» — и Claude продолжает с того места. Обновляйте файл в конце каждой сессии.</aside></section>
 
@@ -75,12 +75,12 @@
       <div class="slide-lesson-num">Урок 11</div>
       <h2>BotFather: 5 шагов</h2>
       <div class="divider"></div>
-      <div class="steps" style="margin-top:.6em;">
-        <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Найдите @BotFather в поиске</strong><span>Синяя галочка — это официальный аккаунт Telegram</span></div></div>
-        <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>/newbot → название</strong><span>Отображаемое имя: «Помощник магазина», «Личный советник»</span></div></div>
-        <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Придумайте username</strong><span>Только латиница, обязательно заканчивается на «bot»</span></div></div>
-        <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Скопируйте токен сразу</strong><span>Вид: 1234567890:AAE... — передаёте Claude через .env</span></div></div>
-        <div class="step fragment"><div class="step-num">05</div><div class="step-body"><strong>Кириллица в командах не работает</strong><span>Только /start, /help, /status — Claude переведёт автоматически</span></div></div>
+      <div class="steps grid2" style="margin-top:.6em;">
+        <div class="step"><div class="step-num">01</div><div class="step-body"><strong>Найдите @BotFather в поиске</strong><span>Синяя галочка — это официальный аккаунт Telegram</span></div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-body"><strong>/newbot → название</strong><span>Отображаемое имя: «Помощник магазина», «Личный советник»</span></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><strong>Придумайте username</strong><span>Только латиница, обязательно заканчивается на «bot»</span></div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-body"><strong>Скопируйте токен сразу</strong><span>Вид: 1234567890:AAE... — передаёте Claude через .env</span></div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-body"><strong>Кириллица в командах не работает</strong><span>Только /start, /help, /status — Claude переведёт автоматически</span></div></div>
       </div>
     <aside class="notes">BotFather — официальный бот Telegram, через него регистрируются все боты. Пять шагов: найти @BotFather в поиске, отправить /newbot, ввести отображаемое имя, ввести username — только латиница, обязательно заканчивается на bot, получить токен и скопировать. Кириллица в командах не работает — это ограничение Telegram, не баг.</aside></section>
 
@@ -93,10 +93,10 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Проблема</th><th>Решение</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>История стирается при перезапуске</td><td>Создаёт SQLite — хранит историю по Telegram ID</td></tr>
-          <tr class="fragment"><td>Долгий ответ без обратной связи</td><td>Добавляет «Думаю...» — обновляется пока идёт генерация</td></tr>
-          <tr class="fragment"><td>Flood Control от Telegram</td><td>Убирает конкурирующую фоновую задачу</td></tr>
-          <tr class="fragment"><td>Кириллические команды</td><td>Все команды переводятся на латиницу</td></tr>
+          <tr><td>История стирается при перезапуске</td><td>Создаёт SQLite — хранит историю по Telegram ID</td></tr>
+          <tr><td>Долгий ответ без обратной связи</td><td>Добавляет «Думаю...» — обновляется пока идёт генерация</td></tr>
+          <tr><td>Flood Control от Telegram</td><td>Убирает конкурирующую фоновую задачу</td></tr>
+          <tr><td>Кириллические команды</td><td>Все команды переводятся на латиницу</td></tr>
         </tbody>
       </table>
     <aside class="notes">После передачи задачи и токена Claude создаёт: папку tg-bot, устанавливает библиотеки, пишет обработчики команд, кнопки-меню, подключает API, тестирует — буквально пишет сам себе в бот. Пример: агент поддержки магазина — кнопки Размеры, Доставка, Возврат, Статус заказа, плюс свободный чат.</aside></section>
@@ -107,11 +107,11 @@
       <div class="slide-lesson-num">Урок 11</div>
       <h2>4 сценария для<br><span class="accent-purple">Telegram-бота</span></h2>
       <div class="divider"></div>
-      <div class="bento bento-2" style="margin-top:.7em;">
-        <div class="bc bc-blue fragment"><h3 class="accent-blue" style="font-size:.55em;">Поддержка клиентов</h3><p>Кнопки по темам: размеры, доставка, возврат. Свободный чат для нестандартных вопросов</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple" style="font-size:.55em;">Внутренний бот</h3><p>Ответы из базы знаний компании: регламенты, скрипты, FAQ</p></div>
-        <div class="bc bc-green fragment"><h3 class="accent-green" style="font-size:.55em;">Личный помощник</h3><p>Советник всегда под рукой в телефоне</p></div>
-        <div class="bc bc-orange fragment"><h3 class="accent-orange" style="font-size:.55em;">Диспетчер заявок</h3><p>Анализирует обращение → направляет к нужному специалисту</p></div>
+      <div class="bento bento-4" style="margin-top:.7em;">
+        <div class="bc bc-blue"><h3 class="accent-blue" style="font-size:.55em;">Поддержка клиентов</h3><p>Кнопки по темам: размеры, доставка, возврат. Свободный чат для нестандартных вопросов</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple" style="font-size:.55em;">Внутренний бот</h3><p>Ответы из базы знаний компании: регламенты, скрипты, FAQ</p></div>
+        <div class="bc bc-green"><h3 class="accent-green" style="font-size:.55em;">Личный помощник</h3><p>Советник всегда под рукой в телефоне</p></div>
+        <div class="bc bc-orange"><h3 class="accent-orange" style="font-size:.55em;">Диспетчер заявок</h3><p>Анализирует обращение → направляет к нужному специалисту</p></div>
       </div>
     <aside class="notes">Четыре типичные ситуации. История стирается — Claude добавляет SQLite. Долгий ответ без обратной связи — добавляет «Думаю…». Flood Control от Telegram — убирает конкурирующую задачу. Кириллица в командах — переименовывает на латиницу. Принцип один: Claude сам находит ошибку, предлагает исправление, применяет. Вы только одобряете.</aside></section>
 
@@ -123,9 +123,9 @@
       <h2>Ключевые выводы</h2>
       <div class="divider"></div>
       <ul style="max-width:640px;margin-top:.6em;">
-        <li class="fragment">Telegram — другой канал для того же агента. Один API-ключ работает везде</li>
-        <li class="fragment">«Запомни контекст» → закрыли → «продолжаем» — с того же места</li>
-        <li class="fragment">Все ключи в .env, не в чате. После демонстраций — /revoke в BotFather</li>
+        <li>Telegram — другой канал для того же агента. Один API-ключ работает везде</li>
+        <li>«Запомни контекст» → закрыли → «продолжаем» — с того же места</li>
+        <li>Все ключи в .env, не в чате. После демонстраций — /revoke в BotFather</li>
       </ul>
     <aside class="notes">Все ключи и токены кладутся в файл .env — никогда прямо в код. Четыре правила: не вставлять в чат, добавить в .gitignore, отзывать после демонстраций через /revoke в BotFather, аудит перед продакшеном. Отличие от SSH-ключа: токен — строка для API, SSH — криптофайл для сервера.</aside></section>
 
@@ -140,10 +140,9 @@
 
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="vendor/reveal.js/reveal.js"></script>
+<script src="vendor/reveal.js/notes.js"></script>
 <script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
-<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
 <style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
 </body>
 </html>

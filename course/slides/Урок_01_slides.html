@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Мастер-ИИ — Урок 1 — Установка AmneziaVPN</title>
+<title>Мастер-ИИ — Урок 1 — Открываем доступ к Claude Code</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="master-ii.css?v=5">
+<link rel="stylesheet" href="vendor/reveal.js/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=17">
 </head>
 <body>
 <div class="reveal">
@@ -18,9 +18,9 @@
       <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
       <div class="slide-brand">МАСТЕР-ИИ</div>
       <div class="eyebrow"><span class="eyebrow-dot"></span>Урок 1 · Технический блок — шаг 1 из 3</div>
-      <h1>Ставим мост<br>в интернет: <span class="accent">AmneziaVPN</span></h1>
-      <p style="max-width:600px;margin:0 auto">За 10 минут установим программу-клиент VPN, которая подключит вас к собственному серверу в другой стране — и откроет доступ к Claude.</p>
-    <aside class="notes">Привет! Добро пожаловать в курс «Мастер-ИИ». Я — Виталий, и сегодня первый урок — самый важный технический шаг. Мы разберёмся, почему Claude недоступен из России напрямую и как это исправить раз и навсегда с помощью AmneziaVPN.</aside></section>
+      <h1>Claude Code:<br><span class="accent">открываем доступ</span></h1>
+      <p style="max-width:600px;margin:0 auto">Claude Code — мощный ИИ, который работает за вас или вместе с вами. За 10 минут настроим доступ к нему из любой страны — с готовым решением или своим VPN.</p>
+    <aside class="notes">Привет! Добро пожаловать в курс «Мастер-ИИ». Я — Виталий, и сегодня первый урок. Claude Code — это ИИ, который пишет код, делает сайты и агентов сам или вместе с вами. В части стран прямой доступ к нему ограничен — разберёмся, как это обойти раз и навсегда с помощью AmneziaVPN. Если у вас уже есть свой VPN — используйте его, урок необязателен.</aside></section>
 
     <section>
       <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
@@ -29,11 +29,11 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
       <h2>Что вы узнаете</h2>
       <div class="divider"></div>
-      <div class="bento bento-2" style="margin-top:.8em">
-        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Зачем нужен личный VPN и чем он отличается от браузерных расширений</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>Как скачать и установить AmneziaVPN с официального сайта amnezia.org</p></div>
-        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Что делать, если сайт не открывается или установщик не запускается</p></div>
-        <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>Чек-лист готовности перед следующим уроком про аренду сервера</p></div>
+      <div class="bento bento-4" style="margin-top:.8em">
+        <div class="bc bc-blue"><h3 class="accent-blue">01</h3><p>Зачем нужен личный VPN и чем он отличается от браузерных расширений</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple">02</h3><p>Как скачать и установить AmneziaVPN с официального сайта amnezia.org</p></div>
+        <div class="bc bc-green"><h3 class="accent-green">03</h3><p>Что делать, если сайт не открывается или установщик не запускается</p></div>
+        <div class="bc bc-orange"><h3 class="accent-orange">04</h3><p>Чек-лист готовности перед следующим уроком про аренду сервера</p></div>
       </div>
     <aside class="notes">В этом уроке четыре блока: почему нужен VPN, что такое AmneziaVPN и чем он отличается от обычных, как установить приложение и как проверить что всё работает. Займёт около двадцати минут.</aside></section>
 
@@ -45,7 +45,7 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел первый</div>
       <h2>Почему нужен<br>собственный VPN</h2>
       <p>Claude не открывается — дело не в нём, а в «адресе» вашего компьютера</p>
-    <aside class="notes">Всё просто. Claude смотрит на ваш IP-адрес. Если он российский — страница недоступна или вы видите ограничения. Нужно подменить IP на европейский. Но обычный VPN в России часто заблокирован. AmneziaVPN решает эту проблему: его трафик неотличим от обычного HTTPS, поэтому он не блокируется.</aside></section>
+    <aside class="notes">Всё просто. Claude смотрит на ваш IP-адрес. В части стран прямой доступ ограничен — нужно подменить IP на европейский. Но обычный VPN во многих таких странах тоже часто заблокирован. AmneziaVPN решает эту проблему: его трафик неотличим от обычного HTTPS, поэтому он не блокируется.</aside></section>
 
     <section>
       <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
@@ -53,12 +53,12 @@
       <div class="slide-lesson-num">Урок 1</div>
       <h2>Как это работает</h2>
       <div class="divider"></div>
-      <ul style="max-width:680px;margin-top:.6em">
-        <li class="fragment">Проблема — геолокация: Claude блокируется по российскому IP-адресу</li>
-        <li class="fragment">Решение — VPS-сервер с IP в другой стране, к которому вы подключаетесь</li>
-        <li class="fragment">AmneziaVPN — программа-клиент, превращающая VPS в личный VPN</li>
-        <li class="fragment">Сегодня: только устанавливаем программу. Сервер — в следующем уроке</li>
-        <li class="fragment">Понадобится: компьютер, браузер Chrome, 10 минут, любой VPN «под рукой»</li>
+      <ul class="tight" style="max-width:680px;margin-top:.6em">
+        <li>Проблема — геолокация: Claude блокируется по российскому IP-адресу</li>
+        <li>Решение — VPS-сервер с IP в другой стране, к которому вы подключаетесь</li>
+        <li>AmneziaVPN — программа-клиент, превращающая VPS в личный VPN</li>
+        <li>Сегодня: только устанавливаем программу. Сервер — в следующем уроке</li>
+        <li>Понадобится: компьютер, браузер Chrome, 10 минут, любой VPN «под рукой»</li>
       </ul>
     <aside class="notes">Обычный VPN виден как VPN-трафик и блокируется. Нужна платная подписка. AmneziaVPN выглядит как обычный трафик, не блокируется, и сам по себе бесплатный — платить нужно только за сервер. Нам нужны два компонента: приложение AmneziaVPN на вашем компьютере и VPS-сервер в Европе. Сервер — это урок 2.</aside></section>
 
@@ -78,11 +78,13 @@
       <div class="slide-lesson-num">Урок 1</div>
       <h2>6 шагов установки</h2>
       <div class="divider"></div>
-      <div class="steps" style="margin-top:.7em">
-        <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Открыть amnezia.org</strong><span>Не грузится? Включите любой VPN (тот же, что для Telegram) — обычно помогает с первого раза</span></div></div>
-        <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Нажать кнопку загрузки</strong><span>Сайт сам определяет систему (Windows / macOS / Linux) и подсвечивает нужный вариант</span></div></div>
-        <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Mac: проверить чип</strong><span>Apple → значок → «Об этом Mac» — чип Apple (M1/M2/M3) или Intel</span></div></div>
-        <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Запустить установщик</strong><span>«Разрешить вносить изменения?» — смело «Да», это стандартная защита, не тревога</span></div></div>
+      <div class="steps grid2" style="margin-top:.6em">
+        <div class="step"><div class="step-num">01</div><div class="step-body"><strong>Открыть amnezia.org</strong><span>Не грузится? Включите любой VPN (тот же, что для Telegram) — обычно помогает с первого раза</span></div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-body"><strong>Нажать кнопку загрузки</strong><span>Сайт сам определяет систему (Windows / macOS / Linux) и подсвечивает нужный вариант</span></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><strong>Mac: проверить чип</strong><span>Apple → значок → «Об этом Mac» — чип Apple (M1/M2/M3) или Intel</span></div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-body"><strong>Запустить установщик</strong><span>«Разрешить вносить изменения?» — смело «Да», это стандартная защита, не тревога</span></div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-body"><strong>Разрешить брандмауэру</strong><span>Windows спросит про доступ к сети — нажимаем «Разрешить», это стандартное поведение VPN-программ</span></div></div>
+        <div class="step"><div class="step-num">06</div><div class="step-body"><strong>Готово — программа установлена</strong><span>Иконка появилась на рабочем столе. Подключаться пока не нужно — сервер добавим в уроке 2</span></div></div>
       </div>
     <aside class="notes">AmneziaVPN предлагает два варианта. Первый — бесплатные конфиги из интернета. Быстро, но нестабильно: серверы перегружены, часто недоступны. Второй — self-hosted, ваш личный сервер. Стабильно, быстро, только для вас. Стоит 5.5 доллара в месяц. Для курса рекомендую self-hosted — именно его мы настроим в уроке 2.</aside></section>
 
@@ -102,17 +104,17 @@
       <div class="slide-lesson-num">Урок 1</div>
       <h2>Устранение проблем</h2>
       <div class="divider"></div>
-      <table class="compare-table" style="margin-top:.7em">
+      <table class="compare-table tight" style="margin-top:.7em">
         <thead><tr><th>Симптом</th><th>Что делать</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Сайт не открывается</td><td>Включите VPN, попробуйте другую страну сервера</td></tr>
-          <tr class="fragment"><td>Кнопка скачивания «не жмётся»</td><td>Режим инкогнито Ctrl+Shift+N — виноват блокировщик рекламы</td></tr>
-          <tr class="fragment"><td>Нужны права администратора</td><td>Правый клик → «Запуск от имени администратора»</td></tr>
-          <tr class="fragment"><td>Антивирус ругается на файл</td><td>False positive — Amnezia открытый код. Добавить в исключения</td></tr>
-          <tr class="fragment"><td>Программа не открывается</td><td>Перезагрузите компьютер — в 8 из 10 случаев помогает</td></tr>
+          <tr><td>Сайт не открывается</td><td>Включите VPN, попробуйте другую страну сервера</td></tr>
+          <tr><td>Кнопка скачивания «не жмётся»</td><td>Режим инкогнито Ctrl+Shift+N — виноват блокировщик рекламы</td></tr>
+          <tr><td>Нужны права администратора</td><td>Правый клик → «Запуск от имени администратора»</td></tr>
+          <tr><td>Антивирус ругается на файл</td><td>False positive — Amnezia открытый код. Добавить в исключения</td></tr>
+          <tr><td>Программа не открывается</td><td>Перезагрузите компьютер — в 8 из 10 случаев помогает</td></tr>
         </tbody>
       </table>
-    <aside class="notes">Итак: AmneziaVPN — единственный надёжный вариант для стабильной работы с Claude из России. Нужны два компонента — приложение и сервер. Приложение установили, сервер — в следующем уроке. До встречи!</aside></section>
+    <aside class="notes">Итак: AmneziaVPN — надёжный вариант для стабильной работы с Claude Code там, где прямой доступ ограничен. Нужны два компонента — приложение и сервер. Приложение установили, сервер — в следующем уроке. До встречи!</aside></section>
 
     <section>
       <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
@@ -121,10 +123,10 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>Перед следующим уроком</div>
       <h2>Чек-лист готовности</h2>
       <div class="divider"></div>
-      <div class="bento" style="margin-top:.7em">
-        <div class="bc bc-blue fragment"><div class="bc-num accent-blue">✓</div><h3 style="font-size:.55em;color:var(--text)">Сайт открыт</h3><p>Заходили на amnezia.org и видели страницу загрузки</p></div>
-        <div class="bc bc-purple fragment"><div class="bc-num accent-purple">✓</div><h3 style="font-size:.55em;color:var(--text)">Установка завершена</h3><p>Мастер установки прошёл без ошибок до конца</p></div>
-        <div class="bc bc-green fragment"><div class="bc-num accent-green">✓</div><h3 style="font-size:.55em;color:var(--text)">Программа работает</h3><p>Открывается, видно главное окно, есть ярлык для запуска</p></div>
+      <div class="bento" style="margin-top:.5em">
+        <div class="bc bc-blue" style="padding:.8em 1.2em"><div class="bc-num accent-blue">✓</div><h3 style="font-size:.55em;color:var(--text)">Сайт открыт</h3><p>Заходили на amnezia.org и видели страницу загрузки</p></div>
+        <div class="bc bc-purple" style="padding:.8em 1.2em"><div class="bc-num accent-purple">✓</div><h3 style="font-size:.55em;color:var(--text)">Установка завершена</h3><p>Мастер установки прошёл без ошибок до конца</p></div>
+        <div class="bc bc-green" style="padding:.8em 1.2em"><div class="bc-num accent-green">✓</div><h3 style="font-size:.55em;color:var(--text)">Программа работает</h3><p>Открывается, видно главное окно, есть ярлык для запуска</p></div>
       </div>
     </section>
 
@@ -136,9 +138,9 @@
       <h2>Ключевые выводы</h2>
       <div class="divider"></div>
       <ul style="max-width:640px;margin-top:.6em">
-        <li class="fragment">Claude блокируется по IP-адресу — собственный VPN это единственное надёжное решение</li>
-        <li class="fragment">AmneziaVPN — просто программа, как любое другое приложение на компьютере</li>
-        <li class="fragment">Не двигайтесь дальше, пока программа не открывается: урок 2 строится на этом шаге</li>
+        <li>Claude блокируется по IP-адресу — собственный VPN это единственное надёжное решение</li>
+        <li>AmneziaVPN — просто программа, как любое другое приложение на компьютере</li>
+        <li>Не двигайтесь дальше, пока программа не открывается: урок 2 строится на этом шаге</li>
       </ul>
     </section>
 
@@ -153,12 +155,11 @@
 
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="vendor/reveal.js/reveal.js"></script>
+<script src="vendor/reveal.js/notes.js"></script>
 <script>
 Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:0.04,plugins:[RevealNotes]});
 </script>
-<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
 
 </body>
 </html>

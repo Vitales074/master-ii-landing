@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="master-ii.css?v=5">
+<link rel="stylesheet" href="vendor/reveal.js/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=17">
 </head>
 <body>
 <div class="reveal">
@@ -29,11 +29,11 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
       <h2>Что вы узнаете</h2>
       <div class="divider"></div>
-      <div class="bento bento-2" style="margin-top:.8em;">
-        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>6-шаговый чек-лист перед любым проектом</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>Auto Mode vs Plan Mode — когда включать голову заранее</p></div>
-        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Два демо: система заявок и путеводитель</p></div>
-        <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>5 форматов вывода готового приложения</p></div>
+      <div class="bento bento-4" style="margin-top:.8em;">
+        <div class="bc bc-blue"><h3 class="accent-blue">01</h3><p>6-шаговый чек-лист перед любым проектом</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple">02</h3><p>Auto Mode vs Plan Mode — когда включать голову заранее</p></div>
+        <div class="bc bc-green"><h3 class="accent-green">03</h3><p>Два демо: система заявок и путеводитель</p></div>
+        <div class="bc bc-orange"><h3 class="accent-orange">04</h3><p>5 форматов вывода готового приложения</p></div>
       </div>
     <aside class="notes">Шесть тем: что делать когда подписка зависла, чек-лист старта, Auto vs Plan Mode, как Claude тестирует сам, пять форматов вывода и осознанный выбор модели.</aside></section>
 
@@ -43,13 +43,13 @@
       <div class="slide-lesson-num">Урок 8</div>
       <h2>Стартовый чек-лист:<br><span class="accent-blue">6 шагов</span></h2>
       <div class="divider"></div>
-      <div class="steps" style="margin-top:.6em;">
-        <div class="step fragment"><div class="step-num">01</div><div class="step-body"><strong>Открыть раздел Code</strong><span>Все приложения создаются только здесь — не в чате</span></div></div>
-        <div class="step fragment"><div class="step-num">02</div><div class="step-body"><strong>Создать папку проекта</strong><span>Один проект — одна папка. Смешивать нельзя</span></div></div>
-        <div class="step fragment"><div class="step-num">03</div><div class="step-body"><strong>Open Folder → Trust Workspace</strong><span>Без Trust Claude не может создавать файлы</span></div></div>
-        <div class="step fragment"><div class="step-num">04</div><div class="step-body"><strong>Выбрать модель</strong><span>Sonnet — для большинства задач; Opus — для сложных</span></div></div>
-        <div class="step fragment"><div class="step-num">05</div><div class="step-body"><strong>Выбрать режим и Effort</strong><span>Auto или Plan Mode; Effort: Medium/High/Smarter</span></div></div>
-        <div class="step fragment"><div class="step-num">06</div><div class="step-body"><strong>Написать задачу</strong><span>Одна строка с сутью — Claude задаст уточняющие вопросы</span></div></div>
+      <div class="steps grid2" style="margin-top:.6em;">
+        <div class="step"><div class="step-num">01</div><div class="step-body"><strong>Открыть раздел Code</strong><span>Все приложения создаются только здесь — не в чате</span></div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-body"><strong>Создать папку проекта</strong><span>Один проект — одна папка. Смешивать нельзя</span></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><strong>Open Folder → Trust Workspace</strong><span>Без Trust Claude не может создавать файлы</span></div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-body"><strong>Выбрать модель</strong><span>Sonnet — для большинства задач; Opus — для сложных</span></div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-body"><strong>Выбрать режим и Effort</strong><span>Auto или Plan Mode; Effort: Medium/High/Smarter</span></div></div>
+        <div class="step"><div class="step-num">06</div><div class="step-body"><strong>Написать задачу</strong><span>Одна строка с сутью — Claude задаст уточняющие вопросы</span></div></div>
       </div>
     <aside class="notes">Красная плашка — не поломка, это незакрытый счёт. Четыре шага: нажать на плашку, найти Pay, подтвердить оплату, перезайти. Совет: заведите отдельную карту под подписку — уведомление придёт точно вам, не потеряется среди других трат.</aside></section>
 
@@ -62,13 +62,13 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Параметр</th><th>Auto Mode</th><th>Plan Mode</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Что делает</td><td>Сразу пишет код</td><td>Сначала задаёт вопросы</td></tr>
-          <tr class="fragment"><td>Показывает план</td><td>Нет</td><td>Да — вы одобряете</td></tr>
-          <tr class="fragment"><td>Для чего</td><td>Лендинг, небольшая утилита</td><td>Приложение, сервис, бот</td></tr>
-          <tr class="fragment"><td>Аналогия</td><td>Подрядчик сразу ломает стену</td><td>Сначала чертёж, потом стройка</td></tr>
+          <tr><td>Что делает</td><td>Сразу пишет код</td><td>Сначала задаёт вопросы</td></tr>
+          <tr><td>Показывает план</td><td>Нет</td><td>Да — вы одобряете</td></tr>
+          <tr><td>Для чего</td><td>Лендинг, небольшая утилита</td><td>Приложение, сервис, бот</td></tr>
+          <tr><td>Аналогия</td><td>Подрядчик сразу ломает стену</td><td>Сначала чертёж, потом стройка</td></tr>
         </tbody>
       </table>
-      <p class="fragment" style="margin-top:.6em;font-size:.58em;color:var(--muted);">Правило: если сложнее лендинга и займёт больше получаса — включайте Plan Mode</p>
+      <p style="margin-top:.6em;font-size:.58em;color:var(--muted);">Правило: если сложнее лендинга и займёт больше получаса — включайте Plan Mode</p>
     <aside class="notes">Шесть шагов в порядке без изменений. Code открыт. Папка создана и открыта. Trust нажат. Модель выбрана. Режим настроен. Задача сформулирована. Каждый пропущенный шаг — это час правок в конце.</aside></section>
 
     <section>
@@ -78,17 +78,17 @@
       <h2>Демо: система учёта заявок</h2>
       <div class="divider"></div>
       <div class="bento" style="margin-top:.7em;">
-        <div class="bc bc-blue fragment">
+        <div class="bc bc-blue">
           <div class="bc-num accent-blue">15 мин</div>
           <h3 style="font-size:.52em;color:var(--text);">Время создания</h3>
           <p>Одна строка задания → полноценный инструмент</p>
         </div>
-        <div class="bc bc-purple fragment">
+        <div class="bc bc-purple">
           <div class="bc-num accent-purple">17%</div>
           <h3 style="font-size:.52em;color:var(--text);">Расход токенов</h3>
           <p>Claude сам написал, протестировал и исправил</p>
         </div>
-        <div class="bc bc-green fragment">
+        <div class="bc bc-green">
           <div class="bc-num accent-green">6</div>
           <h3 style="font-size:.52em;color:var(--text);">Функций сам добавил</h3>
           <p>Цвета, фильтры, экспорт в Excel — без дополнительных запросов</p>
@@ -102,14 +102,14 @@
       <div class="slide-lesson-num">Урок 8</div>
       <h2>5 форматов вывода<br>готового приложения</h2>
       <div class="divider"></div>
-      <table class="compare-table" style="margin-top:.7em;">
+      <table class="compare-table tight" style="margin-top:.7em;">
         <thead><tr><th>Формат</th><th>Для кого</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Localhost (браузер)</td><td>Только для вас, пока компьютер включён</td></tr>
-          <tr class="fragment"><td>HTML-файл</td><td>Отправить по почте, показать на встрече</td></tr>
-          <tr class="fragment"><td>Онлайн-сервер</td><td>Постоянный доступ для клиентов по ссылке</td></tr>
-          <tr class="fragment"><td>Telegram-бот</td><td>Удобно для мобильного использования</td></tr>
-          <tr class="fragment"><td>Установщик .exe</td><td>Полноценная программа на компьютер</td></tr>
+          <tr><td>Localhost (браузер)</td><td>Только для вас, пока компьютер включён</td></tr>
+          <tr><td>HTML-файл</td><td>Отправить по почте, показать на встрече</td></tr>
+          <tr><td>Онлайн-сервер</td><td>Постоянный доступ для клиентов по ссылке</td></tr>
+          <tr><td>Telegram-бот</td><td>Удобно для мобильного использования</td></tr>
+          <tr><td>Установщик .exe</td><td>Полноценная программа на компьютер</td></tr>
         </tbody>
       </table>
     <aside class="notes">После написания кода Claude не останавливается. Он запускает приложение в браузере, нажимает кнопки, заполняет формы, смотрит консоль. Находит ошибку — исправляет — снова проверяет. Вы видите это в реальном времени в правой части экрана. Это не магия — он использует те же инструменты разработчика, что и человек.</aside></section>
@@ -122,9 +122,9 @@
       <h2>Ключевые выводы</h2>
       <div class="divider"></div>
       <ul style="max-width:640px;margin-top:.6em;">
-        <li class="fragment">Code → папка → Trust → модель → режим → задача. Порядок не менять</li>
-        <li class="fragment">Одна строка описания → Claude пишет, проверяет и исправляет сам</li>
-        <li class="fragment">Sonnet + High — оптимальная связка. Opus + Smarter — для серьёзных проектов</li>
+        <li>Code → папка → Trust → модель → режим → задача. Порядок не менять</li>
+        <li>Одна строка описания → Claude пишет, проверяет и исправляет сам</li>
+        <li>Sonnet + High — оптимальная связка. Opus + Smarter — для серьёзных проектов</li>
       </ul>
     <aside class="notes">Первый: Localhost — работает только на вашем компьютере. Это не ссылка для клиента — важный момент. Второй: HTML-файл — статичное приложение, открывается в браузере без сервера. Третий: онлайн-сервер — Netlify или Vercel, публичная ссылка. Четвёртый: Telegram-бот — в мессенджере, подробнее в уроке 11. Пятый: exe-установщик — через Electron или PyInstaller для Windows и Mac.</aside></section>
 
@@ -139,10 +139,9 @@
 
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="vendor/reveal.js/reveal.js"></script>
+<script src="vendor/reveal.js/notes.js"></script>
 <script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
-<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
 <style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
 </body>
 </html>

@@ -5,8 +5,8 @@
 <title>Мастер-ИИ — Урок 3.1 — Оплата Claude из России</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="master-ii.css?v=5">
+<link rel="stylesheet" href="vendor/reveal.js/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=17">
 </head>
 <body>
 <div class="reveal"><div class="slides">
@@ -24,11 +24,11 @@
     <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3.1</div>
     <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
     <h2>Что вы узнаете</h2><div class="divider"></div>
-    <div class="bento bento-2" style="margin-top:.8em">
-      <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Почему российские карты не проходят — техническая причина, не политика</p></div>
-      <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>Вариант 1: бесплатный план Claude — что в нём есть и каковы ограничения</p></div>
-      <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Вариант 2: Anthropic API с оплатой через криптовалюту от $5</p></div>
-      <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>Варианты 3–4: подписка через друга за рубежом и OpenRouter</p></div>
+    <div class="bento bento-4" style="margin-top:.8em">
+      <div class="bc bc-blue"><h3 class="accent-blue">01</h3><p>Почему российские карты не проходят — техническая причина, не политика</p></div>
+      <div class="bc bc-purple"><h3 class="accent-purple">02</h3><p>Вариант 1: бесплатный план Claude — что в нём есть и каковы ограничения</p></div>
+      <div class="bc bc-green"><h3 class="accent-green">03</h3><p>Вариант 2: Anthropic API с оплатой через криптовалюту от $5</p></div>
+      <div class="bc bc-orange"><h3 class="accent-orange">04</h3><p>Варианты 3–4: подписка через друга за рубежом и OpenRouter</p></div>
     </div>
   <aside class="notes">Российские карты не проходят зарубежный эквайринг — это общая ситуация с международными платежами, не ограничение Anthropic против России. Попытки обмануть систему приводят к блокировке аккаунта. Но есть четыре честных пути.</aside></section>
 
@@ -36,11 +36,11 @@
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
     <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3.1</div>
     <h2>Почему карты не работают</h2><div class="divider"></div>
-    <ul style="max-width:680px;margin-top:.6em">
-      <li class="fragment">С 2022 года Visa и Mastercard приостановили работу с российскими банками</li>
-      <li class="fragment">Карты Сбербанка, Тинькофф, ВТБ не проходят на зарубежных сайтах</li>
-      <li class="fragment">Даже карта с логотипом Visa — работает только внутри России</li>
-      <li class="fragment">Anthropic — американская компания. Её процессор Stripe отклоняет РФ-карты автоматически</li>
+    <ul class="tight" style="max-width:680px;margin-top:.6em">
+      <li>С 2022 года Visa и Mastercard приостановили работу с российскими банками</li>
+      <li>Карты Сбербанка, Тинькофф, ВТБ не проходят на зарубежных сайтах</li>
+      <li>Даже карта с логотипом Visa — работает только внутри России</li>
+      <li>Anthropic — американская компания. Её процессор Stripe отклоняет РФ-карты автоматически</li>
     </ul>
   <aside class="notes">Разберём все четыре. Бесплатный план — самый простой старт. API через крипту — для разработчиков. OpenRouter — агрегатор с поддержкой крипты. Подписка через друга за рубежом — самый удобный вариант если есть такой человек.</aside></section>
 
@@ -58,22 +58,22 @@
     <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3.1</div>
     <h2>Вариант 1: Бесплатный план</h2><div class="divider"></div>
     <div class="bento bento-2" style="margin-top:.7em">
-      <div class="bc bc-green fragment"><h3 class="accent-green">Что включено</h3><p>Claude Sonnet (сильная модель), загрузка файлов и изображений, Projects, работа на русском</p></div>
-      <div class="bc bc-orange fragment"><h3 class="accent-orange">Ограничения</h3><p>~10–15 сообщений каждые несколько часов, нет Claude Opus, нет приоритета в пиковые часы</p></div>
+      <div class="bc bc-green"><h3 class="accent-green">Что включено</h3><p>Claude Sonnet (сильная модель), загрузка файлов и изображений, Projects, работа на русском</p></div>
+      <div class="bc bc-orange"><h3 class="accent-orange">Ограничения</h3><p>~10–15 сообщений каждые несколько часов, нет Claude Opus, нет приоритета в пиковые часы</p></div>
     </div>
-    <p class="fragment" style="margin-top:.8em;font-size:.6em">Для большинства учебных и рабочих задач — достаточно. <strong style="color:var(--green-l)">Начните здесь.</strong></p>
+    <p style="margin-top:.8em;font-size:.6em">Для большинства учебных и рабочих задач — достаточно. <strong style="color:var(--green-l)">Начните здесь.</strong></p>
   <aside class="notes">Баланс в console.anthropic.com можно пополнить криптовалютой. USDT или USDC через Bybit, OKX или Gate.io — все они доступны из России. Минимальный старт — пять долларов. Важно: это не то же самое что Claude Pro. Это доступ к API — нужен для уроков 10 и 11, когда будем делать агентов.</aside></section>
 
   <section>
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
     <div class="slide-brand">МАСТЕР-ИИ</div><div class="slide-lesson-num">Урок 3.1</div>
     <h2>Вариант 2: Anthropic API + крипта</h2><div class="divider"></div>
-    <ul style="max-width:680px;margin-top:.6em">
-      <li class="fragment">Заходим на console.anthropic.com — та же учётная запись, что на claude.ai</li>
-      <li class="fragment">Billing → пополнение через криптовалюту (Coinbase Commerce)</li>
-      <li class="fragment">Поддерживаются USDC, ETH, BTC. Крипту купить через Binance P2P за рубли</li>
-      <li class="fragment">Минимальная сумма: <strong style="color:var(--blue-l)">$5</strong> — хватит на сотни запросов на Sonnet</li>
-      <li class="fragment">Нет лимитов токенов — платите только за реально использованные запросы</li>
+    <ul class="tight" style="max-width:680px;margin-top:.6em">
+      <li>Заходим на console.anthropic.com — та же учётная запись, что на claude.ai</li>
+      <li>Billing → пополнение через криптовалюту (Coinbase Commerce)</li>
+      <li>Поддерживаются USDC, ETH, BTC. Крипту купить через Binance P2P за рубли</li>
+      <li>Минимальная сумма: <strong style="color:var(--blue-l)">$5</strong> — хватит на сотни запросов на Sonnet</li>
+      <li>Нет лимитов токенов — платите только за реально использованные запросы</li>
     </ul>
   <aside class="notes">OpenRouter — агрегатор: одно место для Claude, GPT, Llama и десятков других моделей. Принимает крипту. Цены чуть выше прямого API Anthropic, зато не нужно регистрироваться в каждом сервисе отдельно. Хорошо для тех, кто хочет сравнить модели.</aside></section>
 
@@ -84,8 +84,8 @@
     <table class="compare-table" style="margin-top:.7em">
       <thead><tr><th>Вариант</th><th>Как работает</th><th>Сложность</th></tr></thead>
       <tbody>
-        <tr class="fragment"><td>Друг за рубежом</td><td>Оформляет Claude Pro ($20/мес) на свою карту, вы пользуетесь аккаунтом</td><td>Легко</td></tr>
-        <tr class="fragment"><td>OpenRouter</td><td>Агрегатор: доступ к Claude и другим моделям, принимает крипту, pay-as-you-go</td><td>Средне</td></tr>
+        <tr><td>Друг за рубежом</td><td>Оформляет Claude Pro ($20/мес) на свою карту, вы пользуетесь аккаунтом</td><td>Легко</td></tr>
+        <tr><td>OpenRouter</td><td>Агрегатор: доступ к Claude и другим моделям, принимает крипту, pay-as-you-go</td><td>Средне</td></tr>
       </tbody>
     </table>
   <aside class="notes">Если есть знакомый за рубежом с зарубежной картой — попросить оформить подписку на ваш аккаунт. Вы компенсируете деньги удобным способом. Это честно, легально — аналогично покупке билетов через родственников.</aside></section>
@@ -96,9 +96,9 @@
     <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
     <h2>Ключевые выводы</h2><div class="divider"></div>
     <ul style="max-width:640px;margin-top:.6em">
-      <li class="fragment">Прямая оплата из России официально недоступна — это временное ограничение санкций</li>
-      <li class="fragment">Начните с бесплатного плана — для обучения его более чем достаточно</li>
-      <li class="fragment">Когда освоитесь — переходите на API с пополнением через криптовалюту</li>
+      <li>Прямая оплата из России официально недоступна — это временное ограничение санкций</li>
+      <li>Начните с бесплатного плана — для обучения его более чем достаточно</li>
+      <li>Когда освоитесь — переходите на API с пополнением через криптовалюту</li>
     </ul>
   <aside class="notes">Три главных вывода: бесплатного плана хватит для старта. API через крипту — для продвинутых задач. Никаких ложных данных — аккаунт заблокируют. Следующий урок — создаём первый лендинг. До встречи!</aside></section>
 
@@ -112,9 +112,8 @@
   </section>
 
 </div></div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="vendor/reveal.js/reveal.js"></script>
+<script src="vendor/reveal.js/notes.js"></script>
 <script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:0.04,plugins:[RevealNotes]});</script>
-<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
 
 </body></html>

@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="master-ii.css?v=5">
+<link rel="stylesheet" href="vendor/reveal.js/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=17">
 </head>
 <body>
 <div class="reveal">
@@ -30,9 +30,9 @@
       <h2>Что вы узнаете</h2>
       <div class="divider"></div>
       <div class="bento" style="margin-top:.8em;">
-        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Что умеет Claude: инфографика, карусели, логотипы, схемы</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>3 формата: SVG, HTML+CSS, Canvas — когда что использовать</p></div>
-        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>6 элементов детального промпта для визуала</p></div>
+        <div class="bc bc-blue"><h3 class="accent-blue">01</h3><p>Что умеет Claude: инфографика, карусели, логотипы, схемы</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple">02</h3><p>3 формата: SVG, HTML+CSS, Canvas — когда что использовать</p></div>
+        <div class="bc bc-green"><h3 class="accent-green">03</h3><p>6 элементов детального промпта для визуала</p></div>
       </div>
     <aside class="notes">Шесть тем: главное заблуждение, что умеет и не умеет Claude, три формата, цикл карусели, формула промпта и скиллы.</aside></section>
 
@@ -55,13 +55,13 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Умеет</th><th>Не умеет</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Инфографика, схемы, диаграммы</td><td>Реалистичные фотографии</td></tr>
-          <tr class="fragment"><td>Карусели, сторис, баннеры</td><td>AI-аватары и портреты</td></tr>
-          <tr class="fragment"><td>Логотипы, иконки в SVG</td><td>Редактирование чужих фото</td></tr>
-          <tr class="fragment"><td>Графики по вашим данным</td><td>Видео и анимации (кроме CSS)</td></tr>
+          <tr><td>Инфографика, схемы, диаграммы</td><td>Реалистичные фотографии</td></tr>
+          <tr><td>Карусели, сторис, баннеры</td><td>AI-аватары и портреты</td></tr>
+          <tr><td>Логотипы, иконки в SVG</td><td>Редактирование чужих фото</td></tr>
+          <tr><td>Графики по вашим данным</td><td>Видео и анимации (кроме CSS)</td></tr>
         </tbody>
       </table>
-      <p class="fragment" style="margin-top:.6em;font-size:.58em;color:var(--muted);">SVG — профессиональный векторный формат. Открывается в Figma, масштабируется без потери качества</p>
+      <p style="margin-top:.6em;font-size:.58em;color:var(--muted);">SVG — профессиональный векторный формат. Открывается в Figma, масштабируется без потери качества</p>
     <aside class="notes">Умеет: инфографика, схемы, логотипы в SVG, карусели, баннеры, графики по данным. Не умеет: фотореалистичные изображения, аватары, лица, видео, редактирование чужих фото. Для последнего есть другие инструменты — Midjourney, Leonardo. Claude может сформировать промпт для них, вы запустите там.</aside></section>
 
     <section class="slide-section">
@@ -80,15 +80,15 @@
       <h2>Три формата визуала</h2>
       <div class="divider"></div>
       <div class="bento" style="margin-top:.7em;">
-        <div class="bc bc-blue fragment">
+        <div class="bc bc-blue">
           <h3 class="accent-blue">SVG</h3>
           <p>Для иконок, логотипов, схем. Векторный формат — открывается в Figma, масштабируется без потерь</p>
         </div>
-        <div class="bc bc-purple fragment">
+        <div class="bc bc-purple">
           <h3 class="accent-purple">HTML + CSS</h3>
           <p>Для карусели и баннеров. Кириллические шрифты, точки навигации, стрелки — Claude рендерит прямо в чате</p>
         </div>
-        <div class="bc bc-green fragment">
+        <div class="bc bc-green">
           <h3 class="accent-green">Canvas / Plotly</h3>
           <p>Для сложных сцен и графиков по данным. Требует Node.js — Claude установит сам</p>
         </div>
@@ -110,13 +110,13 @@
       <div class="slide-lesson-num">Урок 7</div>
       <h2>Формула промпта для визуала</h2>
       <div class="divider"></div>
-      <div class="bento bento-2" style="margin-top:.7em;">
-        <div class="bc bc-blue fragment"><h3 class="accent-blue" style="font-size:.6em;">Формат</h3><p>Карусель / инфографика / баннер</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple" style="font-size:.6em;">Размер</h3><p>1080×1080px или пропорция 1:1</p></div>
-        <div class="bc bc-green fragment"><h3 class="accent-green" style="font-size:.6em;">Палитра</h3><p>HEX-коды или «тёмно-синий фон, золотые акценты»</p></div>
-        <div class="bc bc-orange fragment"><h3 class="accent-orange" style="font-size:.6em;">Шрифт</h3><p>Montserrat, Roboto или другой Google Font</p></div>
-        <div class="bc bc-blue fragment"><h3 class="accent-blue" style="font-size:.6em;">Содержание</h3><p>Тексты каждого слайда поимённо</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple" style="font-size:.6em;">Декор</h3><p>Геометрия, точки, волны, фоновые элементы</p></div>
+      <div class="bento bento-5" style="margin-top:.7em;">
+        <div class="bc bc-blue"><h3 class="accent-blue" style="font-size:.6em;">Формат</h3><p>Карусель / инфографика / баннер</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple" style="font-size:.6em;">Размер</h3><p>1080×1080px или пропорция 1:1</p></div>
+        <div class="bc bc-green"><h3 class="accent-green" style="font-size:.6em;">Палитра</h3><p>HEX-коды или «тёмно-синий фон, золотые акценты»</p></div>
+        <div class="bc bc-orange"><h3 class="accent-orange" style="font-size:.6em;">Шрифт</h3><p>Montserrat, Roboto или другой Google Font</p></div>
+        <div class="bc bc-blue"><h3 class="accent-blue" style="font-size:.6em;">Содержание</h3><p>Тексты каждого слайда поимённо</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple" style="font-size:.6em;">Декор</h3><p>Геометрия, точки, волны, фоновые элементы</p></div>
       </div>
     <aside class="notes">Скилл — встроенная инструкция для Code, работает в каждой сессии. Без скилла стиль «уплывает»: каждый раз Claude интерпретирует по-своему. Со скиллом — стабильно. Четыре шага: договорились о стиле, попросили сохранить как ZIP, скачали, загрузили через Customize. Не более двух-трёх скиллов — могут конфликтовать.</aside></section>
 
@@ -126,12 +126,12 @@
       <div class="slide-lesson-num">Урок 7</div>
       <h2>Скиллы-шаблоны:<br><span class="accent-green">стиль, который не меняется</span></h2>
       <div class="divider"></div>
-      <ul style="max-width:680px;margin-top:.6em;">
-        <li class="fragment">Без шаблона Claude каждый раз выбирает другие цвета и шрифты</li>
-        <li class="fragment">Скилл — файл с инструкцией: создаёте один раз, используете всегда</li>
-        <li class="fragment">Создать: договорились о дизайне → «зафиксируй как шаблон» → ZIP-архив</li>
-        <li class="fragment">В Claude Code скилл читается как файл — стиль не «уплывает» от сессии к сессии</li>
-        <li class="fragment">Перед установкой чужого скилла: «Проверь этот скилл — безопасен ли он?»</li>
+      <ul class="tight" style="max-width:680px;margin-top:.6em;">
+        <li>Без шаблона Claude каждый раз выбирает другие цвета и шрифты</li>
+        <li>Скилл — файл с инструкцией: создаёте один раз, используете всегда</li>
+        <li>Создать: договорились о дизайне → «зафиксируй как шаблон» → ZIP-архив</li>
+        <li>В Claude Code скилл читается как файл — стиль не «уплывает» от сессии к сессии</li>
+        <li>Перед установкой чужого скилла: «Проверь этот скилл — безопасен ли он?»</li>
       </ul>
     <aside class="notes">Четыре вывода: Claude пишет код визуала — это векторный формат. SVG, HTML+CSS, Canvas — под разные задачи. Карусель в три шага. Скиллы фиксируют стиль навсегда. Следующий урок — создаём первое приложение. До встречи!</aside></section>
 
@@ -143,9 +143,9 @@
       <h2>Ключевые выводы</h2>
       <div class="divider"></div>
       <ul style="max-width:640px;margin-top:.6em;">
-        <li class="fragment">Claude рисует кодом — SVG-результат открывается в Figma как вектор</li>
-        <li class="fragment">Детальный промпт из 6 элементов = финальный продукт с первого раза</li>
-        <li class="fragment">Скилл-шаблон — создаёте один час, экономите часы на всех последующих задачах</li>
+        <li>Claude рисует кодом — SVG-результат открывается в Figma как вектор</li>
+        <li>Детальный промпт из 6 элементов = финальный продукт с первого раза</li>
+        <li>Скилл-шаблон — создаёте один час, экономите часы на всех последующих задачах</li>
       </ul>
     </section>
 
@@ -160,10 +160,9 @@
 
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="vendor/reveal.js/reveal.js"></script>
+<script src="vendor/reveal.js/notes.js"></script>
 <script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
-<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
 <style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
 </body>
 </html>

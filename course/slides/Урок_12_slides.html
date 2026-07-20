@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="master-ii.css?v=5">
+<link rel="stylesheet" href="vendor/reveal.js/reveal.css">
+<link rel="stylesheet" href="master-ii.css?v=17">
 </head>
 <body>
 <div class="reveal">
@@ -29,11 +29,11 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
       <h2>Что вы узнаете</h2>
       <div class="divider"></div>
-      <div class="bento bento-2" style="margin-top:.8em;">
-        <div class="bc bc-blue fragment"><h3 class="accent-blue">01</h3><p>Почему ИИ-код уязвим — и что с этим делать</p></div>
-        <div class="bc bc-purple fragment"><h3 class="accent-purple">02</h3><p>3 типовых сценария утечки данных</p></div>
-        <div class="bc bc-green fragment"><h3 class="accent-green">03</h3><p>Метод двойного прохода: Claude проверяет сам себя</p></div>
-        <div class="bc bc-orange fragment"><h3 class="accent-orange">04</h3><p>CLAUDE.md — правила безопасности встроены в проект</p></div>
+      <div class="bento bento-4" style="margin-top:.8em;">
+        <div class="bc bc-blue"><h3 class="accent-blue">01</h3><p>Почему ИИ-код уязвим — и что с этим делать</p></div>
+        <div class="bc bc-purple"><h3 class="accent-purple">02</h3><p>3 типовых сценария утечки данных</p></div>
+        <div class="bc bc-green"><h3 class="accent-green">03</h3><p>Метод двойного прохода: Claude проверяет сам себя</p></div>
+        <div class="bc bc-orange"><h3 class="accent-orange">04</h3><p>CLAUDE.md — правила безопасности встроены в проект</p></div>
       </div>
     <aside class="notes">Шесть тем: почему AI-код уязвим, три сценария утечки, секреты в коде, SQL и XSS, slopsquatting и методы защиты.</aside></section>
 
@@ -44,20 +44,20 @@
       <h2>ИИ пишет рабочий код —<br><span class="accent-purple">но не безопасный</span></h2>
       <div class="divider"></div>
       <div class="bento" style="margin-top:.7em;">
-        <div class="bc bc-blue fragment">
+        <div class="bc bc-blue">
           <div class="bc-num accent-blue">45–62%</div>
           <p>AI-кода содержит реальные уязвимости</p>
         </div>
-        <div class="bc bc-purple fragment">
+        <div class="bc bc-purple">
           <div class="bc-num accent-purple">20%</div>
           <p>AI-кода пробует установить несуществующие пакеты</p>
         </div>
-        <div class="bc bc-green fragment">
+        <div class="bc bc-green">
           <div class="bc-num accent-green">35</div>
           <p>новых CVE выявлено из вайб-кода за март 2026</p>
         </div>
       </div>
-      <p class="fragment" style="margin-top:.6em;font-size:.6em;color:var(--muted);">Аналогия: архитектор, который проектирует красивый дом — но <span class="accent-orange">забывает про замки на дверях</span></p>
+      <p style="margin-top:.6em;font-size:.6em;color:var(--muted);">Аналогия: архитектор, который проектирует красивый дом — но <span class="accent-orange">забывает про замки на дверях</span></p>
     <aside class="notes">Claude оптимизирован решать задачу — не защищать от злоумышленников. Аналогия: архитектор спроектировал красивый дом без замков. Дом работает, но небезопасен. По исследованиям: 45 до 62 процентов AI-кода содержит реальные уязвимости, 20 процентов пробует установить несуществующие пакеты. Подход: читать AI-код как код незнакомого стажёра — с интересом, но не слепым доверием.</aside></section>
 
     <section>
@@ -67,11 +67,11 @@
       <h2>3 типовых сценария утечки</h2>
       <div class="divider"></div>
       <ul style="max-width:700px;margin-top:.6em;">
-        <li class="fragment"><strong class="accent-blue">Тип А: API-ключ в клиентском JS</strong> — виден в DevTools любому. Баланс сгорает за 48 часов</li>
-        <li class="fragment"><strong class="accent-purple">Тип Б: база данных без Row Level Security</strong> — любой авторизованный пользователь видит данные всех</li>
-        <li class="fragment"><strong class="accent-green">Тип В: публичный бакет без контроля доступа</strong> — тысячи загруженных документов стали общедоступными</li>
+        <li><strong class="accent-blue">Тип А: API-ключ в клиентском JS</strong> — виден в DevTools любому. Баланс сгорает за 48 часов</li>
+        <li><strong class="accent-purple">Тип Б: база данных без Row Level Security</strong> — любой авторизованный пользователь видит данные всех</li>
+        <li><strong class="accent-green">Тип В: публичный бакет без контроля доступа</strong> — тысячи загруженных документов стали общедоступными</li>
       </ul>
-      <p class="fragment" style="margin-top:.7em;font-size:.6em;color:var(--muted);">Общий вывод: «AI сделал именно то, о чём его попросили. Никто не спросил — а безопасно ли это?»</p>
+      <p style="margin-top:.7em;font-size:.6em;color:var(--muted);">Общий вывод: «AI сделал именно то, о чём его попросили. Никто не спросил — а безопасно ли это?»</p>
     <aside class="notes">Три реальных типа ситуаций. Первый: API-ключ прямо в JavaScript-коде — любой пользователь открывает DevTools и видит его. За 48 часов баланс сгорел. Второй: база данных без Row Level Security — данные доступны без авторизации, утекло всё. Третий: загрузка файлов без проверки типа — приватные документы стали публичными. Общий знаменатель: Claude сделал что просили, никто не спросил про безопасность.</aside></section>
 
     <section class="slide-section">
@@ -92,13 +92,13 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Время</th><th>Событие</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>0 минут</td><td>Вы нажимаете git push</td></tr>
-          <tr class="fragment"><td>2 минуты</td><td>Сканеры GitHub находят строку, похожую на API-ключ</td></tr>
-          <tr class="fragment"><td>10 минут</td><td>Кто-то уже использует ваш ключ для своих запросов</td></tr>
-          <tr class="fragment"><td>~1 час</td><td>Вам приходит счёт — или баланс обнуляется</td></tr>
+          <tr><td>0 минут</td><td>Вы нажимаете git push</td></tr>
+          <tr><td>2 минуты</td><td>Сканеры GitHub находят строку, похожую на API-ключ</td></tr>
+          <tr><td>10 минут</td><td>Кто-то уже использует ваш ключ для своих запросов</td></tr>
+          <tr><td>~1 час</td><td>Вам приходит счёт — или баланс обнуляется</td></tr>
         </tbody>
       </table>
-      <p class="fragment" style="margin-top:.6em;font-size:.6em;color:var(--muted);">Правило: напишите <span class="accent-blue">YOUR_KEY_HERE</span> → Claude завершает работу → вставляете реальный ключ вручную в .env</p>
+      <p style="margin-top:.6em;font-size:.6em;color:var(--muted);">Правило: напишите <span class="accent-blue">YOUR_KEY_HERE</span> → Claude завершает работу → вставляете реальный ключ вручную в .env</p>
     <aside class="notes">SQL-инъекция: когда запрос строится через f-string с пользовательским вводом. Пользователь пишет не имя, а кусок SQL-команды — и база её выполняет. Решение: параметризованные запросы. XSS: innerHTML с пользовательским вводом — разрешаете незнакомцу написать что угодно на странице. Решение: textContent вместо innerHTML.</aside></section>
 
     <section class="slide-section">
@@ -119,13 +119,13 @@
       <table class="compare-table" style="margin-top:.7em;">
         <thead><tr><th>Задача</th><th>Безопасный промт</th></tr></thead>
         <tbody>
-          <tr class="fragment"><td>Форма входа</td><td>«Безопасная форма с bcrypt и защитой от брутфорса»</td></tr>
-          <tr class="fragment"><td>Подключение к БД</td><td>«Только параметризованные запросы через env-переменные»</td></tr>
-          <tr class="fragment"><td>Загрузка файла</td><td>«С проверкой типа, ограничением размера, path traversal»</td></tr>
-          <tr class="fragment"><td>Работа с паролями</td><td>«Хранить через bcrypt или argon2, не в открытом виде»</td></tr>
+          <tr><td>Форма входа</td><td>«Безопасная форма с bcrypt и защитой от брутфорса»</td></tr>
+          <tr><td>Подключение к БД</td><td>«Только параметризованные запросы через env-переменные»</td></tr>
+          <tr><td>Загрузка файла</td><td>«С проверкой типа, ограничением размера, path traversal»</td></tr>
+          <tr><td>Работа с паролями</td><td>«Хранить через bcrypt или argon2, не в открытом виде»</td></tr>
         </tbody>
       </table>
-      <p class="fragment" style="margin-top:.6em;font-size:.6em;color:var(--muted);">После получения кода: «Ты — эксперт по кибербезопасности. Проверь по <span class="accent-blue">OWASP Top 10</span> и исправь уязвимости»</p>
+      <p style="margin-top:.6em;font-size:.6em;color:var(--muted);">После получения кода: «Ты — эксперт по кибербезопасности. Проверь по <span class="accent-blue">OWASP Top 10</span> и исправь уязвимости»</p>
     <aside class="notes">Двойной проход: первый запрос — написать функцию. Второй — «ты эксперт по кибербезопасности, проверь по OWASP Top 10 и исправь». Claude сам находит дыры и исправляет. CLAUDE.md: файл в корне проекта, Claude читает его автоматически в каждой сессии. Напишите туда правила — секреты в .env, параметризованные запросы, bcrypt для паролей — и больше не нужно напоминать каждый раз.</aside></section>
 
     <section>
@@ -134,12 +134,12 @@
       <div class="slide-lesson-num">Урок 12</div>
       <h2>CLAUDE.md:<br><span class="accent-green">встроенные правила безопасности</span></h2>
       <div class="divider"></div>
-      <ul style="max-width:700px;margin-top:.6em;">
-        <li class="fragment">Файл в корне проекта — Claude читает автоматически в начале каждой сессии</li>
-        <li class="fragment">Не промт — это постоянная инструкция для всего проекта навсегда</li>
-        <li class="fragment">Секреты: только через .env / Параметризованные SQL / bcrypt для паролей</li>
-        <li class="fragment">Frontend: textContent, не innerHTML / Никаких eval() с внешними данными</li>
-        <li class="fragment">Создать: «Создай CLAUDE.md с правилами безопасности для нашего стека»</li>
+      <ul class="tight" style="max-width:700px;margin-top:.6em;">
+        <li>Файл в корне проекта — Claude читает автоматически в начале каждой сессии</li>
+        <li>Не промт — это постоянная инструкция для всего проекта навсегда</li>
+        <li>Секреты: только через .env / Параметризованные SQL / bcrypt для паролей</li>
+        <li>Frontend: textContent, не innerHTML / Никаких eval() с внешними данными</li>
+        <li>Создать: «Создай CLAUDE.md с правилами безопасности для нашего стека»</li>
       </ul>
     <aside class="notes">Четыре вывода: AI-код рабочий, но не безопасный по умолчанию. Секреты только в .env. Slopsquatting — проверять пакеты до установки. Двойной проход плюс CLAUDE.md дают стабильный результат. Следующий и последний урок — портфолио и клиенты. До встречи!</aside></section>
 
@@ -150,14 +150,14 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
       <h2>10 правил-привычек</h2>
       <div class="divider"></div>
-      <ul style="max-width:700px;margin-top:.5em;font-size:.9em;">
-        <li class="fragment">Все ключи и пароли — в .env, не в коде</li>
-        <li class="fragment">.env добавлен в .gitignore до первого коммита</li>
-        <li class="fragment">Ни один ключ не введён в чат с Claude</li>
-        <li class="fragment">Каждый пакет проверен на npmjs.com или pypi.org</li>
-        <li class="fragment">SQL-запросы параметризованы, не через f-string</li>
-        <li class="fragment">Для каждой новой функции — двойной проход по OWASP</li>
-        <li class="fragment">В каждом проекте создан CLAUDE.md</li>
+      <ul class="tight" style="max-width:700px;margin-top:.5em;font-size:.8em;">
+        <li>Все ключи и пароли — в .env, не в коде</li>
+        <li>.env добавлен в .gitignore до первого коммита</li>
+        <li>Ни один ключ не введён в чат с Claude</li>
+        <li>Каждый пакет проверен на npmjs.com или pypi.org</li>
+        <li>SQL-запросы параметризованы, не через f-string</li>
+        <li>Для каждой новой функции — двойной проход по OWASP</li>
+        <li>В каждом проекте создан CLAUDE.md</li>
       </ul>
     </section>
 
@@ -172,10 +172,9 @@
 
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="vendor/reveal.js/reveal.js"></script>
+<script src="vendor/reveal.js/notes.js"></script>
 <script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:.04});</script>
-<div style="position:fixed;top:20px;right:24px;z-index:99999;font-family:Unbounded,sans-serif;font-size:18px;font-weight:900;letter-spacing:.1em;white-space:nowrap;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.9;pointer-events:none;">МАСТЕР-ИИ</div>
 <style>.slide-brand{display:none!important}.reveal h1,.reveal h2,.reveal h3,.reveal p{text-align:center!important}</style>
 </body>
 </html>
