@@ -72,7 +72,9 @@ nav{
   font-family:var(--font-d);font-size:13px;font-weight:900;letter-spacing:.12em;
   background:linear-gradient(90deg,var(--blue-l),var(--purple-l));
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  text-decoration:none;cursor:pointer;transition:opacity .2s;
 }
+.nav-logo:hover{opacity:.75}
 .nav-lesson{font-size:13px;color:var(--dim)}
 .nav-progress{display:flex;align-items:center;gap:10px}
 .progress-bar{width:100px;height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
