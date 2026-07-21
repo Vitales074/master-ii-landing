@@ -6,24 +6,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="vendor/reveal.js/reveal.css">
-<link rel="stylesheet" href="master-ii.css?v=19">
+<link rel="stylesheet" href="master-ii.css?v=20">
 </head>
 <body>
+<div class="slide-topbar">
+  <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
+  <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
+</div>
 <div class="reveal"><div class="slides">
 
   <section class="slide-title">
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
-    <div class="eyebrow"><span class="eyebrow-dot"></span>Урок 4 · Первый сайт</div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span>Урок 4 · Первый сайт</div>
     <h1>Лендинг <span class="accent">с нуля</span><br>через Claude</h1>
     <p style="max-width:600px;margin:0 auto">Без знания кода, без разработчиков — полноценный сайт за 30 минут. Результат не уступает работам за 50–100 тысяч рублей у фрилансеров.</p>
   <aside class="notes">Урок 4. Переходим к самому интересному — создаём первый сайт. Сегодня разберём Claude Code, установим Git, напишем правильный промпт и опубликуем лендинг на Netlify.</aside></section>
 
   <section>
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <div class="eyebrow"><span class="eyebrow-dot"></span>В этом уроке</div>
     <h2>Что вы узнаете</h2><div class="divider"></div>
     <div class="bento bento-4" style="margin-top:.8em">
@@ -36,8 +37,7 @@
 
   <section>
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <h2>Chat vs Code vs Projects</h2><div class="divider"></div>
     <table class="compare-table" style="margin-top:.7em">
       <thead><tr><th>Режим</th><th>Как работает</th><th>Для чего</th></tr></thead>
@@ -52,8 +52,7 @@
 
   <section class="slide-section">
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <div class="section-num">01</div>
     <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел первый</div>
     <h2>Подготовка:<br>Git и рабочая папка</h2>
@@ -62,8 +61,7 @@
 
   <section>
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <h2>Настройка рабочей среды</h2><div class="divider"></div>
     <div class="steps grid2" style="margin-top:.7em">
       <div class="step"><div class="step-num">01</div><div class="step-body"><strong>Установить Git</strong><span>Красная плашка в разделе Code — нужен Git. Проще через Claude: напишите «Есть ли у нас Git?» — он установит сам</span></div></div>
@@ -75,8 +73,7 @@
 
   <section>
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <h2>Так выглядит установка Git</h2><div class="divider"></div>
     <img class="slide-shot" src="img/git-scm-download.png" alt="Страница загрузки Git для Windows на git-scm.com">
     <div class="slide-cap">git-scm.com → вкладка Windows → «Click here to download». Установщик — везде «Next»</div>
@@ -84,8 +81,7 @@
 
   <section class="slide-section">
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <div class="section-num">02</div>
     <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел второй</div>
     <h2>Как написать<br>хороший промпт</h2>
@@ -94,8 +90,7 @@
 
   <section>
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <h2>Структура рабочего промпта</h2><div class="divider"></div>
     <ul class="tight" style="max-width:680px;margin-top:.6em">
       <li><strong style="color:var(--blue-l)">«Создай лендинг / сайт-визитку»</strong> — тип сайта</li>
@@ -109,8 +104,7 @@
 
   <section>
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <h2>Что Claude создаёт сам</h2><div class="divider"></div>
     <div class="bento" style="margin-top:.7em">
       <div class="bc bc-blue"><h3 class="accent-blue">Структура</h3><p>О себе, услуги, почему выбирают, как заказать, отзывы, контакты — всё сам</p></div>
@@ -121,8 +115,7 @@
 
   <section class="slide-section">
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <div class="section-num">03</div>
     <div class="eyebrow"><span class="eyebrow-dot"></span>Раздел третий</div>
     <h2>Модели и лимиты</h2>
@@ -131,8 +124,7 @@
 
   <section>
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <h2>Выбор модели</h2><div class="divider"></div>
     <table class="compare-table" style="margin-top:.7em">
       <thead><tr><th>Модель</th><th>Для чего</th><th>Расход лимитов</th></tr></thead>
@@ -148,8 +140,7 @@
 
   <section>
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a><div class="slide-lesson-num">Урок 4</div>
+    <div class="slide-lesson-num">Урок 4</div>
     <div class="eyebrow"><span class="eyebrow-dot"></span>Запомните главное</div>
     <h2>Ключевые выводы</h2><div class="divider"></div>
     <ul style="max-width:640px;margin-top:.6em">
@@ -161,9 +152,7 @@
 
   <section class="slide-final">
     <div class="slide-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <a href="../index.html" class="slide-brand">МАСТЕР-ИИ</a>
-      <a href="../index.html" class="slide-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
-    <div class="eyebrow"><span class="eyebrow-dot"></span>Следующий урок</div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span>Следующий урок</div>
     <h1 style="font-size:1.4em">Урок 4.1:<br><span class="accent">Публикуем сайт на Netlify</span></h1>
     <p style="max-width:560px;margin:.6em auto 0">Практикум: регистрируемся на Netlify, загружаем HTML-файл через drag & drop и получаем постоянную публичную ссылку.</p>
     <div class="btn">Смотреть следующий урок →</div>
@@ -172,6 +161,6 @@
 </div></div>
 <script src="vendor/reveal.js/reveal.js"></script>
 <script src="vendor/reveal.js/notes.js"></script>
-<script>Reveal.initialize({hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:0.04,plugins:[RevealNotes]});</script>
+<script>Reveal.initialize({embedded:true,hash:true,slideNumber:true,transition:'fade',transitionSpeed:'fast',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1280,height:720,margin:0.04,plugins:[RevealNotes]});</script>
 
 </body></html>
