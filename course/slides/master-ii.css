@@ -59,18 +59,20 @@
   padding: 3.5% 8%; box-sizing: border-box; overflow: hidden;
 }
 
-/* ── Brand logo + back-to-dashboard ── */
-.slide-brand { display: none }
-.slide-logo {
-  position: fixed; top: 20px; right: 28px; z-index: 99999;
+/* ── Brand logo + back-to-dashboard ──
+   Positioned absolute inside each section (not fixed to the viewport),
+   so they scale and stay pinned to the actual stage corners regardless
+   of window aspect ratio / letterboxing. */
+.slide-brand {
+  position: absolute; top: 24px; right: 32px; z-index: 20;
   font-family: var(--font-d); font-size: 19px; font-weight: 700; letter-spacing: .1em; white-space: nowrap;
   color: var(--blue-l); text-decoration: none;
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   opacity: .85; transition: opacity .2s;
 }
-.slide-logo:hover { opacity: 1 }
+.slide-brand:hover { opacity: 1 }
 .slide-back {
-  position: fixed; top: 20px; left: 28px; z-index: 99999;
+  position: absolute; top: 24px; left: 32px; z-index: 20;
   display: flex; align-items: center; gap: 6px;
   font-family: var(--font-b); font-size: 13px; font-weight: 700;
   color: var(--blue-l);
@@ -81,10 +83,6 @@
 }
 .slide-back svg { width: 12px; height: 12px; flex-shrink: 0 }
 .slide-back:hover { background: rgba(96,165,250,.22); border-color: rgba(96,165,250,.5); transform: translateX(-2px) }
-@media (max-width: 700px) {
-  .slide-back span { display: none }
-  .slide-back { padding: 7px 9px }
-}
 
 /* ── Slide counter ── */
 .slide-lesson-num {
