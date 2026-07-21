@@ -191,6 +191,26 @@ code{
 .tldr-box li{color:var(--muted);font-size:15px;line-height:1.65;padding-left:20px;position:relative}
 .tldr-box li::before{content:'→';position:absolute;left:0;color:var(--purple-l);font-weight:700}
 
+/* ── Prompt box (готовый промпт для копирования) ── */
+.prompt-box{
+  display:flex;flex-direction:column;gap:10px;
+  background:#0d0d1a;
+  border:1px solid rgba(96,165,250,.25);
+  border-radius:14px;
+  padding:22px 26px;margin:22px 0;
+  font-family:'Hanken Grotesk',sans-serif;
+}
+.prompt-label{
+  font-family:var(--font-d);font-size:11px;font-weight:900;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--blue-l);margin-bottom:4px;
+}
+.prompt-part{
+  font-size:15px;line-height:1.7;color:var(--muted);
+  padding-left:18px;position:relative;
+}
+.prompt-part::before{content:'❯';position:absolute;left:0;color:var(--blue-l);font-weight:700}
+.prompt-part strong{color:var(--text)}
+
 /* ── Story box (личная интонация, разбавляет инструкции) ── */
 .story-box{
   background:rgba(249,115,22,.05);

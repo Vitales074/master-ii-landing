@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шпаргалка: библиотека промптов Claude Code · Мастер-ИИ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lesson.css">
+<style>
+:root{--accent:var(--blue-l);--accent-bg:rgba(37,99,235,.12);--accent-border:rgba(37,99,235,.35)}
+.hero-orb-1{background:radial-gradient(circle,rgba(37,99,235,.22),transparent 65%)}
+.hero-orb-2{background:radial-gradient(circle,rgba(124,58,237,.18),transparent 65%)}
+</style>
+</head>
+<body><div id="reading-progress"></div>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">МАСТЕР-ИИ</span>
+    <span class="nav-lesson">Бонус-материал</span>
+  </div>
+</nav>
+<div class="page">
+  <div class="lesson-hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="lesson-tag"><span class="lesson-tag-dot"></span>Бонус · Шпаргалка</div>
+    <h1>Библиотека промптов<br><span>для Claude Code</span></h1>
+    <p class="lesson-intro">Официальные проверенные промпты от Anthropic, отобранные под уроки 4, 5, 6 и 8 — там, где вы сами практикуетесь в Code. Копируйте, подставляйте свои детали вместо квадратных скобок и отправляйте.</p>
+    <div class="lesson-meta">
+      <div class="meta-item"><span>📋</span> 8 готовых промптов</div>
+      <div class="meta-item"><span>🔗</span> code.claude.com/docs/en/prompt-library</div>
+    </div>
+  </div>
+
+  <!-- Урок 4 -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-blue">🌐</div>Для урока 4 — лендинг с нуля</h2>
+    <p>Когда сайт уже сгенерирован по вашему первому промпту и вы хотите довести дизайн до референса или проверить результат — эти два промпта экономят время на итерациях.</p>
+    <div class="prompt-box">
+      <span class="prompt-label">Реализовать дизайн по картинке и проверить самому</span>
+      <span class="prompt-part">implement this design, then take a screenshot of the result, compare it to the original, and fix any differences</span>
+    </div>
+    <div class="tip-box"><strong>Когда использовать:</strong> вставьте картинку-референс в чат вместе с этим промптом. Claude сам сверит результат со скриншотом и исправит расхождения — не нужно самому тыкать пальцем «здесь не так».</div>
+  </div>
+
+  <!-- Урок 5 -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-purple">🏗</div>Для урока 5 — многостраничный сайт</h2>
+    <p>Прежде чем создавать структуру из нескольких страниц, полезно сначала увидеть план — без этого Claude Code иногда начинает строить не в ту сторону.</p>
+    <div class="prompt-box">
+      <span class="prompt-label">Спланировать структуру, не трогая код</span>
+      <span class="prompt-part">plan how to build a multi-page site for [тема]: list the pages and structure, but don't edit anything yet</span>
+    </div>
+    <div class="prompt-box">
+      <span class="prompt-label">Точечно исправить визуальный баг</span>
+      <span class="prompt-part">the [элемент] extends beyond the [контейнер] on mobile. fix it.</span>
+    </div>
+    <div class="tip-box"><strong>Второй промпт</strong> — готовый шаблон для любой мелкой поломки вёрстки на телефоне. Подставьте название элемента вместо квадратных скобок.</div>
+  </div>
+
+  <!-- Урок 6 -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-green">🤖</div>Для урока 6 — агенты и контент</h2>
+    <p>Это прямое попадание в идею урока: вместо длинного промпта пусть Claude сам расспросит вас, а досье бренда собирается по образцу ваших лучших текстов.</p>
+    <div class="prompt-box">
+      <span class="prompt-label">Собрать техзадание через интервью</span>
+      <span class="prompt-part">I want to build [агент для контента]. interview me about implementation, UX, edge cases, and tradeoffs until we have covered everything, then write the spec to SPEC.md</span>
+    </div>
+    <div class="prompt-box">
+      <span class="prompt-label">Научить агента вашему голосу по примерам</span>
+      <span class="prompt-part">read the [примеры постов] in [папка] to learn the structure and voice, then draft a new one for [тема]</span>
+    </div>
+  </div>
+
+  <!-- Урок 8 -->
+  <div class="lesson-section">
+    <h2><div class="section-icon icon-orange">⚡</div>Для урока 8 — первое приложение</h2>
+    <p>Тот же принцип «внутренний инструмент без фреймворков», что и в демо урока — годится для любой идеи, которая приходит в голову. Второй промпт показывает, как Claude сам находит и чинит баги.</p>
+    <div class="prompt-box">
+      <span class="prompt-label">Создать инструмент с нуля</span>
+      <span class="prompt-part">create a [tool] using HTML, CSS, and vanilla JavaScript, then open it in my browser</span>
+    </div>
+    <div class="prompt-box">
+      <span class="prompt-label">Написать тесты и сразу исправить всё, что не работает</span>
+      <span class="prompt-part">write tests for [фича], run them, and fix any failures</span>
+    </div>
+    <div class="tip-box"><strong>Совет:</strong> если хотите увидеть, как Claude сам тестирует и правит баги (как в демо урока 8) — этот второй промпт даёт ровно такое поведение.</div>
+  </div>
+
+  <div class="info-box"><strong>Откуда это взято:</strong> все промпты — из официальной библиотеки Anthropic для Claude Code (<code>code.claude.com/docs/en/prompt-library</code>), сгруппированной по этапам разработки. Полный список — на сайте, там же можно фильтровать по тегам (Build, Debug, Review и другие).</div>
+
+  <div class="lesson-nav">
+    <a href="../index.html" class="btn-nav btn-prev">
+      <span><span class="nav-lesson-title">Назад</span>← К списку уроков</span>
+    </a>
+  </div>
+</div>
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  function update() {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
