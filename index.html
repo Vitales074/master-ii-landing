@@ -40,6 +40,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:18px 0;background:rg
 .nav-logo{font-family:var(--font-d);font-size:16px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,var(--blue-l),var(--purple-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .nav-cta{padding:9px 22px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border-radius:8px;font-family:var(--font-d);font-size:12px;font-weight:700;letter-spacing:.06em;text-decoration:none;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-link{color:var(--muted);font-size:13px;font-weight:600;text-decoration:none;transition:color .2s}
+.nav-link:hover{color:var(--text)}
 
 /* Hero */
 #hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 80px}
@@ -180,7 +183,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 <nav>
   <div class="nav-inner">
     <span class="nav-logo">МАСТЕР-ИИ</span>
-    <a href="/buy/" class="nav-cta">Купить курс</a>
+    <div class="nav-links">
+      <a href="/about/" class="nav-link">Об авторе</a>
+      <a href="/buy/" class="nav-cta">Купить курс</a>
+    </div>
   </div>
 </nav>
 
@@ -622,6 +628,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
       <span class="footer-logo">МАСТЕР-ИИ</span>
       <span class="footer-text">© 2026 · Все материалы защищены авторским правом</span>
       <div class="footer-links">
+        <a href="/about/">Об авторе</a>
         <a href="https://t.me/master_ii_kurs" target="_blank">Telegram-канал</a>
         <a href="https://t.me/chell074" target="_blank">Написать нам</a>
       </div>

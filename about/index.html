@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Об авторе — Мастер-ИИ</title>
+<meta name="description" content="20 лет я пытался заработать из дома. Получилось только с Claude Code. Честная история автора курса «Мастер-ИИ».">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#05050f;
+    --card:rgba(255,255,255,.035);
+    --line:rgba(255,255,255,.09);
+    --blue:#60a5fa;
+    --violet:#a78bfa;
+    --green:#34d399;
+    --text:#eef0ff;
+    --muted:rgba(238,240,255,.62);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--text);
+    min-height:100vh;line-height:1.75;overflow-x:hidden;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(600px 400px at 80% -10%, rgba(37,99,235,.16), transparent 60%),
+      radial-gradient(600px 500px at -10% 60%, rgba(124,58,237,.13), transparent 60%),
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:auto,auto,40px 40px,40px 40px;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+
+  header{padding:28px 0;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-family:'Unbounded',sans-serif;font-weight:900;font-size:18px;text-decoration:none;color:var(--text)}
+  .logo span{background:linear-gradient(120deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .back{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s}
+  .back:hover{color:var(--text)}
+
+  .hero{text-align:center;padding:32px 0 44px}
+  .hero .badge{
+    display:inline-block;padding:7px 18px;border:1px solid rgba(96,165,250,.35);border-radius:999px;
+    color:var(--blue);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+    background:rgba(37,99,235,.08);margin-bottom:22px;
+  }
+  h1{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(26px,5vw,42px);line-height:1.18;margin-bottom:16px}
+  h1 span{background:linear-gradient(120deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);max-width:520px;margin:0 auto;font-size:17px}
+
+  .story{
+    background:var(--card);border:1px solid var(--line);border-radius:22px;padding:40px;
+    backdrop-filter:blur(18px);margin-bottom:28px;
+  }
+  .story p{font-size:16.5px;color:var(--text);margin-bottom:20px}
+  .story p:last-child{margin-bottom:0}
+  .story p.muted{color:var(--muted)}
+  .story .signature{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);font-family:'Unbounded',sans-serif;font-weight:700;font-size:15px;color:var(--blue)}
+
+  .mission{
+    background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.22);border-radius:18px;
+    padding:26px 28px;margin-bottom:36px;font-size:15.5px;color:var(--muted);
+  }
+  .mission b{color:var(--green);font-family:'Unbounded',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:10px}
+
+  .cta{text-align:center;padding-bottom:70px}
+  .ctabtn{
+    display:inline-block;padding:18px 44px;border-radius:16px;text-decoration:none;
+    font-family:'Unbounded',sans-serif;font-weight:700;font-size:16px;color:#fff;
+    background:linear-gradient(120deg,#2563eb,#7c3aed);
+    box-shadow:0 10px 40px rgba(79,70,229,.35);
+    transition:transform .2s, box-shadow .25s;
+  }
+  .ctabtn:hover{transform:translateY(-2px);box-shadow:0 14px 52px rgba(79,70,229,.5)}
+  .cta .note{margin-top:16px;color:var(--muted);font-size:13.5px}
+  .cta .note a{color:var(--blue);text-decoration:none;font-weight:600}
+  .cta .note a:hover{text-decoration:underline}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:13px}
+  footer a{color:var(--muted)}
+
+  .fade{opacity:0;transform:translateY(18px);animation:up .7s ease forwards}
+  .fade:nth-child(2){animation-delay:.12s}
+  @keyframes up{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="logo" href="/">МАСТЕР<span>-ИИ</span></a>
+    <a class="back" href="/">← Вернуться на сайт</a>
+  </header>
+
+  <section class="hero">
+    <div class="badge">Об авторе</div>
+    <h1>20 лет я пытался.<br><span>Получилось только с этим.</span></h1>
+    <p>Честная история — без прикрас и без «успешного успеха»</p>
+  </section>
+
+  <div class="story fade">
+    <p>Меня зовут Виталий. 20 лет я ищу способ зарабатывать из дома, сидя за компьютером — так же, как сейчас пишу эти строки.</p>
+    <p class="muted">Пробовал рулетку. Пробовал одностраничные сайты. Покупал курсы «схем заработка» — семь, может десять, я уже сбился со счёта. Каждый раз платил деньги, честно пытался разобраться, что-то сделать, выиграть. Каждый раз — ноль. Не окупил ни один курс.</p>
+    <p>Если вы сейчас читаете это и узнаёте себя — я вас понимаю буквально. Не как маркетинговый приём, а по-настоящему.</p>
+    <p>Переломил всё это Claude Code. Я не программист и никогда им не был. Но я напечатал простыми словами: «сделай мне сайт про [тема]» — и получил рабочий сайт. Потом ещё один. Потом приложение — и не одно. Клод даже начал помогать мне в трейдинге.</p>
+    <p>Именно в этот момент я понял: дело не во мне и не в удаче. Claude Code реально может это — и может любой человек ставить ему любые свои задачи: для бизнеса, для дома, для семьи, для увлечений.</p>
+    <p>Я собрал в этот курс ровно тот путь, который прошёл сам — без воды и без обещаний из тех семи курсов, что не сработали.</p>
+    <div class="signature">— Виталий, автор курса «Мастер-ИИ»</div>
+  </div>
+
+  <div class="mission fade">
+    <b>Что я хочу дальше</b>
+    Научить любого человека — не программиста, без опыта в ИИ — пользоваться Claude и создавать ИИ-агентов под свои собственные задачи. Не абстрактную теорию, а тот же путь, который прошёл сам.
+  </div>
+
+  <div class="cta">
+    <a class="ctabtn" href="/#program">Посмотреть программу курса →</a>
+    <div class="note">Есть вопрос? <a href="https://t.me/chell074" target="_blank" rel="noopener">Напишите в Telegram</a> — отвечаю сам.</div>
+  </div>
+
+  <footer>
+    <p>© 2026 Мастер-ИИ · <a href="/">master-ii.ru</a> · <a href="https://t.me/master_ii_kurs" target="_blank" rel="noopener">Telegram-канал</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
