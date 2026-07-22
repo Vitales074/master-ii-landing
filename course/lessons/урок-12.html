@@ -124,7 +124,7 @@ cursor.execute(query, (user_input,))
   <div class="lesson-section">
     <h2><div class="section-icon icon-orange">📦</div>Уязвимость 3: Slopsquatting — галлюцинация пакетов</h2>
     <p>ИИ иногда предлагает установить несуществующий пакет с правдоподобным именем. Злоумышленник регистрирует пакет с этим именем — внутри вредоносный код. При установке он выполняется на вашем компьютере.</p>
-    <div class="tip-box"><strong>Как проверить перед npm install:</strong> откройте npmjs.com или pypi.org → найдите пакет → посмотрите: возраст (новый = подозрительно), число скачиваний (100 за всё время — красный флаг), история автора. После установки: <code>npm audit</code>.</div>
+    <div class="tip-box"><strong>Как проверить перед npm install:</strong> откройте <a href="https://npmjs.com" target="_blank" rel="noopener" class="ext-link">npmjs.com</a> или <a href="https://pypi.org" target="_blank" rel="noopener" class="ext-link">pypi.org</a> → найдите пакет → посмотрите: возраст (новый = подозрительно), число скачиваний (100 за всё время — красный флаг), история автора. После установки: <code>npm audit</code>.</div>
     <div class="warn-box"><strong>Правило:</strong> перед <code>npm install что-то-незнакомое</code> — сначала поискать. 10 секунд на проверку vs потенциально вредоносный код на вашем компьютере.</div>
   </div>
 
@@ -171,10 +171,10 @@ cursor.execute(query, (user_input,))
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Ключи никогда не вставляются в чат с Claude</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Для каждой критичной функции делается двойной проход</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>CLAUDE.md создан и лежит в корне каждого проекта</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>Перед npm install незнакомого пакета — проверка на npmjs.com</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Перед npm install незнакомого пакета — проверка на <a href="https://npmjs.com" target="_blank" rel="noopener" class="ext-link">npmjs.com</a></li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>SQL-запросы через параметризацию, не f-строки</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>textContent вместо innerHTML для пользовательских данных</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>Знаете, как отозвать скомпрометированный ключ (console.anthropic.com)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Знаете, как отозвать скомпрометированный ключ (<a href="https://console.anthropic.com" target="_blank" rel="noopener" class="ext-link">console.anthropic.com</a>)</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Временные демо-ключи создаются перед показом и удаляются после</li>
     </ul>
   </div>
