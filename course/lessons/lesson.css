@@ -257,6 +257,17 @@ code{
 }
 .lesson-img img{display:block;width:100%;height:auto}
 .lesson-img-caption{font-size:13px;color:var(--dim);margin-top:9px;text-align:center;font-style:italic}
+.view-site-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  margin:12px auto 0;padding:10px 20px;
+  background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.3);
+  border-radius:100px;
+  font-family:var(--font-d);font-size:12px;font-weight:700;letter-spacing:.04em;
+  color:var(--blue-l);text-decoration:none;text-transform:uppercase;
+  transition:background .2s,border-color .2s,transform .2s;
+}
+.view-site-btn:hover{background:rgba(96,165,250,.2);border-color:rgba(96,165,250,.5);transform:translateY(-1px)}
+.lesson-img-wrap{display:flex;flex-direction:column;align-items:center}
 
 /* ── Steps ── */
 .steps{display:flex;flex-direction:column;gap:14px;margin:12px 0}
