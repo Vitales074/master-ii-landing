@@ -20,8 +20,8 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <a href="../index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
-      <a href="../index.html" class="nav-logo">МАСТЕР-ИИ</a>
+      <a href="index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
+      <a href="index.html" class="nav-logo">МАСТЕР-ИИ</a>
     </div>
     <span class="nav-lesson">Урок 4 из 13</span>
     <div class="nav-progress">
@@ -46,12 +46,25 @@
     </div>
   </div>
 
+  <div class="tldr-box">
+    <div class="tldr-icon">⚡</div>
+    <div>
+      <h3>Если коротко</h3>
+      <ul>
+        <li>Раздел Code — рабочий инструмент, а не чат: Claude видит файлы на компьютере, создаёт и запускает их</li>
+        <li>Хороший промпт — короткое техзадание из 6 частей (что, для кого, дизайн, блоки, тексты, технические требования), а не одна фраза</li>
+        <li>Готовый сайт выкладываем на Netlify перетаскиванием папки — бесплатно, без кода, за 30 секунд</li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Code vs Chat -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-purple">⚡</div>Раздел Code: не чат, а рабочий стол</h2>
     <p>В Claude есть два режима работы. <strong>Chat</strong> — разговорный: задали вопрос, получили ответ. <strong>Code</strong> — инструментальный: Claude видит файлы на вашем компьютере, создаёт их, запускает, исправляет ошибки.</p>
     <p>Для создания сайта нужен именно Code. Причина проста: сайт — это файлы. Чтобы Claude сделал что-то настоящее, он должен видеть папку с проектом, создавать внутри неё файлы и проверять результат.</p>
     <div class="info-box"><strong>Где найти Code:</strong> на главной странице <a href="https://claude.ai" target="_blank" rel="noopener" class="ext-link">claude.ai</a> нажмите кнопку с логотипом в виде окна терминала (обычно слева от поля ввода сообщений). Откроется отдельный интерфейс.</div>
+    <div class="story-box"><strong>Если пугают слова «Git», «папка проекта», «Trust this folder»:</strong> это нормально, я сам когда-то боялся нажать не туда в первый раз. На деле это просто список шагов, как установка любой другой программы — их нельзя сделать «неправильно» настолько, чтобы что-то сломать. Настоящая магия начинается через пару минут, когда Claude сам напишет весь код по вашему описанию.</div>
   </div>
 
   <!-- Git -->
@@ -212,6 +225,8 @@
         <div class="step-body">
           <strong>Через ссылку на Unsplash</strong>
           <p>Зайдите на <a href="https://unsplash.com" target="_blank" rel="noopener" class="ext-link">unsplash.com</a> → найдите подходящее фото → скопируйте адрес изображения (ПКМ → «Копировать адрес изображения») → передайте Claude.</p>
+          <div class="lesson-img"><img src="img/unsplash-photo.jpg" alt="Правый клик по фото на Unsplash — пункт «Копировать URL картинки»"></div>
+          <div class="lesson-img-caption">ПКМ по фото → «Копировать URL картинки» — эту ссылку и передаёте Claude</div>
         </div>
       </div>
       <div class="step">
@@ -266,6 +281,7 @@
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Сайт открывается в браузере локально</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Знаете, как передать дизайн словами или картинкой</li>
     </ul>
+    <p class="reward-line">✅ Первый настоящий сайт готов — и вы написали его без единой строчки кода руками. Дальше будет только интереснее.</p>
   </div>
 
   <div class="lesson-nav">
