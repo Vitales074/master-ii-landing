@@ -172,46 +172,48 @@
   <!-- Типичные ошибки -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-orange">🔧</div>Типичные ошибки и решения</h2>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Проблема</th><th>Решение</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>История диалога стирается при перезапуске</td>
-          <td>Claude добавляет SQLite — небольшую базу данных для хранения истории пользователей</td>
-        </tr>
-        <tr>
-          <td>Бот долго отвечает, нет индикатора</td>
-          <td>Claude добавляет «typing...» индикатор — мессенджер показывает «печатает»</td>
-        </tr>
-        <tr>
-          <td>Flood Control — Telegram блокирует запросы</td>
-          <td>Убрать параллельные фоновые задачи, добавить задержку между ответами</td>
-        </tr>
-        <tr>
-          <td>Кириллица в командах не работает</td>
-          <td>Переименовать команды на латиницу: /start, /help, /menu</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">💾</span><h3>История диалога стирается при перезапуске</h3></div>
+        <ul><li>Claude добавляет SQLite — небольшую базу данных для хранения истории пользователей</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">⏳</span><h3>Бот долго отвечает, нет индикатора</h3></div>
+        <ul><li>Claude добавляет «typing...» индикатор — мессенджер показывает «печатает»</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🚦</span><h3>Flood Control — Telegram блокирует запросы</h3></div>
+        <ul><li>Убрать параллельные фоновые задачи, добавить задержку между ответами</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🔤</span><h3>Кириллица в командах не работает</h3></div>
+        <ul><li>Переименовать команды на латиницу: /start, /help, /menu</li></ul>
+      </div>
+    </div>
     <div class="info-box"><strong>Принцип:</strong> Claude сам находит ошибку, предлагает fix и применяет — вы только одобряете. Большинство типичных проблем с Telegram-ботами он видел тысячи раз.</div>
   </div>
 
   <!-- Сценарии -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-green">💡</div>4 сценария применения</h2>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Сценарий</th><th>Что делает бот</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Поддержка клиентов</td><td>Отвечает на типовые вопросы по базе знаний, записывает заявки</td></tr>
-        <tr><td>Бот для команды</td><td>Внутренний помощник: отвечает на вопросы по регламентам, помогает с задачами</td></tr>
-        <tr><td>Личный ИИ-помощник</td><td>Напоминания, планирование, заметки — только для вас</td></tr>
-        <tr><td>Диспетчер заявок</td><td>Принимает заявки, распределяет по категориям, уведомляет ответственного</td></tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🎧</span><h3>Поддержка клиентов</h3></div>
+        <ul><li>Отвечает на типовые вопросы по базе знаний, записывает заявки</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">👥</span><h3>Бот для команды</h3></div>
+        <ul><li>Внутренний помощник: отвечает на вопросы по регламентам, помогает с задачами</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">📝</span><h3>Личный ИИ-помощник</h3></div>
+        <ul><li>Напоминания, планирование, заметки — только для вас</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">📋</span><h3>Диспетчер заявок</h3></div>
+        <ul><li>Принимает заявки, распределяет по категориям, уведомляет ответственного</li></ul>
+      </div>
+    </div>
     <div class="tip-box"><strong>Один ключ — разные боты:</strong> создайте несколько ботов через BotFather, у каждого будет свой токен → каждый живёт в своей папке → все тратят один API-баланс.</div>
   </div>
 

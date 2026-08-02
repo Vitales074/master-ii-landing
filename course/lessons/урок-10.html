@@ -160,16 +160,24 @@
   <div class="lesson-section">
     <h2><div class="section-icon icon-orange">🛡</div>Безопасность ключа: аналогия с абонементом</h2>
     <p>API-ключ — не паспорт. Это абонемент: документ, который даёт право пользоваться услугами за ваш счёт. Утерянный абонемент можно отозвать в любой момент.</p>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Что видит владелец ключа</th><th>Что НЕ видит</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Может делать запросы к Claude API</td><td>Ваши переписки в Claude.ai</td></tr>
-        <tr><td>Тратит ваш баланс</td><td>Данные вашей карты</td></tr>
-        <tr><td>Может создавать другие ключи (если admin)</td><td>Другие ключи в аккаунте</td></tr>
-      </tbody>
-    </table>
+    <div class="vs-cards">
+      <div class="vs-card vs-blue">
+        <div class="vs-card-head"><span class="vs-card-icon">👁</span><h3>Что видит владелец ключа</h3></div>
+        <ul>
+          <li>Может делать запросы к Claude API</li>
+          <li>Тратит ваш баланс</li>
+          <li>Может создавать другие ключи (если admin)</li>
+        </ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🚫</span><h3>Что НЕ видит</h3></div>
+        <ul>
+          <li>Ваши переписки в Claude.ai</li>
+          <li>Данные вашей карты</li>
+          <li>Другие ключи в аккаунте</li>
+        </ul>
+      </div>
+    </div>
     <div class="tip-box"><strong>При утечке ключа:</strong> <a href="https://console.anthropic.com" target="_blank" rel="noopener" class="ext-link">console.anthropic.com</a> → API Keys → Delete. Ключ перестаёт работать мгновенно. Создайте новый. Совет: перед демонстрацией кода создайте временный ключ, после показа — удалите.</div>
     <div class="story-box"><strong>Слово «ключ» пугает больше, чем должно.</strong> На старте я тоже боялся: а вдруг случайно куда-то вставлю не туда и всё сломается. На деле худшее, что может случиться — кто-то потратит ваш баланс, а не украдёт деньги с карты или доступ к переписке. И это решается одной кнопкой «Delete» в любой момент.</div>
   </div>
@@ -177,17 +185,24 @@
   <!-- Где разместить -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-green">🌐</div>Где разместить агента</h2>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Формат</th><th>Аудитория</th><th>Сложность</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Веб-сайт с кнопками</td><td>Все по ссылке</td><td>Урок 8</td></tr>
-        <tr><td>Telegram-бот</td><td>Пользователи Telegram</td><td>Урок 11</td></tr>
-        <tr><td>Виджет поддержки</td><td>Посетители сайта клиента</td><td>Средняя</td></tr>
-        <tr><td>Несколько агентов</td><td>Разные роли, один баланс</td><td>Один ключ, разные папки</td></tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🌐</span><h3>Веб-сайт с кнопками</h3></div>
+        <ul><li><b>Аудитория</b>Все по ссылке</li><li><b>Сложность</b>Урок 8</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">✈️</span><h3>Telegram-бот</h3></div>
+        <ul><li><b>Аудитория</b>Пользователи Telegram</li><li><b>Сложность</b>Урок 11</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">💬</span><h3>Виджет поддержки</h3></div>
+        <ul><li><b>Аудитория</b>Посетители сайта клиента</li><li><b>Сложность</b>Средняя</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🧩</span><h3>Несколько агентов</h3></div>
+        <ul><li><b>Аудитория</b>Разные роли, один баланс</li><li><b>Сложность</b>Один ключ, разные папки</li></ul>
+      </div>
+    </div>
   </div>
 
   <!-- Чеклист -->
