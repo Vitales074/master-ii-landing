@@ -11,6 +11,7 @@
 <style>
   :root{
     --bg:#05050f;
+    --ease:cubic-bezier(.22,.68,.28,1);
     --card:rgba(255,255,255,.035);
     --line:rgba(255,255,255,.09);
     --blue:#60a5fa;
@@ -177,8 +178,34 @@
   #ai-panel{right:16px;bottom:88px}
   #ai-fab{right:16px;bottom:16px}
 }
+
+/* ── Шум: премиальная зернистость ── */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* ── Появление при скролле (только при живом JS) ── */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.08s}.reveal-d2{transition-delay:.16s}.reveal-d3{transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){ .js .reveal{opacity:1;transform:none;transition:none} }
+/* ── Иконки ── */
+.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+/* ── Доступность и микро-полировка ── */
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+.ctabtn,.paybtn{position:relative;overflow:hidden}
+.ctabtn::after,.paybtn::after{
+  content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:skewX(-20deg);transition:left .7s var(--ease);
+}
+.ctabtn:hover::after,.paybtn:hover::after{left:125%}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+document.documentElement.classList.add('js');
+setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(el){el.classList.add('in')});},3000);
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -200,17 +227,17 @@
     <p>Тогда я решил проверить дальше.</p>
   </div>
 
-  <div class="examples fade">
-    <div class="example">
-      <div class="ic">🌐</div>
+  <div class="examples fade reveal">
+    <div class="example reveal">
+      <div class="ic" style="color:var(--blue)"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
       <div><b>Сайт</b><span>Описал тему и стиль своими словами — Claude сделал готовую страницу, которую можно сразу показывать клиенту.</span></div>
     </div>
-    <div class="example">
-      <div class="ic">📱</div>
+    <div class="example reveal">
+      <div class="ic" style="color:var(--violet)"><svg class="ico" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></div>
       <div><b>Приложение</b><span>Не одно — несколько. Я просто объяснял, что должно делать приложение, и оно появлялось рабочим.</span></div>
     </div>
-    <div class="example">
-      <div class="ic">📈</div>
+    <div class="example reveal">
+      <div class="ic" style="color:var(--green)"><svg class="ico" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
       <div><b>Трейдинг</b><span>Это отдельная большая тема, но скажу честно — Claude начал помогать мне и здесь тоже.</span></div>
     </div>
   </div>
@@ -220,7 +247,7 @@
     <p class="muted">Дальше я решил разобраться, как это работает по-настоящему — и собрал весь путь в курс. Но прежде чем говорить о курсе — просто попробуйте увидеть то же, что увидел я. Такие примеры я разбираю в своём Telegram-канале.</p>
   </div>
 
-  <div class="cta fade">
+  <div class="cta fade reveal">
     <h2>Хотите видеть больше таких примеров?</h2>
     <p>Разбираю реальные задачи, которые решает Claude — бесплатно, в канале</p>
     <a class="ctabtn" href="https://t.me/master_ii_kurs" target="_blank" rel="noopener">Подписаться на канал →</a>
@@ -323,6 +350,18 @@
         input.focus();
       });
   });
+})();
+</script>
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(el){el.classList.add('in')});return;
+  }
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  })},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+  els.forEach(function(el){io.observe(el)});
 })();
 </script>
 </body>
