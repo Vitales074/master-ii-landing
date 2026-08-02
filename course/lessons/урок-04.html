@@ -156,37 +156,32 @@
   <!-- Что делает Claude сам -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-green">✨</div>Что Claude строит без дополнительных инструкций</h2>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Что Claude создаёт</th><th>Почему это важно</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Структуру страниц</td>
-          <td>Шапка, секции, футер — всё в правильном порядке</td>
-        </tr>
-        <tr>
-          <td>Тексты-заглушки</td>
-          <td>Не пустые блоки, а заполненные примеры — сразу видно, как будет смотреться</td>
-        </tr>
-        <tr>
-          <td>Кнопки и якорные ссылки</td>
-          <td>Навигация по секциям работает сразу</td>
-        </tr>
-        <tr>
-          <td>CSS-анимации</td>
-          <td>Плавное появление блоков при прокрутке без JS-библиотек</td>
-        </tr>
-        <tr>
-          <td>Адаптив</td>
-          <td>Сайт корректно отображается на телефоне без отдельной задачи</td>
-        </tr>
-        <tr>
-          <td>Заглушки для фото</td>
-          <td>Цветные прямоугольники с подсказками, что сюда поставить</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🏗</span><h3>Структуру страниц</h3></div>
+        <ul><li>Шапка, секции, футер — всё в правильном порядке</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">📝</span><h3>Тексты-заглушки</h3></div>
+        <ul><li>Не пустые блоки, а заполненные примеры — сразу видно, как будет смотреться</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🔗</span><h3>Кнопки и якорные ссылки</h3></div>
+        <ul><li>Навигация по секциям работает сразу</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">✨</span><h3>CSS-анимации</h3></div>
+        <ul><li>Плавное появление блоков при прокрутке без JS-библиотек</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">📱</span><h3>Адаптив</h3></div>
+        <ul><li>Сайт корректно отображается на телефоне без отдельной задачи</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🖼</span><h3>Заглушки для фото</h3></div>
+        <ul><li>Цветные прямоугольники с подсказками, что сюда поставить</li></ul>
+      </div>
+    </div>
   </div>
 
   <!-- Дизайн -->
@@ -257,25 +252,20 @@
   <!-- Модели и Effort -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-orange">⚙️</div>Модели и Effort: как не тратить лимит зря</h2>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Настройка</th><th>Когда использовать</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Sonnet + Medium</td>
-          <td>Первые черновики, правки текстов, простые задачи — 80% работы</td>
-        </tr>
-        <tr>
-          <td>Sonnet + High</td>
-          <td>Сложная верстка, нестандартные анимации, создание полноценного дизайна</td>
-        </tr>
-        <tr>
-          <td>Opus + High</td>
-          <td>Финальная полировка крупного проекта — используйте редко, это «тяжёлая артиллерия»</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🟢</span><h3>Sonnet + Medium</h3></div>
+        <ul><li>Первые черновики, правки текстов, простые задачи — 80% работы</li></ul>
+      </div>
+      <div class="vs-card vs-blue">
+        <div class="vs-card-head"><span class="vs-card-icon">🔵</span><h3>Sonnet + High</h3></div>
+        <ul><li>Сложная верстка, нестандартные анимации, создание полноценного дизайна</li></ul>
+      </div>
+      <div class="vs-card vs-purple">
+        <div class="vs-card-head"><span class="vs-card-icon">🟣</span><h3>Opus + High</h3></div>
+        <ul><li>Финальная полировка крупного проекта — используйте редко, это «тяжёлая артиллерия»</li></ul>
+      </div>
+    </div>
     <div class="tip-box"><strong>Лимиты обновляются каждые ~5 часов</strong> — это не суточный лимит. Если лимит кончился в середине работы, сделайте перерыв и продолжайте через несколько часов. Срочно переключаться на другую модель не нужно.</div>
     <div class="lesson-img"><img src="img/клод.jpg" alt="Выбор модели — Fable 5, Opus 5, Sonnet 5, Haiku 4.5"></div>
     <div class="lesson-img-caption">Модель выбирается кнопкой внизу справа, рядом с полем ввода</div>
