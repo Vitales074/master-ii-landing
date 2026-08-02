@@ -136,19 +136,32 @@
   <!-- Формула промпта -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-green">✏️</div>Формула промпта для визуала: 6 элементов</h2>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Элемент</th><th>Пример</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Формат</td><td>HTML+CSS карусель / SVG логотип / инфографика</td></tr>
-        <tr><td>Размер</td><td>1080×1080 для соцсетей / 1920×1080 для баннера</td></tr>
-        <tr><td>Цветовая палитра</td><td>Тёмный фон #1a1a2e, акцент синий #4a90e2, текст белый</td></tr>
-        <tr><td>Шрифт</td><td>Заголовки — Unbounded жирный, тело — Inter обычный</td></tr>
-        <tr><td>Содержание слайдов</td><td>Слайд 1: «5 ошибок при запуске рекламы» (заголовок). Слайд 2: Ошибка 1 — [текст]…</td></tr>
-        <tr><td>Декоративные элементы</td><td>Градиентный фон, иконки из эмодзи, тонкие линии-разделители</td></tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🎞</span><h3>Формат</h3></div>
+        <ul><li>HTML+CSS карусель / SVG логотип / инфографика</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">📐</span><h3>Размер</h3></div>
+        <ul><li>1080×1080 для соцсетей / 1920×1080 для баннера</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🎨</span><h3>Цветовая палитра</h3></div>
+        <ul><li>Тёмный фон #1a1a2e, акцент синий #4a90e2, текст белый</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🔤</span><h3>Шрифт</h3></div>
+        <ul><li>Заголовки — Unbounded жирный, тело — Inter обычный</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">📑</span><h3>Содержание слайдов</h3></div>
+        <ul><li>Слайд 1: «5 ошибок при запуске рекламы» (заголовок). Слайд 2: Ошибка 1 — [текст]…</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">✨</span><h3>Декоративные элементы</h3></div>
+        <ul><li>Градиентный фон, иконки из эмодзи, тонкие линии-разделители</li></ul>
+      </div>
+    </div>
     <div class="tip-box"><strong>Детальный промпт — для финала, короткий — для эксперимента.</strong> Начните с 2–3 строк, посмотрите на направление — потом уточняйте. Детальный промпт с первого раза часто даёт именно то, что описано, а не то, что на самом деле нужно.</div>
     <div class="lesson-img-wrap">
       <div class="lesson-img"><img src="img/site-kulinarny-art.png" alt="Сайт Кулинарный Арт — другой стиль, тоже сделан Claude"></div>
@@ -192,17 +205,24 @@
   <div class="lesson-section">
     <h2><div class="section-icon icon-orange">🖼</div>Когда нужен внешний инструмент</h2>
     <p>Для фотореализма, аватаров и видео Claude передаёт эстафету специализированным платформам генерации изображений и видео — это отдельный класс инструментов, не входящий в задачи Claude Code.</p>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Задача</th><th>Инструмент</th><th>Стоимость</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Карусели, баннеры, инфографика</td><td>Claude Code</td><td>Бесплатно / подписка</td></tr>
-        <tr><td>Фотореалистичные изображения</td><td>Специализированные платформы</td><td>$15–50+/мес</td></tr>
-        <tr><td>Аватары и персонажи</td><td>Специализированные платформы</td><td>Зависит от сервиса</td></tr>
-        <tr><td>Видео</td><td>Специализированные платформы</td><td>Отдельная подписка</td></tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-blue">
+        <div class="vs-card-head"><span class="vs-card-icon">🎠</span><h3>Карусели, баннеры, инфографика</h3></div>
+        <ul><li><b>Инструмент</b>Claude Code</li><li><b>Стоимость</b>Бесплатно / подписка</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">📸</span><h3>Фотореалистичные изображения</h3></div>
+        <ul><li><b>Инструмент</b>Специализированные платформы</li><li><b>Стоимость</b>$15–50+/мес</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">👤</span><h3>Аватары и персонажи</h3></div>
+        <ul><li><b>Инструмент</b>Специализированные платформы</li><li><b>Стоимость</b>Зависит от сервиса</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🎬</span><h3>Видео</h3></div>
+        <ul><li><b>Инструмент</b>Специализированные платформы</li><li><b>Стоимость</b>Отдельная подписка</li></ul>
+      </div>
+    </div>
     <div class="info-box"><strong>Как это устроено:</strong> формулируете промпт в Claude (максимально подробно) → вставляете в выбранную вами платформу генерации изображений → получаете реалистичное изображение. Claude помогает написать качественный промпт для генерации, а саму картинку рисует уже другой инструмент.</div>
   </div>
 
