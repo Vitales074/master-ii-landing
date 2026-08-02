@@ -182,16 +182,20 @@
   <div class="lesson-section">
     <h2><div class="section-icon icon-orange">🔑</div>Часть 4 — Забираем данные сервера</h2>
     <p>После оплаты откройте раздел <strong>«My Services»</strong> — там появится активный заказ. Внутри заказа будут три значения:</p>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Параметр</th><th>Что это</th><th>Пример</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>IP-адрес</td><td>Адрес вашего сервера в интернете</td><td><code>46.102.237.198</code></td></tr>
-        <tr><td>Username</td><td>Имя пользователя — всегда одинаковое</td><td><code>root</code></td></tr>
-        <tr><td>Password</td><td>Пароль от сервера — сгенерирован автоматически</td><td>Скрыт</td></tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">📍</span><h3>IP-адрес</h3></div>
+        <ul><li><b>Что это</b>Адрес вашего сервера в интернете</li><li><b>Пример</b><code>46.102.237.198</code></li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">👤</span><h3>Username</h3></div>
+        <ul><li><b>Что это</b>Имя пользователя — всегда одинаковое</li><li><b>Пример</b><code>root</code></li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🔑</span><h3>Password</h3></div>
+        <ul><li><b>Что это</b>Пароль от сервера — сгенерирован автоматически</li><li><b>Пример</b>Скрыт</li></ul>
+      </div>
+    </div>
     <div class="warn-box"><strong>Пароль — только для вас.</strong> Кто угодно, получив IP и пароль, сможет подключиться к вашему серверу. Сохраните эти три значения в надёжном месте — они понадобятся прямо сейчас и при любой переустановке в будущем.</div>
   </div>
 
@@ -267,33 +271,28 @@
   <!-- Проблемы -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-orange">🔧</div>Если что-то пошло не так</h2>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Симптом</th><th>Что делать</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Оплата прошла, но заказ не появился</td>
-          <td>Подождите 5–10 минут — данные обновляются с задержкой. Если через 15 мин заказа нет — напишите в поддержку хостинга через чат, приложив скриншот оплаты.</td>
-        </tr>
-        <tr>
-          <td>При настройке Self-hosted VPN вылетает ошибка</td>
-          <td>Закройте AmneziaVPN через трей, откройте заново, повторите шаги подключения — почти всегда помогает со второго раза.</td>
-        </tr>
-        <tr>
-          <td>Сервер настроен, но подключение не идёт</td>
-          <td>Проверьте, что все прочие VPN и расширения отключены — это причина №1. Если не помогло — перезапустите приложение или компьютер.</td>
-        </tr>
-        <tr>
-          <td>Подключился, но IP не поменялся</td>
-          <td>Отключите VPN-расширения в браузере и очистите кэш, затем проверьте снова.</td>
-        </tr>
-        <tr>
-          <td>Не получается отсканировать QR при оплате</td>
-          <td>Используйте ссылку на оплату — она обычно есть рядом на той же странице.</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">💳</span><h3>Оплата прошла, но заказ не появился</h3></div>
+        <ul><li>Подождите 5–10 минут — данные обновляются с задержкой. Если через 15 мин заказа нет — напишите в поддержку хостинга через чат, приложив скриншот оплаты.</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">⚠️</span><h3>При настройке Self-hosted VPN вылетает ошибка</h3></div>
+        <ul><li>Закройте AmneziaVPN через трей, откройте заново, повторите шаги подключения — почти всегда помогает со второго раза.</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🔌</span><h3>Сервер настроен, но подключение не идёт</h3></div>
+        <ul><li>Проверьте, что все прочие VPN и расширения отключены — это причина №1. Если не помогло — перезапустите приложение или компьютер.</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🌍</span><h3>Подключился, но IP не поменялся</h3></div>
+        <ul><li>Отключите VPN-расширения в браузере и очистите кэш, затем проверьте снова.</li></ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">📷</span><h3>Не получается отсканировать QR при оплате</h3></div>
+        <ul><li>Используйте ссылку на оплату — она обычно есть рядом на той же странице.</li></ul>
+      </div>
+    </div>
   </div>
 
   <!-- Чеклист -->
