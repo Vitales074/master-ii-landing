@@ -132,66 +132,72 @@
   <!-- Форматы вывода -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-blue">📦</div>5 форматов готового приложения</h2>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Формат</th><th>Как использовать</th><th>Аудитория</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Localhost (локальный сервер)</td>
-          <td>Открыть по адресу http://localhost:3000 — только на вашем компьютере</td>
-          <td>Только вы</td>
-        </tr>
-        <tr>
-          <td>HTML-файл</td>
-          <td>Открыть файл index.html в браузере — без сервера, но без динамики</td>
-          <td>Только вы</td>
-        </tr>
-        <tr>
-          <td>Netlify / Vercel</td>
-          <td>Загрузить папку на хостинг — получить ссылку</td>
-          <td>Любой по ссылке</td>
-        </tr>
-        <tr>
-          <td>Telegram-бот</td>
-          <td>Подключить через API — урок 11</td>
-          <td>Пользователи Telegram</td>
-        </tr>
-        <tr>
-          <td>VPS-сервер</td>
-          <td>Деплой на сервер — работает 24/7 — урок 9</td>
-          <td>Любой по ссылке, 24/7</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">💻</span><h3>Localhost</h3></div>
+        <ul>
+          <li><b>Как использовать</b>Открыть по адресу http://localhost:3000 — только на вашем компьютере</li>
+          <li><b>Аудитория</b>Только вы</li>
+        </ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">📄</span><h3>HTML-файл</h3></div>
+        <ul>
+          <li><b>Как использовать</b>Открыть файл index.html в браузере — без сервера, но без динамики</li>
+          <li><b>Аудитория</b>Только вы</li>
+        </ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🚀</span><h3>Netlify / Vercel</h3></div>
+        <ul>
+          <li><b>Как использовать</b>Загрузить папку на хостинг — получить ссылку</li>
+          <li><b>Аудитория</b>Любой по ссылке</li>
+        </ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">✈️</span><h3>Telegram-бот</h3></div>
+        <ul>
+          <li><b>Как использовать</b>Подключить через API — урок 11</li>
+          <li><b>Аудитория</b>Пользователи Telegram</li>
+        </ul>
+      </div>
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🖥</span><h3>VPS-сервер</h3></div>
+        <ul>
+          <li><b>Как использовать</b>Деплой на сервер — работает 24/7 — урок 9</li>
+          <li><b>Аудитория</b>Любой по ссылке, 24/7</li>
+        </ul>
+      </div>
+    </div>
     <div class="warn-box"><strong>Localhost — это НЕ ссылка для клиента.</strong> Адрес http://localhost:3000 работает только на вашем компьютере. Чтобы отправить ссылку другому человеку — нужен деплой на хостинг или сервер.</div>
   </div>
 
   <!-- Модели -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-orange">⚙️</div>Sonnet vs Opus + Effort: расходуем осознанно</h2>
-    <table class="lesson-table">
-      <thead>
-        <tr><th>Связка</th><th>Для чего</th><th>Лимит</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Sonnet + Low/Medium</td>
-          <td>Правки, небольшие задачи, черновик</td>
-          <td>Расходуется медленно</td>
-        </tr>
-        <tr>
-          <td>Sonnet + High</td>
-          <td>Новое приложение, сложная логика — рекомендуется</td>
-          <td>Умеренный расход</td>
-        </tr>
-        <tr>
-          <td>Opus + High</td>
-          <td>Финальная полировка, сложные баги, критичные задачи</td>
-          <td>Расходуется быстро</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="option-grid">
+      <div class="vs-card vs-neutral">
+        <div class="vs-card-head"><span class="vs-card-icon">🟢</span><h3>Sonnet + Low/Medium</h3></div>
+        <ul>
+          <li><b>Для чего</b>Правки, небольшие задачи, черновик</li>
+          <li><b>Лимит</b>Расходуется медленно</li>
+        </ul>
+      </div>
+      <div class="vs-card vs-blue">
+        <div class="vs-card-head"><span class="vs-card-icon">🔵</span><h3>Sonnet + High</h3></div>
+        <ul>
+          <li><b>Для чего</b>Новое приложение, сложная логика — рекомендуется</li>
+          <li><b>Лимит</b>Умеренный расход</li>
+        </ul>
+      </div>
+      <div class="vs-card vs-purple">
+        <div class="vs-card-head"><span class="vs-card-icon">🟣</span><h3>Opus + High</h3></div>
+        <ul>
+          <li><b>Для чего</b>Финальная полировка, сложные баги, критичные задачи</li>
+          <li><b>Лимит</b>Расходуется быстро</li>
+        </ul>
+      </div>
+    </div>
     <div class="tip-box"><strong>Рекомендация:</strong> для большинства задач курса — Sonnet + High. Opus держите в запасе для ситуаций, когда Sonnet несколько раз не справился с задачей.</div>
   </div>
 
