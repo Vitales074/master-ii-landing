@@ -19,6 +19,7 @@
   --font-d:'Unbounded',sans-serif;
   --font-b:'Hanken Grotesk',sans-serif;
   --radius:16px;--radius-sm:10px;
+  --ease:cubic-bezier(.22,.68,.28,1);
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.7;overflow-x:hidden}
@@ -121,7 +122,7 @@ section{position:relative;padding:100px 0}
 /* Формат */
 .format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .format-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:32px 28px;text-align:center}
-.format-card .icon{font-size:40px;margin-bottom:16px}
+.format-card .icon-box{margin:0 auto 18px;width:52px;height:52px;border-radius:15px}
 .format-card h3{font-family:var(--font-d);font-size:14px;font-weight:700;margin-bottom:10px}
 .format-card p{font-size:14px;color:var(--muted);line-height:1.7}
 
@@ -164,16 +165,120 @@ footer{background:var(--bg-1);border-top:1px solid rgba(255,255,255,.07);padding
 /* Grid bg */
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:64px 64px}
 
+/* Noise texture — премиальная зернистость поверх всего */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Иконки (единая система вместо эмодзи) ── */
+.ico{width:22px;height:22px;stroke:currentColor;stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.ico-lg{width:26px;height:26px}
+.icon-box{
+  width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  background:linear-gradient(140deg,rgba(37,99,235,.22),rgba(124,58,237,.16));
+  border:1px solid rgba(96,165,250,.28);color:var(--blue-l);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.icon-box.alt{background:linear-gradient(140deg,rgba(124,58,237,.24),rgba(37,99,235,.14));border-color:rgba(167,139,250,.3);color:var(--purple-l)}
+
+/* ── Bento-сетка «Что вы получите» ── */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:48px}
+.bento-cell{
+  position:relative;overflow:hidden;
+  background:rgba(255,255,255,.032);border:1px solid rgba(255,255,255,.075);
+  border-radius:20px;padding:28px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:border-color .35s var(--ease),transform .35s var(--ease),background .35s var(--ease);
+}
+.bento-cell::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s var(--ease);
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(96,165,250,.09),transparent 70%);
+}
+.bento-cell:hover{border-color:rgba(96,165,250,.32);transform:translateY(-3px);background:rgba(255,255,255,.045)}
+.bento-cell:hover::after{opacity:1}
+.bento-cell h4{font-family:var(--font-d);font-size:15px;font-weight:700;line-height:1.35;letter-spacing:-.01em}
+.bento-cell p{font-size:14.5px;color:var(--muted);line-height:1.65}
+.bento-flag{grid-column:span 7;grid-row:span 2}
+.bento-flag h4{font-size:19px}
+.bento-flag p{font-size:15.5px}
+.bento-5{grid-column:span 5}
+.bento-4{grid-column:span 4}
+
+/* ── Живые работы (социальное доказательство) ── */
+#works{background:var(--bg-1)}
+.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.work-card{
+  display:block;text-decoration:none;color:inherit;position:relative;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;overflow:hidden;
+  transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
+}
+.work-card:hover{transform:translateY(-6px);border-color:rgba(96,165,250,.35);box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 1px rgba(96,165,250,.1)}
+.work-shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--bg-2)}
+.work-shot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .6s var(--ease)}
+.work-card:hover .work-shot img{transform:scale(1.045)}
+.work-shot::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,15,.55),transparent 45%)}
+.work-meta{padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.work-meta h4{font-family:var(--font-d);font-size:14px;font-weight:700;margin-bottom:4px}
+.work-meta p{font-size:13px;color:var(--dim)}
+.work-go{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.25);color:var(--blue-l);
+  transition:background .3s var(--ease),transform .3s var(--ease)}
+.work-card:hover .work-go{background:rgba(96,165,250,.24);transform:translate(2px,-2px)}
+
+/* ── Скролл-анимации ── */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.07s}.reveal-d2{transition-delay:.14s}.reveal-d3{transition-delay:.21s}
+.reveal-d4{transition-delay:.28s}.reveal-d5{transition-delay:.35s}.reveal-d6{transition-delay:.42s}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .orb{animation:none}
+}
+
+/* ── Оркестрованный вход hero ── */
+@keyframes heroIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero-content>*{animation:heroIn .85s var(--ease) both}
+.hero-content>*:nth-child(1){animation-delay:.05s}
+.hero-content>*:nth-child(2){animation-delay:.15s}
+.hero-content>*:nth-child(3){animation-delay:.25s}
+.hero-content>*:nth-child(4){animation-delay:.35s}
+.hero-content>*:nth-child(5){animation-delay:.45s}
+
+/* ── Nav: уплотняется при скролле ── */
+nav{transition:padding .35s var(--ease),background .35s var(--ease),border-color .35s var(--ease)}
+nav.scrolled{padding:11px 0;background:rgba(5,5,15,.92);border-bottom-color:rgba(255,255,255,.1)}
+
+/* ── Микро-полировка ── */
+.avatar-card,.result-card,.format-card,.acc-item,.faq-item{transition:border-color .35s var(--ease),transform .35s var(--ease),background .35s var(--ease)}
+.format-card:hover{border-color:rgba(96,165,250,.28);transform:translateY(-3px)}
+.acc-header:hover .acc-title,.faq-q:hover{color:var(--blue-l)}
+a:focus-visible,button:focus-visible,.acc-header:focus-visible,.faq-q:focus-visible{outline:2px solid var(--blue-l);outline-offset:3px;border-radius:4px}
+.btn-primary,.price-btn{position:relative;overflow:hidden}
+.btn-primary::after,.price-btn::after{
+  content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:skewX(-20deg);transition:left .7s var(--ease);
+}
+.btn-primary:hover::after,.price-btn:hover::after{left:125%}
+
 /* Responsive */
 @media(max-width:900px){
-  .avatar-grid,.results-grid,.format-grid{grid-template-columns:repeat(2,1fr)}
+  .avatar-grid,.results-grid,.format-grid,.works-grid{grid-template-columns:repeat(2,1fr)}
   .price-wrap{grid-template-columns:1fr}
+  .bento{grid-template-columns:repeat(6,1fr)}
+  .bento-flag{grid-column:span 6;grid-row:span 1}
+  .bento-5,.bento-4{grid-column:span 3}
 }
 @media(max-width:600px){
-  .avatar-grid,.results-grid,.format-grid{grid-template-columns:1fr}
+  .avatar-grid,.results-grid,.format-grid,.works-grid{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr;gap:14px}
+  .bento-flag,.bento-5,.bento-4{grid-column:span 1;grid-row:span 1}
   .hero-stats{gap:28px}
   .stat-num{font-size:1.5rem}
   .acc-body{padding-left:40px}
+  section{padding:72px 0}
 }
 
 /* ── AI консультант ── */
@@ -316,15 +421,15 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 <!-- Для кого -->
 <section id="for-who">
   <div class="container">
-    <div class="text-center">
+    <div class="text-center reveal">
       <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Для кого</div>
       <h2 class="section-title">Курс подойдёт вам, если...</h2>
       <div class="divider-line"></div>
       <p class="section-sub" style="margin-top:16px">Не важно, есть ли у вас технический опыт. Важно желание разобраться.</p>
     </div>
     <div class="avatar-grid">
-      <div class="avatar-card">
-        <div class="avatar-icon blue">💼</div>
+      <div class="avatar-card reveal">
+        <div class="avatar-icon blue"><svg class="ico ico-lg" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
         <h3>Фрилансер или самозанятый</h3>
         <p>Хотите расширить список услуг и брать в 2–3 раза больше клиентов за то же время.</p>
         <ul>
@@ -333,8 +438,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
           <li>Контент и маркетинговый аудит</li>
         </ul>
       </div>
-      <div class="avatar-card">
-        <div class="avatar-icon purple">🚀</div>
+      <div class="avatar-card reveal reveal-d1">
+        <div class="avatar-icon purple"><svg class="ico ico-lg" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
         <h3>Предприниматель</h3>
         <p>Нужно автоматизировать рутину, создать инструменты для команды или сократить расходы на разработку.</p>
         <ul>
@@ -343,8 +448,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
           <li>Быстрый MVP за один вечер</li>
         </ul>
       </div>
-      <div class="avatar-card">
-        <div class="avatar-icon green">📈</div>
+      <div class="avatar-card reveal reveal-d2">
+        <div class="avatar-icon green"><svg class="ico ico-lg" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
         <h3>Наёмный специалист</h3>
         <p>Хотите стать незаменимым в команде, делать работу быстрее и выйти на новый уровень дохода.</p>
         <ul>
@@ -360,54 +465,87 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 <!-- Результаты -->
 <section id="results">
   <div class="container">
-    <div class="text-center">
+    <div class="text-center reveal">
       <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Что вы получите</div>
       <h2 class="section-title">6 навыков, которые меняют<br>то, как вы работаете</h2>
       <div class="divider-line"></div>
     </div>
-    <div class="results-grid" style="margin-top:48px">
-      <div class="result-card">
-        <div class="result-icon b">🌐</div>
-        <div>
-          <h4>Claude Code работает из любой страны</h4>
-          <p>Claude Code — мощный ИИ, который пишет код, создаёт сайты и агентов сам или вместе с вами. В части стран прямой доступ ограничен — в курсе есть готовое решение (AmneziaVPN), которое настраивается один раз за 10 минут. Уже пользуетесь своим VPN и разбираетесь в теме? Используйте его — первые два урока можно пропустить.</p>
-        </div>
+    <div class="bento">
+      <div class="bento-cell bento-flag reveal">
+        <div class="icon-box"><svg class="ico ico-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+        <h4>Claude Code работает из любой страны</h4>
+        <p>Claude Code — мощный ИИ, который пишет код, создаёт сайты и агентов сам или вместе с вами. В части стран прямой доступ ограничен — в курсе есть готовое решение (AmneziaVPN), которое настраивается один раз за 10 минут.</p>
+        <p style="color:var(--dim)">Уже пользуетесь своим VPN и разбираетесь в теме? Используйте его — первые два урока можно пропустить.</p>
       </div>
-      <div class="result-card">
-        <div class="result-icon p">🏗️</div>
-        <div>
-          <h4>Сайты и приложения без кода</h4>
-          <p>Создадите многостраничный бизнес-сайт, лендинг и полноценное веб-приложение.</p>
-        </div>
+      <div class="bento-cell bento-5 reveal reveal-d1">
+        <div class="icon-box alt"><svg class="ico ico-lg" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></div>
+        <h4>Сайты и приложения без кода</h4>
+        <p>Создадите многостраничный бизнес-сайт, лендинг и полноценное веб-приложение.</p>
       </div>
-      <div class="result-card">
-        <div class="result-icon g">🤖</div>
-        <div>
-          <h4>Личный агент и Telegram-бот</h4>
-          <p>Настроите API, создадите агента для клиентов и подключите его в Telegram за один сеанс.</p>
-        </div>
+      <div class="bento-cell bento-5 reveal reveal-d2">
+        <div class="icon-box"><svg class="ico ico-lg" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></div>
+        <h4>Личный агент и Telegram-бот</h4>
+        <p>Настроите API, создадите агента для клиентов и подключите его в Telegram за один сеанс.</p>
       </div>
-      <div class="result-card">
-        <div class="result-icon o">🎨</div>
-        <div>
-          <h4>Профессиональный дизайн</h4>
-          <p>Будете создавать визуалы, инфографику и анимированные карусели без дизайнера.</p>
-        </div>
+      <div class="bento-cell bento-4 reveal reveal-d3">
+        <div class="icon-box alt"><svg class="ico ico-lg" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/><circle cx="17.5" cy="10.5" r=".6" fill="currentColor" stroke="none"/><circle cx="8.5" cy="7.5" r=".6" fill="currentColor" stroke="none"/><circle cx="6.5" cy="12.5" r=".6" fill="currentColor" stroke="none"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.83-.44-1.12-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/></svg></div>
+        <h4>Профессиональный дизайн</h4>
+        <p>Будете создавать визуалы, инфографику и анимированные карусели без дизайнера.</p>
       </div>
-      <div class="result-card">
-        <div class="result-icon b">🔒</div>
-        <div>
-          <h4>Безопасный код и защита данных</h4>
-          <p>Узнаете про OWASP Top 10, метод двойного прохода и CLAUDE.md для каждого проекта.</p>
-        </div>
+      <div class="bento-cell bento-4 reveal reveal-d4">
+        <div class="icon-box"><svg class="ico ico-lg" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h4>Безопасный код и защита данных</h4>
+        <p>Узнаете про OWASP Top 10, метод двойного прохода и CLAUDE.md для каждого проекта.</p>
       </div>
-      <div class="result-card">
-        <div class="result-icon g">💰</div>
-        <div>
-          <h4>Первые клиенты и портфолио</h4>
-          <p>Оформите кейсы, проведёте маркетинговый аудит и выберете модель работы с заказчиками.</p>
-        </div>
+      <div class="bento-cell bento-4 reveal reveal-d5">
+        <div class="icon-box alt"><svg class="ico ico-lg" viewBox="0 0 24 24"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg></div>
+        <h4>Первые клиенты и портфолио</h4>
+        <p>Оформите кейсы, проведёте маркетинговый аудит и выберете модель работы с заказчиками.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Живые работы -->
+<section id="works">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Доказательства</div>
+      <h2 class="section-title">Всё это сделано тем же<br>методом, что и в курсе</h2>
+      <div class="divider-line"></div>
+      <p class="section-sub" style="margin-top:16px">Не мокапы и не картинки из интернета. Настоящие работы — откройте и прокликайте сами, ничего не покупая.</p>
+    </div>
+    <div class="works-grid">
+      <a href="https://vitales074.github.io/zeleny-dom/" target="_blank" rel="noopener" class="work-card reveal">
+        <div class="work-shot"><img src="/img/work-zeleny-dom.jpg" alt="Сайт рекламно-производственной компании «Зелёный дом»" loading="lazy" width="1200" height="750"></div>
+        <div class="work-meta">
+          <div>
+            <h4>Зелёный дом</h4>
+            <p>Сайт рекламного производства</p>
+          </div>
+          <span class="work-go"><svg class="ico" viewBox="0 0 24 24" style="width:15px;height:15px"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+        </div>
+      </a>
+      <a href="https://vitales074.github.io/Kulinar-Art/" target="_blank" rel="noopener" class="work-card reveal reveal-d1">
+        <div class="work-shot"><img src="/img/work-kulinarny-art.jpg" alt="Сайт кулинарной студии «Кулинарный Арт»" loading="lazy" width="1200" height="750"></div>
+        <div class="work-meta">
+          <div>
+            <h4>Кулинарный Арт</h4>
+            <p>Сайт кулинарной студии</p>
+          </div>
+          <span class="work-go"><svg class="ico" viewBox="0 0 24 24" style="width:15px;height:15px"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+        </div>
+      </a>
+      <a href="https://vitales074.github.io/bloom-flowers/" target="_blank" rel="noopener" class="work-card reveal reveal-d2">
+        <div class="work-shot"><img src="/img/work-bloom.jpg" alt="Приложение магазина авторских букетов Bloom" loading="lazy" width="1200" height="570"></div>
+        <div class="work-meta">
+          <div>
+            <h4>Bloom</h4>
+            <p>Приложение с каталогом и корзиной</p>
+          </div>
+          <span class="work-go"><svg class="ico" viewBox="0 0 24 24" style="width:15px;height:15px"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -415,13 +553,13 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 <!-- Программа -->
 <section id="program">
   <div class="container">
-    <div class="text-center">
+    <div class="text-center reveal">
       <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Программа</div>
       <h2 class="section-title">13 уроков — от VPN<br>до первых клиентов</h2>
       <div class="divider-line"></div>
       <p class="section-sub" style="margin-top:16px">Каждый урок — законченная практическая тема с конкретным результатом.</p>
     </div>
-    <div class="accordion">
+    <div class="accordion reveal">
 
       <div class="acc-item">
         <div class="acc-header">
@@ -610,24 +748,24 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 <!-- Формат -->
 <section id="format">
   <div class="container">
-    <div class="text-center">
+    <div class="text-center reveal">
       <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Формат</div>
       <h2 class="section-title">Всё, что нужно<br>для самостоятельной работы</h2>
       <div class="divider-line"></div>
     </div>
     <div class="format-grid" style="margin-top:48px">
-      <div class="format-card">
-        <div class="icon">📚</div>
+      <div class="format-card reveal">
+        <div class="icon-box"><svg class="ico ico-lg" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></div>
         <h3>Уроки</h3>
         <p>13 структурированных уроков с пошаговыми инструкциями и практическими заданиями. Читайте в своём темпе, возвращайтесь к любому моменту.</p>
       </div>
-      <div class="format-card">
-        <div class="icon">📄</div>
+      <div class="format-card reveal reveal-d1">
+        <div class="icon-box alt"><svg class="ico ico-lg" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
         <h3>Текстовые материалы</h3>
         <p>Каждый урок — подробный текстовый конспект в формате .docx. Удобно читать, искать и распечатывать.</p>
       </div>
-      <div class="format-card">
-        <div class="icon">🖥️</div>
+      <div class="format-card reveal reveal-d2">
+        <div class="icon-box"><svg class="ico ico-lg" viewBox="0 0 24 24"><path d="m10 7 5 3-5 3Z"/><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg></div>
         <h3>Слайды к каждому уроку</h3>
         <p>Интерактивные слайды reveal.js открываются прямо в браузере. Все ключевые схемы и таблицы под рукой.</p>
       </div>
@@ -638,18 +776,18 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 <!-- Цена -->
 <section id="price">
   <div class="container">
-    <div class="text-center" style="margin-bottom:56px">
+    <div class="text-center reveal" style="margin-bottom:56px">
       <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>Стоимость</div>
       <h2 class="section-title">Один раз — навсегда</h2>
       <div class="divider-line"></div>
     </div>
-    <div class="price-wrap">
+    <div class="price-wrap reveal">
       <div class="price-card">
         <div class="price-badge">ПОЛНЫЙ ДОСТУП</div>
         <div class="price-amount"><span>₽</span>4 900</div>
         <p class="price-desc">единоразовый платёж · доступ навсегда</p>
         <a href="/buy/" class="price-btn">Купить курс →</a>
-        <p class="price-note">Безопасная оплата · Доступ сразу после оплаты</p>
+        <p class="price-note">Безопасная оплата через Boosty · Доступ навсегда</p>
       </div>
       <div>
         <ul class="price-list">
@@ -670,12 +808,12 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 <!-- FAQ -->
 <section id="faq">
   <div class="container">
-    <div class="text-center">
+    <div class="text-center reveal">
       <div class="section-eyebrow"><span class="section-eyebrow-dot"></span>FAQ</div>
       <h2 class="section-title">Частые вопросы</h2>
       <div class="divider-line"></div>
     </div>
-    <div class="faq" style="margin-top:48px">
+    <div class="faq reveal" style="margin-top:48px">
 
       <div class="faq-item">
         <div class="faq-q">Нужен ли опыт в программировании?<span class="faq-arrow">⌄</span></div>
@@ -699,7 +837,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 
       <div class="faq-item">
         <div class="faq-q">Как получить доступ после оплаты?<span class="faq-arrow">⌄</span></div>
-        <div class="faq-a">Сразу после оплаты в посте Boosty откроется ссылка на все материалы курса. Доступ бессрочный — возвращайтесь в любое время.</div>
+        <div class="faq-a">После оплаты на Boosty мы вручную высылаем вам логин и пароль от курса в личные сообщения — обычно в течение нескольких часов. Доступ бессрочный: он остаётся у вас навсегда, возвращайтесь к материалам в любое время.</div>
       </div>
 
     </div>
@@ -739,6 +877,42 @@ document.querySelectorAll('.faq-q').forEach(q => {
     if (!isOpen) item.classList.add('open');
   });
 });
+
+/* Появление секций при скролле */
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  els.forEach(function(el){ io.observe(el); });
+})();
+
+/* Навбар уплотняется при скролле */
+(function(){
+  var nav = document.querySelector('nav');
+  if (!nav) return;
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 24); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* Мягкая подсветка bento-ячейки за курсором */
+(function(){
+  if (window.matchMedia('(hover: none)').matches) return;
+  document.querySelectorAll('.bento-cell').forEach(function(cell){
+    cell.addEventListener('pointermove', function(e){
+      var r = cell.getBoundingClientRect();
+      cell.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+      cell.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
+  });
+})();
 </script>
 
 <div id="ai-tooltip">
