@@ -79,33 +79,26 @@
   <div class="lesson-section">
     <h2><div class="section-icon icon-purple">🏗</div>Plan Mode vs Auto: когда включать голову заранее</h2>
     <p>Аналогия со строительством: можно начать класть кирпичи без чертежа — а потом сносить, когда окажется, что стена не там. А можно потратить час на проект — и строить правильно с первого раза.</p>
-    <table class="lesson-table">
-      <thead>
-        <tr><th></th><th>Auto Mode</th><th>Plan Mode</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Когда использовать</td>
-          <td>Небольшие правки, понятная задача</td>
-          <td>Новое приложение, сложная логика</td>
-        </tr>
-        <tr>
-          <td>Что происходит</td>
-          <td>Сразу начинает делать</td>
-          <td>Сначала составляет план, вы одобряете</td>
-        </tr>
-        <tr>
-          <td>Риск</td>
-          <td>Может пойти не туда</td>
-          <td>Минимальный — вы видите маршрут заранее</td>
-        </tr>
-        <tr>
-          <td>Скорость</td>
-          <td>Быстрее на старте</td>
-          <td>Медленнее на старте, быстрее в итоге</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="vs-cards">
+      <div class="vs-card vs-blue">
+        <div class="vs-card-head"><span class="vs-card-icon">⚡</span><h3>Auto Mode</h3></div>
+        <ul>
+          <li><b>Когда использовать</b>Небольшие правки, понятная задача</li>
+          <li><b>Что происходит</b>Сразу начинает делать</li>
+          <li><b>Риск</b>Может пойти не туда</li>
+          <li><b>Скорость</b>Быстрее на старте</li>
+        </ul>
+      </div>
+      <div class="vs-card vs-purple">
+        <div class="vs-card-head"><span class="vs-card-icon">🗺</span><h3>Plan Mode</h3></div>
+        <ul>
+          <li><b>Когда использовать</b>Новое приложение, сложная логика</li>
+          <li><b>Что происходит</b>Сначала составляет план, вы одобряете</li>
+          <li><b>Риск</b>Минимальный — вы видите маршрут заранее</li>
+          <li><b>Скорость</b>Медленнее на старте, быстрее в итоге</li>
+        </ul>
+      </div>
+    </div>
     <div class="info-box"><strong>Как включить Plan Mode:</strong> рядом с полем ввода внизу есть кнопка режима работы (обычно подписана «Auto»). Нажмите на неё — откроется список: Manual, Accept edits, Plan, Auto, Bypass permissions. Выберите «Plan». Claude сначала задаст уточняющие вопросы → составит план → покажет кнопку «Accept and continue».</div>
     <div class="lesson-img"><img src="img/claude-code-plan-mode-select.jpg" alt="Меню выбора режима работы в Claude Code — стрелки указывают на кнопку режима и пункт Plan"></div>
     <div class="lesson-img-caption">Кнопка режима работы внизу слева от поля ввода — здесь переключаете между Plan и Auto</div>
