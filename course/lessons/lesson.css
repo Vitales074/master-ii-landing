@@ -212,6 +212,20 @@ code{
 }
 .ext-link:hover{text-decoration-color:var(--blue-l)}
 
+/* ── VS cards (сравнение двух вещей наглядно) ── */
+.vs-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+@media(max-width:640px){.vs-cards{grid-template-columns:1fr}}
+.vs-card{border-radius:16px;padding:22px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+.vs-card.vs-blue{border-color:rgba(96,165,250,.28);background:rgba(37,99,235,.05)}
+.vs-card.vs-purple{border-color:rgba(167,139,250,.3);background:rgba(124,58,237,.05)}
+.vs-card-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.vs-card-icon{font-size:22px;line-height:1}
+.vs-card h3{font-family:var(--font-d);font-size:16px;font-weight:700}
+.vs-card ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.vs-card li{font-size:14px;color:var(--text);line-height:1.5}
+.vs-card li b{display:block;font-family:var(--font-d);font-size:10.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--dim);margin-bottom:3px}
+
 /* ── Format cards (умеет / не умеет) ── */
 .format-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0}
 @media(max-width:640px){.format-cards{grid-template-columns:1fr}}
