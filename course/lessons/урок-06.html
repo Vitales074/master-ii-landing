@@ -20,8 +20,8 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <a href="../index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
-      <a href="../index.html" class="nav-logo">МАСТЕР-ИИ</a>
+      <a href="index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
+      <a href="index.html" class="nav-logo">МАСТЕР-ИИ</a>
     </div>
     <span class="nav-lesson">Урок 6 из 13</span>
     <div class="nav-progress">
@@ -46,12 +46,25 @@
     </div>
   </div>
 
+  <div class="tldr-box">
+    <div class="tldr-icon">⚡</div>
+    <div>
+      <h3>Если коротко</h3>
+      <ul>
+        <li>Claude Projects помнит контекст постоянно — не нужно объяснять нишу и стиль заново в каждом сеансе, как в обычном чате</li>
+        <li>Три отдельных агента (Стратег → Автор → Редактор) вместо одного универсала — качество выше, роли не конфликтуют</li>
+        <li>Один файл-досье бренда, загруженный во все три проекта, — экономит время на повторных объяснениях</li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Проблема -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-purple">⚡</div>Почему контент-рутина съедает время</h2>
     <p>Допустим, вы занимаетесь контентом для клиента. Каждый раз, открывая Claude, вы тратите первые 10–15 минут на одно и то же: объясняете нишу, описываете аудиторию, напоминаете про тон, перечисляете запреты. После этого получаете несколько постов — и назавтра всё сначала.</p>
     <p>Проблема не в Claude — проблема в отсутствии системы. Без постоянной памяти каждый сеанс начинается с нуля. Решение — <strong>Claude Projects</strong>.</p>
     <div class="info-box"><strong>Chat vs Projects — ключевое отличие:</strong> чат — это разовый исполнитель, которого вы нанимаете заново каждый день. Projects — сотрудник с постоянной памятью: он помнит всё, что вы ему рассказали, читает загруженные файлы и работает в рамках постоянной инструкции.</div>
+    <div class="story-box"><strong>Знакомое чувство «дежавю» с объяснениями?</strong> Первые недели я и сам каждое утро пересказывал Claude одно и то же про нишу клиента — казалось, что иначе никак. Как только перенёс всё это в один Project — утренний ритуал объяснений исчез, а тексты стали даже точнее, потому что инструкция не «забывалась» на середине разговора.</div>
   </div>
 
   <!-- Создаём агента -->
@@ -207,6 +220,7 @@
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Получен контент-план на 2 недели через агента-Стратега</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>По одному брифу из плана написан пост через агента-Автора</li>
     </ul>
+    <p class="reward-line">✅ Система из трёх агентов настроена — контент на месяц теперь делается за один рабочий день, а не растягивается на недели.</p>
   </div>
 
   <div class="lesson-nav">
@@ -245,5 +259,6 @@ function toggleCheck(el) {
   if (li) li.classList.toggle('done');
 }
 </script>
+<script src="lightbox.js"></script>
 </body>
 </html>

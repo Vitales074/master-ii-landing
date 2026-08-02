@@ -19,8 +19,8 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <a href="../index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
-      <a href="../index.html" class="nav-logo">МАСТЕР-ИИ</a>
+      <a href="index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
+      <a href="index.html" class="nav-logo">МАСТЕР-ИИ</a>
     </div>
     <span class="nav-lesson">Урок 12 из 13</span>
     <div class="nav-progress">
@@ -43,12 +43,25 @@
     </div>
   </div>
 
+  <div class="tldr-box">
+    <div class="tldr-icon">⚡</div>
+    <div>
+      <h3>Если коротко</h3>
+      <ul>
+        <li>ИИ пишет рабочий код, но не безопасный по умолчанию — 45–62% AI-кода содержит уязвимости, потому что никто не попросил сделать безопасно</li>
+        <li>Метод двойного прохода: после готового кода просите Claude проверить его же в роли эксперта по безопасности — находит то, что пропустил при написании</li>
+        <li>CLAUDE.md фиксирует правила безопасности (секреты, БД, аутентификация, зависимости) — Claude читает файл автоматически при каждом открытии проекта</li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Почему проблема -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-orange">⚠️</div>ИИ оптимизирован на задачу, а не на защиту</h2>
     <p>Аналогия: архитектор, который проектирует красивый дом без замков на дверях. Технически дом построен — но жить в нём небезопасно. ИИ делает то, о чём его просят. Никто не спросил «а это безопасно?».</p>
     <p><strong>Статистика:</strong> 45–62% AI-кода содержит реальные уязвимости. 20% попыток установить пакеты — галлюцинированные имена, которые могут быть захвачены злоумышленниками.</p>
     <div class="info-box"><strong>Правильная установка:</strong> читайте AI-код как код незнакомого стажёра — с любопытством, но не слепым доверием. Доверяйте, но проверяйте — особенно то, что касается данных пользователей и ключей.</div>
+    <div class="story-box"><strong>Цифры выше не для того, чтобы напугать.</strong> Все три инцидента ниже закрываются одной и той же простой привычкой — вторым сообщением с просьбой проверить код на уязвимости. Не нужен диплом по кибербезопасности, нужно всего лишь не забывать спросить.</div>
   </div>
 
   <!-- 3 инцидента -->
@@ -177,6 +190,7 @@ cursor.execute(query, (user_input,))
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Знаете, как отозвать скомпрометированный ключ (<a href="https://console.anthropic.com" target="_blank" rel="noopener" class="ext-link">console.anthropic.com</a>)</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Временные демо-ключи создаются перед показом и удаляются после</li>
     </ul>
+    <p class="reward-line">✅ Теперь вы знаете, как одним дополнительным сообщением находить и закрывать дыры, которые не видит даже сам ИИ.</p>
   </div>
 
   <div class="lesson-nav">
@@ -207,5 +221,6 @@ function toggleCheck(el) {
   if (li) li.classList.toggle('done');
 }
 </script>
+<script src="lightbox.js"></script>
 </body>
 </html>

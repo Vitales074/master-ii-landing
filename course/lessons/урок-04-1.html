@@ -20,8 +20,8 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <a href="../index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
-      <a href="../index.html" class="nav-logo">МАСТЕР-ИИ</a>
+      <a href="index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
+      <a href="index.html" class="nav-logo">МАСТЕР-ИИ</a>
     </div>
     <span class="nav-lesson">Урок 4.1 из 13</span>
     <div class="nav-progress">
@@ -46,11 +46,24 @@
     </div>
   </div>
 
+  <div class="tldr-box">
+    <div class="tldr-icon">⚡</div>
+    <div>
+      <h3>Если коротко</h3>
+      <ul>
+        <li>Netlify — бесплатный хостинг: перетащили папку с сайтом — получили постоянную ссылку, без серверов и кода</li>
+        <li>Единственный обязательный шаг — не пропустить диалог переименования файла в <code>index.html</code></li>
+        <li>Обновление — та же папка целиком во вкладку Deploys, ссылка остаётся прежней</li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Что такое Netlify -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-green">🚀</div>Что такое Netlify и зачем он нужен</h2>
     <p>Netlify — бесплатный хостинг, который принимает HTML-файлы прямо из папки на вашем компьютере. Вы перетаскиваете папку с сайтом — Netlify выдаёт постоянную ссылку в интернете. Никаких настроек серверов, никакого кода для деплоя. Просто drag & drop.</p>
     <div class="info-box"><strong>Бесплатный тариф даёт:</strong> хостинг для неограниченного числа сайтов, автоматический HTTPS, быстрые CDN-серверы по всему миру. Для учебных и клиентских проектов этого достаточно.</div>
+    <div class="story-box"><strong>Первая публикация своего сайта — отдельное чувство.</strong> Помню, как отправил ссылку знакомому и не сразу поверил, что это уже по-настоящему работает в интернете, а не только на моём компьютере. Весь путь от «сайта в папке» до рабочей ссылки — три минуты, дальше сами убедитесь.</div>
   </div>
 
   <!-- 4 шага -->
@@ -164,6 +177,7 @@
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Ссылка <code>*.netlify.app</code> открывается и показывает сайт</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Умеете обновлять сайт после правок через вкладку Deploys</li>
     </ul>
+    <p class="reward-line">✅ Сайт теперь доступен по ссылке всему интернету — можно смело отправлять клиенту.</p>
   </div>
 
   <div class="lesson-nav">
@@ -203,5 +217,6 @@ function toggleCheck(el) {
 }
 </script>
 
+<script src="lightbox.js"></script>
 </body>
 </html>

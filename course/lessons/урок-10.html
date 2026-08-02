@@ -19,8 +19,8 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <a href="../index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
-      <a href="../index.html" class="nav-logo">МАСТЕР-ИИ</a>
+      <a href="index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
+      <a href="index.html" class="nav-logo">МАСТЕР-ИИ</a>
     </div>
     <span class="nav-lesson">Урок 10 из 13</span>
     <div class="nav-progress">
@@ -40,6 +40,18 @@
       <div class="meta-item"><span>⏱</span> ~45 минут</div>
       <div class="meta-item"><span>💰</span> От $5</div>
       <div class="meta-item"><span>🔑</span> API-ключ Anthropic</div>
+    </div>
+  </div>
+
+  <div class="tldr-box">
+    <div class="tldr-icon">⚡</div>
+    <div>
+      <h3>Если коротко</h3>
+      <ul>
+        <li>API — не замена Pro-подписки, а параллельный инструмент: платите по факту за запросы, без лимита в ~5 часов</li>
+        <li>Ключ создаётся на console.anthropic.com и передаётся Claude только через файл <code>.env</code> — никогда в чат</li>
+        <li>При утечке ключа его можно мгновенно отозвать на той же странице и создать новый — это не паспорт, а отзываемый абонемент</li>
+      </ul>
     </div>
   </div>
 
@@ -149,6 +161,7 @@
       </tbody>
     </table>
     <div class="tip-box"><strong>При утечке ключа:</strong> <a href="https://console.anthropic.com" target="_blank" rel="noopener" class="ext-link">console.anthropic.com</a> → API Keys → Delete. Ключ перестаёт работать мгновенно. Создайте новый. Совет: перед демонстрацией кода создайте временный ключ, после показа — удалите.</div>
+    <div class="story-box"><strong>Слово «ключ» пугает больше, чем должно.</strong> На старте я тоже боялся: а вдруг случайно куда-то вставлю не туда и всё сломается. На деле худшее, что может случиться — кто-то потратит ваш баланс, а не украдёт деньги с карты или доступ к переписке. И это решается одной кнопкой «Delete» в любой момент.</div>
   </div>
 
   <!-- Где разместить -->
@@ -176,6 +189,7 @@
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Понимаете разницу API-ключа и Pro-подписки</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Первый агент создан через Plan Mode</li>
     </ul>
+    <p class="reward-line">✅ У вас есть API-доступ — Claude теперь можно встроить в собственный продукт, а не только использовать в браузере.</p>
   </div>
 
   <div class="lesson-nav">
@@ -206,5 +220,6 @@ function toggleCheck(el) {
   if (li) li.classList.toggle('done');
 }
 </script>
+<script src="lightbox.js"></script>
 </body>
 </html>

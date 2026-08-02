@@ -19,8 +19,8 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <a href="../index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
-      <a href="../index.html" class="nav-logo">МАСТЕР-ИИ</a>
+      <a href="index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
+      <a href="index.html" class="nav-logo">МАСТЕР-ИИ</a>
     </div>
     <span class="nav-lesson">Урок 7 из 13</span>
     <div class="nav-progress">
@@ -43,11 +43,24 @@
     </div>
   </div>
 
+  <div class="tldr-box">
+    <div class="tldr-icon">⚡</div>
+    <div>
+      <h3>Если коротко</h3>
+      <ul>
+        <li>Claude не рисует пиксели, а пишет код (SVG / HTML+CSS) — для логотипов, каруселей и инфографики это плюс: результат векторный и открывается в Figma</li>
+        <li>Для фотореализма и видео Claude передаёт эстафету специализированным платформам генерации — это разные инструменты для разных задач</li>
+        <li>Скилл-файл фиксирует стиль визуала между сессиями, чтобы дизайн не «уплывал» день ото дня</li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Главное заблуждение -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-blue">💡</div>Главное заблуждение о визуале в Claude</h2>
     <p>Многие ждут от Claude генерацию реалистичных изображений по фотографическому описанию — это не его задача. Claude работает иначе: не рисует, а пишет код, который браузер превращает в визуальный результат.</p>
     <p>Ограничение это или преимущество? Для инфографики, логотипа, карусели, схемы, баннера — Claude выигрывает: результат векторный, редактируемый, воспроизводимый и открывается в <a href="https://figma.com" target="_blank" rel="noopener" class="ext-link">Figma</a>.</p>
+    <div class="story-box"><strong>Ждали от Claude фотографию — а получили код?</strong> Это самое частое разочарование новичков в этой теме, я и сам через него проходил. Как только принимаешь, что перед вами инженер, а не художник, всё встаёт на места: для карусели или инфографики код даже лучше фото — можно поменять любую букву за секунду, а не перерисовывать заново.</div>
     <div class="lesson-img-wrap">
       <div class="lesson-img"><img src="img/site-zeleny-dom.png" alt="Сайт Зелёный Дом — визуал, сделанный Claude через HTML и CSS"></div>
       <div class="lesson-img-caption">Тот же принцип в деле: весь этот дизайн — не картинка, а HTML+CSS-код, который написал Claude</div>
@@ -202,6 +215,7 @@
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Знаете формулу промпта из 6 элементов для визуала</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Скилл-шаблон создан и сохранён в папку проекта</li>
     </ul>
+    <p class="reward-line">✅ Визуал для соцсетей теперь делается кодом за минуты, а не часами в графическом редакторе.</p>
   </div>
 
   <div class="lesson-nav">
@@ -232,5 +246,6 @@ function toggleCheck(el) {
   if (li) li.classList.toggle('done');
 }
 </script>
+<script src="lightbox.js"></script>
 </body>
 </html>

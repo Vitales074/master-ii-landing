@@ -20,8 +20,8 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <a href="../index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
-      <a href="../index.html" class="nav-logo">МАСТЕР-ИИ</a>
+      <a href="index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
+      <a href="index.html" class="nav-logo">МАСТЕР-ИИ</a>
     </div>
     <span class="nav-lesson">Урок 3.1 из 13</span>
     <div class="nav-progress">
@@ -45,12 +45,25 @@
     </div>
   </div>
 
+  <div class="tldr-box">
+    <div class="tldr-icon">⚡</div>
+    <div>
+      <h3>Если коротко</h3>
+      <ul>
+        <li>Российские карты не проходят зарубежный эквайринг — это не бан от Anthropic, а общая проблема международных платежей</li>
+        <li>Бесплатного плана хватает на большинство задач курса — платить срочно не нужно</li>
+        <li>Когда понадобится API (урок 10+) — есть два честных легальных пути: пополнение через крипту напрямую или через агрегатор OpenRouter</li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Почему не работают обычные карты -->
   <div class="lesson-section">
     <h2><div class="section-icon icon-orange">🚫</div>Почему это вообще проблема</h2>
     <p>Anthropic принимает карты через стандартные платёжные системы. После 2022 года большинство российских карт Visa и Mastercard перестали работать за рубежом — они просто не проходят зарубежный эквайринг. Это не ограничение со стороны Anthropic конкретно против России, а следствие общего состояния международных платежей.</p>
     <div class="warn-box"><strong>Важно понимать:</strong> попытки указать заведомо ложный адрес выставления счёта или использовать чужую карту без ведома владельца — это не «обход», а нарушение правил Anthropic и платёжных систем. Аккаунт после такого блокируется, а у владельца карты могут возникнуть неприятности. Это не вариант.</div>
     <p>Вместо этого — четыре честных пути, у каждого свои плюсы.</p>
+    <div class="story-box"><strong>Если сейчас кажется «раз платить нельзя — курс не для меня»:</strong> это не так. Я сам прошёл все уроки этого курса и написал текущую версию портфолио на бесплатном плане — предоплата вообще не понадобилась до момента, пока не захотелось подключить API для агентов. Не торопитесь с оплатой: сначала попробуйте бесплатный вариант, а к этому уроку вернётесь ровно тогда, когда он реально понадобится.</div>
   </div>
 
   <!-- Бесплатный план -->
@@ -148,6 +161,7 @@
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Выбран способ оплаты / решено начать с бесплатного плана</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Claude открывается и отвечает на вопросы</li>
     </ul>
+    <p class="reward-line">✅ Вопрос оплаты закрыт — дальше по курсу никаких сюрпризов с картами не будет.</p>
   </div>
 
   <div class="lesson-nav">
@@ -187,5 +201,6 @@ function toggleCheck(el) {
 }
 </script>
 
+<script src="lightbox.js"></script>
 </body>
 </html>

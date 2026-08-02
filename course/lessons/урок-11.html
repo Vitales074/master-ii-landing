@@ -19,8 +19,8 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <a href="../index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
-      <a href="../index.html" class="nav-logo">МАСТЕР-ИИ</a>
+      <a href="index.html" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span>Все уроки</span></a>
+      <a href="index.html" class="nav-logo">МАСТЕР-ИИ</a>
     </div>
     <span class="nav-lesson">Урок 11 из 13</span>
     <div class="nav-progress">
@@ -40,6 +40,18 @@
       <div class="meta-item"><span>⏱</span> ~45 минут</div>
       <div class="meta-item"><span>📱</span> BotFather + .env</div>
       <div class="meta-item"><span>🤖</span> API из урока 10</div>
+    </div>
+  </div>
+
+  <div class="tldr-box">
+    <div class="tldr-icon">⚡</div>
+    <div>
+      <h3>Если коротко</h3>
+      <ul>
+        <li>Telegram-бот и веб-приложение используют один и тот же API-«мозг» — просто разные «трубы» для общения с пользователем</li>
+        <li>BotFather выдаёт токен за 5 шагов; он хранится вместе с API-ключом Anthropic только в файле .env — никогда в чате или коде</li>
+        <li>Типичные проблемы ботов (флуд-контроль, потеря истории, кириллица в командах) Claude чинит сам — вы только одобряете</li>
+      </ul>
     </div>
   </div>
 
@@ -125,6 +137,7 @@
       </div>
     </div>
     <div class="warn-box"><strong>Кириллица в командах не работает.</strong> /старт, /помощь — такого не существует. Команды только латиницей: /start, /help, /menu.</div>
+    <div class="story-box"><strong>Момент, когда собственный бот первый раз отвечает в Telegram — отдельное удовольствие.</strong> После сайтов и приложений в браузере это ощущается иначе: бот живёт там же, где ваши реальные переписки, и любой знакомый может его найти и написать прямо сейчас. Дайте себе увидеть это своими глазами, прежде чем переходить дальше.</div>
   </div>
 
   <!-- .env -->
@@ -201,6 +214,7 @@
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Бот отвечает в Telegram — хотя бы на /start</li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div>Знаете, как отозвать токен BotFather при необходимости</li>
     </ul>
+    <p class="reward-line">✅ Агент теперь живёт там, где реально сидят люди — в Telegram, а не только в браузере.</p>
   </div>
 
   <div class="lesson-nav">
@@ -231,5 +245,6 @@ function toggleCheck(el) {
   if (li) li.classList.toggle('done');
 }
 </script>
+<script src="lightbox.js"></script>
 </body>
 </html>
